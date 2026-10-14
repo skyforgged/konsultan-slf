@@ -44,3 +44,41 @@
 ## 4. Batas audit
 
 Audit ini berbasis source yang tersimpan di GitHub. Build, browser rendering, keyboard navigation, responsive layout, broken-link scan, dan performa belum diuji secara langsung. Jangan menganggap kriteria tersebut lulus sampai diuji pada checkout proyek.
+
+## 5. Pembaruan audit — 2026-10-15
+
+Bagian ini melengkapi catatan awal di atas; kondisi lama pada bagian 1–2 adalah baseline sebelum implementasi, bukan kondisi repository saat ini.
+
+### Perubahan yang sudah masuk ke `main`
+
+- Halaman artikel menggunakan layout bersama untuk metadata canonical, Open Graph, Twitter Card, dan WebPage JSON-LD.
+- Halaman detail layanan dirender dari content collection; konten layanan yang tersedia mencakup SLF, PBG, bangunan eksisting, perpanjangan SLF, pengkajian teknis, dan as-built drawing.
+- Sitemap XML mengambil URL dari koleksi artikel dan layanan, serta mengecualikan konten draft.
+- `robots.txt` dinamis menautkan sitemap berdasarkan URL situs.
+- Header/footer diberi identitas logo, dan halaman 404 bermerek sudah tersedia dengan `noindex, follow`.
+- Schema Service, BreadcrumbList, FAQPage (bila FAQ terlihat), Organization, WebSite, WebPage, dan schema artikel sudah ditambahkan sesuai konteks halaman.
+- CTA konsultasi tersedia pada template artikel dan mengarah ke daftar layanan; belum ada klaim bahwa formulir prospek sudah tersedia.
+
+### Verifikasi otomatis
+
+- GitHub Actions menjalankan `npm ci` dan `npm run build` (`astro check && astro build`).
+- Run #78 pada commit `72eb5a459a3d690454c64267bc6f87eb632132a8` berstatus **success** pada 2026-10-14.
+- Status tersebut membuktikan build pada commit itu lolos; tidak membuktikan perubahan commit setelahnya lolos build.
+- Deployment Vercel pada commit yang sama gagal karena pembatasan jumlah deployment, bukan karena laporan build gagal. URL produksi setelah perubahan terbaru belum diverifikasi.
+
+### Temuan yang masih perlu ditindaklanjuti
+
+1. **Gambar sosial:** fallback saat ini masih SVG 1200×630. Dukungan SVG pada crawler sosial tidak seragam; sediakan fallback PNG/JPEG dan periksa semua nilai `og:image`/Twitter image setelah aset raster tersedia.
+2. **Tautan internal:** belum ada hasil pemindaian menyeluruh atas semua tautan dan URL hasil render. Pemeriksaan source saja belum cukup untuk menyatakan tidak ada broken link.
+3. **Konten dan relasi:** artikel yang tersedia masih sangat sedikit; relasi artikel terkait perlu diverifikasi berdasarkan ID/slug nyata dan relevansi editorial.
+4. **Halaman persyaratan/checklist:** belum dianggap selesai tanpa rujukan sumber resmi yang sesuai dan tanggal peninjauan.
+5. **Data perusahaan dan kontak:** jangan menambahkan alamat, wilayah layanan, kompetensi, kanal kontak, harga, testimoni, atau portofolio tanpa konfirmasi.
+6. **Validasi produksi:** perlu pemeriksaan browser untuk tampilan responsif, akses keyboard, daftar isi sticky, status HTTP, canonical, sitemap, dan metadata URL publik.
+
+### Status
+
+- Build CI: **lulus** pada commit yang disebutkan di atas.
+- Build pada commit yang lebih baru: **belum terverifikasi** sampai workflow terkait selesai.
+- Deployment produksi terbaru: **belum terverifikasi** karena pembatasan deployment Vercel.
+- Audit browser, tautan internal penuh, dan kompatibilitas crawler sosial: **belum selesai**.
+
