@@ -111,3 +111,23 @@ Bagian ini melengkapi catatan awal di atas; kondisi lama pada bagian 1–2 adala
 - Ini adalah audit source terbatas, **bukan** hasil crawl lengkap dan bukan bukti bahwa seluruh tautan menghasilkan HTTP 200.
 - Fallback Open Graph/Twitter masih menggunakan SVG. PNG/JPEG belum ditambahkan karena aset raster yang terverifikasi belum tersedia.
 - Build CI pada commit dokumentasi baseline `5084774` tercatat sukses. Commit perbaikan 404 dan pembaruan audit sesudahnya masih perlu hasil CI tersendiri sebelum dinyatakan lulus.
+
+
+## 8. Verifikasi SEO hasil build — 2026-10-15
+
+### Pemeriksaan otomatis yang ditambahkan
+- Build pipeline kini menjalankan `scripts/check-seo-output.mjs` setelah pemeriksaan tautan internal.
+- Pemeriksaan mencakup jumlah dan keberadaan title, meta description, canonical, Open Graph, Twitter Card, validitas sintaks JSON-LD, keberadaan gambar sosial lokal, `robots.txt`, dan `sitemap.xml`.
+- Pemeriksaan canonical secara khusus memastikan halaman `noindex` tidak memiliki canonical.
+
+### Hasil CI
+- Commit: `10a6d019311b6991f793bddf5b34ab4d63fa8f80` — `test(seo): validate generated SEO output`.
+- GitHub Actions: **success** — [run #88](https://github.com/skyforgged/konsultan-slf/actions/runs/38629779024).
+- Build menghasilkan **11 halaman**.
+- Pemeriksaan tautan internal: **158 referensi lokal diperiksa, lulus**.
+- Pemeriksaan SEO hasil render: **11 halaman**, **31 blok JSON-LD valid**, **10 gambar sosial lokal terverifikasi**, serta `robots.txt` dan `sitemap.xml` tersedia.
+
+### Batas yang masih berlaku
+- Gambar sosial default masih SVG; fallback PNG/JPEG tetap menjadi pekerjaan berikutnya agar kompatibilitas crawler sosial lebih luas.
+- Pemeriksaan ini memvalidasi file hasil build statis, bukan status HTTP situs produksi atau hasil rendering semua browser.
+- URL publik, deployment, responsive layout, keyboard navigation, dan perilaku daftar isi sticky belum dianggap terverifikasi.
