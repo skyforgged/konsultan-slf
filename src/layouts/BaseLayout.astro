@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, image = '/images/og-default.svg' } = Astro.props;
+const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, noindex = false, image = '/images/og-default.svg' } = Astro.props;
 const imageAlt = Astro.props.imageAlt ?? title;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
@@ -27,7 +27,7 @@ const pageJsonLd = JSON.stringify({
     <title>{title}</title>
     <meta name="description" content={description} />
     <script type="application/ld+json" set:html={pageJsonLd}></script>
-    <link rel="canonical" href={canonicalUrl} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:type" content={Astro.url.pathname.startsWith('/articles/') && Astro.url.pathname !== '/articles/' ? 'article' : 'website'} />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:title" content={title} />
