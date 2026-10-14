@@ -10,8 +10,30 @@ const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 const pageTitle = article.data.title;
 const description = article.data.description;
 const canonical = `/articles/${article.data.slug}/`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
+const articleUrl = new URL(canonical, siteUrl).toString();
+const articleImage = new URL(article.data.image ?? '/images/illustrations/article-document.svg', siteUrl).toString();
+const articleJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: pageTitle,
+  description,
+  image: [articleImage],
+  datePublished: article.data.pubDate.toISOString(),
+  ...(article.data.updatedDate ? { dateModified: article.data.updatedDate.toISOString() } : {}),
+  ...(article.data.author ? { author: { '@type': 'Person', name: article.data.author } } : {}),
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: 'Konsultan SLF & PBG',
+    url: siteUrl,
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  url: articleUrl,
+}).replace(/</g, '\\u003c');
 ---
 <BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? '/images/og-default.svg'}>
+  <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <header class="border-b border-slate-200 bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi artikel">
       <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
