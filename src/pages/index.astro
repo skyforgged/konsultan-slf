@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import PageUpdatedArticles from '../components/shared/PageUpdatedArticles.astro';
+const articles = await getCollection('articles');
+---
+<PageUpdatedArticles articles={articles} />

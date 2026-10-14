@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+const allArticles = await getCollection('articles');
+const articles = allArticles.filter((a: any) => !a.data.draft).sort((a: any, b: any) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
+---
+<ul>
+  {articles.map((article: CollectionEntry<'articles'>) => (
+    <li><a href={`/articles/${article.data.slug}/`}>{article.data.title}</a></li>
+  ))}
+</ul>

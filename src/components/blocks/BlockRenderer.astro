@@ -1,0 +1,18 @@
+---
+const { block } = Astro.props;
+if (!block) { /* skip */ }
+---
+{block && (() => {
+  switch ((block as any).component) {
+    case 'card': return <slot name="card" {...block} />;
+    case 'faq': return <slot name="faq" {...block} />;
+    case 'cta': return <slot name="cta" {...block} />;
+    case 'table': return <slot name="table" {...block} />;
+    case 'note': return <slot name="note" {...block} />;
+    case 'steps': return <slot name="steps" {...block} />;
+    case 'stats': return <slot name="stats" {...block} />;
+    case 'glossary': return <slot name="glossary" {...block} />;
+    case 'quote': return <slot name="quote" {...block} />;
+    default: return null;
+  }
+})()}

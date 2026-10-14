@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { article: CollectionEntry<'articles'> }
+const { article } = Astro.props;
+const tocItems: Array<{id: string; text: string; level: number}> = [];
+const headingRegex = /^(#{2,6})\s+(.+)$/gm;
+let match: RegExpExecArray | null;
+if (article.body) {
+  while ((match = headingRegex.exec(article.body)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    tocItems.push({ id, text, level });
+  }
+}
+---
+<div class="mx-auto max-w-7xl px-5 py-12 grid grid-cols-1 gap-8 lg:grid-cols-[260px_1fr]">
+  {tocItems.length > 0 && (
+    <aside class="sticky top-24 self-start hidden lg:block">
+      <nav aria-label="Daftar isi">
+        <p class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Daftar Isi</p>
+        <ul class="space-y-1 border-l border-slate-200 pl-4">
+          {tocItems.map((item) => (
+            <li style={`padding-left: ${item.level === 3 ? '1rem' : '0'}`}>
+              <a href={`#${item.id}`} class="block py-1 text-sm text-slate-600 hover:text-blue-700 hover:border-blue-700 border-l-2 border-transparent transition">{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
+  )}
+  <article class="prose-content min-w-0">
+    <header class="mb-8">
+      {article.data.image && <img src={article.data.image} alt="" class="mb-6 w-full rounded-xl object-cover" loading="lazy" />}
+      {article.data.category && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{article.data.category}</p>}
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{article.data.title}</h1>
+      <div class="mt-4 flex items-center gap-4 text-sm text-slate-500">
+        <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+        {article.data.author && <span>• {article.data.author}</span>}
+      </div>
+    </header>
+    <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24" set:html={article.body ?? ''} />
+  </article>
+</div>
