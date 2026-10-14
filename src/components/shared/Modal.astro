@@ -1,0 +1,40 @@
+---
+/**
+ * Modal — native HTML dialog-based modal.
+ *
+ * Props:
+ * - open: boolean — controls visibility (default false)
+ * - title?: string — header title (optional)
+ * - size?: 'sm' | 'md' | 'lg' | 'xl' — modal width (default 'md')
+ *
+ * Usage:
+ * <Modal open={showModal} title="Judul Modal">
+ *   <p>Konten modal di sini.</p>
+ * </Modal>
+ */
+const {
+  open = false,
+  title,
+  size = 'md',
+} = Astro.props;
+
+const sizes: Record<string, string> = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+};
+---
+{open && (
+  <dialog class="modal modal-open">
+    <div class={`modal-box ${sizes[size] ?? 'max-w-md'}`}>
+      {title && <h3 class="text-lg font-bold">{title}</h3>}
+      <slot />
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">Tutup</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+)}
