@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi dokumen layanan</title>
+  <desc id="desc">Dokumen dengan daftar pemeriksaan dan lencana verifikasi.</desc>
+  <rect x="44" y="28" width="472" height="364" rx="28" fill="#F1F5F9"/>
+  <path d="M176 78h146l54 54v166a18 18 0 0 1-18 18H176a18 18 0 0 1-18-18V96a18 18 0 0 1 18-18Z" fill="#fff" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M322 80v42a12 12 0 0 0 12 12h42" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M194 158h105m-105 35h74m-74 35h70" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
+  <rect x="192" y="254" width="17" height="17" rx="4" stroke="#2563EB" stroke-width="5"/>
+  <path d="m196 262 4 4 7-8" stroke="#16A34A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="228" y="258" width="70" height="8" rx="4" fill="#BFDBFE"/>
+  <circle cx="365" cy="286" r="57" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <path d="m336 286 20 20 39-42" stroke="#1D4ED8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m338 333-10 34 37-13 24 22 9-41" fill="#93C5FD" stroke="#1D4ED8" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="117" cy="121" r="15" fill="#BFDBFE"/>
+  <path d="M90 322h54m-27-27v54" stroke="#60A5FA" stroke-width="7" stroke-linecap="round"/>
+</svg>
