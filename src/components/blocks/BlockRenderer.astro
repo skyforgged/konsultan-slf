@@ -1,5 +1,5 @@
 ---
-import blocks from '../blocks';
+import blocks from '../blocks.ts';
 const { block } = Astro.props;
 const Component = block ? blocks[block.component] : undefined;
 if (block && !Component) {
