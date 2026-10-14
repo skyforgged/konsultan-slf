@@ -1,6 +1,7 @@
 export const site = {
   name: 'Konsultan SLF & PBG',
   tagline: 'Pendampingan Sertifikat Laik Fungsi & Persetujuan Bangunan Gedung',
-  description: 'Konsultan perizinan bangunan SLF dan PBG — persiapan dokumen, pengurusan, dan pendampingan hingga terbit.',
-  whatsapp: '6281234567890',
+  description: 'Pendampingan awal untuk memahami kebutuhan dokumen dan proses SLF/PBG.',
+  // Set PUBLIC_WHATSAPP_NUMBER to the verified business number before enabling WhatsApp CTAs.
+  whatsapp: (import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '').replace(/\D/g, ''),
 };

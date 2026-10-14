@@ -1,11 +1,35 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/shared/ArticleCard.astro';
 const allArticles = await getCollection('articles');
-const articles = allArticles.filter((a: any) => !a.data.draft).sort((a: any, b: any) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
+const articles = allArticles
+  .filter((a: CollectionEntry<'articles'>) => !a.data.draft)
+  .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
 ---
-<ul>
-  {articles.map((article: CollectionEntry<'articles'>) => (
-    <li><a href={`/articles/${article.data.slug}/`}>{article.data.title}</a></li>
-  ))}
-</ul>
+<BaseLayout title="Artikel dan Panduan SLF/PBG" description="Artikel dan panduan untuk memahami SLF, PBG, persiapan dokumen, dan proses perizinan bangunan." canonical="/articles/">
+  <header class="border-b border-slate-200 bg-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi artikel">
+      <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
+      <div class="flex items-center gap-5 text-sm font-semibold">
+        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">Layanan</a>
+        <a href="/" class="text-slate-600 no-underline hover:text-blue-800">Beranda</a>
+      </div>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
+    <header class="max-w-3xl">
+      <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">Pusat informasi</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Artikel dan panduan SLF/PBG</h1>
+      <p class="mt-4 text-lg leading-8 text-slate-600">Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan.</p>
+    </header>
+    {articles.length ? (
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {articles.map((article) => <ArticleCard article={article} />)}
+      </div>
+    ) : (
+      <p class="mt-10 rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">Artikel akan ditampilkan setelah konten diterbitkan.</p>
+    )}
+  </main>
+</BaseLayout>

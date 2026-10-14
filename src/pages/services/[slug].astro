@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/shared/RelatedArticles.astro';
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.filter((service) => !service.data.draft).map((service) => ({ params: { slug: service.data.slug }, props: { service } }));
+}
+const { service } = Astro.props as { service: CollectionEntry<'services'> };
+const { Content } = await render(service);
+const articles = await getCollection('articles');
+---
+<BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`}>
+  <header class="border-b border-slate-200 bg-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi layanan">
+      <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
+      <div class="flex items-center gap-5 text-sm font-semibold">
+        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">Semua layanan</a>
+        <a href="/articles/" class="text-slate-600 no-underline hover:text-blue-800">Artikel</a>
+      </div>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-5xl px-5 py-12 sm:py-16">
+    <nav aria-label="Breadcrumb" class="mb-6 text-sm text-slate-500">
+      <a href="/" class="text-blue-700 no-underline">Beranda</a> / <a href="/services/" class="text-blue-700 no-underline">Layanan</a> / <span>{service.data.title}</span>
+    </nav>
+    <header class="max-w-3xl">
+      <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">Layanan {service.data.serviceGroup.toUpperCase()}</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">{service.data.title}</h1>
+      <p class="mt-5 text-lg leading-8 text-slate-600">{service.data.description}</p>
+    </header>
+    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <article class="prose-content min-w-0"><Content /></article>
+      <aside class="self-start rounded-2xl border border-slate-200 bg-slate-50 p-6">
+        <h2 class="text-lg font-extrabold text-slate-950">Persiapan konsultasi</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Informasi awal berikut membantu memetakan kebutuhan. Daftar final dapat berbeda sesuai kasus.</p>
+        <ul class="mt-4 space-y-3 text-sm text-slate-700">
+          {service.data.requirements.map((item) => <li class="flex gap-2"><span class="font-bold text-blue-700" aria-hidden="true">✓</span><span>{item}</span></li>)}
+        </ul>
+        <a href="/articles/" class="mt-6 inline-flex w-full justify-center rounded-lg bg-blue-900 px-4 py-3 text-sm font-bold text-white no-underline hover:bg-blue-800">Baca panduan</a>
+      </aside>
+    </div>
+    {service.data.benefits.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-2xl font-extrabold text-slate-950">Manfaat pendampingan</h2>
+        <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+          {service.data.benefits.map((item) => <li class="rounded-xl border border-slate-200 p-4 text-sm leading-6 text-slate-700">{item}</li>)}
+        </ul>
+      </section>
+    )}
+    {service.data.process.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-2xl font-extrabold text-slate-950">Tahapan pendampingan</h2>
+        <ol class="mt-5 space-y-3">
+          {service.data.process.map((item, index) => <li class="flex gap-4 rounded-xl bg-slate-50 p-4"><span class="font-black text-blue-700">{String(index + 1).padStart(2, '0')}</span><span class="text-sm leading-6 text-slate-700">{item}</span></li>)}
+        </ol>
+      </section>
+    )}
+    {service.data.faq.length > 0 && (
+      <section class="mt-12">
+        <h2 class="mb-5 text-2xl font-extrabold text-slate-950">Pertanyaan umum</h2>
+        <div class="space-y-3">
+          {service.data.faq.map((item) => <details class="rounded-xl border border-slate-200 p-5"><summary class="cursor-pointer font-semibold text-slate-950">{item.question}</summary><p class="mt-3 text-sm leading-7 text-slate-600">{item.answer}</p></details>)}
+        </div>
+      </section>
+    )}
+    <section class="mt-12 rounded-2xl bg-blue-950 p-7 text-white sm:p-9">
+      <h2 class="text-2xl font-extrabold">{service.data.ctaLabel}</h2>
+      <p class="mt-3 leading-7 text-blue-100">Mulai dengan menyampaikan fungsi, lokasi, kondisi bangunan, dan dokumen yang tersedia. Persyaratan serta ruang lingkup akan ditelaah sebelum pekerjaan disepakati.</p>
+      <a href="/articles/" class="mt-5 inline-flex rounded-lg bg-white px-5 py-3 font-bold text-blue-950 no-underline hover:bg-blue-50">Baca panduan awal</a>
+    </section>
+  </main>
+  <RelatedArticles articles={articles} type="service" id={service.data.id} heading="Artikel terkait layanan" />
+</BaseLayout>
