@@ -54,27 +54,29 @@ for (const file of pages) {
     if (!findMeta(html, attribute, value)) failures.push(`${page}: missing ${value} metadata`);
   }
 
-  const ogImage = findMeta(html, 'property', 'og:image');
   const canonicalOrigin = canonicalHref && isAbsoluteHttpUrl(canonicalHref) ? new URL(canonicalHref).origin : null;
-  if (ogImage && canonicalOrigin) {
+  for (const [label, imageUrlValue] of [
+    ['og:image', findMeta(html, 'property', 'og:image')],
+    ['twitter:image', findMeta(html, 'name', 'twitter:image')],
+  ]) {
+    if (!imageUrlValue || !canonicalOrigin) continue;
     try {
-      const imageUrl = new URL(ogImage, canonicalHref);
-      if (imageUrl.origin === canonicalOrigin) {
-        const pathname = decodeURIComponent(imageUrl.pathname);
-        const imagePath = path.resolve(root, `.${pathname}`);
-        if (!imagePath.startsWith(root + path.sep)) {
-          failures.push(`${page}: og:image path escapes build output: ${ogImage}`);
-        } else {
-          try {
-            if (!(await stat(imagePath)).isFile()) failures.push(`${page}: og:image file is missing: ${ogImage}`);
-            else socialImagesChecked++;
-          } catch {
-            failures.push(`${page}: og:image file is missing: ${ogImage}`);
-          }
+      const imageUrl = new URL(imageUrlValue, canonicalHref);
+      if (imageUrl.origin !== canonicalOrigin) continue;
+      const pathname = decodeURIComponent(imageUrl.pathname);
+      const imagePath = path.resolve(root, `.${pathname}`);
+      if (!imagePath.startsWith(root + path.sep)) {
+        failures.push(`${page}: ${label} path escapes build output: ${imageUrlValue}`);
+      } else {
+        try {
+          if (!(await stat(imagePath)).isFile()) failures.push(`${page}: ${label} file is missing: ${imageUrlValue}`);
+          else socialImagesChecked++;
+        } catch {
+          failures.push(`${page}: ${label} file is missing: ${imageUrlValue}`);
         }
       }
     } catch {
-      failures.push(`${page}: invalid og:image URL: ${ogImage}`);
+      failures.push(`${page}: invalid ${label} URL: ${imageUrlValue}`);
     }
   }
 
