@@ -28,6 +28,15 @@ const serviceJsonLd = JSON.stringify({
     url: siteUrl,
   },
 }).replace(/</g, '\\u003c');
+const faqJsonLd = service.data.faq.length > 0 ? JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: service.data.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+}).replace(/</g, '\\u003c') : undefined;
 const breadcrumbJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -41,6 +50,7 @@ const breadcrumbJsonLd = JSON.stringify({
 <BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
+  {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
   <header class="border-b border-slate-200 bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi layanan">
       <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
