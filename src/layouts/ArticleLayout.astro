@@ -55,6 +55,15 @@ const canonical = `/articles/${article.data.slug}/`;
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
     </article>
   </div>
+  <section class="border-t border-slate-200 bg-blue-50/60">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
+      <div class="max-w-2xl">
+        <h2 class="text-xl font-extrabold tracking-tight text-slate-950">Perlu meninjau kebutuhan bangunan Anda?</h2>
+        <p class="mt-2 leading-7 text-slate-600">Baca pilihan layanan dan siapkan informasi bangunan untuk menentukan langkah konsultasi berikutnya. Kebutuhan akhir tetap ditinjau sesuai kondisi bangunan.</p>
+      </div>
+      <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">Lihat layanan konsultasi</a>
+    </div>
+  </section>
   <slot name="related" />
   <footer class="border-t border-slate-200 bg-slate-50">
     <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
