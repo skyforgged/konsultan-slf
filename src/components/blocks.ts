@@ -7,6 +7,7 @@ import StepsBlock from './shared/StepsBlock.astro';
 import StatsBlock from './shared/StatsBlock.astro';
 import GlossaryBlock from './shared/GlossaryBlock.astro';
 import QuoteBlock from './shared/QuoteBlock.astro';
+import ArticleSectionBlock from './shared/ArticleSectionBlock.astro';
 
 const blocks: Record<string, any> = {
   card: ContentCard,
@@ -18,6 +19,7 @@ const blocks: Record<string, any> = {
   stats: StatsBlock,
   glossary: GlossaryBlock,
   quote: QuoteBlock,
+  section: ArticleSectionBlock,
 };
 
 export default blocks;
