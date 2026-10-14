@@ -11,29 +11,33 @@ blocks:
   - component: section
     id: "pengertian-slf"
     heading: "Pengertian SLF"
-    paragraphs:
-      - "Sertifikat Laik Fungsi (SLF) berkaitan dengan pemenuhan persyaratan kelaikan fungsi bangunan gedung. Penilaian dan dokumen pendukung perlu dilihat sesuai karakteristik bangunan serta peraturan yang berlaku."
-      - "Artikel ini merupakan pengantar umum, bukan penetapan bahwa suatu bangunan telah memenuhi persyaratan. Kondisi aktual dan dokumen proyek perlu diperiksa untuk menentukan tindak lanjut."
+    content:
+      - type: p
+        text: "Sertifikat Laik Fungsi (SLF) berkaitan dengan pemenuhan persyaratan kelaikan fungsi bangunan gedung. Penilaian dan dokumen pendukung perlu dilihat sesuai karakteristik bangunan serta peraturan yang berlaku."
+      - type: p
+        text: "Artikel ini merupakan pengantar umum, bukan penetapan bahwa suatu bangunan telah memenuhi persyaratan. Kondisi aktual dan dokumen proyek perlu diperiksa untuk menentukan tindak lanjut."
   - component: section
     id: "informasi-yang-perlu-disiapkan"
     heading: "Informasi yang perlu disiapkan"
-    paragraphs:
-      - "Untuk konsultasi awal, siapkan informasi yang tersedia mengenai:"
-    lists:
-      - ordered: false
+    content:
+      - type: p
+        text: "Untuk konsultasi awal, siapkan informasi yang tersedia mengenai:"
+      - type: list
+        ordered: false
         items:
           - "Lokasi dan fungsi bangunan."
           - "Dokumen lahan atau bukti penguasaan yang tersedia."
           - "Gambar arsitektur dan dokumen teknis yang tersedia."
           - "Dokumen persetujuan/perizinan sebelumnya, jika ada."
           - "Informasi perubahan fungsi, renovasi, atau kondisi bangunan yang relevan."
-    paragraphs:
-      - "Daftar tersebut adalah bahan awal diskusi, bukan daftar persyaratan yang berlaku universal. Kebutuhan final harus diverifikasi untuk bangunan terkait."
+      - type: p
+        text: "Daftar tersebut adalah bahan awal diskusi, bukan daftar persyaratan yang berlaku universal. Kebutuhan final harus diverifikasi untuk bangunan terkait."
   - component: section
     id: "gambaran-langkah-persiapan"
     heading: "Gambaran langkah persiapan"
-    lists:
-      - ordered: true
+    content:
+      - type: list
+        ordered: true
         items:
           - "Kumpulkan informasi dasar: catat fungsi, lokasi, dan kondisi bangunan."
           - "Inventarisasi dokumen: kelompokkan dokumen yang tersedia dan tandai bagian yang perlu dikonfirmasi."
@@ -42,8 +46,9 @@ blocks:
   - component: section
     id: "hal-yang-perlu-diingat"
     heading: "Hal yang perlu diingat"
-    paragraphs:
-      - "Jangan mengandalkan estimasi waktu atau daftar dokumen generik sebagai kepastian. Proses dapat dipengaruhi kelengkapan data, kondisi bangunan, hasil pemeriksaan, dan ketentuan instansi terkait. Periksa sumber resmi terbaru untuk keputusan hukum atau teknis."
+    content:
+      - type: p
+        text: "Jangan mengandalkan estimasi waktu atau daftar dokumen generik sebagai kepastian. Proses dapat dipengaruhi kelengkapan data, kondisi bangunan, hasil pemeriksaan, dan ketentuan instansi terkait. Periksa sumber resmi terbaru untuk keputusan hukum atau teknis."
   - component: note
     variant: info
     title: "Catatan penting"
