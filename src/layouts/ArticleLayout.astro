@@ -45,6 +45,7 @@ const canonical = `/articles/${article.data.slug}/`;
         {article.data.category && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{article.data.category}</p>}
         <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{pageTitle}</h1>
         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+        <img src={article.data.image ?? '/images/illustrations/article-document.svg'} alt={`Ilustrasi: ${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
           <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
           {article.data.updatedDate && <span>Diperbarui: {article.data.updatedDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>}
