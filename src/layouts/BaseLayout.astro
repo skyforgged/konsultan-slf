@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, noindex = false, image = '/images/og-default.svg' } = Astro.props;
+const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, noindex = false, image = '/images/og-default.png' } = Astro.props;
 const imageAlt = Astro.props.imageAlt ?? title;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
