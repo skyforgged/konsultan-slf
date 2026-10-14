@@ -23,6 +23,7 @@ const articles = defineCollection({
     tags: z.array(z.string()).default([]),
     relatedType: z.enum(['service', 'page', 'article']).optional(),
     relatedId: z.number().int().positive().optional(),
+    relatedArticles: z.array(z.number().int().positive()).default([]),
     blocks: z.array(z.discriminatedUnion('component', [
       z.object({
         component: z.literal('card'),
