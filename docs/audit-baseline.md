@@ -82,3 +82,19 @@ Bagian ini melengkapi catatan awal di atas; kondisi lama pada bagian 1–2 adala
 - Deployment produksi terbaru: **belum terverifikasi** karena pembatasan deployment Vercel.
 - Audit browser, tautan internal penuh, dan kompatibilitas crawler sosial: **belum selesai**.
 
+## 6. Pembaruan implementasi — 2026-10-15
+
+### Validasi build terbaru
+- Pemilik proyek mengonfirmasi **Pull + Build OK**, dengan hasil **11 halaman dan 0 errors** pada commit `5084774`.
+- Perubahan setelah commit tersebut belum tercakup oleh hasil build yang dikonfirmasi itu; CI perlu memvalidasi commit berikutnya.
+
+### Perbaikan SEO 404
+- `BaseLayout.astro` menerima prop `noindex`; saat aktif, layout mengeluarkan `robots=noindex, follow` dan tidak mencetak elemen canonical.
+- Halaman `404.astro` menggunakan prop tersebut. Ini menghindari canonical pada halaman error yang memang tidak boleh diindeks.
+- Verifikasi source melalui GitHub mengonfirmasi perubahan pada kedua file.
+- Commit perubahan: `1ddcb96` (layout) dan `716ec65` (halaman 404).
+
+### Pekerjaan terbuka
+- Hasil build untuk commit `716ec65` masih perlu dikonfirmasi oleh GitHub Actions.
+- Fallback gambar sosial raster PNG/JPEG dan pemindaian tautan internal menyeluruh masih belum selesai.
+- Verifikasi browser dan URL produksi tetap tertunda karena belum ada hasil akses produksi yang terkonfirmasi.
