@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageUpdatedArticles from '../components/shared/PageUpdatedArticles.astro';
+import { validateContentRelations } from '../utils/content-validation';
 
+await validateContentRelations();
 const articles = await getCollection('articles');
 const services = (await getCollection('services'))
   .filter((service) => !service.data.draft)

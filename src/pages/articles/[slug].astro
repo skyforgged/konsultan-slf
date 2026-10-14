@@ -3,12 +3,14 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+import ArticleRelatedArticles from '../../components/shared/ArticleRelatedArticles.astro';
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
   return articles.filter((a) => !a.data.draft).map((article) => ({ params: { slug: article.data.slug }, props: { article } }));
 }
 const { article } = Astro.props as { article: CollectionEntry<'articles'> };
 const { Content, headings } = await render(article);
+const allArticles = await getCollection('articles');
 ---
 <ArticleLayout article={article} headings={headings}>
   <Content />
@@ -17,4 +19,5 @@ const { Content, headings } = await render(article);
       {article.data.blocks.map((block) => <BlockRenderer block={block} />)}
     </div>
   )}
+  <ArticleRelatedArticles slot="related" articles={allArticles} relatedIds={article.data.relatedArticles} />
 </ArticleLayout>
