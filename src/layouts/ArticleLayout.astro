@@ -34,6 +34,9 @@ const articleJsonLd = JSON.stringify({
 ---
 <BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? '/images/og-default.svg'}>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
+  <meta slot="head" property="article:published_time" content={article.data.pubDate.toISOString()} />
+  {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
+  {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
   <header class="border-b border-slate-200 bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi artikel">
       <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
