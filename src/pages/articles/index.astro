@@ -19,10 +19,13 @@ const articles = allArticles
     </nav>
   </header>
   <main class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
-    <header class="max-w-3xl">
-      <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">Pusat informasi</p>
-      <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Artikel dan panduan SLF/PBG</h1>
-      <p class="mt-4 text-lg leading-8 text-slate-600">Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan.</p>
+    <header class="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr]">
+      <div class="max-w-3xl">
+        <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">Pusat informasi</p>
+        <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Artikel dan panduan SLF/PBG</h1>
+        <p class="mt-4 text-lg leading-8 text-slate-600">Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan.</p>
+      </div>
+      <img src="/images/illustrations/article-guide.svg" alt="Ilustrasi buku panduan dan catatan" class="mx-auto w-full max-w-md" width="560" height="360" fetchpriority="high" />
     </header>
     {articles.length ? (
       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
