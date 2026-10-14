@@ -1,0 +1,161 @@
+import { readFile, readdir, stat } from 'node:fs/promises';
+import path from 'node:path';
+
+const root = path.resolve('dist');
+const failures = [];
+let pagesChecked = 0;
+let jsonLdChecked = 0;
+let socialImagesChecked = 0;
+
+try {
+  await stat(root);
+} catch {
+  console.error('SEO output check failed: "dist" does not exist. Run the Astro build first.');
+  process.exit(1);
+}
+
+const files = await walk(root);
+const pages = files.filter((file) => file.endsWith('.html'));
+if (pages.length === 0) failures.push('No HTML pages found in build output.');
+
+for (const file of pages) {
+  const html = await readFile(file, 'utf8');
+  const page = path.relative(root, file).split(path.sep).join('/');
+  pagesChecked++;
+
+  const titleCount = [...html.matchAll(/<title\b[^>]*>[\s\S]*?<\/title>/gi)].length;
+  if (titleCount !== 1) failures.push(`${page}: expected exactly one <title>, found ${titleCount}`);
+
+  const description = findMeta(html, 'name', 'description');
+  if (!description) failures.push(`${page}: missing meta description`);
+
+  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b)[^>]*>/i.test(html);
+  const canonicals = [...html.matchAll(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi)];
+  if (noindex && canonicals.length > 0) {
+    failures.push(`${page}: noindex page must not include a canonical link`);
+  } else if (!noindex && canonicals.length !== 1) {
+    failures.push(`${page}: expected exactly one canonical link, found ${canonicals.length}`);
+  }
+
+  const canonicalTag = canonicals[0]?.[0];
+  const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href') : null;
+  if (canonicalHref && !isAbsoluteHttpUrl(canonicalHref)) {
+    failures.push(`${page}: canonical URL must be absolute HTTP(S): ${canonicalHref}`);
+  }
+
+  for (const [attribute, value] of [
+    ['property', 'og:title'],
+    ['property', 'og:description'],
+    ['property', 'og:url'],
+    ['property', 'og:image'],
+    ['name', 'twitter:card'],
+    ['name', 'twitter:image'],
+  ]) {
+    if (!findMeta(html, attribute, value)) failures.push(`${page}: missing ${value} metadata`);
+  }
+
+  const ogImage = findMeta(html, 'property', 'og:image');
+  const canonicalOrigin = canonicalHref && isAbsoluteHttpUrl(canonicalHref) ? new URL(canonicalHref).origin : null;
+  if (ogImage && canonicalOrigin) {
+    try {
+      const imageUrl = new URL(ogImage, canonicalHref);
+      if (imageUrl.origin === canonicalOrigin) {
+        const pathname = decodeURIComponent(imageUrl.pathname);
+        const imagePath = path.resolve(root, `.${pathname}`);
+        if (!imagePath.startsWith(root + path.sep)) {
+          failures.push(`${page}: og:image path escapes build output: ${ogImage}`);
+        } else {
+          try {
+            if (!(await stat(imagePath)).isFile()) failures.push(`${page}: og:image file is missing: ${ogImage}`);
+            else socialImagesChecked++;
+          } catch {
+            failures.push(`${page}: og:image file is missing: ${ogImage}`);
+          }
+        }
+      }
+    } catch {
+      failures.push(`${page}: invalid og:image URL: ${ogImage}`);
+    }
+  }
+
+  const jsonLdBlocks = [...html.matchAll(/<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const block of jsonLdBlocks) {
+    try {
+      JSON.parse(block[1]);
+      jsonLdChecked++;
+    } catch (error) {
+      failures.push(`${page}: invalid JSON-LD (${error instanceof Error ? error.message : String(error)})`);
+    }
+  }
+}
+
+for (const requiredFile of ['robots.txt', 'sitemap.xml']) {
+  const target = path.join(root, requiredFile);
+  try {
+    if (!(await stat(target)).isFile()) failures.push(`Missing generated ${requiredFile}`);
+  } catch {
+    failures.push(`Missing generated ${requiredFile}`);
+  }
+}
+
+try {
+  const robots = await readFile(path.join(root, 'robots.txt'), 'utf8');
+  if (!/^Sitemap:\s*https?:\/\//im.test(robots)) failures.push('robots.txt must declare an absolute Sitemap URL.');
+} catch {
+  // Missing file is already reported above.
+}
+
+try {
+  const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
+  if (!sitemap.includes('<urlset') || !sitemap.includes('</urlset>')) failures.push('sitemap.xml has an invalid urlset envelope.');
+  const locations = [...sitemap.matchAll(/<loc>([\s\S]*?)<\/loc>/gi)];
+  if (locations.length === 0) failures.push('sitemap.xml contains no <loc> entries.');
+  for (const [, location] of locations) {
+    if (!isAbsoluteHttpUrl(decodeXml(location.trim()))) failures.push(`sitemap.xml contains a non-absolute URL: ${location}`);
+  }
+} catch {
+  // Missing file is already reported above.
+}
+
+if (failures.length) {
+  console.error(`SEO output check failed: ${failures.length} issue(s) across ${pagesChecked} HTML pages.\n`);
+  console.error(failures.map((failure) => `- ${failure}`).join('\n'));
+  process.exitCode = 1;
+} else {
+  console.log(`SEO output check passed: ${pagesChecked} HTML pages, ${jsonLdChecked} valid JSON-LD blocks, ${socialImagesChecked} local social images, robots.txt, and sitemap.xml.`);
+}
+
+function findMeta(html, key, value) {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  const tag = tags.find((candidate) => getAttr(candidate, key)?.toLowerCase() === value.toLowerCase());
+  return tag ? getAttr(tag, 'content') : null;
+}
+
+function getAttr(tag, name) {
+  const match = tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(["'])(.*?)\\1`, 'i'));
+  return match?.[2] ?? null;
+}
+
+function isAbsoluteHttpUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+function decodeXml(value) {
+  return value.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+}
+
+async function walk(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const found = [];
+  for (const entry of entries) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) found.push(...await walk(fullPath));
+    else if (entry.isFile()) found.push(fullPath);
+  }
+  return found;
+}
