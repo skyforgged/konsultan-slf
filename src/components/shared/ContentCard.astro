@@ -1,12 +1,7 @@
 ---
 /**
  * ContentCard — kartu ringkasan dengan body opsional.
- *
- * Props:
- * - heading: string
- * - icon?: string (nama icon SVG inline)
- * - class?: Record<string, string>
- * - body: Array<{type, ...}>
+ * Body mendukung paragraf, daftar, dan gambar.
  */
 const { heading, icon, class: css, body = [] } = Astro.props;
 ---
@@ -19,6 +14,7 @@ const { heading, icon, class: css, body = [] } = Astro.props;
       if (part.type === 'list') return part.ordered
         ? <ol class={`list-decimal pl-5 ${part.class ?? ''}`}>{part.items.map((item: string) => <li>{item}</li>)}</ol>
         : <ul class={`list-disc pl-5 ${part.class ?? ''}`}>{part.items.map((item: string) => <li>{item}</li>)}</ul>;
+      if (part.type === 'image') return <figure class={part.class}><img src={part.src} alt={part.alt} class={`h-auto max-w-full rounded-lg ${part.imgClass ?? ''}`} loading="lazy" />{part.caption && <figcaption class={`mt-2 text-sm text-slate-500 ${part.captionClass ?? ''}`}>{part.caption}</figcaption>}</figure>;
       return null;
     })}
   </div>
