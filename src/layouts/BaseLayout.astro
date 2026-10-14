@@ -11,6 +11,7 @@ const pageJsonLd = JSON.stringify({
   '@id': `${canonicalUrl}#webpage`,
   name: title,
   description,
+  inLanguage: 'id-ID',
   url: canonicalUrl,
   isPartOf: { '@id': `${siteUrl || Astro.url.origin}/#website` },
   about: { '@id': `${siteUrl || Astro.url.origin}/#organization` },
