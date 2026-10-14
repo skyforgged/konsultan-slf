@@ -103,6 +103,17 @@ const articles = defineCollection({
         source: z.string().min(1).optional(),
         class: z.record(z.string()).optional(),
       }),
+      z.object({
+        component: z.literal('section'),
+        id: z.string().min(1).optional(),
+        heading: z.string().min(1),
+        paragraphs: z.array(z.string().min(1)).default([]),
+        lists: z.array(z.object({
+          ordered: z.boolean().default(false),
+          items: z.array(z.string().min(1)).min(1),
+        })).default([]),
+        class: z.record(z.string()).optional(),
+      }),
     ])).default([]),
   }),
 });
