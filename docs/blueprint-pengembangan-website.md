@@ -312,30 +312,55 @@ Setiap halaman yang dapat diindeks harus mempunyai metadata unik dan konsisten d
 
 ### 9.3 JSON-LD Schema.org per halaman
 
-**Setiap halaman publik harus mengeluarkan JSON-LD yang valid dan sesuai dengan konten halaman tersebut.** Implementasikan melalui helper/komponen bersama agar bentuk JSON konsisten, escaping aman, dan data tidak digandakan secara keliru.
+**Setiap halaman publik harus memiliki JSON-LD yang valid dan sesuai dengan konten yang terlihat.** Implementasikan melalui helper/komponen bersama agar data konsisten, escaping aman, dan entitas tidak diduplikasi secara keliru.
 
-Panduan tipe schema:
+#### Peta schema berdasarkan fungsi
 
-| Jenis halaman | Tipe JSON-LD yang disarankan | Catatan |
+| Fungsi/halaman | Tipe schema | Aturan implementasi |
 |---|---|---|
-| Semua halaman | WebPage sebagai dasar jika sesuai | Sertakan name, url, dan relasi ke entitas situs bila relevan |
-| Identitas situs | WebSite | Umumnya didefinisikan sekali sebagai entitas situs dan dihubungkan dari halaman |
-| Perusahaan | Organization atau tipe yang benar-benar sesuai | Isi nama, URL, logo, dan kontak hanya dengan data terverifikasi |
-| Halaman layanan | Service | Gunakan name, description, url, provider, dan areaServed hanya bila faktanya diketahui |
-| Artikel | Article atau BlogPosting | Isi headline, description, image, datePublished, dateModified, author, dan publisher hanya jika tersedia dan benar |
-| Breadcrumb | BreadcrumbList | Hanya jika breadcrumb terlihat pada halaman dan urutannya cocok dengan navigasi |
-| Halaman FAQ | FAQPage | Hanya jika pertanyaan dan jawaban benar-benar terlihat pada halaman; jangan menambahkan FAQ tersembunyi demi hasil kaya |
+| Semua halaman publik | `WebPage` | Gunakan `name`, `url`, dan relasi ke situs/organisasi bila relevan |
+| Identitas situs | `WebSite` | Representasikan situs dengan identitas stabil dan hubungkan dari halaman |
+| Identitas perusahaan | `Organization` atau subtipe yang tepat seperti `Corporation` | Gunakan nama resmi, URL, logo, dan profil sosial resmi (`sameAs`) hanya jika terverifikasi |
+| Bisnis dengan lokasi fisik yang benar-benar melayani pelanggan di lokasi itu | `LocalBusiness` atau subtipe yang paling spesifik dan benar | Cantumkan alamat dan detail operasional hanya jika lokasi tersebut nyata dan memang boleh dipublikasikan |
+| Halaman layanan | `Service` | Isi `name`, `description`, `url`, `provider`, dan `areaServed` berdasarkan fakta yang dapat diverifikasi |
+| Layanan dengan harga dan ketentuan penawaran yang benar-benar tersedia | `Offer` yang terhubung secara tepat ke layanan | Isi `price`, `priceCurrency`, dan `availability` hanya jika harga serta status ketersediaannya nyata dan akurat |
+| Artikel | `Article` atau `BlogPosting` | Isi `headline`, `description`, `image`, tanggal publikasi/perubahan, penulis, dan penerbit sesuai data nyata |
+| Breadcrumb yang terlihat | `BreadcrumbList` | Urutan, nama, dan URL harus sama dengan breadcrumb yang ditampilkan |
+| Halaman dengan FAQ yang terlihat | `FAQPage` | Pertanyaan dan jawaban harus tampak di halaman serta ditulis oleh situs; jangan membuat FAQ tersembunyi demi schema |
+| Ulasan pelanggan yang nyata dan ditampilkan | `Review`; `AggregateRating` bila memang ada kumpulan ulasan yang valid | Data penulis, isi ulasan, skor, dan jumlah ulasan harus dapat diverifikasi dan konsisten dengan tampilan halaman |
 
-Catatan penting:
+#### Identitas bisnis: Organization vs LocalBusiness
 
-- Nama tipe Schema.org untuk layanan adalah **Service** (tunggal), bukan Services.
-- JSON-LD harus merepresentasikan konten yang benar-benar terlihat; jangan memasukkan rating, ulasan, harga, alamat, sertifikasi, tenaga ahli, atau klaim lain yang tidak dapat diverifikasi.
-- Gunakan @context: https://schema.org dan @type yang sesuai. Gunakan URL absolut yang benar untuk url, image, logo, dan identitas entitas.
-- Gunakan @id yang stabil untuk menghubungkan entitas organisasi/situs/halaman bila arsitektur data mendukungnya.
-- Hindari dua blok schema yang saling bertentangan atau membuat entitas organisasi duplikat. Tentukan tanggung jawab schema di layout, template, dan komponen.
-- Serialisasi data dengan aman; jangan menyisipkan input mentah yang dapat merusak tag JSON-LD.
-- Validasi sintaks JSON-LD dan uji sampel halaman dari setiap tipe template menggunakan validator Schema.org serta Rich Results Test Google jika tipe tersebut didukung Google. Schema yang valid tidak menjamin rich result akan ditampilkan.
-- Service merupakan schema deskriptif; jangan menjanjikan bahwa tipe ini sendiri akan menghasilkan rich result Google.
+- Gunakan `Organization` sebagai dasar identitas perusahaan jika informasi lokasi operasional yang memenuhi syarat untuk `LocalBusiness` tidak tersedia atau tidak relevan.
+- Gunakan `Corporation` jika memang merepresentasikan entitas korporasi yang sesuai. Pastikan nama legal perusahaan tidak dikarang.
+- Pilih subtipe `LocalBusiness` hanya jika jenis dan kondisi bisnis benar-benar cocok. `ProfessionalService` atau `HomeAndConstructionBusiness` tidak boleh dipilih sekadar demi SEO; `LegalService`, `MedicalBusiness`, dan `AutomotiveBusiness` jelas tidak sesuai kecuali bisnis memang bergerak pada bidang tersebut.
+- Alamat fisik, nomor telepon, jam operasional, dan wilayah layanan **bukan data yang boleh diisi dengan perkiraan**. Jika alamat tidak untuk publik atau perusahaan beroperasi sebagai penyedia jasa area layanan, jangan membuat alamat fiktif. Isi hanya properti yang benar-benar diketahui dan sesuai panduan tipe schema yang dipilih.
+- `sameAs` hanya berisi URL profil resmi yang memang mewakili perusahaan.
+
+#### Aturan untuk Service dan Offer
+
+- Tipe Schema.org untuk layanan adalah `Service` (tunggal), bukan `Services`.
+- Setiap halaman layanan utama harus mempunyai entitas `Service` yang berbeda, dengan nama, deskripsi, URL, penyedia, dan area layanan sesuai fakta.
+- `Offer` **tidak wajib** disematkan pada setiap `Service`. Tambahkan hanya jika ada penawaran nyata yang dipublikasikan. Jangan mencantumkan harga nol, harga contoh, mata uang, atau status ketersediaan yang tidak mencerminkan penawaran sebenarnya.
+- Jangan menyamakan `Offer` dengan janji bahwa sertifikat pasti terbit atau bahwa instansi akan menyetujui permohonan.
+
+#### Aturan untuk Review dan AggregateRating
+
+- Jangan membuat rating, jumlah ulasan, nama pelanggan, atau testimoni contoh seolah-olah nyata.
+- Gunakan `Review` dan `AggregateRating` hanya jika ulasan asli benar-benar tersedia, dapat ditampilkan kepada pengunjung, dan nilainya dihitung dari data yang sah.
+- Jangan menandai ulasan pihak ketiga seolah-olah ulasan dikumpulkan atau dikendalikan langsung oleh perusahaan.
+- Schema ulasan tidak menjamin bintang/rich result akan muncul di Google; ikuti kebijakan dan dukungan hasil kaya yang berlaku.
+
+#### Ketentuan teknis dan validasi
+
+- Gunakan `@context: "https://schema.org"` dan `@type` yang sesuai. URL untuk `url`, `image`, `logo`, dan `@id` harus absolut dan benar.
+- Gunakan `@id` yang stabil untuk menghubungkan organisasi, situs, halaman, dan layanan bila struktur data mendukungnya.
+- Hindari dua blok schema yang saling bertentangan atau membuat entitas organisasi duplikat. Tetapkan tanggung jawab schema di layout, template, dan komponen.
+- Serialisasi data dengan aman; jangan menyisipkan input mentah yang dapat merusak JSON-LD.
+- Schema harus menggambarkan informasi yang benar-benar terlihat dan tidak boleh memuat rating, ulasan, harga, alamat, sertifikasi, tenaga ahli, atau klaim lain yang belum diverifikasi.
+- Validasi sintaks JSON-LD, lalu uji sampel setiap tipe template menggunakan Schema.org Validator dan Google Rich Results Test untuk tipe yang didukung Google. Validitas Schema.org tidak berarti tipe tersebut memenuhi syarat rich result Google.
+- `Service` merupakan schema deskriptif; jangan menjanjikan bahwa tipe ini sendiri akan menghasilkan rich result.
+- `FAQPage` boleh digunakan saat konten memang FAQ, tetapi jangan menjanjikan FAQ rich result; tampilan hasil kaya bergantung pada kebijakan dan kelayakan Google saat itu.
 
 ### 9.4 CTA wajib pada setiap artikel
 
@@ -425,7 +450,8 @@ Pekerjaan dibagi menjadi perubahan kecil yang dapat diperiksa, bukan satu peruba
 | A10 | Tambahkan As-Built Drawing | P0 | A02 | Input, proses, hasil, dan pengecualian jelas |
 | A11 | Audit sitemap, canonical, Open Graph, dan Twitter Card | P1 | A03 | Metadata unik dan URL final konsisten |
 | A11a | Terapkan SVG relevan dan alt text pada semua template halaman | P1 | Audit komponen dan aset | Setiap tipe halaman memiliki SVG dan alt eksplisit |
-| A11b | Terapkan JSON-LD per tipe halaman, termasuk Service dan Article | P1 | Schema konten dan metadata | JSON-LD valid, tidak kontradiktif, dan sesuai isi terlihat |
+| A11b | Terapkan JSON-LD per tipe halaman: Organization/LocalBusiness bila sesuai, Service, Article, BreadcrumbList, FAQPage, dan Review/Rating hanya jika faktanya tersedia | P1 | Schema konten dan metadata terverifikasi | JSON-LD valid, tanpa data fiktif, dan sesuai isi terlihat |
+| A11d | Tambahkan Offer hanya untuk penawaran dengan harga dan ketersediaan yang benar-benar dipublikasikan | P2 | Keputusan harga/penawaran | Tidak ada harga atau ketersediaan rekaan |
 | A11c | Pastikan template artikel selalu menampilkan CTA yang relevan | P1 | A14 dan template artikel | Setiap artikel memiliki CTA aktif yang teruji |
 | A12 | Bangun halaman persyaratan dan checklist | P1 | Review sumber resmi | Catatan variasi kebutuhan dan sumber disertakan |
 | A13 | Siapkan profil, kompetensi, dan legalitas | P1 | Data perusahaan | Tidak ada klaim tanpa bukti |
