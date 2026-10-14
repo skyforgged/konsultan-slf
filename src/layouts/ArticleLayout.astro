@@ -15,7 +15,7 @@ const articleUrl = new URL(canonical, siteUrl).toString();
 const articleImage = new URL(article.data.image ?? '/images/illustrations/article-document.svg', siteUrl).toString();
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
+  '@type': article.data.schemaType,
   headline: pageTitle,
   description,
   image: [articleImage],
