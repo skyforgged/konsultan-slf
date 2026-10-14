@@ -3,7 +3,7 @@ import '../styles/global.css';
 const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, image = '/images/og-default.svg' } = Astro.props;
 const imageAlt = Astro.props.imageAlt ?? title;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
-const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : Astro.url.toString();
+const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || Astro.url).toString();
 const pageJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
