@@ -107,11 +107,10 @@ const articles = defineCollection({
         component: z.literal('section'),
         id: z.string().min(1).optional(),
         heading: z.string().min(1),
-        paragraphs: z.array(z.string().min(1)).default([]),
-        lists: z.array(z.object({
-          ordered: z.boolean().default(false),
-          items: z.array(z.string().min(1)).min(1),
-        })).default([]),
+        content: z.array(z.discriminatedUnion('type', [
+          z.object({ type: z.literal('p'), text: z.string().min(1) }),
+          z.object({ type: z.literal('list'), ordered: z.boolean().default(false), items: z.array(z.string().min(1)).min(1) }),
+        ])).default([]),
         class: z.record(z.string()).optional(),
       }),
     ])).default([]),
