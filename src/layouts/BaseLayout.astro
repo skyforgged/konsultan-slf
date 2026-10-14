@@ -5,6 +5,16 @@ const imageAlt = Astro.props.imageAlt ?? title;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : Astro.url.toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || Astro.url).toString();
+const pageJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${canonicalUrl}#webpage`,
+  name: title,
+  description,
+  url: canonicalUrl,
+  isPartOf: { '@id': `${siteUrl || Astro.url.origin}/#website` },
+  about: { '@id': `${siteUrl || Astro.url.origin}/#organization` },
+}).replace(/</g, '\\u003c');
 ---
 <!doctype html>
 <html lang="id">
@@ -14,6 +24,7 @@ const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || As
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <script type="application/ld+json" set:html={pageJsonLd}></script>
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content={Astro.url.pathname.startsWith('/articles/') && Astro.url.pathname !== '/articles/' ? 'article' : 'website'} />
     <meta property="og:locale" content="id_ID" />
