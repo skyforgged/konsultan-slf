@@ -15,6 +15,7 @@ const articles = defineCollection({
   schema: z.object({
     ...sharedIdentity,
     type: z.literal('article'),
+    schemaType: z.enum(['Article', 'BlogPosting', 'TechArticle', 'NewsArticle']).default('BlogPosting'),
     slug: z.string().min(1),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
