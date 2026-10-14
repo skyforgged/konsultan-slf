@@ -20,7 +20,7 @@ for (const file of htmlFiles.filter((item) => item.endsWith('.html'))) {
       continue;
     }
     if (!pathname.startsWith('/')) continue;
-    const target = path.resolve(root, `. ${pathname}`.trim());
+    const target = path.resolve(root, `.${pathname}`);
     if (!target.startsWith(root + path.sep) && target !== root) {
       errors.push(`${relative(file)}: path escapes output directory "${value}"`);
       continue;
