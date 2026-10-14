@@ -12,11 +12,23 @@ const services = (await getCollection('services'))
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const organizationJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': `${siteUrl}/#organization`,
-  name: 'Konsultan SLF & PBG',
-  url: siteUrl,
-  description: 'Konsultan pendampingan Sertifikat Laik Fungsi (SLF), Persetujuan Bangunan Gedung (PBG), dan evaluasi dokumen bangunan.',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Konsultan SLF & PBG',
+      url: siteUrl,
+      description: 'Konsultan pendampingan Sertifikat Laik Fungsi (SLF), Persetujuan Bangunan Gedung (PBG), dan evaluasi dokumen bangunan.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      name: 'Konsultan SLF & PBG',
+      url: siteUrl,
+      inLanguage: 'id-ID',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+  ],
 }).replace(/</g, '\\u003c');
 ---
 
