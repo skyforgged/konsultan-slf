@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 const { title = 'Konsultan SLF & PBG', description = 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).', canonical, image = '/images/og-default.svg' } = Astro.props;
+const imageAlt = Astro.props.imageAlt ?? title;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : Astro.url.toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || Astro.url).toString();
@@ -20,10 +21,12 @@ const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || As
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <slot name="head" />
   </head>
   <body class="min-h-screen bg-white text-slate-800 antialiased">
