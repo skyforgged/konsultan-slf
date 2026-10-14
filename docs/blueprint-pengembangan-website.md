@@ -505,3 +505,49 @@ Berdasarkan audit dan riset kompetitor, keputusan kerja awal adalah:
 ---
 
 **Status dokumen:** blueprint dan backlog awal sudah disusun. Ini bukan klaim bahwa seluruh tugas implementasi telah dilakukan atau bahwa build/deployment telah diuji.
+
+## 16. Standar Schema.org untuk artikel
+
+Pilih tipe structured data berdasarkan isi artikel yang benar-benar terlihat di halaman. Jangan memilih tipe hanya untuk mengejar hasil pencarian tertentu.
+
+### 16.1 Pemilihan tipe
+
+- **`BlogPosting` — pilihan default** untuk artikel blog, edukasi, penjelasan layanan, dan panduan umum SLF/PBG.
+- **`TechArticle`** hanya untuk dokumentasi atau panduan yang sungguh-sungguh teknis, misalnya prosedur teknis terperinci, spesifikasi, atau dokumentasi teknis. Jangan gunakan hanya karena artikel membahas topik bangunan.
+- **`NewsArticle`** hanya untuk berita atau siaran pers yang benar-benar bersifat berita.
+- **`Article`** dapat digunakan sebagai tipe umum bila subtype yang lebih spesifik tidak sesuai.
+
+### 16.2 Properti yang disarankan
+
+Untuk setiap artikel, isi properti yang relevan dan didukung oleh konten halaman:
+
+- `headline`: judul artikel yang sama atau setara dengan judul yang terlihat.
+- `description`: ringkasan akurat artikel.
+- `image`: URL absolut gambar representatif yang relevan, dapat diakses publik, dan benar-benar digunakan untuk artikel.
+- `author`: orang atau organisasi yang benar-benar menulis atau bertanggung jawab atas artikel. Jangan mengarang nama, jabatan, atau kredensial.
+- `publisher`: entitas organisasi penerbit yang konsisten dengan entitas `Organization` situs.
+- `datePublished`: tanggal publikasi pertama yang benar.
+- `dateModified`: tanggal perubahan substantif terakhir; jangan mengubahnya hanya karena build atau pemformatan ulang.
+- `mainEntityOfPage`: URL kanonis artikel.
+
+Gunakan tanggal dalam format ISO 8601. Pastikan URL gambar dan URL halaman absolut serta konsisten dengan domain produksi. Bila data opsional tidak diketahui atau tidak dapat diverifikasi, hilangkan properti tersebut daripada membuat nilai palsu.
+
+### 16.3 Konsistensi halaman dan JSON-LD
+
+1. Tampilkan judul, penulis (jika diketahui), dan tanggal publikasi/perubahan pada halaman bila data tersebut disediakan di structured data.
+2. Pastikan informasi JSON-LD sesuai dengan isi yang dapat dilihat pengunjung; jangan menandai konten tersembunyi atau informasi yang tidak benar.
+3. Gunakan identitas penerbit yang konsisten dengan `Organization` situs, termasuk `@id` yang stabil bila sudah ditetapkan.
+4. Gunakan satu entitas utama artikel per halaman. Hindari keluaran schema ganda atau saling bertentangan dari layout dan template.
+5. Pada artikel edukasi SLF/PBG biasa, gunakan `BlogPosting` sebagai default; gunakan subtype lain hanya jika format editorialnya memang cocok.
+6. Jangan menambahkan rating, ulasan, tanggal, penulis, atau kredensial yang tidak memiliki dasar faktual.
+
+### 16.4 Dampak SEO dan validasi
+
+Structured data membantu mesin pencari memahami halaman, tetapi **tidak menjamin** rich result, penayangan di Google Discover, atau kelayakan tampil di Top Stories. Schema juga tidak otomatis meningkatkan E-E-A-T. Utamakan konten bermanfaat, akurasi, transparansi penulis/penerbit, pengalaman atau keahlian yang dapat dibuktikan, serta gambar yang layak.
+
+Validasi setelah implementasi dengan:
+- [Schema.org Validator](https://validator.schema.org/) untuk memeriksa struktur dan kosakata schema.
+- [Google Rich Results Test](https://search.google.com/test/rich-results) untuk memeriksa fitur hasil kaya Google yang didukung oleh tipe tersebut.
+
+Catat hasil validasi per template artikel dan periksa kembali setelah perubahan layout atau metadata.
+
