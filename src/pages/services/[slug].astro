@@ -47,7 +47,7 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`}>
+<BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`} image={service.data.image ?? '/images/og-default.svg'} imageAlt={service.data.imageAlt}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
