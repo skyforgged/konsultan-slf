@@ -220,6 +220,8 @@ Setiap halaman layanan perlu memakai struktur yang konsisten:
 9. **FAQ:** pertanyaan spesifik untuk layanan itu.
 10. **Tautan terkait:** persyaratan, artikel, layanan yang berhubungan, dan studi kasus jika tersedia.
 11. **CTA:** konsultasi atau permintaan evaluasi awal.
+12. **Ilustrasi SVG:** setiap halaman harus memiliki ilustrasi SVG yang relevan dan atribut alt yang ditentukan secara sengaja; gunakan alt kosong hanya jika gambar benar-benar dekoratif.
+13. **Metadata dan structured data:** title, meta description, canonical, Open Graph, Twitter Card, serta JSON-LD yang sesuai dengan tipe halaman.
 
 Tidak semua layanan selalu membutuhkan semua jenis pemeriksaan. Lingkup akhir harus disesuaikan dengan kondisi bangunan, aturan berlaku, dan kesepakatan kerja.
 
@@ -281,6 +283,86 @@ Tidak semua layanan selalu membutuhkan semua jenis pemeriksaan. Lingkup akhir ha
 
 Jangan menjanjikan peringkat Google. Keberhasilan SEO harus dinilai melalui data Search Console/analytics setelah terpasang dan mempunyai cukup data.
 
+
+### 9.1 Standar gambar SVG untuk setiap halaman
+
+**Persyaratan wajib:** setiap halaman publik harus menampilkan setidaknya satu ilustrasi atau gambar SVG yang relevan dengan isi halaman. Ini mencakup beranda, halaman tentang perusahaan, layanan, persyaratan, jenis bangunan, portofolio, artikel, dan kontak.
+
+- Utamakan SVG lokal yang disimpan di repository agar sumber, ukuran, dan ketersediaannya terkendali.
+- Gunakan SVG yang relevan dengan maksud halaman; hindari mengulang ilustrasi generik yang sama di semua halaman tanpa alasan.
+- Pastikan SVG aman, ringan, responsif, dan tidak memuat skrip atau sumber eksternal yang tidak diperlukan.
+- Semua elemen gambar harus memiliki teks alternatif yang ditetapkan secara eksplisit. Untuk gambar informatif, gunakan alt singkat yang menjelaskan informasi/fungsi gambar, bukan sekadar “gambar” atau daftar kata kunci.
+- Jika SVG murni dekoratif dan tidak menyampaikan informasi, gunakan alt kosong ("") agar pembaca layar melewatinya. Ini tetap keputusan alt yang disengaja, bukan atribut yang terlupa.
+- Jika gambar berisi diagram atau informasi yang penting untuk memahami isi, sediakan penjelasan yang setara dalam teks halaman.
+- Jangan memakai logo, foto, gambar proyek, atau ilustrasi pihak ketiga tanpa hak penggunaan yang sesuai.
+- Periksa SVG di ukuran mobile dan desktop, serta pastikan tidak menyebabkan layout shift yang mengganggu.
+
+### 9.2 Metadata per halaman: HTML, Open Graph, dan Twitter Card
+
+Setiap halaman yang dapat diindeks harus mempunyai metadata unik dan konsisten dengan kontennya:
+
+- title yang deskriptif dan berbeda dari halaman lain.
+- meta description yang spesifik, tidak berisi klaim yang belum terbukti, dan tidak diduplikasi secara massal.
+- canonical URL yang menunjuk ke URL publik final untuk halaman tersebut.
+- Open Graph minimum: og:title, og:description, og:type, og:url, og:image, dan og:image:alt. Gunakan og:type="article" untuk artikel bila sesuai; halaman lain umumnya menggunakan "website".
+- Twitter Card minimum: twitter:card, twitter:title, twitter:description, twitter:image, dan twitter:image:alt. Gunakan summary_large_image bila aset visualnya memang sesuai.
+- Gambar Open Graph/Twitter harus memakai URL absolut yang dapat diakses publik. Jangan menganggap SVG otomatis didukung seragam oleh semua platform; untuk preview sosial, utamakan gambar raster yang kompatibel (misalnya PNG/JPEG) yang dibuat dari identitas visual/ilustrasi SVG.
+- Nilai metadata sebaiknya berasal dari field konten per halaman dengan fallback terpusat yang wajar, bukan salin-tempel nilai yang sama untuk seluruh halaman.
+- Jangan menghasilkan canonical atau URL gambar berdasarkan hostname lokal pada production build.
+
+### 9.3 JSON-LD Schema.org per halaman
+
+**Setiap halaman publik harus mengeluarkan JSON-LD yang valid dan sesuai dengan konten halaman tersebut.** Implementasikan melalui helper/komponen bersama agar bentuk JSON konsisten, escaping aman, dan data tidak digandakan secara keliru.
+
+Panduan tipe schema:
+
+| Jenis halaman | Tipe JSON-LD yang disarankan | Catatan |
+|---|---|---|
+| Semua halaman | WebPage sebagai dasar jika sesuai | Sertakan name, url, dan relasi ke entitas situs bila relevan |
+| Identitas situs | WebSite | Umumnya didefinisikan sekali sebagai entitas situs dan dihubungkan dari halaman |
+| Perusahaan | Organization atau tipe yang benar-benar sesuai | Isi nama, URL, logo, dan kontak hanya dengan data terverifikasi |
+| Halaman layanan | Service | Gunakan name, description, url, provider, dan areaServed hanya bila faktanya diketahui |
+| Artikel | Article atau BlogPosting | Isi headline, description, image, datePublished, dateModified, author, dan publisher hanya jika tersedia dan benar |
+| Breadcrumb | BreadcrumbList | Hanya jika breadcrumb terlihat pada halaman dan urutannya cocok dengan navigasi |
+| Halaman FAQ | FAQPage | Hanya jika pertanyaan dan jawaban benar-benar terlihat pada halaman; jangan menambahkan FAQ tersembunyi demi hasil kaya |
+
+Catatan penting:
+
+- Nama tipe Schema.org untuk layanan adalah **Service** (tunggal), bukan Services.
+- JSON-LD harus merepresentasikan konten yang benar-benar terlihat; jangan memasukkan rating, ulasan, harga, alamat, sertifikasi, tenaga ahli, atau klaim lain yang tidak dapat diverifikasi.
+- Gunakan @context: https://schema.org dan @type yang sesuai. Gunakan URL absolut yang benar untuk url, image, logo, dan identitas entitas.
+- Gunakan @id yang stabil untuk menghubungkan entitas organisasi/situs/halaman bila arsitektur data mendukungnya.
+- Hindari dua blok schema yang saling bertentangan atau membuat entitas organisasi duplikat. Tentukan tanggung jawab schema di layout, template, dan komponen.
+- Serialisasi data dengan aman; jangan menyisipkan input mentah yang dapat merusak tag JSON-LD.
+- Validasi sintaks JSON-LD dan uji sampel halaman dari setiap tipe template menggunakan validator Schema.org serta Rich Results Test Google jika tipe tersebut didukung Google. Schema yang valid tidak menjamin rich result akan ditampilkan.
+- Service merupakan schema deskriptif; jangan menjanjikan bahwa tipe ini sendiri akan menghasilkan rich result Google.
+
+### 9.4 CTA wajib pada setiap artikel
+
+Setiap artikel harus memiliki CTA yang terlihat dan relevan, minimal satu di bagian akhir artikel. Artikel panjang boleh memiliki CTA kontekstual tambahan di tengah, selama tidak mengganggu pembacaan.
+
+- CTA menghubungkan kebutuhan yang dibahas ke layanan atau konsultasi yang relevan.
+- Gunakan teks tindakan yang jelas, misalnya “Konsultasikan kondisi bangunan Anda”, bukan tombol generik tanpa konteks.
+- Tautkan CTA ke halaman layanan terkait atau kanal kontak/formulir konsultasi yang benar-benar berfungsi.
+- Jangan membuat CTA yang menjanjikan sertifikat pasti terbit, kepastian lolos, atau durasi tetap tanpa dasar.
+- CTA harus dapat digunakan dengan keyboard, mempunyai nama aksesibel, terlihat pada layar kecil, dan tidak menutupi isi artikel.
+- Jika formulir belum memiliki backend atau tujuan pengiriman yang berfungsi, arahkan ke kanal kontak yang valid dan jangan menyatakan bahwa permintaan telah terkirim.
+- Tambahkan CTA melalui template artikel atau blok konten bersama agar artikel baru tidak mudah terbit tanpa CTA; tetap sediakan opsi konfigurasi untuk konteks artikel yang khusus.
+
+### 9.5 Checklist penerimaan SEO, gambar, dan schema
+
+Untuk setiap template dan sebelum rilis, pastikan:
+
+1. Halaman memiliki SVG relevan dan keputusan alt text yang eksplisit.
+2. title, meta description, canonical, Open Graph, dan Twitter Card sesuai isi halaman.
+3. Metadata gambar sosial menunjuk ke aset publik yang dapat diakses dan menyertakan alt.
+4. JSON-LD valid, sesuai tipe halaman, dan datanya konsisten dengan konten yang terlihat.
+5. Halaman layanan menggunakan Service; artikel menggunakan Article atau BlogPosting.
+6. Breadcrumb schema hanya digunakan bila breadcrumb juga ditampilkan.
+7. Setiap artikel mempunyai CTA yang terlihat dan tautannya telah diperiksa.
+8. Listing, draft, halaman 404, dan halaman non-indeks ditangani sesuai statusnya; jangan mengeluarkan metadata/schema seolah-olah halaman draft adalah konten publik.
+9. Pemeriksaan dilakukan pada hasil build dan preview/deployment, bukan hanya dari keberadaan kode sumber.
+
 ## 10. Tata kelola fakta dan kepatuhan
 
 Sebelum publikasi, bedakan dengan jelas:
@@ -341,7 +423,10 @@ Pekerjaan dibagi menjadi perubahan kecil yang dapat diperiksa, bukan satu peruba
 | A08 | Tambahkan Pengurusan PBG | P0 | A02 | Isi tidak menjanjikan penerbitan |
 | A09 | Tambahkan Pengkajian Teknis | P0 | A02 | Lingkup pemeriksaan dan hasil kerja jelas |
 | A10 | Tambahkan As-Built Drawing | P0 | A02 | Input, proses, hasil, dan pengecualian jelas |
-| A11 | Audit sitemap, canonical, dan metadata | P1 | A03 | URL final dan sitemap konsisten |
+| A11 | Audit sitemap, canonical, Open Graph, dan Twitter Card | P1 | A03 | Metadata unik dan URL final konsisten |
+| A11a | Terapkan SVG relevan dan alt text pada semua template halaman | P1 | Audit komponen dan aset | Setiap tipe halaman memiliki SVG dan alt eksplisit |
+| A11b | Terapkan JSON-LD per tipe halaman, termasuk Service dan Article | P1 | Schema konten dan metadata | JSON-LD valid, tidak kontradiktif, dan sesuai isi terlihat |
+| A11c | Pastikan template artikel selalu menampilkan CTA yang relevan | P1 | A14 dan template artikel | Setiap artikel memiliki CTA aktif yang teruji |
 | A12 | Bangun halaman persyaratan dan checklist | P1 | Review sumber resmi | Catatan variasi kebutuhan dan sumber disertakan |
 | A13 | Siapkan profil, kompetensi, dan legalitas | P1 | Data perusahaan | Tidak ada klaim tanpa bukti |
 | A14 | Tetapkan layanan penerimaan formulir konsultasi | P1 | Keputusan kanal kontak | Tes sukses/gagal dan antispam dilakukan |
@@ -374,6 +459,7 @@ Berdasarkan audit dan riset kompetitor, keputusan kerja awal adalah:
 - Pertahankan URL yang ada sampai audit rute selesai.
 - Pisahkan fakta perusahaan dari konten edukasi dan klaim pemasaran.
 - Validasi setiap perubahan dengan build dan pemeriksaan deployment; jangan menganggap commit sebagai bukti bahwa website sudah berfungsi.
+- Terapkan standar wajib gambar SVG + alt text, metadata sosial lengkap, JSON-LD sesuai tipe halaman, dan CTA pada setiap artikel sebelum rilis.
 - Gunakan dokumen ini sebagai backlog utama dan perbarui status tugas ketika implementasi nyata dilakukan.
 
 ## 15. Dokumen rujukan
