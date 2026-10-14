@@ -54,6 +54,7 @@ const canonical = `/articles/${article.data.slug}/`;
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
     </article>
   </div>
+  <slot name="related" />
   <footer class="border-t border-slate-200 bg-slate-50">
     <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
       <span>Konsultan SLF &amp; PBG</span>
