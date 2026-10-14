@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 150" role="img" aria-labelledby="title desc">
+  <title id="title">Konsultan SLF &amp; PBG</title>
+  <desc id="desc">Logo gedung dengan tanda centang, melambangkan pendampingan perizinan bangunan.</desc>
+  <g transform="translate(8 9)">
+    <path d="M12 112V57L49 31V112H32V67L29 69V112Z" fill="#123D70"/>
+    <path d="M55 112V20L94 0L133 22V88L116 104V32L94 20L73 31V112Z" fill="#123D70"/>
+    <path d="M111 57L140 74L111 91Z" fill="#087F8C"/>
+    <path d="M69 86L93 104L150 51L164 51L96 128L58 98Z" fill="#079C83"/>
+  </g>
+  <text x="190" y="73" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="800" fill="#123D70">Konsultan</text>
+  <text x="190" y="119" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="800" fill="#079C83">SLF &amp; PBG</text>
+</svg>
