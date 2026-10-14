@@ -18,6 +18,7 @@ const articleJsonLd = JSON.stringify({
   '@type': article.data.schemaType,
   headline: pageTitle,
   description,
+  inLanguage: 'id-ID',
   image: [articleImage],
   datePublished: article.data.pubDate.toISOString(),
   ...(article.data.updatedDate ? { dateModified: article.data.updatedDate.toISOString() } : {}),
