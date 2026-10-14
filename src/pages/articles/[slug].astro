@@ -19,5 +19,5 @@ const allArticles = await getCollection('articles');
       {article.data.blocks.map((block) => <BlockRenderer block={block} />)}
     </div>
   )}
-  <ArticleRelatedArticles articles={allArticles} relatedIds={article.data.relatedArticles} />
+  <ArticleRelatedArticles slot="related" articles={allArticles} relatedIds={article.data.relatedArticles} />
 </ArticleLayout>
