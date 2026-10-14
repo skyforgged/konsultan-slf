@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi bangunan dan kepatuhan</title>
+  <desc id="desc">Gambar garis bangunan, dokumen, dan tanda pemeriksaan.</desc>
+  <rect x="68" y="54" width="504" height="412" rx="34" fill="#EFF6FF"/>
+  <circle cx="490" cy="126" r="38" fill="#DBEAFE"/>
+  <path d="M142 392V198l113-62 112 62v194" stroke="#1D4ED8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M116 392h278M177 222h40m-40 39h40m-40 39h40m-40 39h40m-40 39h40M286 222h40m-40 39h40m-40 39h40m-40 39h40" stroke="#60A5FA" stroke-width="7" stroke-linecap="round"/>
+  <path d="M232 392v-54a23 23 0 0 1 46 0v54" stroke="#1D4ED8" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="356" y="222" width="144" height="178" rx="16" fill="#fff" stroke="#1E40AF" stroke-width="7"/>
+  <path d="M385 263h83m-83 28h64m-64 28h48" stroke="#93C5FD" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="448" cy="358" r="25" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
+  <path d="m436 358 8 8 16-18" stroke="#15803D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M105 130h68M139 96v68" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="505" cy="399" r="9" fill="#2563EB"/>
+</svg>
