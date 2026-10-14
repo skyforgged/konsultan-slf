@@ -49,6 +49,7 @@ ctaLabel: "Diskusikan Kebutuhan SLF"
 ctaDescription: "Mulai dengan menyampaikan fungsi, lokasi, kondisi bangunan, dan dokumen yang tersedia. Persyaratan serta ruang lingkup akan ditelaah sebelum pekerjaan disepakati."
 ctaLinkLabel: "Baca panduan awal"
 ctaHref: "/articles/"
+relatedArticlesTitle: "Artikel terkait layanan"
 faqTitle: "Pertanyaan umum"
 faq:
   - question: "Apakah daftar dokumen SLF selalu sama untuk setiap bangunan?"
