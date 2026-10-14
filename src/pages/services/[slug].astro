@@ -9,8 +9,38 @@ export async function getStaticPaths() {
 }
 const { service } = Astro.props as { service: CollectionEntry<'services'> };
 const articles = await getCollection('articles');
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
+const serviceUrl = new URL(`/services/${service.data.slug}/`, siteUrl).toString();
+const serviceImage = new URL(service.data.image ?? '/images/illustrations/service-certificate.svg', siteUrl).toString();
+const serviceJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${serviceUrl}#service`,
+  name: service.data.title,
+  description: service.data.description,
+  url: serviceUrl,
+  image: serviceImage,
+  serviceType: service.data.title,
+  provider: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: 'Konsultan SLF & PBG',
+    url: siteUrl,
+  },
+}).replace(/</g, '\\u003c');
+const breadcrumbJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: new URL('/', siteUrl).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Layanan', item: new URL('/services/', siteUrl).toString() },
+    { '@type': 'ListItem', position: 3, name: service.data.title, item: serviceUrl },
+  ],
+}).replace(/</g, '\\u003c');
 ---
 <BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`}>
+  <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
+  <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   <header class="border-b border-slate-200 bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi layanan">
       <a href="/" class="font-extrabold text-slate-950 no-underline">Konsultan SLF &amp; PBG</a>
