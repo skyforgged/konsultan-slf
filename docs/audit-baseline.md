@@ -98,3 +98,16 @@ Bagian ini melengkapi catatan awal di atas; kondisi lama pada bagian 1–2 adala
 - Hasil build untuk commit `716ec65` masih perlu dikonfirmasi oleh GitHub Actions.
 - Fallback gambar sosial raster PNG/JPEG dan pemindaian tautan internal menyeluruh masih belum selesai.
 - Verifikasi browser dan URL produksi tetap tertunda karena belum ada hasil akses produksi yang terkonfirmasi.
+
+## 7. Audit tautan internal — 2026-10-15
+
+### Hasil pemeriksaan source
+- Meninjau tautan pada halaman beranda, indeks artikel, indeks layanan, dan halaman 404, serta enam berkas layanan.
+- Tautan navigasi utama yang ditemukan mengarah ke rute yang tersedia: `/`, `/articles/`, dan `/services/`; tautan berjangkar di beranda mengarah ke bagian halaman yang disediakan.
+- Aset logo dan ilustrasi yang dirujuk secara eksplisit pada empat halaman tersebut menggunakan path lokal di bawah `/images/`; keberadaan file fisiknya belum dapat disimpulkan dari pemeriksaan atribut source saja.
+- Halaman detail layanan memakai slug dari content collection, sehingga pemeriksaan tautan detail dan respons HTTP tetap memerlukan hasil build/render atau crawl situs yang berjalan.
+
+### Batas dan tindak lanjut
+- Ini adalah audit source terbatas, **bukan** hasil crawl lengkap dan bukan bukti bahwa seluruh tautan menghasilkan HTTP 200.
+- Fallback Open Graph/Twitter masih menggunakan SVG. PNG/JPEG belum ditambahkan karena aset raster yang terverifikasi belum tersedia.
+- Build CI pada commit dokumentasi baseline `5084774` tercatat sukses. Commit perbaikan 404 dan pembaruan audit sesudahnya masih perlu hasil CI tersendiri sebelum dinyatakan lulus.
