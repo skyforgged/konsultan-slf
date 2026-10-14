@@ -28,7 +28,7 @@ const articleJsonLd = JSON.stringify({
     name: 'Konsultan SLF & PBG',
     url: siteUrl,
   },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
   url: articleUrl,
 }).replace(/</g, '\\u003c');
 ---
