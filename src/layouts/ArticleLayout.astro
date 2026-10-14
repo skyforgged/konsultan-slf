@@ -1,18 +1,11 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-interface Props { article: CollectionEntry<'articles'> }
-const { article } = Astro.props;
-const tocItems: Array<{id: string; text: string; level: number}> = [];
-const headingRegex = /^(#{2,6})\s+(.+)$/gm;
-let match: RegExpExecArray | null;
-if (article.body) {
-  while ((match = headingRegex.exec(article.body)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    tocItems.push({ id, text, level });
-  }
-}
+import '../styles/global.css';
+const { article, headings = [] } = Astro.props as {
+  article: CollectionEntry<'articles'>;
+  headings?: Array<{ depth: number; text: string; slug: string }>;
+};
+const tocItems = (headings as any[]).filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 <div class="mx-auto max-w-7xl px-5 py-12 grid grid-cols-1 gap-8 lg:grid-cols-[260px_1fr]">
   {tocItems.length > 0 && (
@@ -20,9 +13,9 @@ if (article.body) {
       <nav aria-label="Daftar isi">
         <p class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Daftar Isi</p>
         <ul class="space-y-1 border-l border-slate-200 pl-4">
-          {tocItems.map((item) => (
-            <li style={`padding-left: ${item.level === 3 ? '1rem' : '0'}`}>
-              <a href={`#${item.id}`} class="block py-1 text-sm text-slate-600 hover:text-blue-700 hover:border-blue-700 border-l-2 border-transparent transition">{item.text}</a>
+          {tocItems.map((item: any) => (
+            <li style={`padding-left: ${item.depth === 3 ? '1rem' : '0'}`}>
+              <a href={`#${item.slug}`} class="block py-1 text-sm text-slate-600 hover:text-blue-700 hover:border-blue-700 border-l-2 border-transparent transition">{item.text}</a>
             </li>
           ))}
         </ul>
@@ -39,6 +32,6 @@ if (article.body) {
         {article.data.author && <span>• {article.data.author}</span>}
       </div>
     </header>
-    <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24" set:html={article.body ?? ''} />
+    <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
   </article>
 </div>
