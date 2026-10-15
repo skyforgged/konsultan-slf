@@ -5,6 +5,7 @@ import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 const page = await getEntry('pages', '404');
 if (!page) throw new Error('Missing "404" page content entry.');
+if (page.data.draft) throw new Error('Page "404" is marked draft but has a statically defined route.');
 const notFound = page.data.notFound;
 if (!notFound) throw new Error('Missing "404" page content.');
 ---
