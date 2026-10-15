@@ -1,6 +1,6 @@
 ---
 id: 2
-ulid: "01K7H2M8N4Q6T9V3W5X7Y0Z1A"
+ulid: "01K7H2M8N4Q6T9V3W5X7Y0Z1AB"
 slug: "checklist-persiapan-konsultasi-slf"
 title: "Checklist Persiapan Konsultasi SLF untuk Bangunan Eksisting"
 description: "Panduan praktis menginventarisasi informasi bangunan, dokumen yang tersedia, perubahan bangunan, dan pertanyaan sebelum konsultasi SLF."
