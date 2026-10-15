@@ -17,20 +17,31 @@ const pages = htmlFiles.filter((item) => item.endsWith('.html'));
 
 for (const file of pages) {
   const html = await readFile(file, 'utf8');
-  const references = [...html.matchAll(/\b(?:href|src|poster)=(["'])([^"'<>]+)\1/gi)];
+  const pageIds = new Set([...html.matchAll(/\bid=(["'])([^"'<>]+)\1/gi)].map((match) => decodeHtmlAttribute(match[2])));
+  const references = [...html.matchAll(/\b(href|src|poster)=(["'])([^"'<>]+)\2/gi)];
 
   for (const match of references) {
-    const value = match[2].trim();
-    if (!value || value.startsWith('#') || /^(?:https?:|mailto:|tel:|data:|javascript:|blob:|\/\/)/i.test(value)) continue;
+    const attribute = match[1].toLowerCase();
+    const value = decodeHtmlAttribute(match[3].trim());
+    if (!value || /^(?:https?:|mailto:|tel:|data:|javascript:|blob:|\/\/)/i.test(value)) continue;
 
+    let parsed;
     let pathname;
+    let fragment;
     try {
-      pathname = decodeURIComponent(new URL(value, 'https://internal-link-check.invalid').pathname);
+      parsed = new URL(value, `https://internal-link-check.invalid/${relative(file)}`);
+      pathname = decodeURIComponent(parsed.pathname);
+      fragment = parsed.hash ? decodeURIComponent(parsed.hash.slice(1)) : '';
     } catch {
       errors.push(`${relative(file)}: invalid URL "${value}"`);
       continue;
     }
 
+    if (attribute === 'href' && fragment && (pathname === `/${relative(file)}` || value.startsWith('#') || value.startsWith('?'))) {
+      checked++;
+      if (!pageIds.has(fragment)) errors.push(`${relative(file)}: missing fragment "#${fragment}"`);
+      continue;
+    }
     if (!pathname.startsWith('/')) continue;
 
     const target = path.resolve(root, `.${pathname}`);
@@ -56,7 +67,15 @@ for (const file of pages) {
     }
 
     checked++;
-    if (!exists) errors.push(`${relative(file)}: missing local target "${value}"`);
+    if (!exists) {
+      errors.push(`${relative(file)}: missing local target "${value}"`);
+    } else if (attribute === 'href' && fragment) {
+      const htmlTarget = pathname.endsWith('/') ? path.join(target, 'index.html') : (await stat(target)).isFile() ? target : path.join(target, 'index.html');
+      const targetHtml = await readFile(htmlTarget, 'utf8');
+      const targetIds = new Set([...targetHtml.matchAll(/\bid=(["'])([^"'<>]+)\1/gi)].map((item) => decodeHtmlAttribute(item[2])));
+      checked++;
+      if (!targetIds.has(fragment)) errors.push(`${relative(file)}: missing fragment "${value}"`);
+    }
   }
 }
 
@@ -81,4 +100,8 @@ async function walk(directory) {
 
 function relative(file) {
   return path.relative(root, file).split(path.sep).join('/');
+}
+
+function decodeHtmlAttribute(value) {
+  return value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
