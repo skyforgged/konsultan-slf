@@ -187,3 +187,34 @@ Audit tersisa dipusatkan pada empat kelompok, bukan mengulang fondasi implementa
 - Skrip debug sementara: **sudah dibersihkan**.
 - Audit browser dan verifikasi langsung URL publik: **belum selesai**.
 - Peninjauan konten teknis SLF/PBG dengan rujukan resmi: **masih terbuka**.
+
+
+## 11. Status audit setelah rujukan resmi — 2026-10-15
+
+### Perubahan yang sudah masuk ke main
+
+- PR #7 menambahkan blok rujukan resmi yang dapat digunakan ulang pada artikel SLF dan checklist konsultasi. Tautan mengarah ke PP Nomor 16 Tahun 2021 pada JDIH Kementerian PUPR dan portal SIMBG.
+- PR #8 menambahkan bagian rujukan resmi yang sama pada seluruh halaman detail layanan. Teks pendamping menegaskan bahwa penerapan regulasi dan kebutuhan dokumen harus diverifikasi sesuai kasus bangunan.
+- Merge PR #8: `248b8787de63884f206f3a8d419c706d81281381`.
+- GitHub Actions untuk commit merge tersebut: **success** — [run #38678915815](https://github.com/skyforgged/konsultan-slf/actions/runs/38678915815). Tahap type-check dan build lulus.
+
+### Status Vercel
+
+- Vercel melaporkan `api-deployments-young-hobby-team-24h`: batas lebih dari 100 deployment dalam jendela 24 jam.
+- Ini adalah pembatasan kuota deployment, bukan kegagalan type-check/build pada GitHub Actions.
+- Jangan menyatakan perubahan terbaru telah terdeploy ke produksi sampai Vercel berhasil melakukan deployment setelah kuota pulih. Situs yang sudah live sebelumnya tidak otomatis berarti commit terbaru sudah dipublikasikan.
+
+### Audit konten layanan
+
+Penelaahan source pada enam halaman layanan menunjukkan pola komunikasi yang berhati-hati: daftar dokumen diposisikan sebagai bahan konsultasi awal, kebutuhan teknis disesuaikan dengan kasus, dan penerbitan SLF/PBG tidak dijanjikan. As-built drawing dan pengkajian teknis juga menjelaskan batasan verifikasi lapangan, metode, data, dan ruang lingkup.
+
+### Pekerjaan yang masih terbuka
+
+1. Verifikasi browser dan URL produksi setelah deployment tersedia: respons HTTP, rendering, layout responsif, keyboard navigation, serta navigasi anchor/daftar isi.
+2. Audit akurasi regulasi dengan memeriksa isi peraturan dan panduan resmi yang berlaku, bukan hanya keberadaan tautan.
+3. Uji akhir hasil build terbaru dan crawl tautan internal setelah semua perubahan konten.
+4. Pantau deployment Vercel tanpa memicu percobaan deployment yang tidak perlu selama limit aktif.
+
+### Batas klaim
+
+GitHub Actions yang lulus memverifikasi build dan skrip pemeriksaan pada artefak statis. Itu tidak membuktikan deployment terbaru, status HTTP publik, tampilan browser, atau keputusan hukum/teknis untuk bangunan tertentu.
