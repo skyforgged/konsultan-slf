@@ -1,6 +1,6 @@
 ---
 id: 99
-ulid: "01HQRT5Y6A0L4N3O8Q7R9T6U5X"
+ulid: "01HQRT5Y6A0L4N3O8Q7R9T6U5Y"
 slug: "contoh-css-props"
 title: "Contoh Penggunaan CSS Props di Frontmatter"
 description: "Demo cara menambahkan custom CSS classes ke component blocks melalui frontmatter."
@@ -12,13 +12,13 @@ blocks:
     variant: info
     title: "Catatan Demo"
     text: "Ini adalah contoh note dengan custom CSS prop."
-    css:
+    class:
       section: "bg-amber-50 border-amber-200"
       title: "text-amber-800"
       text: "text-amber-700"
   - component: faq
     heading: "FAQ Demo"
-    css:
+    class:
       section: "bg-purple-50 border-purple-200"
       heading: "text-purple-700"
     items:
