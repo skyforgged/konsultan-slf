@@ -14,6 +14,17 @@ export async function validateContentRelations(): Promise<void> {
   const targets = { article: articles, page: pages, service: services };
 
   for (const article of articles) {
+    for (const block of article.data.blocks) {
+      if (
+        block.component === 'comparison-table' &&
+        block.rows.some((row) => row.length !== block.headers.length)
+      ) {
+        throw new Error(
+          `Article "${article.data.slug}" comparison table "${block.id}" has rows that do not match its ${block.headers.length} headers.`,
+        );
+      }
+    }
+
     const { relatedType, relatedId, relatedArticles = [] } = article.data;
     if ((relatedType === undefined) !== (relatedId === undefined)) {
       throw new Error(`Article "${article.data.slug}" must set both relatedType and relatedId, or neither.`);
