@@ -16,7 +16,10 @@ const description = article.data.description;
 const canonical = `/articles/${article.data.slug}/`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const articleUrl = new URL(canonical, siteUrl).toString();
-const articleImage = new URL(article.data.image ?? ui.article.defaultImage, siteUrl).toString();
+// Keep Article JSON-LD images raster-compatible, matching the social-card fallback in BaseLayout.
+const articleImageSource = article.data.image ?? ui.article.defaultImage;
+const isRasterArticleImage = /\.(png|jpe?g|webp|gif)$/i.test(articleImageSource.split(/[?#]/)[0]);
+const articleImage = new URL(isRasterArticleImage ? articleImageSource : ui.meta.articleImage, siteUrl).toString();
 
 let footerServiceTitle: string | undefined;
 if (article.data.relatedType === 'service' && article.data.relatedId) {
