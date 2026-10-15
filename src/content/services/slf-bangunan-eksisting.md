@@ -8,6 +8,7 @@ description: "Penelaahan awal untuk bangunan yang sudah berdiri, terutama ketika
 serviceGroup: "slf"
 order: 30
 draft: false
+status: active
 eyebrow: "SLF Bangunan Eksisting"
 image: "/images/illustrations/building-compliance.svg"
 imageAlt: "Ilustrasi pemeriksaan kesesuaian bangunan dan dokumen"

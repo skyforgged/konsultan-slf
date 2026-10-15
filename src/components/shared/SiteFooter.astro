@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { ui } from '../../config/ui.ts';
 import { site } from '../../config/site.ts';
 
@@ -8,6 +9,17 @@ export interface Props {
 
 const { ariaLabel = ui.nav.footerAriaLabel } = Astro.props;
 const year = new Date().getFullYear();
+
+const allServices = await getCollection('services', (s) => !s.data.draft && s.data.status === 'active');
+const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
+const serviceLabels = activeServices.map((s) => {
+  const t = s.data.title;
+  const m = t.match(/\(([^)]+)\)$/);
+  return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
+});
+const footerTagline = serviceLabels.length > 0
+  ? `${site.name} menyediakan jasa ${serviceLabels.slice(0, -1).join(', ')}${serviceLabels.length > 1 ? ' dan' : ''} ${serviceLabels.at(-1)}.`
+  : ui.footer.tagline;
 ---
 <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2">
@@ -23,7 +35,7 @@ const year = new Date().getFullYear();
           decoding="async"
         />
       </a>
-      <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{ui.footer.tagline}</p>
+      <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{footerTagline}</p>
       {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address.full || `${site.address.street}, ${site.address.city}`}</p>}
       <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
         {site.whatsapp && (
@@ -44,7 +56,7 @@ const year = new Date().getFullYear();
           ))}
         </ul>
       </nav>
-      <p class="mt-10 text-xs text-slate-500">© {year} {ui.brand.name}. Hak cipta dilindungi undang-undang.</p>
+      <p class="mt-10 text-xs text-slate-500">© {year} {site.name}. Hak cipta dilindungi undang-undang.</p>
     </div>
   </div>
 </footer>

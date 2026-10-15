@@ -8,6 +8,7 @@ description: "Penelaahan awal kebutuhan PBG berdasarkan fungsi, kondisi rencana 
 serviceGroup: "pbg"
 order: 20
 draft: false
+status: active
 eyebrow: "Layanan PBG"
 image: "/images/illustrations/building-compliance.svg"
 imageAlt: "Ilustrasi bangunan dan pemeriksaan kesesuaian dokumen"

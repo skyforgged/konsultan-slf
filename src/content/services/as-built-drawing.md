@@ -8,6 +8,7 @@ description: "Pemetaan kebutuhan gambar kondisi terbangun berdasarkan dokumen la
 serviceGroup: "slf"
 order: 60
 draft: false
+status: active
 eyebrow: "Dokumen Teknis"
 image: "/images/illustrations/article-document.svg"
 imageAlt: "Ilustrasi dokumen gambar teknis"

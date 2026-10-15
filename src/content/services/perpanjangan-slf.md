@@ -8,6 +8,7 @@ description: "Pemetaan awal dokumen, masa berlaku SLF, dan kebutuhan evaluasi ba
 serviceGroup: "slf"
 order: 40
 draft: false
+status: active
 eyebrow: "Perpanjangan SLF"
 image: "/images/illustrations/service-certificate.svg"
 imageAlt: "Ilustrasi dokumen SLF untuk ditelaah"

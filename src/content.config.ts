@@ -299,6 +299,7 @@ const services = defineCollection({
     updatedDate: z.coerce.date().optional(),
     serviceGroup: z.enum(['slf', 'pbg']).default('slf'),
     order: z.number().int().default(100),
+    status: z.enum(['active', 'inactive']).default('active'),
     eyebrow: z.string().default('Layanan'),
     imageAlt: z.string().default('Ilustrasi layanan konsultasi'),
     intro: z.string().min(1),

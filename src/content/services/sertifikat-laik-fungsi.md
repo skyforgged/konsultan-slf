@@ -8,6 +8,7 @@ description: "Pendampingan awal untuk memetakan kebutuhan dokumen dan tahapan pe
 serviceGroup: "slf"
 order: 10
 draft: false
+status: active
 eyebrow: "Layanan SLF"
 image: "/images/illustrations/service-certificate.svg"
 imageAlt: "Ilustrasi dokumen layanan dan pemeriksaan"

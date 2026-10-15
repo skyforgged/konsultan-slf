@@ -8,6 +8,7 @@ description: "Pemetaan kebutuhan pengkajian teknis berdasarkan fungsi, kondisi a
 serviceGroup: "slf"
 order: 50
 draft: false
+status: active
 eyebrow: "Pengkajian Teknis"
 image: "/images/illustrations/building-compliance.svg"
 imageAlt: "Ilustrasi bangunan untuk penelaahan teknis"
