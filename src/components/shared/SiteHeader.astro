@@ -11,7 +11,7 @@ const navItems = variant === 'home' ? ui.nav.items.home : ui.nav.items.primary;
 const cta = variant === 'home' ? ui.nav.cta.default : ui.nav.cta.contact;
 ---
 <header class="border-b border-slate-200 bg-white">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4" aria-label={ariaLabel}>
+  <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label={ariaLabel}>
     <a href="/" class="flex items-center gap-3 no-underline">
       <img
         src="/images/logo-konsultan-slf-pbg.svg"
@@ -23,7 +23,7 @@ const cta = variant === 'home' ? ui.nav.cta.default : ui.nav.cta.contact;
         decoding="async"
       />
     </a>
-    <div class="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
+    <div class="order-3 flex w-full flex-wrap items-center gap-x-5 gap-y-3 border-t border-slate-100 pt-3 text-sm font-semibold text-slate-600 md:order-none md:w-auto md:flex-nowrap md:gap-7 md:border-0 md:pt-0">
       {navItems.map((item) => (
         <a class="no-underline transition hover:text-blue-800" href={item.href}>{item.label}</a>
       ))}
