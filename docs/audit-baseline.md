@@ -218,3 +218,30 @@ Penelaahan source pada enam halaman layanan menunjukkan pola komunikasi yang ber
 ### Batas klaim
 
 GitHub Actions yang lulus memverifikasi build dan skrip pemeriksaan pada artefak statis. Itu tidak membuktikan deployment terbaru, status HTTP publik, tampilan browser, atau keputusan hukum/teknis untuk bangunan tertentu.
+
+
+## 9. Audit regulasi dan pemeriksaan aksesibilitas statis — 2026-10-15
+
+### Rujukan resmi yang diperiksa
+- **PP Nomor 16 Tahun 2021** tercatat berstatus berlaku pada JDIH Kementerian PKP dan basis data peraturan BPK. Rujukan: https://jdih.pkp.go.id/produk-hukum/pp-16-2021 dan https://peraturan.bpk.go.id/Details/161846/pp-no-16-.
+- **SIMBG resmi** menjelaskan proses PBG/SLF melalui sistem tersebut. FAQ-nya juga membedakan kasus bangunan yang sudah memiliki IMB dari bangunan eksisting yang belum memiliki PBG/IMB. Rujukan: https://simbg.pu.go.id/dashboard.
+- PP 16/2021 merupakan rujukan utama yang relevan untuk penyelenggaraan bangunan gedung, tetapi bukan berarti semua persyaratan teknis dan prosedur tiap bangunan identik. Ketentuan teknis dan administrasi dapat bergantung pada jenis/fungsi bangunan, kondisi dokumen lama, perubahan bangunan, serta implementasi pemerintah daerah.
+
+### Kriteria editorial yang harus dipertahankan
+- Jangan menyatakan bahwa satu daftar dokumen berlaku universal untuk semua bangunan.
+- Jangan menyimpulkan bahwa ketiadaan satu dokumen lama otomatis menentukan hasil permohonan.
+- Jangan menjanjikan waktu penerbitan atau hasil persetujuan yang berada di luar kendali konsultan.
+- Untuk klaim prosedural yang spesifik, tautkan rujukan resmi dan nyatakan konteks kasusnya; bila tidak dapat diverifikasi, gunakan bahasa bersyarat dan arahkan pemohon untuk konfirmasi melalui SIMBG/pemerintah daerah.
+- Tautan ke peraturan saja bukan bukti bahwa seluruh isi halaman telah lolos audit hukum. Setiap klaim rinci tetap perlu dicocokkan dengan pasal/panduan yang relevan dan ditinjau kembali jika regulasi berubah.
+
+### Pemeriksaan aksesibilitas statis (source-only)
+- Navigasi header menggunakan elemen `nav` dengan `aria-label`, dan form kontak memakai `label` yang terhubung ke ID kontrol; ini merupakan praktik yang baik.
+- Navigasi utama disembunyikan pada breakpoint mobile (`hidden ... md:flex`), sementara CTA header tetap terlihat dan navigasi footer tersedia. Perlu verifikasi pada perangkat nyata bahwa pengguna mobile dapat menemukan semua tujuan navigasi dengan mudah.
+- Belum ditemukan tautan “Skip to content” pada `BaseLayout.astro`. Ini kandidat perbaikan akses keyboard berikutnya; implementasinya harus memastikan setiap halaman memiliki target utama yang unik dan valid sebelum link ditambahkan.
+- Pemeriksaan source tidak dapat membuktikan urutan fokus, kontras terukur, perilaku keyboard, zoom/reflow, atau hasil screen reader. Kriteria ini tetap menunggu pengujian browser.
+
+### Status kelompok audit
+- Audit awal rujukan regulasi: **dilakukan**; klaim prosedural rinci tetap perlu peninjauan per halaman.
+- Aksesibilitas UI: **pemeriksaan statis awal selesai**, pengujian browser belum dilakukan.
+- Kontak/alamat/jam operasional: **belum dikonfirmasi oleh pemilik**, tidak diubah oleh audit ini.
+- Produksi/HTTP: **belum terverifikasi**; jangan melakukan deployment tambahan saat limit Vercel masih aktif.
