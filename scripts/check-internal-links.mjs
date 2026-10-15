@@ -17,7 +17,15 @@ const pages = htmlFiles.filter((item) => item.endsWith('.html'));
 
 for (const file of pages) {
   const html = await readFile(file, 'utf8');
-  const pageIds = new Set([...html.matchAll(/\bid=(["'])([^"'<>]+)\1/gi)].map((match) => decodeHtmlAttribute(match[2])));
+  const idMatches = [...html.matchAll(/\bid=(["'])([^"'<>]+)\1/gi)];
+  const pageIds = new Set();
+  const duplicateIds = new Set();
+  for (const idMatch of idMatches) {
+    const id = decodeHtmlAttribute(idMatch[2]);
+    if (pageIds.has(id)) duplicateIds.add(id);
+    pageIds.add(id);
+  }
+  for (const id of duplicateIds) errors.push(\`${relative(file)}: duplicate HTML id "\${id}"\`);
   const references = [...html.matchAll(/\b(href|src|poster)=(["'])([^"'<>]+)\2/gi)];
 
   for (const match of references) {
