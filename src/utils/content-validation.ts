@@ -14,7 +14,25 @@ export async function validateContentRelations(): Promise<void> {
   const targets = { article: articles, page: pages, service: services };
 
   for (const article of articles) {
+    const blockIds = new Set<string>();
+
     for (const block of article.data.blocks) {
+      if ('id' in block && block.id) {
+        if (blockIds.has(block.id)) {
+          throw new Error(`Article "${article.data.slug}" has duplicate block ID "${block.id}".`);
+        }
+        blockIds.add(block.id);
+      }
+
+      if (
+        block.component === 'table' &&
+        block.rows.some((row) => row.length !== block.head.length)
+      ) {
+        throw new Error(
+          `Article "${article.data.slug}" table "${block.id ?? block.heading ?? 'unnamed'}" has rows that do not match its ${block.head.length} headers.`,
+        );
+      }
+
       if (
         block.component === 'comparison-table' &&
         block.rows.some((row) => row.length !== block.headers.length)
