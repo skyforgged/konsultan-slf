@@ -74,6 +74,7 @@ const articleJsonLd = JSON.stringify({
         </div>
       </header>
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
+      <slot name="related" />
     </article>
   </main>
   <section class="border-t border-slate-200 bg-blue-50/60">
@@ -85,6 +86,5 @@ const articleJsonLd = JSON.stringify({
       <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
-  <slot name="related" />
     <SiteFooter />
 </BaseLayout>
