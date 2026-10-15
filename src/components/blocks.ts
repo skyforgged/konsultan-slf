@@ -12,6 +12,9 @@ import ProcessTimeline from './shared/ProcessTimeline.astro';
 import ChecklistCard from './shared/ChecklistCard.astro';
 import ComparisonTable from './shared/ComparisonTable.astro';
 import DocumentList from './shared/DocumentList.astro';
+import ImagePanel from './shared/ImagePanel.astro';
+import FeatureCardGrid from './shared/FeatureCardGrid.astro';
+import StatsGrid from './shared/StatsGrid.astro';
 
 const blocks: Record<string, any> = {
   card: ContentCard,
@@ -28,6 +31,9 @@ const blocks: Record<string, any> = {
   'checklist-card': ChecklistCard,
   'comparison-table': ComparisonTable,
   'document-list': DocumentList,
+  'image-panel': ImagePanel,
+  'feature-card-grid': FeatureCardGrid,
+  'stats-grid': StatsGrid,
 };
 
 export default blocks;
