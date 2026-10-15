@@ -8,6 +8,7 @@ let jsonLdChecked = 0;
 let socialImagesChecked = 0;
 let rasterFallbackChecked = false;
 const canonicalUrls = new Set();
+const canonicalOwners = new Map();
 
 try {
   await stat(root);
@@ -43,7 +44,15 @@ for (const file of pages) {
 
   const canonicalTag = canonicals[0]?.[0];
   const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href') : null;
-  if (!noindex && canonicalHref && isAbsoluteHttpUrl(canonicalHref)) canonicalUrls.add(canonicalHref);
+  if (!noindex && canonicalHref && isAbsoluteHttpUrl(canonicalHref)) {
+    const previousPage = canonicalOwners.get(canonicalHref);
+    if (previousPage && previousPage !== page) {
+      failures.push(`${page}: canonical URL is already assigned to ${previousPage}: ${canonicalHref}`);
+    } else {
+      canonicalOwners.set(canonicalHref, page);
+    }
+    canonicalUrls.add(canonicalHref);
+  }
   if (canonicalHref && !isAbsoluteHttpUrl(canonicalHref)) {
     failures.push(`${page}: canonical URL must be absolute HTTP(S): ${canonicalHref}`);
   }
