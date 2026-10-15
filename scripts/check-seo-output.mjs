@@ -80,6 +80,8 @@ for (const file of pages) {
     ['property', 'og:url'],
     ['property', 'og:image'],
     ['name', 'twitter:card'],
+    ['name', 'twitter:title'],
+    ['name', 'twitter:description'],
     ['name', 'twitter:image'],
   ]) {
     if (!findMeta(html, attribute, value)) failures.push(`${page}: missing ${value} metadata`);
