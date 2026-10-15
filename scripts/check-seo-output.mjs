@@ -141,7 +141,7 @@ try {
 try {
   const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
   if (!sitemap.includes('<urlset') || !sitemap.includes('</urlset>')) failures.push('sitemap.xml has an invalid urlset envelope.');
-  const locations = [...sitemap.matchAll(/<loc>([\\s\\S]*?)<\\/loc>/gi)];
+  const locations = [...sitemap.matchAll(/<loc>([\s\\S]*?)<\/loc>/gi)];
   if (locations.length === 0) failures.push('sitemap.xml contains no <loc> entries.');
   const seenLocations = new Set();
   const sitemapOrigins = new Set();
@@ -191,7 +191,7 @@ function findMeta(html, key, value) {
 }
 
 function getAttr(tag, name) {
-  const match = tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(["'])(.*?)\\1`, 'i'));
+  const match = tag.match(new RegExp(`(?:^|\s)${name}\s*=\s*(["'])(.*?)\\1`, 'i'));
   return match?.[2] ?? null;
 }
 
