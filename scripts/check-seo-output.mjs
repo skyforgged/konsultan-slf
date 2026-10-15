@@ -9,6 +9,7 @@ let socialImagesChecked = 0;
 let rasterFallbackChecked = false;
 const canonicalUrls = new Set();
 const canonicalOwners = new Map();
+let robotsSitemapUrl = null;
 
 try {
   await stat(root);
@@ -143,7 +144,20 @@ for (const requiredFile of ['robots.txt', 'sitemap.xml']) {
 
 try {
   const robots = await readFile(path.join(root, 'robots.txt'), 'utf8');
-  if (!/^Sitemap:\s*https?:\/\//im.test(robots)) failures.push('robots.txt must declare an absolute Sitemap URL.');
+  const sitemapDirectives = [...robots.matchAll(/^Sitemap:\s*(\S+)\s*$/gim)];
+  if (sitemapDirectives.length !== 1) {
+    failures.push(`robots.txt must declare exactly one Sitemap URL, found ${sitemapDirectives.length}.`);
+  }
+  for (const [, sitemapValue] of sitemapDirectives) {
+    if (!isAbsoluteHttpUrl(sitemapValue)) {
+      failures.push(`robots.txt Sitemap URL must be absolute HTTP(S): ${sitemapValue}`);
+      continue;
+    }
+    robotsSitemapUrl = new URL(sitemapValue);
+    if (!robotsSitemapUrl.pathname.endsWith('/sitemap.xml')) {
+      failures.push(`robots.txt Sitemap URL must point to sitemap.xml: ${sitemapValue}`);
+    }
+  }
 } catch {
   // Missing file is already reported above.
 }
@@ -176,6 +190,15 @@ try {
     }
   }
   if (sitemapOrigins.size > 1) failures.push('sitemap.xml URLs must all use the same origin.');
+  if (robotsSitemapUrl && sitemapOrigins.size === 1 && robotsSitemapUrl.origin !== [...sitemapOrigins][0]) {
+    failures.push('robots.txt Sitemap URL origin does not match sitemap.xml URL origin.');
+  }
+  if (robotsSitemapUrl && canonicalUrls.size > 0) {
+    const canonicalOrigins = new Set([...canonicalUrls].map((url) => new URL(url).origin));
+    if (canonicalOrigins.size === 1 && robotsSitemapUrl.origin !== [...canonicalOrigins][0]) {
+      failures.push('robots.txt Sitemap URL origin does not match the indexable page canonical origin.');
+    }
+  }
   if (sitemapOrigins.size === 1 && canonicalUrls.size > 0) {
     const canonicalOrigins = new Set([...canonicalUrls].map((url) => new URL(url).origin));
     if (canonicalOrigins.size === 1 && !canonicalOrigins.has([...sitemapOrigins][0])) {
