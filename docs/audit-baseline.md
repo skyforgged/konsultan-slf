@@ -237,7 +237,7 @@ GitHub Actions yang lulus memverifikasi build dan skrip pemeriksaan pada artefak
 ### Pemeriksaan aksesibilitas statis (source-only)
 - Navigasi header menggunakan elemen `nav` dengan `aria-label`, dan form kontak memakai `label` yang terhubung ke ID kontrol; ini merupakan praktik yang baik.
 - Navigasi utama disembunyikan pada breakpoint mobile (`hidden ... md:flex`), sementara CTA header tetap terlihat dan navigasi footer tersedia. Perlu verifikasi pada perangkat nyata bahwa pengguna mobile dapat menemukan semua tujuan navigasi dengan mudah.
-- Belum ditemukan tautan “Skip to content” pada `BaseLayout.astro`. Ini kandidat perbaikan akses keyboard berikutnya; implementasinya harus memastikan setiap halaman memiliki target utama yang unik dan valid sebelum link ditambahkan.
+- Tautan “Lewati ke konten utama” sudah ditambahkan pada `BaseLayout.astro`, dan target `id="main-content"` sudah tersedia pada layout artikel serta halaman beranda, kontak, 404, indeks artikel, indeks layanan, dan detail layanan. Pemeriksaan source mengonfirmasi target-target tersebut ada; aktivasi keyboard, fokus setelah navigasi, dan perilaku visual tetap perlu diuji di browser.
 - Pemeriksaan source tidak dapat membuktikan urutan fokus, kontras terukur, perilaku keyboard, zoom/reflow, atau hasil screen reader. Kriteria ini tetap menunggu pengujian browser.
 
 ### Status kelompok audit
