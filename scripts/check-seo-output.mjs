@@ -87,7 +87,7 @@ for (const file of pages) {
     ['name', 'twitter:description'],
     ['name', 'twitter:image'],
   ]) {
-    const matchingTags = (html.match(/<meta\\b[^>]*>/gi) ?? [])
+    const matchingTags = (html.match(/<meta\b[^>]*>/gi) ?? [])
       .filter((tag) => getAttr(tag, attribute)?.toLowerCase() === value.toLowerCase());
     if (matchingTags.length === 0) {
       failures.push(`${page}: missing ${value} metadata`);
