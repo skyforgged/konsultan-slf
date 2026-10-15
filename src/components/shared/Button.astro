@@ -1,21 +1,39 @@
 ---
-const variantClasses = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 disabled:bg-slate-300',
-  secondary: 'bg-slate-100 text-slate-700 hover:bg-slate-200 disabled:bg-slate-50',
-  ghost: 'bg-transparent text-slate-700 hover:bg-slate-100 disabled:text-slate-400',
-  outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:border-slate-200',
-} as const;
-
-const sizeClasses = {
-  sm: 'text-sm px-3 py-1.5',
-  md: 'text-base px-4 py-2',
-  lg: 'text-lg px-6 py-3',
-} as const;
-
-const { variant = 'primary', size = 'md', disabled = false, type = 'button' } = Astro.props;
-const vClass = variantClasses[variant as keyof typeof variantClasses] ?? variantClasses.primary;
-const sClass = sizeClasses[size as keyof typeof sizeClasses] ?? sizeClasses.md;
+/**
+ * Button — framework-independent button styles using Tailwind utilities.
+ *
+ * Props:
+ * - variant?: 'primary' | 'secondary' | 'ghost' | 'outline' — style (default: 'primary')
+ * - size?: 'sm' | 'md' | 'lg' — size (default: 'md')
+ * - disabled?: boolean — disabled state (default: false)
+ * - type?: 'button' | 'submit' | 'reset' — button type (default: 'button')
+ *
+ * Usage:
+ * <Button variant="primary">Submit</Button>
+ * <Button variant="ghost" size="sm">Batal</Button>
+ * <Button variant="outline" disabled>Locked</Button>
+ */
 ---
-<button type={type} disabled={disabled} class={`${vClass} ${sClass}`}>
+const { variant = 'primary', size = 'md', disabled = false, type = 'button' } = Astro.props;
+
+const variants: Record<string, string> = {
+  primary: 'bg-blue-700 text-white hover:bg-blue-800 focus-visible:outline-blue-700',
+  secondary: 'bg-slate-100 text-slate-800 hover:bg-slate-200 focus-visible:outline-slate-600',
+  ghost: 'bg-transparent text-slate-700 hover:bg-slate-100 focus-visible:outline-slate-600',
+  outline: 'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus-visible:outline-slate-600',
+};
+const sizes: Record<string, string> = {
+  sm: 'px-3 py-1.5 text-sm',
+  md: 'px-4 py-2 text-sm',
+  lg: 'px-6 py-3 text-base',
+};
+const variantClass = variants[variant] ?? variants.primary;
+const sizeClass = sizes[size] ?? sizes.md;
+---
+<button
+  type={type}
+  disabled={disabled}
+  class={`inline-flex items-center justify-center rounded-lg font-semibold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${variantClass} ${sizeClass}`}
+>
   <slot />
 </button>

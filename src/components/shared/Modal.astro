@@ -1,23 +1,9 @@
 ---
 /**
- * Modal — native HTML dialog-based modal.
- *
- * Props:
- * - open: boolean — controls visibility (default false)
- * - title?: string — header title (optional)
- * - size?: 'sm' | 'md' | 'lg' | 'xl' — modal width (default 'md')
- *
- * Usage:
- * <Modal open={showModal} title="Judul Modal">
- *   <p>Konten modal di sini.</p>
- * </Modal>
+ * Modal — native HTML dialog with Tailwind styling; no DaisyUI dependency.
+ * When open=true, the dialog is opened as a modal in the browser.
  */
-const {
-  open = false,
-  title,
-  size = 'md',
-} = Astro.props;
-
+const { open = false, title, size = 'md' } = Astro.props;
 const sizes: Record<string, string> = {
   sm: 'max-w-sm',
   md: 'max-w-md',
@@ -25,16 +11,34 @@ const sizes: Record<string, string> = {
   xl: 'max-w-xl',
 };
 ---
-{open && (
-  <dialog class="modal modal-open">
-    <div class={`modal-box ${sizes[size] ?? 'max-w-md'}`}>
-      {title && <h3 class="text-lg font-bold">{title}</h3>}
-      <slot />
-      <div class="modal-action">
-        <form method="dialog">
-          <button class="btn">Tutup</button>
-        </form>
-      </div>
+<dialog
+  data-modal
+  data-open={open ? 'true' : 'false'}
+  aria-label={title ?? 'Dialog'}
+  class="m-auto w-[calc(100%-2rem)] max-w-none border-0 bg-transparent p-0 text-slate-900 backdrop:bg-slate-950/60"
+>
+  <section class={`relative mx-auto max-h-[85vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl ${sizes[size] ?? sizes.md}`}>
+    <div class="mb-4 flex items-start justify-between gap-4">
+      {title && <h2 class="text-lg font-bold text-slate-950">{title}</h2>}
+      <form method="dialog">
+        <button type="submit" class="rounded-lg px-3 py-1 text-sm font-semibold text-slate-600 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-blue-600" aria-label="Tutup dialog">Tutup</button>
+      </form>
     </div>
-  </dialog>
-)}
+    <slot />
+  </section>
+</dialog>
+
+<script>
+  document.querySelectorAll<HTMLDialogElement>('[data-modal]').forEach((dialog) => {
+    if (dialog.dataset.bound === 'true') return;
+    dialog.dataset.bound = 'true';
+
+    if (dialog.dataset.open === 'true' && !dialog.open) {
+      dialog.showModal();
+    }
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
