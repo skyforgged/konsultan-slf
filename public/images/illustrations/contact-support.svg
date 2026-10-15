@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi konsultasi dan dukungan</title>
+  <desc id="desc">Dua balon percakapan dengan ikon tanda terverifikasi.</desc>
+  <rect x="24" y="20" width="512" height="320" rx="26" fill="#EFF6FF"/>
+  <path d="M96 92h214a20 20 0 0 1 20 20v104a20 20 0 0 1-20 20H160l-40 36v-36H96a20 20 0 0 1-20-20V112a20 20 0 0 1 20-20Z" fill="#fff" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M116 136h150m-150 34h120m-120 34h90" stroke="#93C5FD" stroke-width="7" stroke-linecap="round"/>
+  <path d="M262 148h150a20 20 0 0 1 20 20v84a20 20 0 0 1-20 20h-40l-36 32v-32h-74a20 20 0 0 1-20-20v-84a20 20 0 0 1 20-20Z" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M286 190h104m-104 34h72" stroke="#3B82F6" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="450" cy="116" r="27" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
+  <path d="m438 116 8 8 16-18" stroke="#15803D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

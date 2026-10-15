@@ -17,6 +17,32 @@ export const ui = {
     articles: 'Artikel',
     process: 'Alur Pendampingan',
     consultation: 'Konsultasi',
+    contact: 'Kontak',
+    items: {
+      primary: [
+        { label: 'Beranda', href: '/' },
+        { label: 'Layanan', href: '/services/' },
+        { label: 'Artikel', href: '/articles/' },
+        { label: 'Kontak', href: '/kontak/' },
+      ],
+      home: [
+        { label: 'Beranda', href: '/' },
+        { label: 'Layanan', href: '#layanan' },
+        { label: 'Alur Pendampingan', href: '#proses' },
+        { label: 'Artikel', href: '/articles/' },
+        { label: 'Kontak', href: '/kontak/' },
+      ],
+      footer: [
+        { label: 'Beranda', href: '/' },
+        { label: 'Layanan', href: '/services/' },
+        { label: 'Artikel', href: '/articles/' },
+        { label: 'Kontak', href: '/kontak/' },
+      ],
+    },
+    cta: {
+      default: { label: 'Konsultasi', href: '#konsultasi' },
+      contact: { label: 'Konsultasi', href: '/kontak/' },
+    },
   },
   footer: {
     tagline: 'Pendampingan perizinan bangunan dengan informasi yang jelas dan terarah.',
@@ -83,7 +109,10 @@ export const ui = {
     whatsappMissing: 'Kanal WhatsApp belum dikonfigurasi. Pastikan nomor kontak resmi diatur sebelum blok CTA ini dipublikasikan.',
   },
   contact: {
-    whatsappHeading: 'Konsultasi Cepat via WhatsApp',
+    channelsHeading: 'Kanal Kontak',
+    addressHeading: 'Alamat Kantor',
+    whatsappLabel: 'WhatsApp',
+    phoneLabel: 'Telepon',
     submitLabel: 'Lanjutkan ke WhatsApp',
     disclaimer: 'Pesan akan disiapkan di WhatsApp; formulir ini tidak mengirim data ke server situs.',
     fields: {

@@ -3,6 +3,9 @@ export const site = {
   tagline: 'Pendampingan Sertifikat Laik Fungsi & Persetujuan Bangunan Gedung',
   description: 'Pendampingan awal untuk memahami kebutuhan dokumen dan proses SLF/PBG.',
   whatsapp: '6285947468548',
+  whatsappDisplay: '0859-4746-8548',
+  phone: '6285947468548',
+  phoneDisplay: '0859-4746-8548',
   address: {
     street: 'Jl. Nusantara 6 Blok D13 No. 11-12',
     village: 'Cipare',

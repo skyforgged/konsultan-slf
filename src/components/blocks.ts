@@ -16,6 +16,7 @@ import ImagePanel from './shared/ImagePanel.astro';
 import FeatureCardGrid from './shared/FeatureCardGrid.astro';
 import StatsGrid from './shared/StatsGrid.astro';
 import SourceLinks from './shared/SourceLinks.astro';
+import ContactPanel from './shared/ContactPanel.astro';
 
 const blocks: Record<string, any> = {
   card: ContentCard,
@@ -36,6 +37,7 @@ const blocks: Record<string, any> = {
   'feature-card-grid': FeatureCardGrid,
   'stats-grid': StatsGrid,
   'source-links': SourceLinks,
+  'contact-panel': ContactPanel,
 };
 
 export default blocks;

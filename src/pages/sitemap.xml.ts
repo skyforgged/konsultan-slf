@@ -11,6 +11,7 @@ export const GET: APIRoute = async ({ site }) => {
     { loc: `${base}/`, lastmod: undefined },
     { loc: `${base}/articles/`, lastmod: undefined },
     { loc: `${base}/services/`, lastmod: undefined },
+    { loc: `${base}/kontak/`, lastmod: undefined },
     ...articles.filter((item) => !item.data.draft).map((item) => ({
       loc: `${base}/articles/${item.data.slug}/`,
       lastmod: item.data.updatedDate ?? item.data.pubDate,
