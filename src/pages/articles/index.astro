@@ -8,6 +8,7 @@ import ArticleCard from '../../components/shared/ArticleCard.astro';
 import { ui } from '../../config/ui.ts';
 const page = await getEntry('pages', 'articles');
 if (!page) throw new Error('Missing "articles" page content entry.');
+if (page.data.draft) throw new Error('Page "articles" is marked draft but has a statically defined route.');
 const header = page.data.pageHeader;
 if (!header) throw new Error('Missing "articles" page content header.');
 const allArticles = await getCollection('articles');
