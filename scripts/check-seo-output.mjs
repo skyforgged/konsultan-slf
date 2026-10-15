@@ -35,7 +35,19 @@ for (const file of pages) {
   const description = findMeta(html, 'name', 'description');
   if (!description) failures.push(`${page}: missing meta description`);
 
-  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*  noindex\b)[^>]*>/i.test(html);
+  const ogTitle = findMeta(html, 'property', 'og:title');
+  const twitterTitle = findMeta(html, 'name', 'twitter:title');
+  const ogDescription = findMeta(html, 'property', 'og:description');
+  const twitterDescription = findMeta(html, 'name', 'twitter:description');
+  if (titleText && ogTitle && titleText !== ogTitle) failures.push(`${page}: og:title does not match the HTML title`);
+  if (titleText && twitterTitle && titleText !== twitterTitle) failures.push(`${page}: twitter:title does not match the HTML title`);
+  if (description && ogDescription && description !== ogDescription) failures.push(`${page}: og:description does not match the meta description`);
+  if (description && twitterDescription && description !== twitterDescription) failures.push(`${page}: twitter:description does not match the meta description`);
+  const ogImage = findMeta(html, 'property', 'og:image');
+  const twitterImage = findMeta(html, 'name', 'twitter:image');
+  if (ogImage && twitterImage && ogImage !== twitterImage) failures.push(`${page}: twitter:image does not match og:image`);
+
+  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b)[^>]*>/i.test(html);
   const canonicals = [...html.matchAll(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi)];
   if (noindex && canonicals.length > 0) {
     failures.push(`${page}: noindex page must not include a canonical link`);
@@ -99,7 +111,7 @@ for (const file of pages) {
     }
   }
 
-  const jsonLdBlocks = [...html.matchAll(/<script\b(?=[^>]*\btype=["']application\/ld+json["'])[^>]*>([\s\S]*?)<\/script>/gi)];
+  const jsonLdBlocks = [...html.matchAll(/<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/gi)];
   for (const block of jsonLdBlocks) {
     try {
       const data = JSON.parse(block[1]);
@@ -235,10 +247,6 @@ function validateJsonLd(data, page, failures) {
   }
 
   for (const item of objects) {
-    // Skip container objects that only have @context/@graph (structural wrappers)
-    const keys = Object.keys(item).filter((k) => !k.startsWith('@'));
-    if (keys.length === 0) continue;
-
     const typeValue = item['@type'];
     const types = Array.isArray(typeValue) ? typeValue : [typeValue];
     if (!types.some((type) => typeof type === 'string')) {
@@ -290,9 +298,8 @@ function findMeta(html, key, value) {
 }
 
 function getAttr(tag, name) {
-  // Use simple pattern without backreference issues
-  const match = tag.match(new RegExp(`${name}\\s*=\\s*["']([^"']*)["']`, 'i'));
-  return match?.[1] ?? null;
+  const match = tag.match(new RegExp(`(?:^|\s)${name}\s*=\s*(["'])(.*?)\\1`, 'i'));
+  return match?.[2] ?? null;
 }
 
 function isAbsoluteHttpUrl(value) {
