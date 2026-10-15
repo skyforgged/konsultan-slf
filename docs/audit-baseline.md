@@ -131,3 +131,35 @@ Bagian ini melengkapi catatan awal di atas; kondisi lama pada bagian 1–2 adala
 - Gambar sosial default masih SVG; fallback PNG/JPEG tetap menjadi pekerjaan berikutnya agar kompatibilitas crawler sosial lebih luas.
 - Pemeriksaan ini memvalidasi file hasil build statis, bukan status HTTP situs produksi atau hasil rendering semua browser.
 - URL publik, deployment, responsive layout, keyboard navigation, dan perilaku daftar isi sticky belum dianggap terverifikasi.
+
+## 9. Pembaruan audit SEO — 2026-10-15
+
+### Pemeriksaan otomatis tambahan di repository
+
+Pemeriksaan pada `scripts/check-seo-output.mjs` kini juga mencakup:
+
+- URL canonical duplikat antarhalaman.
+- Konsistensi origin dan URL sitemap dengan canonical halaman yang dapat diindeks.
+- Deklarasi sitemap pada `robots.txt`: harus tepat satu, absolut HTTP(S), dan menunjuk ke `sitemap.xml`.
+- Konsistensi `og:title` dan `twitter:title` dengan judul HTML.
+- Konsistensi deskripsi Open Graph/Twitter dengan meta description.
+- Konsistensi `twitter:image` dengan `og:image`.
+- Validitas tanggal publikasi/pembaruan serta URL absolut pada data terstruktur artikel, layanan, dan breadcrumb.
+
+Perubahan terakhir terkait pemeriksaan ini sudah masuk ke `main` pada commit `61b5840`. Pemeriksaan source memastikan aturan tersebut ada; hasilnya belum boleh dianggap lulus pada output build sampai pipeline berhasil dijalankan pada commit terbaru.
+
+### Estimasi pekerjaan terbuka
+
+Audit tersisa dipusatkan pada empat kelompok, bukan mengulang fondasi implementasi:
+
+1. **Build dan integrasi berkelanjutan:** memperoleh hasil build sukses untuk commit terbaru. Status Vercel yang terakhir terlihat adalah `build-rate-limit`, bukan laporan kegagalan kode. Hasil build commit terbaru belum terkonfirmasi.
+2. **Aset sosial:** menyediakan fallback raster PNG/JPEG yang valid dan menguji gambar sosial hasil render.
+3. **Verifikasi browser:** menguji responsif, navigasi keyboard, daftar isi/anchor, dan sticky sidebar pada ukuran viewport relevan.
+4. **Kesiapan produksi dan konten:** memverifikasi URL publik, status HTTP/crawl, tautan hasil render, serta akurasi materi SLF/PBG dengan sumber resmi dan peninjauan yang sesuai.
+
+### Batas status
+
+- **Sudah diimplementasikan:** pemeriksaan source dan validator SEO tambahan di pipeline.
+- **Belum terkonfirmasi:** build untuk commit terbaru dan deployment publik terbaru.
+- **Belum selesai:** pengujian browser dan pemeriksaan langsung situs produksi.
+- **Tidak termasuk fakta yang boleh diasumsikan:** nomor kontak, klaim kompetensi, harga, testimoni, portofolio, atau janji waktu/hasil layanan tanpa bukti dan konfirmasi pemilik usaha.
