@@ -245,3 +245,18 @@ GitHub Actions yang lulus memverifikasi build dan skrip pemeriksaan pada artefak
 - Aksesibilitas UI: **pemeriksaan statis awal selesai**, pengujian browser belum dilakukan.
 - Kontak/alamat/jam operasional: **belum dikonfirmasi oleh pemilik**, tidak diubah oleh audit ini.
 - Produksi/HTTP: **belum terverifikasi**; jangan melakukan deployment tambahan saat limit Vercel masih aktif.
+
+## 12. Status audit terkini — 2026-10-15
+
+### Perbaikan lanjutan di `main`
+- `734f89d` — gambar pada kartu artikel memakai `decoding="async"` bersama lazy loading. CI lulus: https://github.com/skyforgged/konsultan-slf/actions/runs/38756973905.
+- `e259f1f` — navigasi utama tetap tersedia pada layar kecil; sebelumnya daftar navigasi disembunyikan di bawah breakpoint `md` tanpa menu pengganti. Tautan navigasi kini ditampilkan dalam baris responsif di bawah logo/CTA pada layar kecil. CI lulus: https://github.com/skyforgged/konsultan-slf/actions/runs/38757396919.
+- `8baf100` — menghormati preferensi `prefers-reduced-motion`. CI lulus: https://github.com/skyforgged/konsultan-slf/actions/runs/38756383538.
+- `cbfb29c` — gambar Article JSON-LD menggunakan fallback raster saat gambar konten berupa SVG. CI lulus: https://github.com/skyforgged/konsultan-slf/actions/runs/38756532999.
+
+### Masih perlu verifikasi di luar CI
+- Pengujian visual responsif, keyboard/focus, screen reader, dan sticky daftar isi pada browser nyata.
+- Verifikasi status HTTP dan deployment produksi setelah deployment Vercel tersedia; keberhasilan GitHub Actions tidak membuktikan deployment terbaru sudah live.
+- Peninjauan per klaim konten SLF/PBG terhadap pasal/panduan resmi dan konfirmasi pemilik untuk fakta bisnis seperti kontak, alamat, jam layanan, kompetensi, dan portofolio.
+
+CI memvalidasi build dan pemeriksaan statis pada artefak; hasil tersebut tidak menggantikan pengujian browser, HTTP produksi, atau validasi legal/teknis kasus bangunan.
