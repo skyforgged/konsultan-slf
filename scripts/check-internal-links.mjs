@@ -25,7 +25,7 @@ for (const file of pages) {
     if (pageIds.has(id)) duplicateIds.add(id);
     pageIds.add(id);
   }
-  for (const id of duplicateIds) errors.push(\`${relative(file)}: duplicate HTML id "\${id}"\`);
+  for (const id of duplicateIds) errors.push(relative(file) + ': duplicate HTML id "' + id + '"');
   const references = [...html.matchAll(/\b(href|src|poster)=(["'])([^"'<>]+)\2/gi)];
 
   for (const match of references) {
