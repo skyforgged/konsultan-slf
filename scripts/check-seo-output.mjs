@@ -92,8 +92,9 @@ for (const file of pages) {
   const jsonLdBlocks = [...html.matchAll(/<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/gi)];
   for (const block of jsonLdBlocks) {
     try {
-      JSON.parse(block[1]);
+      const data = JSON.parse(block[1]);
       jsonLdChecked++;
+      validateJsonLd(data, page, failures);
     } catch (error) {
       failures.push(`${page}: invalid JSON-LD (${error instanceof Error ? error.message : String(error)})`);
     }
@@ -182,6 +183,46 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log(`SEO output check passed: ${pagesChecked} HTML pages, ${jsonLdChecked} valid JSON-LD blocks, ${socialImagesChecked} local social images, ${rasterFallbackChecked ? 'PNG and SVG social fallbacks' : 'social fallback validation incomplete'}, robots.txt, and sitemap.xml.`);
+}
+
+function validateJsonLd(data, page, failures) {
+  const objects = [];
+  const visit = (value) => {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (!value || typeof value !== 'object') return;
+    objects.push(value);
+    if (Array.isArray(value['@graph'])) value['@graph'].forEach(visit);
+  };
+  visit(data);
+  if (objects.length === 0) {
+    failures.push(`${page}: JSON-LD must contain an object or array of objects`);
+    return;
+  }
+
+  for (const item of objects) {
+    const typeValue = item['@type'];
+    const types = Array.isArray(typeValue) ? typeValue : [typeValue];
+    if (!types.some((type) => typeof type === 'string')) {
+      failures.push(`${page}: JSON-LD object is missing a valid @type`);
+      continue;
+    }
+    if (types.some((type) => ['Article', 'BlogPosting', 'TechArticle', 'NewsArticle'].includes(type))) {
+      for (const key of ['headline', 'datePublished', 'mainEntityOfPage', 'url']) {
+        if (!item[key]) failures.push(`${page}: Article JSON-LD is missing required field "${key}"`);
+      }
+    }
+    if (types.includes('Service')) {
+      for (const key of ['name', 'url', 'provider']) {
+        if (!item[key]) failures.push(`${page}: Service JSON-LD is missing required field "${key}"`);
+      }
+    }
+    if (types.includes('BreadcrumbList') && (!Array.isArray(item.itemListElement) || item.itemListElement.length === 0)) {
+      failures.push(`${page}: BreadcrumbList JSON-LD must contain itemListElement`);
+    }
+  }
 }
 
 function findMeta(html, key, value) {
