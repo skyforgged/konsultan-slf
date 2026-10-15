@@ -2,6 +2,8 @@
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageUpdatedArticles from '../components/shared/PageUpdatedArticles.astro';
+import SiteHeader from '../components/shared/SiteHeader.astro';
+import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
 import { validateContentRelations } from '../utils/content-validation';
 
@@ -47,19 +49,8 @@ const organizationJsonLd = JSON.stringify({
   noindex={home.data.noindex}
 >
   <script slot="head" type="application/ld+json" set:html={organizationJsonLd}></script>
-  <header class="border-b border-slate-200 bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4" aria-label={ui.nav.mainAriaLabel}>
-      <a href="/" class="flex items-center gap-3 no-underline">
-        <img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-10 w-auto max-w-[230px] sm:h-12" width="760" height="150" />
-      </a>
-      <div class="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
-        <a class="no-underline transition hover:text-blue-800" href="#layanan">{ui.nav.services}</a>
-        <a class="no-underline transition hover:text-blue-800" href="#proses">{ui.nav.process}</a>
-        <a class="no-underline transition hover:text-blue-800" href="/articles/">{ui.nav.articles}</a>
-      </div>
-      <a href="#konsultasi" class="rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-bold text-white no-underline transition hover:bg-blue-800">{ui.nav.consultation}</a>
-    </nav>
-  </header>
+    <SiteHeader variant="home" />
+
 
   <main>
     <section class="relative isolate overflow-hidden bg-slate-950 text-white">
@@ -153,11 +144,6 @@ const organizationJsonLd = JSON.stringify({
     </section>
   </main>
 
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
-      <p>{ui.footer.tagline}</p>
-      <a href="/articles/" class="font-semibold text-blue-700 no-underline hover:text-blue-900">{ui.footer.articlesLink}</a>
-    </div>
-  </footer>
+    <SiteFooter />
+
 </BaseLayout>
