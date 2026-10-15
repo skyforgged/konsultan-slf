@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
+import SourceLinks from '../../components/shared/SourceLinks.astro';
 import { ui } from '../../config/ui.ts';
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -138,6 +139,23 @@ const breadcrumbJsonLd = JSON.stringify({
         </div>
       </section>
     )}
+    <SourceLinks
+      id="rujukan-resmi-layanan"
+      title="Rujukan resmi"
+      intro="Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Kebutuhan serta penerapan pada bangunan tertentu perlu diverifikasi sesuai kasus."
+      items={[
+        {
+          label: 'PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR',
+          url: 'https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung',
+          description: 'Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung.',
+        },
+        {
+          label: 'Sistem Informasi Manajemen Bangunan Gedung (SIMBG)',
+          url: 'https://simbg.pu.go.id/',
+          description: 'Portal resmi untuk memeriksa informasi layanan dan alur yang berlaku.',
+        },
+      ]}
+    />
     <section class="mt-12 rounded-2xl bg-blue-950 p-7 text-white sm:p-9">
       <h2 class="text-2xl font-extrabold">{service.data.ctaLabel}</h2>
       <p class="mt-3 leading-7 text-blue-100">{service.data.ctaDescription}</p>
