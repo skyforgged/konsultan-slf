@@ -7,6 +7,7 @@ let pagesChecked = 0;
 let jsonLdChecked = 0;
 let socialImagesChecked = 0;
 let rasterFallbackChecked = false;
+const canonicalUrls = new Set();
 
 try {
   await stat(root);
@@ -42,6 +43,7 @@ for (const file of pages) {
 
   const canonicalTag = canonicals[0]?.[0];
   const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href') : null;
+  if (!noindex && canonicalHref && isAbsoluteHttpUrl(canonicalHref)) canonicalUrls.add(canonicalHref);
   if (canonicalHref && !isAbsoluteHttpUrl(canonicalHref)) {
     failures.push(`${page}: canonical URL must be absolute HTTP(S): ${canonicalHref}`);
   }
@@ -139,10 +141,36 @@ try {
 try {
   const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
   if (!sitemap.includes('<urlset') || !sitemap.includes('</urlset>')) failures.push('sitemap.xml has an invalid urlset envelope.');
-  const locations = [...sitemap.matchAll(/<loc>([\s\S]*?)<\/loc>/gi)];
+  const locations = [...sitemap.matchAll(/<loc>([\\s\\S]*?)<\\/loc>/gi)];
   if (locations.length === 0) failures.push('sitemap.xml contains no <loc> entries.');
+  const seenLocations = new Set();
+  const sitemapOrigins = new Set();
   for (const [, location] of locations) {
-    if (!isAbsoluteHttpUrl(decodeXml(location.trim()))) failures.push(`sitemap.xml contains a non-absolute URL: ${location}`);
+    const decodedLocation = decodeXml(location.trim());
+    if (!isAbsoluteHttpUrl(decodedLocation)) {
+      failures.push(`sitemap.xml contains a non-absolute URL: ${location}`);
+      continue;
+    }
+    let sitemapUrl;
+    try {
+      sitemapUrl = new URL(decodedLocation);
+    } catch {
+      failures.push(`sitemap.xml contains an invalid URL: ${location}`);
+      continue;
+    }
+    if (seenLocations.has(sitemapUrl.href)) failures.push(`sitemap.xml contains a duplicate URL: ${sitemapUrl.href}`);
+    seenLocations.add(sitemapUrl.href);
+    sitemapOrigins.add(sitemapUrl.origin);
+    if (canonicalUrls.size > 0 && !canonicalUrls.has(sitemapUrl.href)) {
+      failures.push(`sitemap.xml URL has no matching indexable page canonical: ${sitemapUrl.href}`);
+    }
+  }
+  if (sitemapOrigins.size > 1) failures.push('sitemap.xml URLs must all use the same origin.');
+  if (sitemapOrigins.size === 1 && canonicalUrls.size > 0) {
+    const canonicalOrigins = new Set([...canonicalUrls].map((url) => new URL(url).origin));
+    if (canonicalOrigins.size === 1 && !canonicalOrigins.has([...sitemapOrigins][0])) {
+      failures.push('sitemap.xml origin does not match the indexable page canonical origin.');
+    }
   }
 } catch {
   // Missing file is already reported above.
