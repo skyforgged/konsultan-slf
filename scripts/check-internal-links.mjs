@@ -31,7 +31,12 @@ for (const file of pages) {
   for (const match of references) {
     const attribute = match[1].toLowerCase();
     const value = decodeHtmlAttribute(match[3].trim());
-    if (!value || /^(?:https?:|mailto:|tel:|data:|javascript:|blob:|\/\/)/i.test(value)) continue;
+    if (!value) continue;
+    if (/^(?:javascript|vbscript):/i.test(value)) {
+      errors.push(`${relative(file)}: unsafe URL scheme in ${attribute}="${value}"`);
+      continue;
+    }
+    if (/^(?:https?:|mailto:|tel:|data:|blob:|\/\/)/i.test(value)) continue;
 
     let parsed;
     let pathname;
