@@ -9,6 +9,8 @@ type: "article"
 category: "SLF"
 relatedType: "service"
 relatedId: 101
+relatedArticles:
+  - 2
 blocks:
   - component: section
     id: "pengertian-slf"
