@@ -64,4 +64,15 @@ blocks:
         answer: "Tidak. Kebutuhan dokumen perlu ditelaah berdasarkan karakteristik bangunan dan ketentuan yang berlaku."
       - question: "Apakah konsultasi menjamin SLF diterbitkan?"
         answer: "Tidak. Penerbitan merupakan kewenangan instansi terkait. Konsultasi membantu memetakan kebutuhan dan langkah persiapan."
+  - component: source-links
+    id: "rujukan-resmi"
+    title: "Rujukan resmi"
+    intro: "Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Penerapan pada bangunan tertentu tetap perlu ditelaah sesuai kasus."
+    items:
+      - label: "PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR"
+        url: "https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung"
+        description: "Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung."
+      - label: "Sistem Informasi Manajemen Bangunan Gedung (SIMBG)"
+        url: "https://simbg.pu.go.id/"
+        description: "Portal resmi untuk informasi dan layanan bangunan gedung."
 ---

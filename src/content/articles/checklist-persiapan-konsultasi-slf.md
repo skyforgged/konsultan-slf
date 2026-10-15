@@ -91,4 +91,15 @@ blocks:
         answer: "Tidak selalu. Kebutuhan dokumen dan pemeriksaan perlu ditentukan berdasarkan karakteristik bangunan serta ketentuan yang berlaku."
       - question: "Apa langkah berikutnya setelah inventarisasi?"
         answer: "Bahas kondisi dan dokumen yang tersedia dengan pihak pendamping yang kompeten, lalu tentukan ruang lingkup evaluasi dan tindak lanjut yang sesuai."
+  - component: source-links
+    id: "rujukan-resmi"
+    title: "Rujukan resmi untuk verifikasi"
+    intro: "Checklist ini hanya alat persiapan konsultasi. Verifikasi persyaratan dan alur terbaru melalui sumber pemerintah berikut; kebutuhan tiap bangunan dapat berbeda."
+    items:
+      - label: "PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR"
+        url: "https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung"
+        description: "Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung."
+      - label: "Sistem Informasi Manajemen Bangunan Gedung (SIMBG)"
+        url: "https://simbg.pu.go.id/"
+        description: "Portal resmi untuk memeriksa informasi layanan dan alur yang berlaku."
 ---
