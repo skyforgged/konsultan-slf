@@ -35,6 +35,18 @@ for (const file of pages) {
   const description = findMeta(html, 'name', 'description');
   if (!description) failures.push(`${page}: missing meta description`);
 
+  const ogTitle = findMeta(html, 'property', 'og:title');
+  const twitterTitle = findMeta(html, 'name', 'twitter:title');
+  const ogDescription = findMeta(html, 'property', 'og:description');
+  const twitterDescription = findMeta(html, 'name', 'twitter:description');
+  if (titleText && ogTitle && titleText !== ogTitle) failures.push(`${page}: og:title does not match the HTML title`);
+  if (titleText && twitterTitle && titleText !== twitterTitle) failures.push(`${page}: twitter:title does not match the HTML title`);
+  if (description && ogDescription && description !== ogDescription) failures.push(`${page}: og:description does not match the meta description`);
+  if (description && twitterDescription && description !== twitterDescription) failures.push(`${page}: twitter:description does not match the meta description`);
+  const ogImage = findMeta(html, 'property', 'og:image');
+  const twitterImage = findMeta(html, 'name', 'twitter:image');
+  if (ogImage && twitterImage && ogImage !== twitterImage) failures.push(`${page}: twitter:image does not match og:image`);
+
   const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b)[^>]*>/i.test(html);
   const canonicals = [...html.matchAll(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi)];
   if (noindex && canonicals.length > 0) {
