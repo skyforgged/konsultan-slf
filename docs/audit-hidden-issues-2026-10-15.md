@@ -33,10 +33,10 @@
 | B5 | `AGENTS.md` merujuk `.agents/skills/theme-data-separation/SKILL.md` dan skill daisyUI, tetapi `.agents/` ada di `.gitignore` (tidak ada di clone) dan daisyUI bukan dependensi. | Dokumen instruksi milik pemilik. |
 | B6 | Judul default blok `note` berbahasa Inggris ("INFO", "WARNING") pada situs `lang="id"`. | Tidak tampil saat ini (semua note punya judul). |
 | B7 | Nilai `ulid` buatan tangan, memuat huruf yang tidak valid di Crockford base32 (`L`, `O`, `U`); hanya panjang yang divalidasi; field tidak dipakai kode mana pun. | Data inert. |
-| B8 | UX/a11y: tiga `<h2>` kartu dukungan di hero beranda mendahului `<h2>` seksi; `scroll-behavior: smooth` tanpa `prefers-reduced-motion`; navigasi header beranda tersembunyi di bawah `md` tanpa menu; tidak ada skip link. | Preferensi desain. |
-| B9 | JSON-LD artikel memakai SVG sebagai `image` bawaan. | Pedoman Google lebih menyukai raster; dampak kecil. |
+| B8 | UX/a11y: tiga `<h2>` kartu dukungan di hero beranda mendahului `<h2>` seksi. | Sebagian ditangani: `prefers-reduced-motion` (commit `8baf100`), skip link (commit sebelumnya), dan navigasi mobile sekarang terlihat (commit `e259f1f`). Hierarki heading hero tetap perlu penilaian semantik/visual. |
+| B9 | JSON-LD artikel memakai SVG sebagai `image` bawaan. | **Sudah diperbaiki** pada commit `cbfb29c`: gunakan fallback raster untuk gambar artikel non-raster. CI lulus. |
 | B10 | Artikel demo `contoh-css-props.md` (`draft: true`, id 99) berada di direktori konten produksi; kelas Tailwind di dalamnya ikut masuk CSS hasil build. | Draft tersaring di semua titik; dampak hanya ukuran CSS. |
-| B11 | Tidak ada header keamanan (`vercel.json`). Koleksi `pages` mengabaikan `draft`. | Hardening opsional. |
+| B11 | Tidak ada header keamanan (`vercel.json`). Koleksi `pages` mengabaikan `draft`. | **Header keamanan sudah ditambahkan** pada commit `cc99b2f` (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, dan `Permissions-Policy`); CI lulus. Periksa header pada deployment produksi setelah deployment tersedia. Perilaku `draft` pada pages masih perlu audit terpisah. |
 
 ## C. Dependensi (`npm audit`)
 
