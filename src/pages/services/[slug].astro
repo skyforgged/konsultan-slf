@@ -78,13 +78,18 @@ const sourceItems = [
 
   <section class="relative isolate overflow-hidden bg-slate-950 text-white py-16 sm:py-20">
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-800/40 via-slate-950 to-slate-950"></div>
-    <div class="mx-auto max-w-7xl px-5">
+    <div class="mx-auto max-w-7xl px-5 md:grid md:grid-cols-2 md:gap-12 md:items-center">
       <div>
         {service.data.eyebrow && <p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">{service.data.eyebrow}</p>}
         <h1 class="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">{service.data.title}</h1>
         <p class="mt-5 text-lg leading-8 text-slate-300">{service.data.description}</p>
         <a href="#konsultasi" class="mt-8 inline-flex rounded-lg bg-blue-600 px-6 py-3.5 font-bold text-white no-underline transition hover:bg-blue-500">Konsultasi sekarang <span aria-hidden="true">→</span></a>
       </div>
+      {service.data.image && (
+        <div class="mt-10 md:mt-0 flex justify-center">
+          <img src={service.data.image} alt={service.data.imageAlt} class="h-auto max-h-56 w-full max-w-xs object-contain" width="560" height="420" loading="eager" />
+        </div>
+      )}
     </div>
   </section>
 
