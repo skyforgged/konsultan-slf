@@ -53,7 +53,13 @@ export async function validateContentRelations(): Promise<void> {
         throw new Error(`Article "${article.data.slug}" references missing or draft ${relatedType} ID ${relatedId}.`);
       }
     }
+    const relatedArticleIds = new Set<number>();
     for (const relatedIdValue of relatedArticles) {
+      if (relatedArticleIds.has(relatedIdValue)) {
+        throw new Error(`Article "${article.data.slug}" lists related article ID ${relatedIdValue} more than once.`);
+      }
+      relatedArticleIds.add(relatedIdValue);
+
       const target = articles.find((item) => item.data.id === relatedIdValue && !item.data.draft);
       if (!target) {
         throw new Error(`Article "${article.data.slug}" references missing, draft, or unpublished related article ID ${relatedIdValue}.`);
