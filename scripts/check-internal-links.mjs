@@ -32,7 +32,7 @@ for (const file of pages) {
     const attribute = match[1].toLowerCase();
     const value = decodeHtmlAttribute(match[3].trim());
     if (!value) continue;
-    const schemeProbe = value.replace(/[\\u0000-\\u0020]/g, '');
+    const schemeProbe = value.replace(/[\u0000-\u0020]/g, '');
     if (/^(?:javascript|vbscript):/i.test(schemeProbe)) {
       errors.push(`${relative(file)}: unsafe URL scheme in ${attribute}="${value}"`);
       continue;
