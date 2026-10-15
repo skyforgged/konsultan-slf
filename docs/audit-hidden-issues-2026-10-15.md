@@ -36,7 +36,7 @@
 | B8 | UX/a11y: tiga `<h2>` kartu dukungan di hero beranda mendahului `<h2>` seksi. | Sebagian ditangani: `prefers-reduced-motion` (commit `8baf100`), skip link (commit sebelumnya), dan navigasi mobile sekarang terlihat (commit `e259f1f`). Hierarki heading hero tetap perlu penilaian semantik/visual. |
 | B9 | JSON-LD artikel memakai SVG sebagai `image` bawaan. | **Sudah diperbaiki** pada commit `cbfb29c`: gunakan fallback raster untuk gambar artikel non-raster. CI lulus. |
 | B10 | Artikel demo `contoh-css-props.md` (`draft: true`, id 99) berada di direktori konten produksi; kelas Tailwind di dalamnya ikut masuk CSS hasil build. | Draft tersaring di semua titik; dampak hanya ukuran CSS. |
-| B11 | Tidak ada header keamanan (`vercel.json`). Koleksi `pages` mengabaikan `draft`. | **Header keamanan sudah ditambahkan** pada commit `cc99b2f` (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, dan `Permissions-Policy`); CI lulus. Periksa header pada deployment produksi setelah deployment tersedia. Perilaku `draft` pada pages masih perlu audit terpisah. |
+| B11 | Tidak ada header keamanan (`vercel.json`). Koleksi `pages` mengabaikan `draft`. | **Ditangani sebagian besar:** header keamanan ditambahkan pada commit `cc99b2f`; rute statis home, articles, services, kontak, dan 404 kini menggagalkan build bila entri page ditandai `draft` (commit `ed0a397`, `8b003bd`, `e7859d0`, `ac3ebeb`, `66224b6`). Semua CI terkait lulus. Verifikasi header HTTP aktual tetap menunggu deployment produksi. |
 
 ## C. Dependensi (`npm audit`)
 
