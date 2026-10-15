@@ -23,7 +23,7 @@ const headings = article.data.blocks.flatMap((block) => {
     block.component === 'document-list' ||
     block.component === 'feature-card-grid'
   ) {
-    return [{ depth: 2, text: block.title, slug: block.id }];
+    return [{ depth: 2, text: block.title, slug: `${block.id}-title` }];
   }
 
   return [];
