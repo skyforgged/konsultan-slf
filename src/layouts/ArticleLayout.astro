@@ -42,7 +42,7 @@ const articleJsonLd = JSON.stringify({
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
   {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
     <SiteHeader />
-  <main class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
+  <main id="main-content" class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
     {tocItems.length > 0 && (
       <aside class="self-start lg:sticky lg:top-6">
         <details class="rounded-xl border border-slate-200 p-4 lg:hidden">
