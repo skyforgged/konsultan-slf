@@ -114,6 +114,47 @@ const articles = defineCollection({
         ])).default([]),
         class: z.record(z.string()).optional(),
       }),
+      z.object({
+        component: z.literal('process-timeline'),
+        id: z.string().min(1),
+        title: z.string().min(1),
+        steps: z.array(z.object({
+          title: z.string().min(1),
+          description: z.string().min(1),
+        })).min(1),
+      }),
+      z.object({
+        component: z.literal('checklist-card'),
+        id: z.string().min(1),
+        title: z.string().min(1),
+        description: z.string().optional(),
+        items: z.array(z.object({
+          label: z.string().min(1),
+          detail: z.string().optional(),
+          required: z.boolean().optional(),
+        })).min(1),
+        note: z.string().optional(),
+      }),
+      z.object({
+        component: z.literal('comparison-table'),
+        id: z.string().min(1),
+        title: z.string().min(1),
+        intro: z.string().optional(),
+        headers: z.array(z.string().min(1)).min(1),
+        rows: z.array(z.array(z.string().min(1)).min(1)).min(1),
+        note: z.string().optional(),
+      }),
+      z.object({
+        component: z.literal('document-list'),
+        id: z.string().min(1),
+        title: z.string().min(1),
+        intro: z.string().optional(),
+        items: z.array(z.object({
+          name: z.string().min(1),
+          purpose: z.string().optional(),
+          mandatory: z.boolean().optional(),
+        })).min(1),
+      }),
     ])).default([]),
   }),
 });
