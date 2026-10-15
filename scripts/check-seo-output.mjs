@@ -56,7 +56,10 @@ for (const file of pages) {
   }
 
   const canonicalTag = canonicals[0]?.[0];
-  const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href') : null;
+  const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href')?.trim() : null;
+  if (!noindex && canonicals.length === 1 && !canonicalHref) {
+    failures.push(`${page}: canonical link must have a non-empty href`);
+  }
   if (!noindex && canonicalHref && isAbsoluteHttpUrl(canonicalHref)) {
     const previousPage = canonicalOwners.get(canonicalHref);
     if (previousPage && previousPage !== page) {
@@ -84,7 +87,15 @@ for (const file of pages) {
     ['name', 'twitter:description'],
     ['name', 'twitter:image'],
   ]) {
-    if (!findMeta(html, attribute, value)) failures.push(`${page}: missing ${value} metadata`);
+    const matchingTags = (html.match(/<meta\\b[^>]*>/gi) ?? [])
+      .filter((tag) => getAttr(tag, attribute)?.toLowerCase() === value.toLowerCase());
+    if (matchingTags.length === 0) {
+      failures.push(`${page}: missing ${value} metadata`);
+    } else if (matchingTags.length > 1) {
+      failures.push(`${page}: expected exactly one ${value} metadata tag, found ${matchingTags.length}`);
+    } else if (!decodeHtmlEntities(getAttr(matchingTags[0], 'content') ?? '').trim()) {
+      failures.push(`${page}: ${value} metadata content must not be empty`);
+    }
   }
 
   const canonicalOrigin = canonicalHref && isAbsoluteHttpUrl(canonicalHref) ? new URL(canonicalHref).origin : null;
