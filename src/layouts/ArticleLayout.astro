@@ -86,5 +86,5 @@ const articleJsonLd = JSON.stringify({
       <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
-    <SiteFooter />
+    <SiteFooter group={article.data.category === 'SLF' || article.data.category?.includes('SLF') ? 'slf' : article.data.category === 'PBG' ? 'pbg' : undefined} />
 </BaseLayout>
