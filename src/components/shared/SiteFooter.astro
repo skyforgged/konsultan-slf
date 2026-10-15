@@ -24,7 +24,7 @@ const year = new Date().getFullYear();
         />
       </a>
       <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{ui.footer.tagline}</p>
-      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address}</p>}
+      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address.full || `${site.address.street}, ${site.address.city}`}</p>}
       <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
         {site.whatsapp && (
           <a class="no-underline transition hover:text-white" href={`https://wa.me/${site.whatsapp}`}>{ui.contact.whatsappLabel}</a>
