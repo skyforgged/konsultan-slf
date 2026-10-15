@@ -45,10 +45,10 @@
 
 5. **Image hero** — Service image saat ini max-w-60 (kecil). Apakah mau diperbesar seperti article (max-w-2xl)?
 
-## Keputusan yang Perlu Diambil
+## Keputusan yang Diambil
 
-- [ ] TOC: ya / tidak
-- [ ] Related articles slot: ya (default) / tidak
-- [ ] CTA: di layout / tetap di page
-- [ ] Footer: context-aware per serviceGroup
-- [ ] Image hero: keep small / resize to article-size
+- [x] TOC: tidak
+- [x] Related articles slot: ya (default)
+- [x] CTA: tetap di page (service punya CTA custom per layanan)
+- [x] Footer: context-aware per serviceTitle (title layanan saat ini)
+- [x] Image hero: resize ke max-w-2xl (sama dengan article)
