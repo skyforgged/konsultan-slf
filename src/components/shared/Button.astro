@@ -1,6 +1,38 @@
 ---
-const { variant = 'primary', size = 'md', disabled = false, type = 'button' } = Astro.props;
+/**
+ * Button — styled action button component.
+ *
+ * Props:
+ * - variant?: 'primary' | 'secondary' | 'ghost' | 'outline' — style (default: 'primary')
+ * - size?: 'sm' | 'md' | 'lg' — size (default: 'md')
+ * - disabled?: boolean — disabled state (default: false)
+ * - type?: 'button' | 'submit' | 'reset' — button type (default: 'button')
+ *
+ * Usage:
+ * <Button variant="primary">Submit</Button>
+ * <Button variant="ghost" size="sm">Batal</Button>
+ * <Button variant="outline" disabled>Locked</Button>
+ */
 ---
-<button type={type} disabled={disabled} class={`btn btn-${variant} btn-${size}`}>
+const { variant = 'primary', size = 'md', disabled = false, type = 'button' } = Astro.props;
+
+const variantClasses = {
+  primary: 'bg-blue-600 text-white hover:bg-blue-700 disabled:bg-slate-300',
+  secondary: 'bg-slate-100 text-slate-700 hover:bg-slate-200 disabled:bg-slate-50',
+  ghost: 'bg-transparent text-slate-700 hover:bg-slate-100 disabled:text-slate-400',
+  outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:border-slate-200',
+} as const;
+
+const sizeClasses = {
+  sm: 'text-sm px-3 py-1.5',
+  md: 'text-base px-4 py-2',
+  lg: 'text-lg px-6 py-3',
+} as const;
+
+const vClass = variantClasses[variant as keyof typeof variantClasses] ?? variantClasses.primary;
+const sClass = sizeClasses[size as keyof typeof sizeClasses] ?? sizeClasses.md;
+---
+
+<button type={type} disabled={disabled} class={`${vClass} ${sClass}`}>
   <slot />
 </button>
