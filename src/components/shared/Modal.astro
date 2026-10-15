@@ -3,7 +3,7 @@
  * Modal — native HTML dialog with Tailwind styling; no DaisyUI dependency.
  * When open=true, the dialog is opened as a modal in the browser.
  */
-const { open = false, title, size = 'md' } = Astro.props;
+const { id, open = false, title, size = 'md' } = Astro.props;
 const sizes: Record<string, string> = {
   sm: 'max-w-sm',
   md: 'max-w-md',
@@ -12,6 +12,7 @@ const sizes: Record<string, string> = {
 };
 ---
 <dialog
+  id={id}
   data-modal
   data-open={open ? 'true' : 'false'}
   aria-label={title ?? 'Dialog'}
@@ -40,5 +41,17 @@ const sizes: Record<string, string> = {
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
     });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const trigger = event.target.closest<HTMLElement>('[data-modal-open]');
+    const targetId = trigger?.dataset.modalOpen;
+    if (!targetId) return;
+
+    const dialog = document.getElementById(targetId);
+    if (dialog instanceof HTMLDialogElement && dialog.matches('[data-modal]') && !dialog.open) {
+      dialog.showModal();
+    }
   });
 </script>
