@@ -7,6 +7,8 @@ description: "Penjelasan awal tentang SLF, persiapan dokumen, dan hal yang perlu
 pubDate: 2026-01-15
 type: "article"
 category: "SLF"
+relatedType: "service"
+relatedId: 101
 blocks:
   - component: section
     id: "pengertian-slf"
