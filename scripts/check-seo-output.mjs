@@ -9,6 +9,7 @@ let socialImagesChecked = 0;
 let rasterFallbackChecked = false;
 const canonicalUrls = new Set();
 const canonicalOwners = new Map();
+const descriptionOwners = new Map();
 let robotsSitemapUrl = null;
 
 try {
@@ -40,7 +41,7 @@ for (const file of pages) {
   const description = descriptionTags.length === 1
     ? decodeHtmlEntities(getAttr(descriptionTags[0], 'content') ?? '').trim()
     : null;
-  if (descriptionTags.length === 1 && !description) failures.push(`${page}: meta description must not be empty`);
+  if (descriptionTags.length === 1 && !description) failures.push(`${page}: meta description must not be empty`);\n  if (description && !noindex) {\n    const normalizedDescription = description.replace(/\\s+/g, ' ').toLocaleLowerCase('id-ID');\n    const previousPage = descriptionOwners.get(normalizedDescription);\n    if (previousPage && previousPage !== page) {\n      failures.push(`${page}: meta description duplicates ${previousPage}`);\n    } else {\n      descriptionOwners.set(normalizedDescription, page);\n    }\n  }
 
   const ogTitle = findMeta(html, 'property', 'og:title');
   const twitterTitle = findMeta(html, 'name', 'twitter:title');
