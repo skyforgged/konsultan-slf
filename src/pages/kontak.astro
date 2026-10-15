@@ -6,6 +6,7 @@ import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 const page = await getEntry('pages', 'kontak');
 if (!page) throw new Error('Missing "kontak" page content entry.');
+if (page.data.draft) throw new Error('Page "kontak" is marked draft but has a statically defined route.');
 const header = page.data.pageHeader;
 if (!header) throw new Error('Missing "kontak" page content header.');
 ---
