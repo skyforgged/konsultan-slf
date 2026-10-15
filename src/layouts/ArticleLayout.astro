@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
@@ -16,6 +17,13 @@ const canonical = `/articles/${article.data.slug}/`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const articleUrl = new URL(canonical, siteUrl).toString();
 const articleImage = new URL(article.data.image ?? ui.article.defaultImage, siteUrl).toString();
+
+let footerServiceTitle: string | undefined;
+if (article.data.relatedType === 'service' && article.data.relatedId) {
+  const services = await getCollection('services');
+  const related = services.find((s) => s.data.id === article.data.relatedId && !s.data.draft && s.data.status === 'active');
+  if (related) footerServiceTitle = related.data.title;
+}
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': article.data.schemaType,
@@ -86,5 +94,5 @@ const articleJsonLd = JSON.stringify({
       <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
-    <SiteFooter group={article.data.category === 'SLF' || article.data.category?.includes('SLF') ? 'slf' : article.data.category === 'PBG' ? 'pbg' : undefined} />
+    <SiteFooter serviceTitle={footerServiceTitle} group={footerServiceTitle ? undefined : (article.data.category === 'SLF' || article.data.category?.includes('SLF') ? 'slf' : article.data.category === 'PBG' ? 'pbg' : undefined)} />
 </BaseLayout>

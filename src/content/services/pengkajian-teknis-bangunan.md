@@ -5,7 +5,7 @@ type: "service"
 slug: "pengkajian-teknis-bangunan"
 title: "Pendampingan Pengkajian Teknis Bangunan"
 description: "Pemetaan kebutuhan pengkajian teknis berdasarkan fungsi, kondisi aktual, dokumen, dan tujuan evaluasi bangunan."
-serviceGroup: "slf"
+serviceGroup: "pbg"
 order: 50
 draft: false
 status: active

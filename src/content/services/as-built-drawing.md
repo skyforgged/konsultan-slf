@@ -5,7 +5,7 @@ type: "service"
 slug: "as-built-drawing"
 title: "Pendampingan As-Built Drawing"
 description: "Pemetaan kebutuhan gambar kondisi terbangun berdasarkan dokumen lama, perubahan bangunan, dan kebutuhan penggunaannya."
-serviceGroup: "slf"
+serviceGroup: "pbg"
 order: 60
 draft: false
 status: active

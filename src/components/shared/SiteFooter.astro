@@ -6,22 +6,28 @@ import { site } from '../../config/site.ts';
 export interface Props {
   ariaLabel?: string;
   group?: 'slf' | 'pbg';
+  serviceTitle?: string;
 }
 
-const { ariaLabel = ui.nav.footerAriaLabel, group } = Astro.props;
+const { ariaLabel = ui.nav.footerAriaLabel, group, serviceTitle } = Astro.props;
 const year = new Date().getFullYear();
 
-const filter = group ? (s: any) => !s.data.draft && s.data.status === 'active' && s.data.serviceGroup === group : (s: any) => !s.data.draft && s.data.status === 'active';
-const allServices = await getCollection('services', filter);
-const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
-const serviceLabels = activeServices.map((s) => {
-  const t = s.data.title;
-  const m = t.match(/\(([^)]+)\)$/);
-  return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
-});
-const footerTagline = serviceLabels.length > 0
-  ? `${site.name} menyediakan jasa${serviceLabels.length === 1 ? ' ' + serviceLabels[0] : ' ' + serviceLabels.slice(0, -1).join(', ') + ' dan ' + serviceLabels.at(-1)}.`
-  : ui.footer.tagline;
+let footerTagline = ui.footer.tagline;
+if (serviceTitle) {
+  footerTagline = `${site.name} melayani jasa ${serviceTitle}.`;
+} else {
+  const filter = group ? (s: any) => !s.data.draft && s.data.status === 'active' && s.data.serviceGroup === group : (s: any) => !s.data.draft && s.data.status === 'active';
+  const allServices = await getCollection('services', filter);
+  const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
+  const serviceLabels = activeServices.map((s) => {
+    const t = s.data.title;
+    const m = t.match(/\(([^)]+)\)$/);
+    return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
+  });
+  if (serviceLabels.length > 0) {
+    footerTagline = `${site.name} menyediakan jasa${serviceLabels.length === 1 ? ' ' + serviceLabels[0] : ' ' + serviceLabels.slice(0, -1).join(', ') + ' dan ' + serviceLabels.at(-1)}.`;
+  }
+}
 ---
 <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2">
