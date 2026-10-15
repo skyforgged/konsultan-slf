@@ -1,4 +1,14 @@
 ---
+/**
+ * ArticleCard — article summary card for article listings.
+ *
+ * Props:
+ * - article: CollectionEntry<'articles'> — article data from content collection
+ *
+ * Usage:
+ * <ArticleCard article={article} />
+ */
+---
 const { article } = Astro.props;
 const href = `/articles/${article.data.slug}/`;
 ---
