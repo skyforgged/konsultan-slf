@@ -21,7 +21,8 @@ const headings = article.data.blocks.flatMap((block) => {
     block.component === 'checklist-card' ||
     block.component === 'comparison-table' ||
     block.component === 'document-list' ||
-    block.component === 'feature-card-grid'
+    block.component === 'feature-card-grid' ||
+    block.component === 'source-links'
   ) {
     return [{ depth: 2, text: block.title, slug: `${block.id}-title` }];
   }
