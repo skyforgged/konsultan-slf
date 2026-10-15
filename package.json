@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs",
+    "build": "astro check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
