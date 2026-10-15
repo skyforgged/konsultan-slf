@@ -163,3 +163,27 @@ Audit tersisa dipusatkan pada empat kelompok, bukan mengulang fondasi implementa
 - **Belum terkonfirmasi:** build untuk commit terbaru dan deployment publik terbaru.
 - **Belum selesai:** pengujian browser dan pemeriksaan langsung situs produksi.
 - **Tidak termasuk fakta yang boleh diasumsikan:** nomor kontak, klaim kompetensi, harga, testimoni, portofolio, atau janji waktu/hasil layanan tanpa bukti dan konfirmasi pemilik usaha.
+
+
+## 10. Pembaruan audit — 2026-10-15 (lanjutan)
+
+### Perbaikan dan verifikasi terbaru
+
+- Fallback gambar sosial artikel diubah dari `/images/og-default.svg` menjadi `/images/og-default.png` agar fallback artikel menggunakan aset raster yang tersedia. Perubahan masuk ke `main` melalui PR #4, merge commit `8ee9ffdcf24fd2f681b103f08047797e74a36250`.
+- Dua skrip debug sementara (`scripts/debug-seo.mjs` dan `scripts/debug-seo2.mjs`) dihapus melalui PR #5; validator resmi `scripts/check-seo-output.mjs` tetap menjadi bagian dari build.
+- GitHub Actions untuk commit `2273d0706ee74795f317e0bc5725b68cfed05823` selesai dengan status **success**. Pemeriksaan Vercel untuk commit yang sama juga berstatus **success**.
+- Validasi source menunjukkan `validateContentRelations()` dijalankan dari halaman beranda saat build, memeriksa ID/slug unik, ID blok duplikat, bentuk tabel, dan relasi artikel ke target yang dipublikasikan.
+
+### Pemeriksaan yang belum dapat diklaim selesai
+
+- Pemeriksaan langsung URL publik dari lingkungan audit tidak berhasil dilakukan; alat audit tidak dapat mengakses domain. Ini **bukan bukti bahwa situs sedang down** dan bukan pengganti pengujian dari browser pengguna.
+- Responsive layout, keyboard navigation, perilaku daftar isi/sticky sidebar, status HTTP publik, dan rendering crawler sosial tetap memerlukan pemeriksaan browser/HTTP langsung.
+- Materi SLF/PBG masih perlu ditinjau terhadap sumber resmi dan diberi tanggal peninjauan. Rujukan utama yang ditemukan: [PP Nomor 16 Tahun 2021 pada JDIH Kementerian Pekerjaan Umum](https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung) dan [portal resmi SIMBG](https://simbg.pu.go.id/). Kebutuhan dokumen dan penerapan untuk bangunan tertentu tetap harus diverifikasi sesuai kasus dan ketentuan yang berlaku.
+
+### Status terkini
+
+- Build CI dan pemeriksaan Vercel pada commit di atas: **lulus**.
+- Fallback gambar sosial raster: **sudah diterapkan**.
+- Skrip debug sementara: **sudah dibersihkan**.
+- Audit browser dan verifikasi langsung URL publik: **belum selesai**.
+- Peninjauan konten teknis SLF/PBG dengan rujukan resmi: **masih terbuka**.
