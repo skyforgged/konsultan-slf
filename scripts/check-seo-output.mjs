@@ -32,8 +32,15 @@ for (const file of pages) {
   const titleText = decodeHtmlEntities(titleTags[0]?.[1].replace(/<[^>]*>/g, '')).trim();
   if (!titleText) failures.push(`${page}: <title> must not be empty`);
 
-  const description = findMeta(html, 'name', 'description');
-  if (!description) failures.push(`${page}: missing meta description`);
+  const descriptionTags = (html.match(/<meta\\b[^>]*>/gi) ?? [])
+    .filter((tag) => getAttr(tag, 'name')?.toLowerCase() === 'description');
+  if (descriptionTags.length !== 1) {
+    failures.push(`${page}: expected exactly one meta description, found ${descriptionTags.length}`);
+  }
+  const description = descriptionTags.length === 1
+    ? decodeHtmlEntities(getAttr(descriptionTags[0], 'content') ?? '').trim()
+    : null;
+  if (descriptionTags.length === 1 && !description) failures.push(`${page}: meta description must not be empty`);
 
   const ogTitle = findMeta(html, 'property', 'og:title');
   const twitterTitle = findMeta(html, 'name', 'twitter:title');
