@@ -9,9 +9,10 @@
  * Usage:
  * <StatsGrid id="stats" items={[{value: "50+", label: "Proyek SLF"}, {value: "98%", label: "Tingkat Kelulusan"}]} />
  */
+import { ui } from '../../config/ui.ts';
 const { id, items } = Astro.props as { id: string; items: {value: string; label: string}[] };
 ---
-<section id={id} class="py-12 bg-slate-50" aria-label="Ringkasan layanan">
+<section id={id} class="py-12 bg-slate-50" aria-label={ui.stats.ariaLabel}>
   <div class="max-w-7xl mx-auto px-5 stats-container grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
     {items.map((item: {value: string; label: string}) => (
       <div class="stat-card text-center">

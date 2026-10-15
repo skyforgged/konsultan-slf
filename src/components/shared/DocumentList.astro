@@ -11,6 +11,7 @@
  * Usage:
  * <DocumentList id="dokumen" title="Dokumen yang Diperlukan" items={[{name: "KTP", purpose: "Identitas", mandatory: true}]} />
  */
+import { ui } from '../../config/ui.ts';
 const { id, title, intro, items } = Astro.props;
 ---
 <section id={id} class="my-10" aria-labelledby={`${id}-title`}>
@@ -24,7 +25,7 @@ const { id, title, intro, items } = Astro.props;
           <div>
             <h3 class="font-bold leading-snug text-slate-900">{item.name}</h3>
             {item.purpose && <p class="mt-2 text-sm leading-6 text-slate-600">{item.purpose}</p>}
-            {item.mandatory && <span class="mt-3 inline-block rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-800">Perlu disiapkan</span>}
+            {item.mandatory && <span class="mt-3 inline-block rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-800">{ui.blocks.documentMandatoryLabel}</span>}
           </div>
         </div>
       </li>

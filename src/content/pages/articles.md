@@ -1,0 +1,17 @@
+---
+id: 3
+ulid: "01HQRT4X5Z9K3M2N7P6Q8S5T4X"
+title: "Artikel dan Panduan SLF/PBG"
+description: "Artikel dan panduan untuk memahami SLF, PBG, persiapan dokumen, dan proses perizinan bangunan."
+type: "page"
+slug: "articles"
+draft: false
+navLabel: "Artikel"
+canonical: "/articles/"
+pageHeader:
+  eyebrow: "Pusat informasi"
+  heading: "Artikel dan panduan SLF/PBG"
+  intro: "Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan."
+  image: "/images/illustrations/article-guide.svg"
+  imageAlt: "Ilustrasi buku panduan dan catatan"
+---

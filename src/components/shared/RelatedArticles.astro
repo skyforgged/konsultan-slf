@@ -3,7 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 import { articlesForParent } from '../../utils/related';
 import type { RelatedType } from '../../utils/related';
 import ArticleCard from './ArticleCard.astro';
-const { articles = [], type, id, excludeId, heading = 'Artikel Terkait' } = Astro.props as {
+import { ui } from '../../config/ui.ts';
+const { articles = [], type, id, excludeId, heading = ui.article.relatedHeadingAlt } = Astro.props as {
   articles?: CollectionEntry<'articles'>[];
   type: RelatedType;
   id: number;

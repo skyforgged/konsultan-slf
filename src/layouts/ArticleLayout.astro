@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import { ui } from '../config/ui.ts';
 import '../styles/global.css';
 const { article, headings = [] } = Astro.props as {
   article: CollectionEntry<'articles'>;
@@ -12,7 +13,7 @@ const description = article.data.description;
 const canonical = `/articles/${article.data.slug}/`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const articleUrl = new URL(canonical, siteUrl).toString();
-const articleImage = new URL(article.data.image ?? '/images/illustrations/article-document.svg', siteUrl).toString();
+const articleImage = new URL(article.data.image ?? ui.article.defaultImage, siteUrl).toString();
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': article.data.schemaType,
@@ -26,24 +27,24 @@ const articleJsonLd = JSON.stringify({
   publisher: {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
-    name: 'Konsultan SLF & PBG',
+    name: ui.brand.name,
     url: siteUrl,
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
   url: articleUrl,
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? '/images/og-default.svg'} imageAlt={article.data.image ? `Ilustrasi artikel: ${pageTitle}` : 'Pratinjau sosial Konsultan SLF & PBG'}>
+<BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt}>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <meta slot="head" property="article:published_time" content={article.data.pubDate.toISOString()} />
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
   {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
   <header class="border-b border-slate-200 bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi artikel">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt="Konsultan SLF &amp; PBG" class="h-9 w-auto max-w-[190px]" width="760" height="150" /></a>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label={ui.nav.articleAriaLabel}>
+      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-9 w-auto max-w-[190px]" width="760" height="150" /></a>
       <div class="flex items-center gap-5 text-sm font-semibold">
-        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">Layanan</a>
-        <a href="/articles/" class="text-slate-600 no-underline hover:text-blue-800">Artikel</a>
+        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.services}</a>
+        <a href="/articles/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.articles}</a>
       </div>
     </nav>
   </header>
@@ -51,15 +52,15 @@ const articleJsonLd = JSON.stringify({
     {tocItems.length > 0 && (
       <aside class="self-start lg:sticky lg:top-6">
         <details class="rounded-xl border border-slate-200 p-4 lg:hidden">
-          <summary class="cursor-pointer font-semibold text-slate-800">Daftar isi artikel</summary>
-          <nav class="mt-3" aria-label="Daftar isi artikel">
+          <summary class="cursor-pointer font-semibold text-slate-800">{ui.article.tocMobile}</summary>
+          <nav class="mt-3" aria-label={ui.article.tocAriaLabel}>
             <ul class="space-y-2 pl-4 text-sm">
               {tocItems.map((item) => <li class={item.depth === 3 ? 'ml-4' : ''}><a class="text-slate-600 hover:text-blue-700" href={`#${item.slug}`}>{item.text}</a></li>)}
             </ul>
           </nav>
         </details>
-        <nav class="hidden lg:block" aria-label="Daftar isi artikel">
-          <p class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Daftar isi</p>
+        <nav class="hidden lg:block" aria-label={ui.article.tocAriaLabel}>
+          <p class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">{ui.article.tocTitle}</p>
           <ul class="space-y-2 border-l border-slate-200 pl-4">
             {tocItems.map((item) => <li class={item.depth === 3 ? 'ml-4' : ''}><a class="text-sm text-slate-600 no-underline hover:text-blue-700" href={`#${item.slug}`}>{item.text}</a></li>)}
           </ul>
@@ -71,11 +72,11 @@ const articleJsonLd = JSON.stringify({
         {article.data.category && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{article.data.category}</p>}
         <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{pageTitle}</h1>
         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
-        <img src={article.data.image ?? '/images/illustrations/article-document.svg'} alt={`Ilustrasi: ${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
+        <img src={article.data.image ?? ui.article.defaultImage} alt={`${ui.article.inlineAltPrefix}${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-          {article.data.updatedDate && <span>Diperbarui: {article.data.updatedDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>}
-          {article.data.author && <span>Penulis: {article.data.author}</span>}
+          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+          {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</span>}
+          {article.data.author && <span>{ui.article.authorPrefix} {article.data.author}</span>}
         </div>
       </header>
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
@@ -84,17 +85,17 @@ const articleJsonLd = JSON.stringify({
   <section class="border-t border-slate-200 bg-blue-50/60">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
       <div class="max-w-2xl">
-        <h2 class="text-xl font-extrabold tracking-tight text-slate-950">Perlu meninjau kebutuhan bangunan Anda?</h2>
-        <p class="mt-2 leading-7 text-slate-600">Baca pilihan layanan dan siapkan informasi bangunan untuk menentukan langkah konsultasi berikutnya. Kebutuhan akhir tetap ditinjau sesuai kondisi bangunan.</p>
+        <h2 class="text-xl font-extrabold tracking-tight text-slate-950">{ui.article.ctaHeading}</h2>
+        <p class="mt-2 leading-7 text-slate-600">{ui.article.ctaText}</p>
       </div>
-      <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">Lihat layanan konsultasi</a>
+      <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
   <slot name="related" />
   <footer class="border-t border-slate-200 bg-slate-50">
     <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt="Konsultan SLF &amp; PBG" class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
-      <a href="/articles/" class="font-semibold text-blue-700 no-underline hover:text-blue-900">Kembali ke artikel</a>
+      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
+      <a href="/articles/" class="font-semibold text-blue-700 no-underline hover:text-blue-900">{ui.article.backLink}</a>
     </div>
   </footer>
 </BaseLayout>

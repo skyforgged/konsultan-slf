@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import ArticleCard from './ArticleCard.astro';
-const { articles = [], relatedIds = [], heading = 'Artikel terkait' } = Astro.props as {
+import { ui } from '../../config/ui.ts';
+const { articles = [], relatedIds = [], heading = ui.article.relatedHeading } = Astro.props as {
   articles: CollectionEntry<'articles'>[];
   relatedIds: number[];
   heading?: string;

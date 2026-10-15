@@ -1,44 +1,49 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/shared/ArticleCard.astro';
+import { ui } from '../../config/ui.ts';
+const page = await getEntry('pages', 'articles');
+if (!page) throw new Error('Missing "articles" page content entry.');
+const header = page.data.pageHeader;
+if (!header) throw new Error('Missing "articles" page content header.');
 const allArticles = await getCollection('articles');
 const articles = allArticles
   .filter((a: CollectionEntry<'articles'>) => !a.data.draft)
   .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
 ---
-<BaseLayout title="Artikel dan Panduan SLF/PBG" description="Artikel dan panduan untuk memahami SLF, PBG, persiapan dokumen, dan proses perizinan bangunan." canonical="/articles/">
+<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} canonical={page.data.canonical} noindex={page.data.noindex}>
   <header class="border-b border-slate-200 bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navigasi artikel">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt="Konsultan SLF &amp; PBG" class="h-9 w-auto max-w-[190px]" width="760" height="150" /></a>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label={ui.nav.articleAriaLabel}>
+      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-9 w-auto max-w-[190px]" width="760" height="150" /></a>
       <div class="flex items-center gap-5 text-sm font-semibold">
-        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">Layanan</a>
-        <a href="/" class="text-slate-600 no-underline hover:text-blue-800">Beranda</a>
+        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.services}</a>
+        <a href="/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.home}</a>
       </div>
     </nav>
   </header>
   <main class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
     <header class="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr]">
       <div class="max-w-3xl">
-        <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">Pusat informasi</p>
-        <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Artikel dan panduan SLF/PBG</h1>
-        <p class="mt-4 text-lg leading-8 text-slate-600">Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan.</p>
+        <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">{header.eyebrow}</p>
+        <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">{header.heading}</h1>
+        <p class="mt-4 text-lg leading-8 text-slate-600">{header.intro}</p>
       </div>
-      <img src="/images/illustrations/article-guide.svg" alt="Ilustrasi buku panduan dan catatan" class="mx-auto w-full max-w-md" width="560" height="360" fetchpriority="high" />
+      <img src={header.image} alt={header.imageAlt} class="mx-auto w-full max-w-md" width="560" height="360" fetchpriority="high" />
     </header>
     {articles.length ? (
       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => <ArticleCard article={article} />)}
       </div>
     ) : (
-      <p class="mt-10 rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">Artikel akan ditampilkan setelah konten diterbitkan.</p>
+      <p class="mt-10 rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">{ui.article.emptyList}</p>
     )}
   </main>
   <footer class="border-t border-slate-200 bg-slate-50">
     <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-7 sm:flex-row sm:items-center sm:justify-between">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt="Konsultan SLF &amp; PBG" class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
-      <p class="text-sm text-slate-500">Pendampingan perizinan bangunan dengan informasi yang jelas dan terarah.</p>
+      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
+      <p class="text-sm text-slate-500">{ui.footer.tagline}</p>
     </div>
   </footer>
 </BaseLayout>

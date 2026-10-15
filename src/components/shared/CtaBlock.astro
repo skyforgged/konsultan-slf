@@ -1,6 +1,7 @@
 ---
 import { site } from '../../config/site.ts';
-const { heading, message, button = 'Konsultasi via WhatsApp', class: css } = Astro.props;
+import { ui } from '../../config/ui.ts';
+const { heading, message, button = ui.ctaBlock.defaultButton, class: css } = Astro.props;
 const hasWhatsapp = /^\d{8,15}$/.test(site.whatsapp);
 const href = hasWhatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}` : undefined;
 ---
@@ -10,6 +11,6 @@ const href = hasWhatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURICompo
   {href ? (
     <a href={href} target="_blank" rel="noopener noreferrer" class={`inline-flex items-center gap-2 rounded-lg bg-green-600 px-5 py-2.5 font-semibold text-white transition hover:bg-green-700 ${css?.button ?? ''}`}>{button}</a>
   ) : (
-    <p class="text-sm text-slate-600">Kanal WhatsApp belum dikonfigurasi. Pastikan nomor kontak resmi diatur sebelum blok CTA ini dipublikasikan.</p>
+    <p class="text-sm text-slate-600">{ui.ctaBlock.whatsappMissing}</p>
   )}
 </section>

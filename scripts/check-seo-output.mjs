@@ -29,7 +29,7 @@ for (const file of pages) {
 
   const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
   if (titleTags.length !== 1) failures.push(`${page}: expected exactly one <title>, found ${titleTags.length}`);
-  const titleText = titleTags[0]?.[1].replace(/<[^>]*>/g, '').trim();
+  const titleText = decodeHtmlEntities(titleTags[0]?.[1].replace(/<[^>]*>/g, '')).trim();
   if (!titleText) failures.push(`${page}: <title> must not be empty`);
 
   const description = findMeta(html, 'name', 'description');
@@ -247,6 +247,10 @@ function validateJsonLd(data, page, failures) {
   }
 
   for (const item of objects) {
+    // Skip container objects that only have @context/@graph (structural wrappers)
+    const keys = Object.keys(item).filter((k) => !k.startsWith('@'));
+    if (keys.length === 0) continue;
+
     const typeValue = item['@type'];
     const types = Array.isArray(typeValue) ? typeValue : [typeValue];
     if (!types.some((type) => typeof type === 'string')) {
@@ -294,11 +298,23 @@ function validateJsonLd(data, page, failures) {
 function findMeta(html, key, value) {
   const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
   const tag = tags.find((candidate) => getAttr(candidate, key)?.toLowerCase() === value.toLowerCase());
-  return tag ? getAttr(tag, 'content') : null;
+  return tag ? decodeHtmlEntities(getAttr(tag, 'content')) : null;
+}
+
+function decodeHtmlEntities(value) {
+  return value
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&');
 }
 
 function getAttr(tag, name) {
-  const match = tag.match(new RegExp(`(?:^|\s)${name}\s*=\s*(["'])(.*?)\\1`, 'i'));
+  const match = tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(["'])(.*?)\\1`, 'i'));
   return match?.[2] ?? null;
 }
 

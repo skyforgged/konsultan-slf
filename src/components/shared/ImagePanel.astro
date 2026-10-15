@@ -11,9 +11,10 @@
  * Usage:
  * <ImagePanel id="illustration-1" src="/images/service.svg" alt="SLF Service" caption="Gambaran layanan SLF" />
  */
+import { ui } from '../../config/ui.ts';
 const { id, src, alt, caption } = Astro.props;
 ---
-<section id={id} class="py-12 bg-white" aria-label="Ilustrasi layanan">
+<section id={id} class="py-12 bg-white" aria-label={ui.imagePanel.ariaLabel}>
   <div class="max-w-7xl mx-auto px-5">
     <div class="relative mx-auto max-w-4xl">
       <img src={src} alt={alt} class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async" />

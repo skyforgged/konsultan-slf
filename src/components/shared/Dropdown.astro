@@ -1,5 +1,6 @@
 ---
-const { label = 'Menu', align = 'right' } = Astro.props;
+import { ui } from '../../config/ui.ts';
+const { label = ui.dialog.menuLabel, align = 'right' } = Astro.props;
 const alignment = align === 'left' ? 'left-0' : 'right-0';
 ---
 <details class="group relative inline-block">
