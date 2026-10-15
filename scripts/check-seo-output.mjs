@@ -33,6 +33,8 @@ for (const file of pages) {
   const titleText = decodeHtmlEntities(titleTags[0]?.[1].replace(/<[^>]*>/g, '')).trim();
   if (!titleText) failures.push(`${page}: <title> must not be empty`);
 
+  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b)[^>]*>/i.test(html);
+
   const descriptionTags = (html.match(/<meta\b[^>]*>/gi) ?? [])
     .filter((tag) => getAttr(tag, 'name')?.toLowerCase() === 'description');
   if (descriptionTags.length !== 1) {
@@ -41,7 +43,16 @@ for (const file of pages) {
   const description = descriptionTags.length === 1
     ? decodeHtmlEntities(getAttr(descriptionTags[0], 'content') ?? '').trim()
     : null;
-  if (descriptionTags.length === 1 && !description) failures.push(`${page}: meta description must not be empty`);\n  if (description && !noindex) {\n    const normalizedDescription = description.replace(/\\s+/g, ' ').toLocaleLowerCase('id-ID');\n    const previousPage = descriptionOwners.get(normalizedDescription);\n    if (previousPage && previousPage !== page) {\n      failures.push(`${page}: meta description duplicates ${previousPage}`);\n    } else {\n      descriptionOwners.set(normalizedDescription, page);\n    }\n  }
+  if (descriptionTags.length === 1 && !description) failures.push(`${page}: meta description must not be empty`);
+  if (description && !noindex) {
+    const normalizedDescription = description.replace(/\s+/g, ' ').toLocaleLowerCase('id-ID');
+    const previousPage = descriptionOwners.get(normalizedDescription);
+    if (previousPage && previousPage !== page) {
+      failures.push(`${page}: meta description duplicates ${previousPage}`);
+    } else {
+      descriptionOwners.set(normalizedDescription, page);
+    }
+  }
 
   const ogTitle = findMeta(html, 'property', 'og:title');
   const twitterTitle = findMeta(html, 'name', 'twitter:title');
@@ -55,7 +66,6 @@ for (const file of pages) {
   const twitterImage = findMeta(html, 'name', 'twitter:image');
   if (ogImage && twitterImage && ogImage !== twitterImage) failures.push(`${page}: twitter:image does not match og:image`);
 
-  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b)[^>]*>/i.test(html);
   const canonicals = [...html.matchAll(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi)];
   if (noindex && canonicals.length > 0) {
     failures.push(`${page}: noindex page must not include a canonical link`);
