@@ -32,7 +32,7 @@ for (const file of pages) {
   const titleText = decodeHtmlEntities(titleTags[0]?.[1].replace(/<[^>]*>/g, '')).trim();
   if (!titleText) failures.push(`${page}: <title> must not be empty`);
 
-  const descriptionTags = (html.match(/<meta\\b[^>]*>/gi) ?? [])
+  const descriptionTags = (html.match(/<meta\b[^>]*>/gi) ?? [])
     .filter((tag) => getAttr(tag, 'name')?.toLowerCase() === 'description');
   if (descriptionTags.length !== 1) {
     failures.push(`${page}: expected exactly one meta description, found ${descriptionTags.length}`);
