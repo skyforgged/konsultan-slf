@@ -14,3 +14,18 @@ a { text-underline-offset: 4px; }
 .prose-content h2 { margin-top: 2rem; font-size: 1.5rem; font-weight: 700; color: #172033; }
 .prose-content h3 { margin-top: 1.5rem; font-size: 1.2rem; font-weight: 650; }
 .prose-content p, .prose-content li { line-height: 1.8; color: #4b5563; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
