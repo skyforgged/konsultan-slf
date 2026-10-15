@@ -213,14 +213,36 @@ function validateJsonLd(data, page, failures) {
       for (const key of ['headline', 'datePublished', 'mainEntityOfPage', 'url']) {
         if (!item[key]) failures.push(`${page}: Article JSON-LD is missing required field "${key}"`);
       }
+      if (item.datePublished && !Number.isFinite(Date.parse(item.datePublished))) {
+        failures.push(`${page}: Article JSON-LD has an invalid datePublished value`);
+      }
+      if (item.dateModified && !Number.isFinite(Date.parse(item.dateModified))) {
+        failures.push(`${page}: Article JSON-LD has an invalid dateModified value`);
+      }
+      if (item.url && !isAbsoluteHttpUrl(item.url)) {
+        failures.push(`${page}: Article JSON-LD url must be an absolute HTTP(S) URL`);
+      }
     }
     if (types.includes('Service')) {
       for (const key of ['name', 'url', 'provider']) {
         if (!item[key]) failures.push(`${page}: Service JSON-LD is missing required field "${key}"`);
       }
+      if (item.url && !isAbsoluteHttpUrl(item.url)) {
+        failures.push(`${page}: Service JSON-LD url must be an absolute HTTP(S) URL`);
+      }
     }
-    if (types.includes('BreadcrumbList') && (!Array.isArray(item.itemListElement) || item.itemListElement.length === 0)) {
-      failures.push(`${page}: BreadcrumbList JSON-LD must contain itemListElement`);
+    if (types.includes('BreadcrumbList')) {
+      if (!Array.isArray(item.itemListElement) || item.itemListElement.length === 0) {
+        failures.push(`${page}: BreadcrumbList JSON-LD must contain itemListElement`);
+      } else {
+        for (const [index, entry] of item.itemListElement.entries()) {
+          if (!entry || typeof entry !== 'object' || !entry.name || !entry.item) {
+            failures.push(`${page}: BreadcrumbList item ${index + 1} must contain name and item`);
+          } else if (!isAbsoluteHttpUrl(typeof entry.item === 'string' ? entry.item : entry.item['@id'])) {
+            failures.push(`${page}: BreadcrumbList item ${index + 1} must use an absolute HTTP(S) URL`);
+          }
+        }
+      }
     }
   }
 }
