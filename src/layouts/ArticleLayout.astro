@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/shared/SiteHeader.astro';
+import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
 import '../styles/global.css';
 const { article, headings = [] } = Astro.props as {
@@ -39,15 +41,7 @@ const articleJsonLd = JSON.stringify({
   <meta slot="head" property="article:published_time" content={article.data.pubDate.toISOString()} />
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
   {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
-  <header class="border-b border-slate-200 bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label={ui.nav.articleAriaLabel}>
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-9 w-auto max-w-[190px]" width="760" height="150" /></a>
-      <div class="flex items-center gap-5 text-sm font-semibold">
-        <a href="/services/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.services}</a>
-        <a href="/articles/" class="text-slate-600 no-underline hover:text-blue-800">{ui.nav.articles}</a>
-      </div>
-    </nav>
-  </header>
+    <SiteHeader />
   <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
     {tocItems.length > 0 && (
       <aside class="self-start lg:sticky lg:top-6">
@@ -92,10 +86,5 @@ const articleJsonLd = JSON.stringify({
     </div>
   </section>
   <slot name="related" />
-  <footer class="border-t border-slate-200 bg-slate-50">
-    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-      <a href="/" class="inline-flex items-center no-underline"><img src="/images/logo-konsultan-slf-pbg.svg" alt={ui.brand.logoAlt} class="h-8 w-auto max-w-[180px]" width="760" height="150" loading="lazy" /></a>
-      <a href="/articles/" class="font-semibold text-blue-700 no-underline hover:text-blue-900">{ui.article.backLink}</a>
-    </div>
-  </footer>
+    <SiteFooter />
 </BaseLayout>
