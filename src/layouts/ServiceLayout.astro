@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/shared/SiteHeader.astro';
+import SiteFooter from '../components/shared/SiteFooter.astro';
+import { ui } from '../config/ui.ts';
+import '../styles/global.css';
+const { service, headings = [] } = Astro.props as {
+  service: CollectionEntry<'services'>;
+  headings?: Array<{ depth: number; text: string; slug: string }>;
+};
+const pageTitle = service.data.title;
+const description = service.data.description;
+const canonical = `/services/${service.data.slug}/`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
+const serviceUrl = new URL(canonical, siteUrl).toString();
+const serviceImageSource = service.data.image ?? ui.services.defaultImage;
+const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(serviceImageSource.split(/[?#]/)[0]);
+const serviceImage = new URL(isRasterImage ? serviceImageSource : ui.meta.defaultImage, siteUrl).toString();
+let footerServiceTitle: string | undefined = pageTitle;
+const serviceJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${serviceUrl}#service`,
+  name: pageTitle,
+  description,
+  inLanguage: 'id-ID',
+  image: [serviceImage],
+  url: serviceUrl,
+  serviceType: pageTitle,
+  provider: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: ui.brand.name,
+    url: siteUrl,
+  },
+}).replace(/</g, '\\u003c');
+---
+<BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt}>
+  <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
+  <SiteHeader />
+  <main id="main-content" class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
+    <article class="prose-content min-w-0">
+      <header class="mb-8 border-b border-slate-200 pb-7">
+        {service.data.eyebrow && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{service.data.eyebrow}</p>}
+        <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{pageTitle}</h1>
+        <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+        {service.data.image && <img src={service.data.image} alt={service.data.imageAlt} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />}
+      </header>
+      <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
+      <slot name="related" />
+    </article>
+  </main>
+  <section class="border-t border-slate-200 bg-blue-50/60">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
+      <div class="max-w-2xl">
+        <h2 class="text-xl font-extrabold tracking-tight text-slate-950">{ui.article.ctaHeading}</h2>
+        <p class="mt-2 leading-7 text-slate-600">{ui.article.ctaText}</p>
+      </div>
+      <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
+    </div>
+  </section>
+  <slot name="footer-related" />
+  <SiteFooter serviceTitle={footerServiceTitle} />
+</BaseLayout>

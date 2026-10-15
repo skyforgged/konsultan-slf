@@ -1,11 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
 import SourceLinks from '../../components/shared/SourceLinks.astro';
-import SiteHeader from '../../components/shared/SiteHeader.astro';
-import SiteFooter from '../../components/shared/SiteFooter.astro';
 import { ui } from '../../config/ui.ts';
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -23,7 +21,7 @@ const serviceJsonLd = JSON.stringify({
   name: service.data.title,
   description: service.data.description,
   url: serviceUrl,
-  image: serviceImage,
+  image: [serviceImage],
   serviceType: service.data.title,
   provider: {
     '@type': 'Organization',
@@ -51,111 +49,95 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={service.data.title} description={service.data.description} canonical={`/services/${service.data.slug}/`} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt}>
+<ServiceLayout service={service} headings={[]}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
-  <SiteHeader />
-  <main id="main-content" class="mx-auto max-w-5xl px-5 py-12 sm:py-16">
-    <nav aria-label={ui.nav.breadcrumbAriaLabel} class="mb-6 text-sm text-slate-500">
-      <a href="/" class="text-blue-700 no-underline">{ui.nav.home}</a> / <a href="/services/" class="text-blue-700 no-underline">{ui.nav.services}</a> / <span>{service.data.title}</span>
-    </nav>
-    <header class="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr]">
-      <div class="max-w-3xl">
-        <p class="text-sm font-extrabold uppercase tracking-wider text-blue-700">{service.data.eyebrow}</p>
-        <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">{service.data.title}</h1>
-        <p class="mt-5 text-lg leading-8 text-slate-600">{service.data.description}</p>
-      </div>
-      <img src={service.data.image ?? ui.services.defaultImage} alt={service.data.imageAlt} class="mx-auto h-auto max-h-48 w-full max-w-60 object-contain md:max-h-56" width="560" height="420" fetchpriority="high" />
-    </header>
-    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
-      <article class="min-w-0">
-        <p class="text-base leading-8 text-slate-700">{service.data.intro}</p>
-        {service.data.scope.length > 0 && (
-          <section class="mt-8">
-            <h2 class="text-2xl font-extrabold text-slate-950">{service.data.scopeTitle}</h2>
-            <ul class="mt-4 space-y-3">
-              {service.data.scope.map((item) => <li class="flex gap-3 text-sm leading-7 text-slate-700"><span class="font-bold text-blue-700" aria-hidden="true">✓</span><span>{item}</span></li>)}
-            </ul>
-          </section>
-        )}
-        {service.data.requirements.length > 0 && (
-          <section class="mt-8">
-            <h2 class="text-2xl font-extrabold text-slate-950">{service.data.requirementsTitle}</h2>
-            <p class="mt-3 text-sm leading-7 text-slate-600">{service.data.requirementsIntro}</p>
-            <ul class="mt-4 space-y-3">
-              {service.data.requirements.map((item) => <li class="flex gap-3 text-sm leading-7 text-slate-700"><span class="font-bold text-blue-700" aria-hidden="true">✓</span><span>{item}</span></li>)}
-            </ul>
-          </section>
-        )}
-      </article>
-      <aside class="self-start rounded-2xl border border-slate-200 bg-slate-50 p-6">
-        <h2 class="text-lg font-extrabold text-slate-950">{service.data.asideTitle}</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-600">{service.data.asideDescription}</p>
-        <a href={service.data.guideLinkHref} class="mt-6 inline-flex w-full justify-center rounded-lg bg-blue-900 px-4 py-3 text-sm font-bold text-white no-underline hover:bg-blue-800">{service.data.guideLinkLabel}</a>
-      </aside>
-    </div>
-    {service.data.benefits.length > 0 && (
-      <section class="mt-12">
-        <h2 class="text-2xl font-extrabold text-slate-950">{service.data.benefitsTitle}</h2>
-        <ul class="mt-5 grid gap-3 sm:grid-cols-2">
-          {service.data.benefits.map((item) => <li class="rounded-xl border border-slate-200 p-4 text-sm leading-6 text-slate-700">{item}</li>)}
-        </ul>
-      </section>
-    )}
-    {service.data.process.length > 0 && (
-      <section class="mt-12">
-        <h2 class="text-2xl font-extrabold text-slate-950">{service.data.processTitle}</h2>
-        <ol class="mt-5 space-y-3">
-          {service.data.process.map((item, index) => (
-            <li class="flex gap-4 rounded-xl bg-slate-50 p-4">
-              <span class="font-black text-blue-700">{String(index + 1).padStart(2, '0')}</span>
-              <div>
-                <h3 class="font-bold text-slate-950">{item.title}</h3>
-                <p class="mt-1 text-sm leading-6 text-slate-700">{item.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-    )}
-    {service.data.notes && (
-      <section class="mt-12 rounded-xl border border-amber-200 bg-amber-50 p-6">
-        <h2 class="text-xl font-extrabold text-slate-950">{service.data.notesTitle}</h2>
-        <p class="mt-3 text-sm leading-7 text-slate-700">{service.data.notes}</p>
-      </section>
-    )}
-    {service.data.faq.length > 0 && (
-      <section class="mt-12">
-        <h2 class="mb-5 text-2xl font-extrabold text-slate-950">{service.data.faqTitle}</h2>
-        <div class="space-y-3">
-          {service.data.faq.map((item) => <details class="rounded-xl border border-slate-200 p-5"><summary class="cursor-pointer font-semibold text-slate-950">{item.question}</summary><p class="mt-3 text-sm leading-7 text-slate-600">{item.answer}</p></details>)}
-        </div>
-      </section>
-    )}
-    <SourceLinks
-      id="rujukan-resmi-layanan"
-      title="Rujukan resmi"
-      intro="Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Kebutuhan serta penerapan pada bangunan tertentu perlu diverifikasi sesuai kasus."
-      items={[
-        {
-          label: 'PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR',
-          url: 'https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung',
-          description: 'Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung.',
-        },
-        {
-          label: 'Sistem Informasi Manajemen Bangunan Gedung (SIMBG)',
-          url: 'https://simbg.pu.go.id/',
-          description: 'Portal resmi untuk memeriksa informasi layanan dan alur yang berlaku.',
-        },
-      ]}
-    />
-    <section class="mt-12 rounded-2xl bg-blue-950 p-7 text-white sm:p-9">
-      <h2 class="text-2xl font-extrabold">{service.data.ctaLabel}</h2>
-      <p class="mt-3 leading-7 text-blue-100">{service.data.ctaDescription}</p>
-      <a href={service.data.ctaHref} class="mt-5 inline-flex rounded-lg bg-white px-5 py-3 font-bold text-blue-950 no-underline hover:bg-blue-50">{service.data.ctaLinkLabel}</a>
+  <nav aria-label={ui.nav.breadcrumbAriaLabel} class="mb-6 text-sm text-slate-500">
+    <a href="/" class="text-blue-700 no-underline">{ui.nav.home}</a> / <a href="/services/" class="text-blue-700 no-underline">{ui.nav.services}</a> / <span>{service.data.title}</span>
+  </nav>
+  <p class="text-base leading-8 text-slate-700">{service.data.intro}</p>
+  {service.data.scope.length > 0 && (
+    <section class="mt-8">
+      <h2 class="text-2xl font-extrabold text-slate-950">{service.data.scopeTitle}</h2>
+      <ul class="mt-4 space-y-3">
+        {service.data.scope.map((item) => <li class="flex gap-3 text-sm leading-7 text-slate-700"><span class="font-bold text-blue-700" aria-hidden="true">✓</span><span>{item}</span></li>)}
+      </ul>
     </section>
-  </main>
-  <RelatedArticles articles={articles} type="service" id={service.data.id} heading={service.data.relatedArticlesTitle} />
-  <SiteFooter serviceTitle={service.data.title} />
-</BaseLayout>
+  )}
+  {service.data.requirements.length > 0 && (
+    <section class="mt-8">
+      <h2 class="text-2xl font-extrabold text-slate-950">{service.data.requirementsTitle}</h2>
+      <p class="mt-3 text-sm leading-7 text-slate-600">{service.data.requirementsIntro}</p>
+      <ul class="mt-4 space-y-3">
+        {service.data.requirements.map((item) => <li class="flex gap-3 text-sm leading-7 text-slate-700"><span class="font-bold text-blue-700" aria-hidden="true">✓</span><span>{item}</span></li>)}
+      </ul>
+    </section>
+  )}
+  <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+    <h2 class="text-lg font-extrabold text-slate-950">{service.data.asideTitle}</h2>
+    <p class="mt-2 text-sm leading-6 text-slate-600">{service.data.asideDescription}</p>
+    <a href={service.data.guideLinkHref} class="mt-6 inline-flex w-full justify-center rounded-lg bg-blue-900 px-4 py-3 text-sm font-bold text-white no-underline hover:bg-blue-800">{service.data.guideLinkLabel}</a>
+  </div>
+  {service.data.benefits.length > 0 && (
+    <section class="mt-12">
+      <h2 class="text-2xl font-extrabold text-slate-950">{service.data.benefitsTitle}</h2>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+        {service.data.benefits.map((item) => <li class="rounded-xl border border-slate-200 p-4 text-sm leading-6 text-slate-700">{item}</li>)}
+      </ul>
+    </section>
+  )}
+  {service.data.process.length > 0 && (
+    <section class="mt-12">
+      <h2 class="text-2xl font-extrabold text-slate-950">{service.data.processTitle}</h2>
+      <ol class="mt-5 space-y-3">
+        {service.data.process.map((item, index) => (
+          <li class="flex gap-4 rounded-xl bg-slate-50 p-4">
+            <span class="font-black text-blue-700">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="font-bold text-slate-950">{item.title}</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-700">{item.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+  {service.data.notes && (
+    <section class="mt-12 rounded-xl border border-amber-200 bg-amber-50 p-6">
+      <h2 class="text-xl font-extrabold text-slate-950">{service.data.notesTitle}</h2>
+      <p class="mt-3 text-sm leading-7 text-slate-700">{service.data.notes}</p>
+    </section>
+  )}
+  {service.data.faq.length > 0 && (
+    <section class="mt-12">
+      <h2 class="mb-5 text-2xl font-extrabold text-slate-950">{service.data.faqTitle}</h2>
+      <div class="space-y-3">
+        {service.data.faq.map((item) => <details class="rounded-xl border border-slate-200 p-5"><summary class="cursor-pointer font-semibold text-slate-950">{item.question}</summary><p class="mt-3 text-sm leading-7 text-slate-600">{item.answer}</p></details>)}
+      </div>
+    </section>
+  )}
+  <SourceLinks
+    id="rujukan-resmi-layanan"
+    title="Rujukan resmi"
+    intro="Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Kebutuhan serta penerapan pada bangunan tertentu perlu diverifikasi sesuai kasus."
+    items={[
+      {
+        label: 'PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR',
+        url: 'https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung',
+        description: 'Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung.',
+      },
+      {
+        label: 'Sistem Informasi Manajemen Bangunan Gedung (SIMBG)',
+        url: 'https://simbg.pu.go.id/',
+        description: 'Portal resmi untuk memeriksa informasi layanan dan alur yang berlaku.',
+      },
+    ]}
+  />
+  <section class="mt-12 rounded-2xl bg-blue-950 p-7 text-white sm:p-9">
+    <h2 class="text-2xl font-extrabold">{service.data.ctaLabel}</h2>
+    <p class="mt-3 leading-7 text-blue-100">{service.data.ctaDescription}</p>
+    <a href={service.data.ctaHref} class="mt-5 inline-flex rounded-lg bg-white px-5 py-3 font-bold text-blue-950 no-underline hover:bg-blue-50">{service.data.ctaLinkLabel}</a>
+  </section>
+  <RelatedArticles slot="related" articles={articles} type="service" id={service.data.id} heading={service.data.relatedArticlesTitle} />
+</ServiceLayout>
