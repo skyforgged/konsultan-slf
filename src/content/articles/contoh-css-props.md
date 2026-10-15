@@ -1,0 +1,33 @@
+---
+id: 99
+ulid: "01HQRT5Y6A0L4N3O8Q7R9T6U5X"
+slug: "contoh-css-props"
+title: "Contoh Penggunaan CSS Props di Frontmatter"
+description: "Demo cara menambahkan custom CSS classes ke component blocks melalui frontmatter."
+pubDate: 2026-01-20
+type: "article"
+category: "Demo"
+blocks:
+  - component: note
+    variant: info
+    title: "Catatan Demo"
+    text: "Ini adalah contoh note dengan custom CSS prop."
+    css:
+      section: "bg-amber-50 border-amber-200"
+      title: "text-amber-800"
+      text: "text-amber-700"
+  - component: faq
+    heading: "FAQ Demo"
+    css:
+      section: "bg-purple-50 border-purple-200"
+      heading: "text-purple-700"
+    items:
+      - question: "Apakah CSS props bekerja?"
+        answer: "Ya! Custom classes dari frontmatter akan di-merge ke component default styles."
+  - component: section
+    id: "penutup"
+    heading: "Penutup"
+    content:
+      - type: p
+        text: "Ini adalah contoh section block biasa."
+---
