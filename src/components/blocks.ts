@@ -8,6 +8,10 @@ import StatsBlock from './shared/StatsBlock.astro';
 import GlossaryBlock from './shared/GlossaryBlock.astro';
 import QuoteBlock from './shared/QuoteBlock.astro';
 import ArticleSectionBlock from './shared/ArticleSectionBlock.astro';
+import ProcessTimeline from './shared/ProcessTimeline.astro';
+import ChecklistCard from './shared/ChecklistCard.astro';
+import ComparisonTable from './shared/ComparisonTable.astro';
+import DocumentList from './shared/DocumentList.astro';
 
 const blocks: Record<string, any> = {
   card: ContentCard,
@@ -20,6 +24,10 @@ const blocks: Record<string, any> = {
   glossary: GlossaryBlock,
   quote: QuoteBlock,
   section: ArticleSectionBlock,
+  'process-timeline': ProcessTimeline,
+  'checklist-card': ChecklistCard,
+  'comparison-table': ComparisonTable,
+  'document-list': DocumentList,
 };
 
 export default blocks;
