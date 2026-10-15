@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { ui } from '../../config/ui.ts';
 const page = await getEntry('pages', 'services');
 if (!page) throw new Error('Missing "services" page content entry.');
+if (page.data.draft) throw new Error('Page "services" is marked draft but has a statically defined route.');
 const header = page.data.pageHeader;
 if (!header) throw new Error('Missing "services" page content header.');
 const services = (await getCollection('services')).filter((item: CollectionEntry<'services'>) => !item.data.draft).sort((a, b) => a.data.order - b.data.order);
