@@ -1,38 +1,6 @@
 ---
-/**
- * Button — styled action button component.
- *
- * Props:
- * - variant?: 'primary' | 'secondary' | 'ghost' | 'outline' — style (default: 'primary')
- * - size?: 'sm' | 'md' | 'lg' — size (default: 'md')
- * - disabled?: boolean — disabled state (default: false)
- * - type?: 'button' | 'submit' | 'reset' — button type (default: 'button')
- *
- * Usage:
- * <Button variant="primary">Submit</Button>
- * <Button variant="ghost" size="sm">Batal</Button>
- * <Button variant="outline" disabled>Locked</Button>
- */
----
 const { variant = 'primary', size = 'md', disabled = false, type = 'button' } = Astro.props;
-
-const variantClasses: Record<string, string> = {
-  primary: 'bg-blue-600 text-white',
-  secondary: 'bg-slate-100 text-slate-700',
-  ghost: 'bg-transparent text-slate-700',
-  outline: 'border border-slate-300 text-slate-700',
-};
-
-const sizeClasses: Record<string, string> = {
-  sm: 'text-sm px-3 py-1.5',
-  md: 'text-base px-4 py-2',
-  lg: 'text-lg px-6 py-3',
-};
-
-const vClass = variantClasses[variant] ?? variantClasses.primary;
-const sClass = sizeClasses[size] ?? sizeClasses.md;
 ---
-
-<button type={type} disabled={disabled} class={`${vClass} ${sClass}`}>
+<button type={type} disabled={disabled} class={`btn btn-${variant} btn-${size}`}>
   <slot />
 </button>
