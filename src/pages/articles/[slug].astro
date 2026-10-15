@@ -11,11 +11,23 @@ export async function getStaticPaths() {
 const { article } = Astro.props as { article: CollectionEntry<'articles'> };
 const allArticles = await getCollection('articles');
 const slugify = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const headings = article.data.blocks.flatMap((block) =>
-  block.component === 'section'
-    ? [{ depth: 2, text: block.heading, slug: block.id ?? slugify(block.heading) }]
-    : [],
-);
+const headings = article.data.blocks.flatMap((block) => {
+  if (block.component === 'section') {
+    return [{ depth: 2, text: block.heading, slug: block.id ?? slugify(block.heading) }];
+  }
+
+  if (
+    block.component === 'process-timeline' ||
+    block.component === 'checklist-card' ||
+    block.component === 'comparison-table' ||
+    block.component === 'document-list' ||
+    block.component === 'feature-card-grid'
+  ) {
+    return [{ depth: 2, text: block.title, slug: block.id }];
+  }
+
+  return [];
+});
 ---
 <ArticleLayout article={article} headings={headings}>
   <div class="space-y-6">
