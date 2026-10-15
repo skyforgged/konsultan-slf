@@ -223,7 +223,7 @@ GitHub Actions yang lulus memverifikasi build dan skrip pemeriksaan pada artefak
 ## 9. Audit regulasi dan pemeriksaan aksesibilitas statis — 2026-10-15
 
 ### Rujukan resmi yang diperiksa
-- **PP Nomor 16 Tahun 2021** tercatat berstatus berlaku pada JDIH Kementerian PKP dan basis data peraturan BPK. Rujukan: https://jdih.pkp.go.id/produk-hukum/pp-16-2021 dan https://peraturan.bpk.go.id/Details/161846/pp-no-16-.
+- **PP Nomor 16 Tahun 2021** tercatat berstatus berlaku pada JDIH Kementerian PKP dan basis data peraturan BPK. Rujukan: https://jdih.pkp.go.id/produk-hukum/pp-16-2021 dan https://peraturan.bpk.go.id/Details/161846/pp-no-16-tahun-2021.
 - **SIMBG resmi** menjelaskan proses PBG/SLF melalui sistem tersebut. FAQ-nya juga membedakan kasus bangunan yang sudah memiliki IMB dari bangunan eksisting yang belum memiliki PBG/IMB. Rujukan: https://simbg.pu.go.id/dashboard.
 - PP 16/2021 merupakan rujukan utama yang relevan untuk penyelenggaraan bangunan gedung, tetapi bukan berarti semua persyaratan teknis dan prosedur tiap bangunan identik. Ketentuan teknis dan administrasi dapat bergantung pada jenis/fungsi bangunan, kondisi dokumen lama, perubahan bangunan, serta implementasi pemerintah daerah.
 
