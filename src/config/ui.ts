@@ -53,6 +53,7 @@ export const ui = {
     defaultDescription: 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).',
     defaultImage: '/images/og-default.png',
     articleImage: '/images/og-default.png',
+    socialImageAlt: 'Pratinjau sosial Konsultan SLF & PBG',
   },
   article: {
     readMore: 'Baca artikel →',

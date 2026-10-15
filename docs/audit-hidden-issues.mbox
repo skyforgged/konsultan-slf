@@ -1,0 +1,569 @@
+From 8f312c5c73182729154dc2645d2d643e9a59e4dc Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:17:16 +0000
+Subject: [PATCH 1/8] fix(seo): never emit SVG as og:image/twitter:image;
+ validate raster social images
+
+Service detail pages set image to an SVG illustration, so BaseLayout emitted it as
+og:image/twitter:image. Social crawlers do not render SVG, so these 6 pages had no
+link preview. BaseLayout now falls back to the PNG default (and its alt) when the
+requested image is not raster. check-seo-output.mjs now fails on non-raster
+og:image/twitter:image so this cannot regress silently (previously it only checked
+that the file existed).
+---
+ scripts/check-seo-output.mjs | 3 +++
+ src/config/ui.ts             | 1 +
+ src/layouts/BaseLayout.astro | 7 +++++--
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/check-seo-output.mjs b/scripts/check-seo-output.mjs
+index 25f3d94..632a174 100644
+--- a/scripts/check-seo-output.mjs
++++ b/scripts/check-seo-output.mjs
+@@ -90,6 +90,9 @@ for (const file of pages) {
+     ['og:image', findMeta(html, 'property', 'og:image')],
+     ['twitter:image', findMeta(html, 'name', 'twitter:image')],
+   ]) {
++    if (imageUrlValue && !/\.(png|jpe?g|webp|gif)$/i.test(imageUrlValue.split(/[?#]/)[0])) {
++      failures.push(`${page}: ${label} must be a raster image (PNG/JPEG/WebP/GIF); social crawlers do not render SVG: ${imageUrlValue}`);
++    }
+     if (!imageUrlValue || !canonicalOrigin) continue;
+     try {
+       const imageUrl = new URL(imageUrlValue, canonicalHref);
+diff --git a/src/config/ui.ts b/src/config/ui.ts
+index a77aeb2..f98647c 100644
+--- a/src/config/ui.ts
++++ b/src/config/ui.ts
+@@ -27,6 +27,7 @@ export const ui = {
+     defaultDescription: 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).',
+     defaultImage: '/images/og-default.png',
+     articleImage: '/images/og-default.png',
++    socialImageAlt: 'Pratinjau sosial Konsultan SLF & PBG',
+   },
+   article: {
+     readMore: 'Baca artikel →',
+diff --git a/src/layouts/BaseLayout.astro b/src/layouts/BaseLayout.astro
+index dfb3e98..96bf7fe 100644
+--- a/src/layouts/BaseLayout.astro
++++ b/src/layouts/BaseLayout.astro
+@@ -2,10 +2,13 @@
+ import '../styles/global.css';
+ import { ui } from '../config/ui.ts';
+ const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, canonical, noindex = false, image = ui.meta.defaultImage } = Astro.props;
+-const imageAlt = Astro.props.imageAlt ?? title;
++// Crawler sosial (Facebook, LinkedIn, WhatsApp, X) tidak merender SVG. Gambar non-raster diganti fallback PNG.
++const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(image.split(/[?#]/)[0]);
++const socialImage = isRasterImage ? image : ui.meta.defaultImage;
++const imageAlt = isRasterImage ? (Astro.props.imageAlt ?? title) : ui.meta.socialImageAlt;
+ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+ const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
+-const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl || Astro.url).toString();
++const imageUrl = socialImage.startsWith('http') ? socialImage : new URL(socialImage, siteUrl || Astro.url).toString();
+ const pageJsonLd = JSON.stringify({
+   '@context': 'https://schema.org',
+   '@type': 'WebPage',
+-- 
+2.43.0
+
+
+From 32c5020f82d418771f104cbd108eb347cca09532 Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:18:11 +0000
+Subject: [PATCH 2/8] fix(a11y): add <main> landmark to article template; fix
+ h1->h3 heading skip on article index
+
+- ArticleLayout had no <main> (home, services, 404 and indexes do), so screen-reader
+  users could not jump to main content on article pages.
+- /articles/ rendered h1 followed directly by h3 card titles. ArticleCard now accepts
+  headingLevel (default 3, unchanged elsewhere); the index passes 2.
+---
+ src/components/shared/ArticleCard.astro | 6 ++++--
+ src/layouts/ArticleLayout.astro         | 4 ++--
+ src/pages/articles/index.astro          | 2 +-
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/components/shared/ArticleCard.astro b/src/components/shared/ArticleCard.astro
+index c4702ec..dee759a 100644
+--- a/src/components/shared/ArticleCard.astro
++++ b/src/components/shared/ArticleCard.astro
+@@ -4,18 +4,20 @@
+  *
+  * Props:
+  * - article: CollectionEntry<'articles'> — article data from content collection
++ * - headingLevel?: 2 | 3 — heading tag for the title (default 3; use 2 when the card sits directly under the page h1)
+  *
+  * Usage:
+  * <ArticleCard article={article} />
+  */
+ import { ui } from '../../config/ui.ts';
+-const { article } = Astro.props;
++const { article, headingLevel = 3 } = Astro.props;
++const Heading = headingLevel === 2 ? 'h2' : 'h3';
+ const href = `/articles/${article.data.slug}/`;
+ ---
+ <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg">
+   {article.data.image && <div class="article-card__media overflow-hidden rounded-xl"><img src={article.data.image} alt="" class="h-40 w-full object-cover" loading="lazy" /></div>}
+   {article.data.category && <p class="mt-4 text-xs font-bold uppercase tracking-wider text-blue-700">{article.data.category}</p>}
+-  <h3 class="mt-3 text-lg font-bold leading-snug text-slate-950"><a href={href} class="hover:text-blue-700">{article.data.title}</a></h3>
++  <Heading class="mt-3 text-lg font-bold leading-snug text-slate-950"><a href={href} class="hover:text-blue-700">{article.data.title}</a></Heading>
+   <p class="mt-3 flex-1 text-sm leading-6 text-slate-600">{article.data.description}</p>
+   <div class="mt-5 flex items-center justify-between text-xs text-slate-500"><time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time><a href={href} class="font-semibold text-blue-700">{ui.article.readMore}</a></div>
+ </article>
+\ No newline at end of file
+diff --git a/src/layouts/ArticleLayout.astro b/src/layouts/ArticleLayout.astro
+index c723d38..23e8d5c 100644
+--- a/src/layouts/ArticleLayout.astro
++++ b/src/layouts/ArticleLayout.astro
+@@ -48,7 +48,7 @@ const articleJsonLd = JSON.stringify({
+       </div>
+     </nav>
+   </header>
+-  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
++  <main class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
+     {tocItems.length > 0 && (
+       <aside class="self-start lg:sticky lg:top-6">
+         <details class="rounded-xl border border-slate-200 p-4 lg:hidden">
+@@ -81,7 +81,7 @@ const articleJsonLd = JSON.stringify({
+       </header>
+       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
+     </article>
+-  </div>
++  </main>
+   <section class="border-t border-slate-200 bg-blue-50/60">
+     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
+       <div class="max-w-2xl">
+diff --git a/src/pages/articles/index.astro b/src/pages/articles/index.astro
+index caa7206..a4ecfad 100644
+--- a/src/pages/articles/index.astro
++++ b/src/pages/articles/index.astro
+@@ -34,7 +34,7 @@ const articles = allArticles
+     </header>
+     {articles.length ? (
+       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+-        {articles.map((article) => <ArticleCard article={article} />)}
++        {articles.map((article) => <ArticleCard article={article} headingLevel={2} />)}
+       </div>
+     ) : (
+       <p class="mt-10 rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">{ui.article.emptyList}</p>
+-- 
+2.43.0
+
+
+From 3a5c7e3a9cd3daee66a4064eb11d8f7e8bdfe52b Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:18:11 +0000
+Subject: [PATCH 3/8] fix(content): format article dates in UTC so build
+ timezone cannot shift them
+
+pubDate/updatedDate are date-only YAML values (UTC midnight). toLocaleDateString used
+the build machine's timezone, so a build with TZ west of UTC rendered the previous day
+(e.g. 'datetime=2026-10-15' shown as '14 Oktober 2026'; reproduced with
+TZ=America/Los_Angeles). Also ArticleCard now uses ui.locale instead of a literal.
+---
+ src/components/shared/ArticleCard.astro | 2 +-
+ src/layouts/ArticleLayout.astro         | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/components/shared/ArticleCard.astro b/src/components/shared/ArticleCard.astro
+index dee759a..fd12868 100644
+--- a/src/components/shared/ArticleCard.astro
++++ b/src/components/shared/ArticleCard.astro
+@@ -19,5 +19,5 @@ const href = `/articles/${article.data.slug}/`;
+   {article.data.category && <p class="mt-4 text-xs font-bold uppercase tracking-wider text-blue-700">{article.data.category}</p>}
+   <Heading class="mt-3 text-lg font-bold leading-snug text-slate-950"><a href={href} class="hover:text-blue-700">{article.data.title}</a></Heading>
+   <p class="mt-3 flex-1 text-sm leading-6 text-slate-600">{article.data.description}</p>
+-  <div class="mt-5 flex items-center justify-between text-xs text-slate-500"><time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time><a href={href} class="font-semibold text-blue-700">{ui.article.readMore}</a></div>
++  <div class="mt-5 flex items-center justify-between text-xs text-slate-500"><time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time><a href={href} class="font-semibold text-blue-700">{ui.article.readMore}</a></div>
+ </article>
+\ No newline at end of file
+diff --git a/src/layouts/ArticleLayout.astro b/src/layouts/ArticleLayout.astro
+index 23e8d5c..f3a909a 100644
+--- a/src/layouts/ArticleLayout.astro
++++ b/src/layouts/ArticleLayout.astro
+@@ -74,8 +74,8 @@ const articleJsonLd = JSON.stringify({
+         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+         <img src={article.data.image ?? ui.article.defaultImage} alt={`${ui.article.inlineAltPrefix}${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
+         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
+-          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+-          {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</span>}
++          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time>
++          {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</span>}
+           {article.data.author && <span>{ui.article.authorPrefix} {article.data.author}</span>}
+         </div>
+       </header>
+-- 
+2.43.0
+
+
+From f3e67114ceacacf5648371727109fcf8c6f84acc Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:18:49 +0000
+Subject: [PATCH 4/8] fix(blocks): render the id declared in frontmatter on
+ every block component
+
+The articles schema accepts an optional id on card/faq/cta/table/note/steps/stats/
+glossary/quote blocks and validateContentRelations() enforces its uniqueness, but those
+components never put it in the HTML (only section/checklist/timeline/etc. did).
+Example: faq id 'faq-checklist-slf' in checklist-persiapan-konsultasi-slf.md was absent
+from the built page, so #faq-checklist-slf anchors could never work. Undefined ids are
+omitted by Astro, so existing blocks without id are unchanged.
+---
+ src/components/shared/ContentCard.astro   | 4 ++--
+ src/components/shared/CtaBlock.astro      | 4 ++--
+ src/components/shared/FaqBlock.astro      | 4 ++--
+ src/components/shared/GlossaryBlock.astro | 4 ++--
+ src/components/shared/NoteBlock.astro     | 4 ++--
+ src/components/shared/QuoteBlock.astro    | 4 ++--
+ src/components/shared/StatsBlock.astro    | 4 ++--
+ src/components/shared/StepsBlock.astro    | 4 ++--
+ src/components/shared/TableBlock.astro    | 4 ++--
+ 9 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/src/components/shared/ContentCard.astro b/src/components/shared/ContentCard.astro
+index 6fbe3b2..200b4c1 100644
+--- a/src/components/shared/ContentCard.astro
++++ b/src/components/shared/ContentCard.astro
+@@ -3,9 +3,9 @@
+  * ContentCard — kartu ringkasan dengan body opsional.
+  * Body mendukung paragraf, daftar, dan gambar.
+  */
+-const { heading, icon, class: css, body = [] } = Astro.props;
++const { id, heading, icon, class: css, body = [] } = Astro.props;
+ ---
+-<div class={`rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg ${css?.section ?? ''}`}>
++<div id={id} class={`rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg ${css?.section ?? ''}`}>
+   {icon && <div class={`mb-3 text-blue-600 ${css?.icon ?? ''}`}>{icon}</div>}
+   <h3 class={`text-lg font-bold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h3>
+   <div class="mt-3 prose-content [&>p]:text-sm [&>p]:text-slate-600 [&>ul]:text-sm [&>ul]:text-slate-600">
+diff --git a/src/components/shared/CtaBlock.astro b/src/components/shared/CtaBlock.astro
+index 2db82fa..93fb748 100644
+--- a/src/components/shared/CtaBlock.astro
++++ b/src/components/shared/CtaBlock.astro
+@@ -1,11 +1,11 @@
+ ---
+ import { site } from '../../config/site.ts';
+ import { ui } from '../../config/ui.ts';
+-const { heading, message, button = ui.ctaBlock.defaultButton, class: css } = Astro.props;
++const { id, heading, message, button = ui.ctaBlock.defaultButton, class: css } = Astro.props;
+ const hasWhatsapp = /^\d{8,15}$/.test(site.whatsapp);
+ const href = hasWhatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}` : undefined;
+ ---
+-<section class={`rounded-2xl border border-blue-200 bg-blue-50 p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-blue-200 bg-blue-50 p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-2 text-xl font-bold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <p class={`mb-5 text-slate-700 ${css?.message ?? ''}`}>{message}</p>
+   {href ? (
+diff --git a/src/components/shared/FaqBlock.astro b/src/components/shared/FaqBlock.astro
+index b727b7c..57d84fe 100644
+--- a/src/components/shared/FaqBlock.astro
++++ b/src/components/shared/FaqBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { heading, items, class: css } = Astro.props;
++const { id, heading, items, class: css } = Astro.props;
+ ---
+-<section class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-6 text-2xl font-extrabold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <div class={`space-y-3 ${css?.list ?? ''}`}>
+     {items.map((item: any) => (
+diff --git a/src/components/shared/GlossaryBlock.astro b/src/components/shared/GlossaryBlock.astro
+index e58f9e6..bdaa2a7 100644
+--- a/src/components/shared/GlossaryBlock.astro
++++ b/src/components/shared/GlossaryBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { heading, items, class: css } = Astro.props;
++const { id, heading, items, class: css } = Astro.props;
+ ---
+-<section class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-6 text-2xl font-extrabold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <dl class={`space-y-4 ${css?.list ?? ''}`}>
+     {items.map((item: any) => (
+diff --git a/src/components/shared/NoteBlock.astro b/src/components/shared/NoteBlock.astro
+index 73e37d5..4eff16a 100644
+--- a/src/components/shared/NoteBlock.astro
++++ b/src/components/shared/NoteBlock.astro
+@@ -1,6 +1,6 @@
+ ---
+ import { ui } from '../../config/ui.ts';
+-const { variant = 'info', title, text, class: css } = Astro.props;
++const { id, variant = 'info', title, text, class: css } = Astro.props;
+ const variants: Record<string, string> = {
+   info: 'border-blue-200 bg-blue-50 text-blue-900',
+   success: 'border-emerald-200 bg-emerald-50 text-emerald-900',
+@@ -9,7 +9,7 @@ const variants: Record<string, string> = {
+ };
+ const variantClass = variants[variant];
+ ---
+-<div class={`rounded-xl border px-5 py-4 ${variantClass} ${css?.section ?? ''}`}>
++<div id={id} class={`rounded-xl border px-5 py-4 ${variantClass} ${css?.section ?? ''}`}>
+   {(title || text) && <div class={`font-semibold ${css?.title ?? ''}`}>{title ?? ui.blocks.noteDefaultTitles[variant] ?? variant}</div>}
+   {text && <p class={`mt-1 text-sm leading-relaxed ${css?.text ?? ''}`}>{text}</p>}
+ </div>
+diff --git a/src/components/shared/QuoteBlock.astro b/src/components/shared/QuoteBlock.astro
+index bf454ab..2800ae5 100644
+--- a/src/components/shared/QuoteBlock.astro
++++ b/src/components/shared/QuoteBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { text, source, class: css } = Astro.props;
++const { id, text, source, class: css } = Astro.props;
+ ---
+-<blockquote class={`relative rounded-2xl border-l-4 border-blue-500 bg-blue-50 p-6 italic text-slate-700 ${css?.section ?? ''}`}>
++<blockquote id={id} class={`relative rounded-2xl border-l-4 border-blue-500 bg-blue-50 p-6 italic text-slate-700 ${css?.section ?? ''}`}>
+   <p class={`text-lg leading-relaxed ${css?.text ?? ''}`}>"{text}"</p>
+   {source && <cite class={`mt-3 block not-italic text-sm font-semibold text-slate-500 ${css?.source ?? ''}`}>— {source}</cite>}
+ </blockquote>
+diff --git a/src/components/shared/StatsBlock.astro b/src/components/shared/StatsBlock.astro
+index a6b402e..5503d51 100644
+--- a/src/components/shared/StatsBlock.astro
++++ b/src/components/shared/StatsBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { heading, items, class: css } = Astro.props;
++const { id, heading, items, class: css } = Astro.props;
+ ---
+-<section class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-6 text-2xl font-extrabold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <div class={`grid gap-6 sm:grid-cols-2 ${css?.grid ?? ''}`}>
+     {items.map((item: any) => (
+diff --git a/src/components/shared/StepsBlock.astro b/src/components/shared/StepsBlock.astro
+index 199e000..1780389 100644
+--- a/src/components/shared/StepsBlock.astro
++++ b/src/components/shared/StepsBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { heading, items, class: css } = Astro.props;
++const { id, heading, items, class: css } = Astro.props;
+ ---
+-<section class={`rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-6 text-2xl font-extrabold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <ol class={`space-y-6 ${css?.list ?? ''}`}>
+     {items.map((item: any, i: number) => (
+diff --git a/src/components/shared/TableBlock.astro b/src/components/shared/TableBlock.astro
+index e97dc28..d245908 100644
+--- a/src/components/shared/TableBlock.astro
++++ b/src/components/shared/TableBlock.astro
+@@ -1,7 +1,7 @@
+ ---
+-const { heading, head, rows, class: css } = Astro.props;
++const { id, heading, head, rows, class: css } = Astro.props;
+ ---
+-<section class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
++<section id={id} class={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 ${css?.section ?? ''}`}>
+   {heading && <h2 class={`mb-4 text-2xl font-extrabold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
+   <div class={`overflow-x-auto rounded-xl border border-slate-200 ${css?.wrapper ?? ''}`}>
+     <table class={`w-full text-left text-sm ${css?.table ?? ''}`}>
+-- 
+2.43.0
+
+
+From b789e83fbe9d358862607f8d983fefa2f234ed1b Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:19:19 +0000
+Subject: [PATCH 5/8] fix(schema): reject empty strings in service
+ requirements, benefits and faq
+
+Service faq items had z.string() (no min), unlike article faq blocks. An empty question
+or answer would pass validation and be emitted as an invalid FAQPage JSON-LD entry and
+an empty <summary>. Verified: an empty faq question now fails the build.
+---
+ src/content.config.ts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/content.config.ts b/src/content.config.ts
+index 4d57c88..689ecb5 100644
+--- a/src/content.config.ts
++++ b/src/content.config.ts
+@@ -293,15 +293,15 @@ const services = defineCollection({
+     scope: z.array(z.string().min(1)).default([]),
+     requirementsTitle: z.string().default('Persiapan konsultasi'),
+     requirementsIntro: z.string().default('Informasi awal berikut membantu memetakan kebutuhan. Daftar final dapat berbeda sesuai kasus.'),
+-    requirements: z.array(z.string()).default([]),
++    requirements: z.array(z.string().min(1)).default([]),
+     benefitsTitle: z.string().default('Manfaat pendampingan'),
+-    benefits: z.array(z.string()).default([]),
++    benefits: z.array(z.string().min(1)).default([]),
+     processTitle: z.string().default('Tahapan pendampingan'),
+     process: z.array(z.object({ title: z.string().min(1), text: z.string().min(1) })).default([]),
+     notesTitle: z.string().default('Hal yang perlu diperhatikan'),
+     notes: z.string().default(''),
+     faqTitle: z.string().default('Pertanyaan umum'),
+-    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
++    faq: z.array(z.object({ question: z.string().min(1), answer: z.string().min(1) })).default([]),
+     asideTitle: z.string().default('Persiapan konsultasi'),
+     asideDescription: z.string().default('Informasi awal berikut membantu memetakan kebutuhan.'),
+     guideLinkLabel: z.string().default('Baca panduan'),
+-- 
+2.43.0
+
+
+From 1d1a09f5e98ea5d37ede7c8935d1eb5a95eb7d25 Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:20:02 +0000
+Subject: [PATCH 6/8] feat(ci): fail production builds that still use the
+ placeholder site origin
+
+astro.config falls back to http://konsultan-slf.lan when neither SITE_URL nor
+VERCEL_PROJECT_PRODUCTION_URL is set. Every existing SEO check only verifies that
+origins are consistent with each other, so a production deploy with .lan canonicals,
+sitemap and robots would pass. The check now fails when VERCEL_ENV=production (or
+REQUIRE_PUBLIC_SITE_URL=1) and an origin is localhost/*.lan/*.local/etc.
+NOTE: if Vercel production starts failing on this, the public canonical was wrong
+before this change; set SITE_URL in the Vercel project.
+---
+ README.md                    |  2 ++
+ scripts/check-seo-output.mjs | 13 +++++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/README.md b/README.md
+index 3503d39..21fac10 100644
+--- a/README.md
++++ b/README.md
+@@ -66,6 +66,8 @@ Jika berjalan di Vercel, konfigurasi juga membaca `VERCEL_PROJECT_PRODUCTION_URL
+ 
+ URL situs digunakan untuk canonical, Open Graph, data terstruktur, sitemap, dan robots.txt.
+ 
++Build dengan `VERCEL_ENV=production`, atau dengan `REQUIRE_PUBLIC_SITE_URL=1`, akan gagal di `scripts/check-seo-output.mjs` bila origin masih placeholder (`*.lan`, `localhost`, dan sejenisnya). Untuk build lokal/CI biasa pemeriksaan ini tidak aktif.
++
+ ## Konten
+ 
+ Konten disimpan sebagai Markdown di:
+diff --git a/scripts/check-seo-output.mjs b/scripts/check-seo-output.mjs
+index 632a174..99adc44 100644
+--- a/scripts/check-seo-output.mjs
++++ b/scripts/check-seo-output.mjs
+@@ -224,6 +224,19 @@ try {
+   // Missing file is already reported above.
+ }
+ 
++// Build produksi tidak boleh memakai origin placeholder (fallback konfigurasi: http://konsultan-slf.lan).
++// Kegagalan ini senyap karena semua pemeriksaan lain hanya menguji konsistensi origin, bukan kebenarannya.
++if (process.env.VERCEL_ENV === 'production' || process.env.REQUIRE_PUBLIC_SITE_URL === '1') {
++  const placeholderHosts = new Set();
++  for (const url of [...canonicalUrls, ...(robotsSitemapUrl ? [robotsSitemapUrl.href] : [])]) {
++    const { hostname } = new URL(url);
++    if (hostname === 'localhost' || hostname === '127.0.0.1' || /\.(lan|local|localhost|invalid|test|example)$/i.test(hostname)) placeholderHosts.add(hostname);
++  }
++  if (placeholderHosts.size > 0) {
++    failures.push(`Production build uses a placeholder site origin (${[...placeholderHosts].join(', ')}). Set SITE_URL to the public URL (or expose VERCEL_PROJECT_PRODUCTION_URL) before deploying.`);
++  }
++}
++
+ if (failures.length) {
+   console.error(`SEO output check failed: ${failures.length} issue(s) across ${pagesChecked} HTML pages.\n`);
+   console.error(failures.map((failure) => `- ${failure}`).join('\n'));
+-- 
+2.43.0
+
+
+From 2c85d186560e347185d91ff4f7010e6abefb106a Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:20:02 +0000
+Subject: [PATCH 7/8] chore(ci): restrict workflow token to contents: read
+
+build.yml declared no permissions block, so the job inherited the repository default
+GITHUB_TOKEN scope. The job only needs to read the repo.
+---
+ .github/workflows/build.yml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index 74fddc6..d34026f 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -6,6 +6,9 @@ on:
+     branches:
+       - main
+ 
++permissions:
++  contents: read
++
+ jobs:
+   build:
+     runs-on: ubuntu-latest
+-- 
+2.43.0
+
+
+From 73bc460964a68e08b531b341fe624696afaefc58 Mon Sep 17 00:00:00 2001
+From: "Claude (audit)" <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 04:20:53 +0000
+Subject: [PATCH 8/8] docs(audit): record hidden-issues audit (verified defects
+ vs need-to-review)
+
+---
+ docs/audit-hidden-issues-2026-10-15.md | 57 ++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+ create mode 100644 docs/audit-hidden-issues-2026-10-15.md
+
+diff --git a/docs/audit-hidden-issues-2026-10-15.md b/docs/audit-hidden-issues-2026-10-15.md
+new file mode 100644
+index 0000000..6519823
+--- /dev/null
++++ b/docs/audit-hidden-issues-2026-10-15.md
+@@ -0,0 +1,57 @@
++# Audit Masalah Tersembunyi — 2026-10-15
++
++**Branch:** `audit/hidden-issues-2026-10-15` (dari `main` @ `b65f7d3`)
++**Metode:** checkout lokal, `npm ci`, `npm run build` (lulus sebelum dan sesudah perubahan), pembacaan seluruh `src/`, `scripts/`, konfigurasi, dan analisis struktural semua HTML di `dist/`. Setiap temuan di bagian A direproduksi atau dibuktikan dengan eksperimen sebelum diperbaiki.
++
++**Aturan klasifikasi**
++- **A. Defek terverifikasi** — perilaku salah yang dapat direproduksi, atau celah yang membuat kegagalan lolos tanpa terdeteksi. Diperbaiki di branch ini, satu commit per temuan.
++- **B. Need to review** — aplikasi berjalan; ini keputusan desain/konten/arsitektur. **Tidak diubah.**
++
++## A. Defek terverifikasi (diperbaiki)
++
++| # | Temuan | Bukti | Commit |
++|---|---|---|---|
++| A1 | Enam halaman detail layanan memakai **SVG** sebagai `og:image`/`twitter:image`. Crawler sosial (Facebook, LinkedIn, WhatsApp, X) tidak merender SVG, sehingga tautan layanan tampil tanpa gambar. Fallback PNG yang ditambahkan sebelumnya hanya berlaku untuk artikel. Validator lama hanya memeriksa file ada, bukan formatnya. | `dist/services/*/index.html` berisi `.../illustrations/*.svg`. Validator baru gagal dengan 12 isu pada build lama dan lulus pada build baru. | `fix(seo)` |
++| A2 | Tanggal artikel dapat **mundur sehari** bila build berjalan di zona waktu barat UTC. `pubDate` berformat tanggal-saja (UTC tengah malam) tetapi ditampilkan dengan zona waktu mesin build. | `TZ=America/Los_Angeles`: `datetime="2026-10-15…"` tampil "14 Oktober 2026". Setelah perbaikan: 15 Oktober pada kedua zona. | `fix(content)` |
++| A3 | Template artikel **tidak punya `<main>`** (beranda, layanan, indeks, 404 punya). Pengguna pembaca layar tidak bisa melompat ke konten utama. | 0 elemen `<main>` pada kedua artikel; 1 setelah perbaikan. | `fix(a11y)` |
++| A4 | `/articles/` memiliki urutan heading **h1 → h3** (loncat tingkat). | Outline lama `h1, h3, h3`; kini `h1, h2, h2`. `ArticleCard` menerima `headingLevel`; default tetap 3 sehingga halaman lain tidak berubah. | `fix(a11y)` |
++| A5 | Skema menerima `id` pada blok `card/faq/cta/table/note/steps/stats/glossary/quote`, `validateContentRelations()` memeriksa keunikannya, tetapi komponen **tidak pernah menulisnya ke HTML**. Anchor ke blok tersebut mustahil berfungsi. | `id: "faq-checklist-slf"` ada di front matter, 0 kemunculan di HTML; 1 setelah perbaikan. | `fix(blocks)` |
++| A6 | Skema layanan mengizinkan string kosong pada `faq`, `requirements`, `benefits` (artikel tidak). String kosong menghasilkan entri FAQPage JSON-LD tidak valid dan `<summary>` kosong. | Uji negatif: pertanyaan FAQ kosong kini menggagalkan build. | `fix(schema)` |
++| A7 | **Origin placeholder lolos ke produksi tanpa terdeteksi.** Jika `SITE_URL` dan `VERCEL_PROJECT_PRODUCTION_URL` tidak tersedia saat build, canonical, sitemap, dan robots memakai `http://konsultan-slf.lan`. Semua validator hanya menguji konsistensi antar-origin, bukan kebenarannya. | Build lokal tanpa env menghasilkan `.lan` dan lulus seluruh pemeriksaan. Guard baru gagal (exit 1) pada `VERCEL_ENV=production` dengan origin `.lan`, lulus dengan URL nyata. | `feat(ci)` |
++| A8 | Workflow CI tanpa blok `permissions`, sehingga token mewarisi cakupan default repositori. Job hanya perlu membaca. | `permissions: contents: read`. | `chore(ci)` |
++
++> **Perhatian — A7 satu-satunya perubahan yang dapat mempengaruhi deployment.** Jika build produksi Vercel gagal karena guard ini, berarti canonical produksi memang salah sebelum perubahan; atur `SITE_URL` di proyek Vercel. Commit ini terpisah dan dapat di-revert tanpa memengaruhi yang lain.
++
++## B. Need to review (tidak diubah)
++
++| # | Temuan | Mengapa tidak diubah |
++|---|---|---|
++| B1 | **Tidak ada jalur kontak di seluruh situs.** Build berisi 0 tautan `wa.me`. CTA beranda → `/services/`; CTA layanan berlabel "Diskusikan/Konsultasikan…" menuju `/articles/`; CTA artikel → `/services/`. Blok `cta` (WhatsApp) tidak dipakai di konten terbit. | Audit sebelumnya menetapkan kanal kontak tidak boleh ditambahkan tanpa konfirmasi pemilik. Namun ini kemungkinan temuan berdampak bisnis terbesar. |
++| B2 | Teks dan URL "Rujukan resmi" **di-hardcode di `services/[slug].astro`** dan identik untuk keenam layanan (termasuk as-built dan pengkajian teknis). | Melanggar aturan theme/data di `AGENTS.md`; relevansi rujukan per layanan adalah keputusan editorial. |
++| B3 | `validateContentRelations()` hanya dipanggil dari `index.astro`. Di `astro dev`, validasi hanya jalan saat `/` dibuka. | Keputusan arsitektur (integrasi Astro atau panggilan dari `getStaticPaths`). |
++| B4 | Kode mati: `Badge`, `ContactPanel` (memuat `<h1>`, formulir, skrip), `Dropdown`, `Modal`, `TestimonialGrid` tidak dipakai. `rehype-slug` terkonfigurasi padahal tidak ada body Markdown yang dirender. Fallback `import.meta.env.SITE_URL` di robots/sitemap tidak pernah aktif. | Menghapus kode adalah pilihan pemilik. |
++| B5 | `AGENTS.md` merujuk `.agents/skills/theme-data-separation/SKILL.md` dan skill daisyUI, tetapi `.agents/` ada di `.gitignore` (tidak ada di clone) dan daisyUI bukan dependensi. | Dokumen instruksi milik pemilik. |
++| B6 | Judul default blok `note` berbahasa Inggris ("INFO", "WARNING") pada situs `lang="id"`. | Tidak tampil saat ini (semua note punya judul). |
++| B7 | Nilai `ulid` buatan tangan, memuat huruf yang tidak valid di Crockford base32 (`L`, `O`, `U`); hanya panjang yang divalidasi; field tidak dipakai kode mana pun. | Data inert. |
++| B8 | UX/a11y: tiga `<h2>` kartu dukungan di hero beranda mendahului `<h2>` seksi; `scroll-behavior: smooth` tanpa `prefers-reduced-motion`; navigasi header beranda tersembunyi di bawah `md` tanpa menu; tidak ada skip link. | Preferensi desain. |
++| B9 | JSON-LD artikel memakai SVG sebagai `image` bawaan. | Pedoman Google lebih menyukai raster; dampak kecil. |
++| B10 | Artikel demo `contoh-css-props.md` (`draft: true`, id 99) berada di direktori konten produksi; kelas Tailwind di dalamnya ikut masuk CSS hasil build. | Draft tersaring di semua titik; dampak hanya ukuran CSS. |
++| B11 | Tidak ada header keamanan (`vercel.json`). Koleksi `pages` mengabaikan `draft`. | Hardening opsional. |
++
++## C. Dependensi (`npm audit`)
++
++`npm audit`: 1 critical (astro), 1 high (sharp), 1 low (esbuild). Versi terpasang `astro 5.18.2` adalah rilis terakhir seri 5; rentang rentan mencakup seluruh `<=7.2.7`, perbaikan hanya di `7.3.8` (major).
++
++Keterjangkauan pada repo ini, berdasarkan inspeksi kode:
++- `define:vars`, `transition:*`/`ClientRouter`, `server:defer`, dan island `client:*`: 0 pemakaian.
++- Output `static`, tanpa adapter: advisory SSR (SSRF header Host, bypass `base`, XSS refleksi) tidak berlaku saat runtime.
++- `astro:assets`/`<Image>`: 0 pemakaian (satu-satunya kecocokan adalah komentar dokumentasi), sehingga jalur `sharp`/AVIF tidak dipakai.
++- Satu-satunya spread props, `BlockRenderer.astro`, hanya menerima kunci yang sudah lolos skema Zod.
++
++Kesimpulan: tidak ada eksploitasi yang dapat dijangkau pada konfigurasi saat ini. Migrasi ke Astro 7 adalah pekerjaan terpisah dan **sengaja tidak dilakukan di branch ini**. `esbuild` (baca file arbitrer di dev server **Windows**) hanya relevan bila `npm run dev` dijalankan di Windows.
++
++## D. Belum diverifikasi
++
++- **Situs produksi** (`konsultan-slf.vercel.app`): tidak dapat diakses dari lingkungan audit. Canonical/sitemap produksi, status HTTP, dan variabel lingkungan Vercel belum diperiksa; A7 ada untuk menutup celah ini.
++- Rendering browser, responsif, navigasi keyboard, dan perilaku daftar isi sticky.
++- Akurasi materi SLF/PBG terhadap regulasi.
+-- 
+2.43.0
+

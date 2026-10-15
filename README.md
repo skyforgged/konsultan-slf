@@ -66,6 +66,8 @@ Jika berjalan di Vercel, konfigurasi juga membaca `VERCEL_PROJECT_PRODUCTION_URL
 
 URL situs digunakan untuk canonical, Open Graph, data terstruktur, sitemap, dan robots.txt.
 
+Build dengan `VERCEL_ENV=production`, atau dengan `REQUIRE_PUBLIC_SITE_URL=1`, akan gagal di `scripts/check-seo-output.mjs` bila origin masih placeholder (`*.lan`, `localhost`, dan sejenisnya). Untuk build lokal/CI biasa pemeriksaan ini tidak aktif.
+
 ## Konten
 
 Konten disimpan sebagai Markdown di:

@@ -121,6 +121,9 @@ for (const file of pages) {
     ['og:image', findMeta(html, 'property', 'og:image')],
     ['twitter:image', findMeta(html, 'name', 'twitter:image')],
   ]) {
+    if (imageUrlValue && !/\.(png|jpe?g|webp|gif)$/i.test(imageUrlValue.split(/[?#]/)[0])) {
+      failures.push(`${page}: ${label} must be a raster image (PNG/JPEG/WebP/GIF); social crawlers do not render SVG: ${imageUrlValue}`);
+    }
     if (!imageUrlValue || !canonicalOrigin) continue;
     try {
       const imageUrl = new URL(imageUrlValue, canonicalHref);
@@ -250,6 +253,19 @@ try {
   }
 } catch {
   // Missing file is already reported above.
+}
+
+// Build produksi tidak boleh memakai origin placeholder (fallback konfigurasi: http://konsultan-slf.lan).
+// Kegagalan ini senyap karena semua pemeriksaan lain hanya menguji konsistensi origin, bukan kebenarannya.
+if (process.env.VERCEL_ENV === 'production' || process.env.REQUIRE_PUBLIC_SITE_URL === '1') {
+  const placeholderHosts = new Set();
+  for (const url of [...canonicalUrls, ...(robotsSitemapUrl ? [robotsSitemapUrl.href] : [])]) {
+    const { hostname } = new URL(url);
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || /\.(lan|local|localhost|invalid|test|example)$/i.test(hostname)) placeholderHosts.add(hostname);
+  }
+  if (placeholderHosts.size > 0) {
+    failures.push(`Production build uses a placeholder site origin (${[...placeholderHosts].join(', ')}). Set SITE_URL to the public URL (or expose VERCEL_PROJECT_PRODUCTION_URL) before deploying.`);
+  }
 }
 
 if (failures.length) {

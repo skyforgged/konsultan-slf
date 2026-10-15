@@ -42,7 +42,7 @@ const articleJsonLd = JSON.stringify({
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
   {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
     <SiteHeader />
-  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
+  <main class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
     {tocItems.length > 0 && (
       <aside class="self-start lg:sticky lg:top-6">
         <details class="rounded-xl border border-slate-200 p-4 lg:hidden">
@@ -68,14 +68,14 @@ const articleJsonLd = JSON.stringify({
         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
         <img src={article.data.image ?? ui.article.defaultImage} alt={`${ui.article.inlineAltPrefix}${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-          {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric' })}</span>}
+          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time>
+          {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</span>}
           {article.data.author && <span>{ui.article.authorPrefix} {article.data.author}</span>}
         </div>
       </header>
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
     </article>
-  </div>
+  </main>
   <section class="border-t border-slate-200 bg-blue-50/60">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
       <div class="max-w-2xl">

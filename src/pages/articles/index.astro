@@ -28,7 +28,7 @@ const articles = allArticles
     </header>
     {articles.length ? (
       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article) => <ArticleCard article={article} />)}
+        {articles.map((article) => <ArticleCard article={article} headingLevel={2} />)}
       </div>
     ) : (
       <p class="mt-10 rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">{ui.article.emptyList}</p>

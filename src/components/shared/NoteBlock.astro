@@ -1,6 +1,6 @@
 ---
 import { ui } from '../../config/ui.ts';
-const { variant = 'info', title, text, class: css } = Astro.props;
+const { id, variant = 'info', title, text, class: css } = Astro.props;
 const variants: Record<string, string> = {
   info: 'border-blue-200 bg-blue-50 text-blue-900',
   success: 'border-emerald-200 bg-emerald-50 text-emerald-900',
@@ -9,7 +9,7 @@ const variants: Record<string, string> = {
 };
 const variantClass = variants[variant];
 ---
-<div class={`rounded-xl border px-5 py-4 ${variantClass} ${css?.section ?? ''}`}>
+<div id={id} class={`rounded-xl border px-5 py-4 ${variantClass} ${css?.section ?? ''}`}>
   {(title || text) && <div class={`font-semibold ${css?.title ?? ''}`}>{title ?? ui.blocks.noteDefaultTitles[variant] ?? variant}</div>}
   {text && <p class={`mt-1 text-sm leading-relaxed ${css?.text ?? ''}`}>{text}</p>}
 </div>
