@@ -24,8 +24,10 @@ for (const file of pages) {
   const page = path.relative(root, file).split(path.sep).join('/');
   pagesChecked++;
 
-  const titleCount = [...html.matchAll(/<title\b[^>]*>[\s\S]*?<\/title>/gi)].length;
-  if (titleCount !== 1) failures.push(`${page}: expected exactly one <title>, found ${titleCount}`);
+  const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+  if (titleTags.length !== 1) failures.push(`${page}: expected exactly one <title>, found ${titleTags.length}`);
+  const titleText = titleTags[0]?.[1].replace(/<[^>]*>/g, '').trim();
+  if (!titleText) failures.push(`${page}: <title> must not be empty`);
 
   const description = findMeta(html, 'name', 'description');
   if (!description) failures.push(`${page}: missing meta description`);
@@ -42,6 +44,10 @@ for (const file of pages) {
   const canonicalHref = canonicalTag ? getAttr(canonicalTag, 'href') : null;
   if (canonicalHref && !isAbsoluteHttpUrl(canonicalHref)) {
     failures.push(`${page}: canonical URL must be absolute HTTP(S): ${canonicalHref}`);
+  }
+  const ogUrl = findMeta(html, 'property', 'og:url');
+  if (canonicalHref && ogUrl && canonicalHref !== ogUrl) {
+    failures.push(`${page}: og:url does not match canonical URL`);
   }
 
   for (const [attribute, value] of [
