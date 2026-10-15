@@ -155,6 +155,32 @@ const articles = defineCollection({
           mandatory: z.boolean().optional(),
         })).min(1),
       }),
+      z.object({
+        component: z.literal('image-panel'),
+        id: z.string().min(1),
+        src: z.string().min(1),
+        alt: z.string().min(1),
+        caption: z.string().optional(),
+      }),
+      z.object({
+        component: z.literal('feature-card-grid'),
+        id: z.string().min(1),
+        title: z.string().min(1),
+        columns: z.union([z.literal(2), z.literal(3)]).default(3),
+        items: z.array(z.object({
+          title: z.string().min(1),
+          description: z.string().optional(),
+          points: z.array(z.string().min(1)).optional(),
+        })).min(1),
+      }),
+      z.object({
+        component: z.literal('stats-grid'),
+        id: z.string().min(1),
+        items: z.array(z.object({
+          value: z.string().min(1),
+          label: z.string().min(1),
+        })).min(1),
+      }),
     ])).default([]),
   }),
 });
