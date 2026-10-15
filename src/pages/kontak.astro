@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
-import { ui } from '../config/ui.ts';
 const page = await getEntry('pages', 'kontak');
 if (!page) throw new Error('Missing "kontak" page content entry.');
 const header = page.data.pageHeader;

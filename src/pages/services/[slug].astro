@@ -1,10 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
-import SiteHeader from '../../components/shared/SiteHeader.astro';
-import SiteFooter from '../../components/shared/SiteFooter.astro';
-import SiteHeader from '../../components/shared/SiteHeader.astro';
-import SiteFooter from '../../components/shared/SiteFooter.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
 import SourceLinks from '../../components/shared/SourceLinks.astro';
@@ -59,7 +55,7 @@ const breadcrumbJsonLd = JSON.stringify({
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
-    <SiteHeader />
+  <SiteHeader />
   <main class="mx-auto max-w-5xl px-5 py-12 sm:py-16">
     <nav aria-label={ui.nav.breadcrumbAriaLabel} class="mb-6 text-sm text-slate-500">
       <a href="/" class="text-blue-700 no-underline">{ui.nav.home}</a> / <a href="/services/" class="text-blue-700 no-underline">{ui.nav.services}</a> / <span>{service.data.title}</span>
@@ -161,5 +157,5 @@ const breadcrumbJsonLd = JSON.stringify({
     </section>
   </main>
   <RelatedArticles articles={articles} type="service" id={service.data.id} heading={service.data.relatedArticlesTitle} />
-    <SiteFooter />
+  <SiteFooter />
 </BaseLayout>
