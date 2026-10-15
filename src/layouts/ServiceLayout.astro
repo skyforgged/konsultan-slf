@@ -1,14 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
 import '../styles/global.css';
-const { service, headings = [] } = Astro.props as {
+const { service } = Astro.props as {
   service: CollectionEntry<'services'>;
-  headings?: Array<{ depth: number; text: string; slug: string }>;
 };
 const pageTitle = service.data.title;
 const description = service.data.description;
