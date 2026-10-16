@@ -17,23 +17,6 @@ const { service } = Astro.props as { service: CollectionEntry<'services'> };
 const articles = await getCollection('articles');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const serviceUrl = new URL(`/services/${service.data.slug}/`, siteUrl).toString();
-const serviceImage = new URL(service.data.image ?? ui.services.defaultImage, siteUrl).toString();
-const serviceJsonLd = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  '@id': `${serviceUrl}#service`,
-  name: service.data.title,
-  description: service.data.description,
-  url: serviceUrl,
-  image: [serviceImage],
-  serviceType: service.data.title,
-  provider: {
-    '@type': 'Organization',
-    '@id': `${siteUrl}/#organization`,
-    name: ui.brand.name,
-    url: siteUrl,
-  },
-}).replace(/</g, '\\u003c');
 const faqItems = service.data.blocks
   .filter((block) => block.component === 'faq')
   .flatMap((block) => block.items);
@@ -74,7 +57,6 @@ const headings = service.data.blocks.flatMap((block) => {
 });
 ---
 <ServiceLayout service={service} headings={headings}>
-  <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
   <div class="space-y-6">
