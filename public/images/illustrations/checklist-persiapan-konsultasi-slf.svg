@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc"><title id="title">Checklist Persiapan SLF</title><desc id="desc">Inventarisasi dokumen dan kondisi bangunan</desc><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#dbeafe"/></linearGradient><linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0f766e"/><stop offset="1" stop-color="#1e40af"/></linearGradient></defs><rect width="1200" height="630" rx="32" fill="url(#bg)"/><circle cx="1010" cy="110" r="180" fill="#0f766e" opacity=".09"/><circle cx="1050" cy="560" r="230" fill="#2563eb" opacity=".06"/><rect x="70" y="68" width="1060" height="494" rx="28" fill="#fff" stroke="#cbd5e1" stroke-width="3"/><rect x="105" y="105" width="12" height="420" rx="6" fill="url(#accent)"/><g transform="translate(170 160)"><rect x="0" y="0" width="360" height="310" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="4"/><path d="M70 245V115L180 45 290 115V245Z" fill="#fff" stroke="#0f766e" stroke-width="8" stroke-linejoin="round"/><path d="M48 122 180 34 312 122" fill="none" stroke="#0f766e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 245V155H160V245M200 145H245V185H200ZM200 205H245V245H200Z" fill="#bfdbfe" stroke="#0f766e" stroke-width="5"/><path d="M62 270H300" stroke="#94a3b8" stroke-width="7" stroke-linecap="round"/></g><g transform="translate(600 170)"><rect width="420" height="70" rx="14" fill="url(#accent)"/><text x="28" y="45" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#fff">KONSULTAN SLF &amp; PBG</text><text x="0" y="125" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#0f172a">Checklist Persiapan SLF</text><text x="0" y="172" font-family="Arial, sans-serif" font-size="22" fill="#475569">Inventarisasi dokumen dan kondisi bangunan</text><g transform="translate(0 215)"><rect width="360" height="72" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/><circle cx="37" cy="36" r="16" fill="#0f766e"/><path d="m29 36 6 6 11-14" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="68" y="44" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#334155">Persiapan konsultasi</text></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi persiapan konsultasi SLF</title>
+  <desc id="desc">Orang bersiap dengan clipboard dan perlengkapan konsultasi.</desc>
+  <rect x="48" y="36" width="544" height="448" rx="32" fill="#EFF6FF"/>
+  <circle cx="168" cy="196" r="48" fill="#DBEAFE"/>
+  <circle cx="168" cy="182" r="24" fill="#fff" stroke="#1D4ED8" stroke-width="5"/>
+  <path d="M138 236c0-16 13-28 30-28s30 12 30 28v16h-60v-16Z" fill="#1D4ED8"/>
+  <path d="M138 236h60" stroke="#1D4ED8" stroke-width="5"/>
+  <rect x="248" y="128" width="152" height="216" rx="14" fill="#fff" stroke="#1D4ED8" stroke-width="7"/>
+  <path d="M248 168H400" stroke="#DBEAFE" stroke-width="5"/>
+  <rect x="268" y="188" width="20" height="20" rx="4" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m271 198 4 4 8-9" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M304 192h70M268 228h110M304 232h70" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+  <rect x="268" y="268" width="20" height="20" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="4"/>
+  <path d="M275 278h56M268 308h110M268 328h80" stroke="#FDE68A" stroke-width="5" stroke-linecap="round"/>
+  <rect x="268" y="348" width="20" height="20" rx="4" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m271 358 4 4 8-9" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M420 248l40-20M420 248v40" stroke="#1D4ED8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M430 238l-10 10 10 10" stroke="#1D4ED8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="448" y="196" width="100" height="100" rx="14" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="5"/>
+  <circle cx="498" cy="236" r="16" fill="#BAE6FD"/>
+  <path d="M492 236h12M498 230v12" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
+  <text x="498" y="276" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#0369A1">Info</text>
+</svg>

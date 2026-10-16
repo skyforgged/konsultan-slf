@@ -103,7 +103,7 @@ export const ui = {
   services: {
     readMore: 'Pelajari layanan →',
     emptyList: 'Halaman layanan akan ditampilkan setelah konten layanan diterbitkan.',
-    defaultImage: '/images/illustrations/service-certificate.svg',
+    defaultImage: '/images/illustrations/sertifikat-laik-fungsi.svg',
   },
   ctaBlock: {
     defaultButton: 'Konsultasi via WhatsApp',

@@ -1,14 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" fill="none" role="img" aria-labelledby="title desc">
-  <title id="title">Ilustrasi dokumen informasi</title>
-  <desc id="desc">Lembar informasi dengan bagian-bagian tulisan dan simbol pencarian.</desc>
-  <rect x="24" y="18" width="512" height="284" rx="24" fill="#F8FAFC"/>
-  <rect x="126" y="46" width="226" height="230" rx="14" fill="#fff" stroke="#1D4ED8" stroke-width="7"/>
-  <path d="M157 86h104m-104 30h153m-153 30h132m-132 30h96" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
-  <rect x="157" y="205" width="128" height="42" rx="8" fill="#DBEAFE"/>
-  <path d="M177 226h88" stroke="#2563EB" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="366" cy="203" r="53" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
-  <path d="m405 242 36 36" stroke="#1D4ED8" stroke-width="12" stroke-linecap="round"/>
-  <path d="M350 203h32m-16-16v32" stroke="#2563EB" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="100" cy="88" r="12" fill="#60A5FA"/>
-  <path d="M400 69h48" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi dokumen SLF lengkap</title>
+  <desc id="desc">Berkas dokumen persyaratan SLF dengan daftar centang.</desc>
+  <rect x="48" y="36" width="544" height="448" rx="32" fill="#EFF6FF"/>
+  <rect x="98" y="88" width="160" height="216" rx="14" fill="#fff" stroke="#1D4ED8" stroke-width="7"/>
+  <path d="M98 128H258" stroke="#DBEAFE" stroke-width="5"/>
+  <path d="M118 158h80M118 188h60M118 218h70M118 248h50" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="110" cy="164" r="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m107 164 3 3 6-7" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="110" cy="194" r="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m107 194 3 3 6-7" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="110" cy="224" r="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m107 224 3 3 6-7" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="110" cy="254" r="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="4"/>
+  <path d="m107 254 3 3 6-7" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="288" y="88" width="160" height="216" rx="14" fill="#fff" stroke="#1D4ED8" stroke-width="7"/>
+  <path d="M288 128H448" stroke="#DBEAFE" stroke-width="5"/>
+  <path d="M308 158h80M308 188h60M308 218h70M308 248h50" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="320" cy="164" r="8" fill="#FEF3C7" stroke="#D97706" stroke-width="4"/>
+  <circle cx="320" cy="194" r="8" fill="#FEF3C7" stroke="#D97706" stroke-width="4"/>
+  <circle cx="320" cy="224" r="8" fill="#FEF3C7" stroke="#D97706" stroke-width="4"/>
+  <circle cx="320" cy="254" r="8" fill="#FEF3C7" stroke="#D97706" stroke-width="4"/>
+  <rect x="98" y="336" width="350" height="100" rx="16" fill="#FEF9C3" stroke="#D97706" stroke-width="6"/>
+  <circle cx="140" cy="386" r="22" fill="#FDE68A" stroke="#D97706" stroke-width="5"/>
+  <text x="140" y="393" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#92400E">!</text>
+  <text x="182" y="380" font-family="Arial,sans-serif" font-size="15" font-weight="600" fill="#92400E">Lengkapi semua dokumen</text>
+  <text x="182" y="402" font-family="Arial,sans-serif" font-size="13" fill="#B45309">Sebelum pengajuan SLF</text>
 </svg>
