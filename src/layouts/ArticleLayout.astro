@@ -16,10 +16,10 @@ const description = article.data.description;
 const canonical = `/articles/${article.data.slug}/`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const articleUrl = new URL(canonical, siteUrl).toString();
-// Keep Article JSON-LD images raster-compatible, matching the social-card fallback in BaseLayout.
-const articleImageSource = article.data.image ?? ui.article.defaultImage;
+// Social metadata and JSON-LD use a dedicated raster image; the on-page illustration may remain SVG.
+const articleImageSource = article.data.socialImage ?? ui.meta.articleImage;
 const isRasterArticleImage = /\.(png|jpe?g|webp|gif)$/i.test(articleImageSource.split(/[?#]/)[0]);
-const articleImage = new URL(isRasterArticleImage ? articleImageSource : ui.meta.articleImage, siteUrl).toString();
+const articleImage = new URL(isRasterArticleImage ? articleImageSource : ui.meta.defaultImage, siteUrl).toString();
 
 let footerServiceTitle: string | undefined;
 if (article.data.relatedType === 'service' && article.data.relatedId) {
@@ -49,7 +49,7 @@ const articleJsonLd = JSON.stringify({
   url: articleUrl,
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate} mainEntityId={`${articleUrl}#article`}>
+<BaseLayout title={pageTitle} description={description} canonical={canonical} socialImage={article.data.socialImage ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate} mainEntityId={`${articleUrl}#article`}>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <meta slot="head" property="article:published_time" content={utcIso(article.data.pubDate)} />
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={utcIso(article.data.updatedDate)} />}

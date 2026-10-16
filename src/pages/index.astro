@@ -14,6 +14,7 @@ if (home.data.draft) throw new Error('Page "home" is marked draft but has a stat
 <BaseLayout
   title={home.data.seoTitle ?? home.data.title}
   description={home.data.description}
+  socialImage={home.data.socialImage}
   canonical={home.data.canonical}
   noindex={home.data.noindex}
   pubDate={home.data.pubDate}

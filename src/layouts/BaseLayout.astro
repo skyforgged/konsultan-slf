@@ -1,15 +1,15 @@
 ---
 import '../styles/global.css';
 import { ui } from '../config/ui.ts';
-const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, canonical, noindex = false, image = ui.meta.defaultImage, pubDate, updatedDate, mainEntityId } = Astro.props as { title?: string; description?: string; canonical?: string; noindex?: boolean; image?: string; pubDate?: Date; updatedDate?: Date; mainEntityId?: string };
+const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, canonical, noindex = false, socialImage = ui.meta.defaultImage, pubDate, updatedDate, mainEntityId } = Astro.props as { title?: string; description?: string; canonical?: string; noindex?: boolean; socialImage?: string; pubDate?: Date; updatedDate?: Date; mainEntityId?: string };
 // Crawler sosial (Facebook, LinkedIn, WhatsApp, X) tidak merender SVG. Gambar non-raster diganti fallback PNG.
-const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(image.split(/[?#]/)[0]);
-const socialImage = isRasterImage ? image : ui.meta.defaultImage;
+const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(socialImage.split(/[?#]/)[0]);
+const resolvedSocialImage = isRasterImage ? socialImage : ui.meta.defaultImage;
 const imageAlt = isRasterImage ? (Astro.props.imageAlt ?? title) : ui.meta.socialImageAlt;
 const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
-const imageUrl = socialImage.startsWith('http') ? socialImage : new URL(socialImage, siteUrl || Astro.url).toString();
+const imageUrl = resolvedSocialImage.startsWith('http') ? resolvedSocialImage : new URL(resolvedSocialImage, siteUrl || Astro.url).toString();
 // Build one canonical BreadcrumbList for every route using this layout.
 const pathname = new URL(canonicalUrl).pathname.replace(/\/+$/, '') || '/';
 const pathSegments = pathname.split('/').filter(Boolean);
