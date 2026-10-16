@@ -21,8 +21,8 @@ if (serviceTitle) {
   const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
   const serviceLabels = activeServices.map((s) => {
     const t = s.data.title;
-    const m = t.match(/\\(([^)]+)\\)$/);
-    return m ? `${t.replace(/\\s*\\([^)]+\\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\\s+/i, '').trim();
+    const m = t.match(/\(([^)]+)\)$/);
+    return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
   });
   if (serviceLabels.length > 0) {
     footerTagline = `${site.name} menyediakan jasa${serviceLabels.length === 1 ? ' ' + serviceLabels[0] : ' ' + serviceLabels.slice(0, -1).join(', ') + ' dan ' + serviceLabels.at(-1)}.`;
