@@ -4,6 +4,8 @@ ulid: "01JAKSLF000000000000000002"
 type: "service"
 slug: "pengurusan-pbg"
 title: "Pendampingan Persetujuan Bangunan Gedung (PBG)"
+pubDate: "2026-10-16T00:00:00Z"
+updatedDate: "2026-10-16T00:00:00Z"
 description: "Penelaahan awal kebutuhan PBG berdasarkan fungsi, kondisi rencana bangunan, dan dokumen yang tersedia."
 serviceGroup: "pbg"
 order: 20
