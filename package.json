@@ -8,7 +8,8 @@
     "build": "astro check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview",
     "hooks:install": "git config core.hooksPath .githooks",
-    "content:dates": "node scripts/update-content-dates.mjs"
+    "content:dates": "node scripts/update-content-dates.mjs",
+    "content:update:ai": "node scripts/update-content-ai.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
