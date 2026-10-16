@@ -24,10 +24,23 @@ const placeholderPatterns = [
 
 for (const file of files) {
   const source = await readFile(file, 'utf8');
-  if (/^draft:\s*true\s*$/im.test(source)) continue;
-  publishedFilesChecked++;
-
   const relativePath = path.relative(process.cwd(), file).split(path.sep).join('/');
+  const dateFields = ['pubDate', 'updatedDate'];
+  const utcTimestampPattern = /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$/;
+  const dateValues = {};
+  for (const field of dateFields) {
+    const match = source.match(new RegExp('^' + field + ':\\\\s*["\\\\']?([^"\\\\'\\\\r\\\\n]+)', 'm'));
+    if (!match || !utcTimestampPattern.test(match[1].trim())) {
+      failures.push(`${relativePath}: ${field} must use UTC ISO format YYYY-MM-DDTHH:mm:ssZ without milliseconds`);
+    } else {
+      dateValues[field] = match[1].trim();
+    }
+  }
+  if (dateValues.pubDate && dateValues.updatedDate && dateValues.updatedDate < dateValues.pubDate) {
+    failures.push(`${relativePath}: updatedDate must not be earlier than pubDate`);
+  }
+  if (/^draft:\\s*true\\s*$/im.test(source)) continue;
+  publishedFilesChecked++;
   for (const { label, pattern } of placeholderPatterns) {
     const match = pattern.exec(source);
     if (match) failures.push(`${relativePath}: ${label} detected (${JSON.stringify(match[0])})`);
