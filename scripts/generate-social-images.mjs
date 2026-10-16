@@ -14,6 +14,7 @@ const images = {
   '404': 'not-found.svg',
   'checklist-persiapan-konsultasi-slf': 'article-checklist.svg',
   'checklist-dokumen-slf-lengkap': 'article-document.svg',
+  'proses-tahapan-pengajuan-slf': 'building-compliance.svg',
   'pengertian-slf-dasar-hukum': 'article-slf-law.svg',
   'pengertian-slf': 'article-slf-overview.svg',
   'as-built-drawing': 'service-as-built.svg',

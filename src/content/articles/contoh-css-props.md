@@ -5,7 +5,7 @@ slug: "contoh-css-props"
 title: "Contoh Penggunaan CSS Props di Frontmatter"
 description: "Demo cara menambahkan custom CSS classes ke component blocks melalui frontmatter."
 pubDate: "2026-01-20T09:00:00Z"
-updatedDate: "2026-10-16T13:00:00Z"
+updatedDate: "2026-10-16T07:00:00Z"
 draft: true
 type: "article"
 category: "Demo"
