@@ -232,6 +232,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     description: z.string().optional(),
     mode: z.enum(['latest', 'listing']).default('listing'),
     limit: z.number().int().nonnegative().default(0),
+    offset: z.number().int().nonnegative().default(0),
   }),
   z.object({
     component: z.literal('home-cta'),

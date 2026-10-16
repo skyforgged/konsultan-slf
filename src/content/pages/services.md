@@ -21,4 +21,11 @@ blocks:
   - component: "service-list"
     variant: "listing"
     columns: 3
+  - component: "article-list"
+    id: "artikel-panduan"
+    mode: "listing"
+    offset: 3
+    limit: 3
+    heading: "Artikel dan panduan"
+    description: "Lanjutkan membaca panduan SLF dan PBG lainnya, dipilih berdasarkan tanggal publikasi terbaru."
 ---
