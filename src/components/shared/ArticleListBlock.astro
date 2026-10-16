@@ -4,7 +4,7 @@ import ArticleCard from './ArticleCard.astro';
 import { ui } from '../../config/ui.ts';
 const { id, heading, description, mode = 'listing', limit = 0, offset = 0 } = Astro.props;
 const allArticles = (await getCollection('articles'))
-  .filter((article) => !article.data.draft)
+  .filter((article) => !article.data.draft && article.data.contentType !== 'local-seo')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || b.data.id - a.data.id);
 const articles = allArticles.slice(Math.max(0, offset), limit > 0 ? Math.max(0, offset) + limit : undefined);
 ---
