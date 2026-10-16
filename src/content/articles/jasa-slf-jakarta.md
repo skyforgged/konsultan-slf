@@ -9,7 +9,7 @@ description: >-
   Informasi jasa SLF Jakarta dan konsultasi Sertifikat Laik Fungsi untuk
   pemilik serta pengelola bangunan. Hubungi 0859-4746-8548 untuk konsultasi.
 pubDate: '2026-10-16T00:00:00Z'
-updatedDate: "2026-10-16T21:27:29Z"
+updatedDate: "2026-10-16T21:34:46Z"
 author: admin
 category: "SLF"
 tags:
@@ -84,11 +84,11 @@ blocks:
           karakteristik, serta ketentuan yang berlaku.
       - type: list
         items:
-          - Gedung perkantoran dan bangunan komersial.
-          - Hotel, apartemen, dan bangunan hunian sesuai ketentuan yang berlaku.
-          - Pusat perdagangan, fasilitas usaha, dan bangunan pelayanan publik.
-          - Gudang atau fasilitas industri yang memiliki persyaratan bangunan terkait.
-          - Bangunan yang sudah berdiri dan memerlukan peninjauan dokumen serta kondisi aktual.
+          - Gedung perkantoran dan bangunan komersial di Jakarta.
+          - Hotel, apartemen, dan bangunan hunian di Jakarta sesuai ketentuan yang berlaku.
+          - Pusat perdagangan, fasilitas usaha, dan bangunan pelayanan publik di Jakarta.
+          - Gudang atau fasilitas industri di Jakarta yang memiliki persyaratan bangunan terkait.
+          - Bangunan yang sudah berdiri di Jakarta dan memerlukan peninjauan dokumen serta kondisi aktual.
   - component: steps
     id: langkah-konsultasi-slf
     heading: Tahapan yang dapat dipersiapkan
