@@ -61,26 +61,26 @@ if (article.data.relatedType === 'service' && article.data.relatedId) {
   }
 }
 const buildingTypesBlock = article.data.blocks.find((block) => block.component === 'card' && block.id === 'kategori-bangunan-slf');
-const buildingTypesList = buildingTypesBlock?.body.find((item) => item.type === 'list');
-const buildingTypesJsonLd = buildingTypesList && buildingTypesList.type === 'list' ? {
+const buildingTypesList = buildingTypesBlock && 'body' in buildingTypesBlock ? buildingTypesBlock.body.find((item): item is Extract<typeof item, { type: 'list' }> => item.type === 'list') : null;
+const buildingTypesJsonLd = buildingTypesBlock && 'heading' in buildingTypesBlock && buildingTypesList ? {
   '@type': 'ItemList',
   '@id': `${articleUrl}#kategori-bangunan-slf`,
-  name: buildingTypesBlock?.heading ?? 'Contoh jenis bangunan',
+  name: buildingTypesBlock.heading ?? 'Contoh jenis bangunan',
   description: 'Contoh jenis bangunan yang dapat memerlukan peninjauan kebutuhan dan dokumen terkait SLF.',
   itemListOrder: 'https://schema.org/ItemListUnordered',
   numberOfItems: buildingTypesList.items.length,
-  itemListElement: buildingTypesList.items.map((name, index) => ({
+  itemListElement: buildingTypesList.items.map((name: string, index: number) => ({
     '@type': 'ListItem',
     position: index + 1,
     name,
   })),
 } : null;
 const faqBlock = article.data.blocks.find((block) => block.component === 'faq');
-const faqJsonLd = faqBlock ? {
+const faqJsonLd = faqBlock && 'items' in faqBlock ? {
   '@type': 'FAQPage',
   '@id': `${articleUrl}#faq`,
   inLanguage: 'id-ID',
-  mainEntity: faqBlock.items.map((item) => ({
+  mainEntity: faqBlock.items.map((item: { question: string; answer: string }) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {
