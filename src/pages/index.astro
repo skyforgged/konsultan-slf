@@ -76,12 +76,12 @@ const organizationJsonLd = JSON.stringify({
         <div class="relative">
           <img src={hero.image} alt={hero.imageAlt} class="mx-auto mb-2 h-auto max-h-48 w-full max-w-60 object-contain" width="640" height="520" fetchpriority="high" />
           <div class="rounded-2xl border border-white/15 bg-white/[0.06] p-6 shadow-2xl backdrop-blur-sm sm:p-8">
-            <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-200">{hero.supportEyebrow}</p>
+            <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-blue-200">{hero.supportEyebrow}</h2>
             <div class="mt-6 space-y-4">
               {hero.supportItems.map((item) => (
                 <div class="flex gap-4 rounded-xl border border-white/10 bg-slate-900/70 p-4">
                   <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-400/15 text-xl text-blue-200" aria-hidden="true">{item.number}</span>
-                  <div><h2 class="font-bold text-white">{item.title}</h2><p class="mt-1 text-sm leading-6 text-slate-300">{item.text}</p></div>
+                  <div><h3 class="font-bold text-white">{item.title}</h3><p class="mt-1 text-sm leading-6 text-slate-300">{item.text}</p></div>
                 </div>
               ))}
             </div>
