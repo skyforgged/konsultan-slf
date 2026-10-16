@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-social-images.mjs",
     "build": "astro check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview"
   },
@@ -11,6 +12,7 @@
     "@astrojs/check": "^0.9.4",
     "astro": "^5.14.1",
     "rehype-slug": "^6.0.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.2"
   },
   "devDependencies": {

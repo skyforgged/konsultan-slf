@@ -5,7 +5,7 @@ title: "Layanan Konsultan SLF dan PBG"
 pubDate: "2026-10-16T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 description: "Layanan pendampingan SLF, PBG, dan kebutuhan perizinan bangunan sesuai kondisi proyek."
-socialImage: "/images/illustrations/service-certificate.png"
+socialImage: "/images/social/services.png"
 type: "page"
 slug: "services"
 draft: false
