@@ -14,13 +14,13 @@ await mkdir(outputDir, { recursive: true });
 
 async function extractFrontmatterValue(filePath, key) {
   const content = await readFile(filePath, 'utf8');
-  const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+      const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!frontmatter) {
     errors.push(`${path.relative(root, filePath)}: missing or malformed frontmatter`);
     return null;
   }
 
-  const escapedKey = key.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\  const match = frontmatter[1].match(');
+  const escapedKey = key;
   const match = frontmatter[1].match(
     new RegExp('^' + escapedKey + ':\\s*"([^"]*)"\\s*$', 'm')
   );
@@ -41,8 +41,8 @@ async function processContent(dir, collection) {
     const socialImage = await extractFrontmatterValue(fullPath, 'socialImage');
     if (collection === 'pages') {
       const content = await readFile(fullPath, 'utf8');
-      const frontmatter = content.match(/^---\\s*\\r?\\n([\\s\\S]*?)\\r?\\n---(?:\\r?\\n|$)/);
-      const blockImage = frontmatter?.[1].match(/^\\s+image:\\s*"([^"]+\\.svg)"\\s*$/m);
+      const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+      const blockImage = frontmatter?.[1].match(/^\s+image:\s*"([^"]+\.svg)"\s*$/m);
       imageUrl = blockImage?.[1] ?? null;
     }
     if (!imageUrl) {
@@ -77,9 +77,9 @@ async function processContent(dir, collection) {
         .resize(1200, 630, { fit: 'contain', background: '#f8fafc' })
         .webp({ quality: 80 })
         .toFile(outputPath);
-      console.log(`Social image generated: ${base}.webp (${result.width}x${result.height}, ${result.size} bytes)`);
+      console.log(`Social image generated: ${outputBase}.webp (${result.width}x${result.height}, ${result.size} bytes)`);
     } catch (err) {
-      errors.push(`${path.relative(root, fullPath)}: failed to generate ${base}.webp: ${err.message}`);
+      errors.push(`${path.relative(root, fullPath)}: failed to generate ${outputBase}.webp: ${err.message}`);
     }
   }
 }
