@@ -95,7 +95,7 @@ blocks:
           - "Konsultasikan kebutuhan pengkajian teknis tambahan."
   - component: image-panel
     id: "ilustrasi-skenario-slf"
-    src: "/images/illustrations/building-compliance.svg"
+    src: "/images/illustrations/skenario-umum-studi-kasus-slf.svg"
     alt: "Ilustrasi berbagai jenis bangunan dengan skenario SLF yang berbeda"
     caption: "Mengenali skenario bangunan Anda adalah langkah pertama untuk menentukan pendekatan pengajuan SLF yang tepat."
   - component: quote

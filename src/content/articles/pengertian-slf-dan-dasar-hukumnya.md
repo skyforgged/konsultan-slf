@@ -53,7 +53,7 @@ blocks:
         text: "Pemilik bangunan perlu memahami bahwa ketentuan dapat berkembang. Selalu periksa sumber resmi terbaru untuk memastikan informasi yang Anda gunakan masih berlaku."
   - component: image-panel
     id: "gambaran-proses-slf"
-    src: "/images/illustrations/sertifikat-laik-fungsi.svg"
+    src: "/images/illustrations/pengertian-slf-dasar-hukum.svg"
     alt: "Ilustrasi dokumen Sertifikat Laik Fungsi yang sedang ditelaah"
     caption: "SLF merupakan dokumen resmi yang diterbitkan setelah pemeriksaan kelaikan fungsi bangunan selesai dilakukan."
   - component: note

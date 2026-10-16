@@ -75,7 +75,7 @@ blocks:
       - ["Risiko keterlambatan", "Rendah", "Sedang hingga tinggi"]
   - component: image-panel
     id: "faktor-penentu-slf"
-    src: "/images/illustrations/building-compliance.svg"
+    src: "/images/illustrations/biaya-waktu-faktor-penentu.svg"
     alt: "Ilustrasi faktor teknis dan administratif yang memengaruhi proses SLF"
     caption: "Kombinasi faktor teknis dan administratif menentukan kelancaran dan durasi proses SLF."
   - component: note

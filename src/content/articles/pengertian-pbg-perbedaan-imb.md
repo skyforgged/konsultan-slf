@@ -62,7 +62,7 @@ blocks:
           - "PBG menjadi prasyarat untuk SLF; IMB tidak secara otomatis berlaku sebagai dasar SLF."
   - component: image-panel
     id: "ilustrasi-pbg"
-    src: "/images/illustrations/building-compliance.svg"
+    src: "/images/illustrations/pengertian-pbg-perbedaan-imb.svg"
     alt: "Ilustrasi dokumen Persetujuan Bangunan Gedung dan pemeriksaan teknis"
     caption: "PBG memastikan rencana bangunan memenuhi standar sebelum konstruksi dimulai, berbeda dengan IMB yang bersifat administratif."
   - component: comparison-table
