@@ -6,7 +6,7 @@ const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, 
 const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(image.split(/[?#]/)[0]);
 const socialImage = isRasterImage ? image : ui.meta.defaultImage;
 const imageAlt = isRasterImage ? (Astro.props.imageAlt ?? title) : ui.meta.socialImageAlt;
-const utcIso = (date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
+const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
 const imageUrl = socialImage.startsWith('http') ? socialImage : new URL(socialImage, siteUrl || Astro.url).toString();
