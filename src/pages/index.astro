@@ -18,7 +18,7 @@ const jsonLd = home.data.jsonLd;
 if (!jsonLd) throw new Error('Missing "home" page JSON-LD content.');
 const articles = await getCollection('articles');
 const services = (await getCollection('services'))
-  .filter((service) => !service.data.draft)
+  .filter((service) => !service.data.draft && service.data.status === 'active')
   .sort((a, b) => a.data.order - b.data.order);
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
 const organizationJsonLd = JSON.stringify({
