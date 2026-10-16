@@ -60,6 +60,21 @@ if (article.data.relatedType === 'service' && article.data.relatedId) {
     };
   }
 }
+const faqBlock = article.data.blocks.find((block) => block.component === 'faq');
+const faqJsonLd = faqBlock ? {
+  '@type': 'FAQPage',
+  '@id': `${articleUrl}#faq`,
+  inLanguage: 'id-ID',
+  mainEntity: faqBlock.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+} : null;
+
 const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -86,7 +101,8 @@ const articleJsonLd = JSON.stringify({
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
       url: articleUrl,
     },
-    ...(relatedServiceJsonLd ? [relatedServiceJsonLd] : [])
+    ...(relatedServiceJsonLd ? [relatedServiceJsonLd] : []),
+    ...(faqJsonLd ? [faqJsonLd] : [])
   ]
 }).replace(/</g, '\\u003c');
 ---
