@@ -5,6 +5,7 @@ title: "Kontak | Konsultasi SLF & PBG"
 pubDate: "2026-10-16T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 description: "Hubungi konsultan SLF & PBG untuk konsultasi kebutuhan Sertifikat Laik Fungsi dan Persetujuan Bangunan Gedung."
+socialImage: "/images/illustrations/contact-support.png"
 type: "page"
 slug: "kontak"
 draft: false

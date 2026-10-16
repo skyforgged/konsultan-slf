@@ -11,6 +11,7 @@ if (page.data.draft) throw new Error('Page "404" is marked draft but has a stati
 <BaseLayout
   title={page.data.seoTitle ?? page.data.title}
   description={page.data.description}
+  socialImage={page.data.socialImage}
   canonical={page.data.canonical}
   noindex={page.data.noindex}
   pubDate={page.data.pubDate}
