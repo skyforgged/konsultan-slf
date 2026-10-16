@@ -17,4 +17,4 @@ Keputusan:
 - `revise`: masalah dapat diperbaiki dengan revisi terarah atau ada klaim penting yang perlu dipersempit.
 - `reject`: perubahan secara mendasar tidak aman/tidak sesuai, atau masalah material tidak dapat diselesaikan dengan bukti yang tersedia.
 
-Bila ragu atas klaim hukum penting, jangan meloloskan. Temuan harus spesifik, dapat ditindaklanjuti, dan tidak sekadar preferensi gaya. Output harus mengikuti JSON yang diminta pemanggil, tanpa markdown fence.
+Bila ragu atas klaim hukum penting, jangan meloloskan. Temuan harus spesifik, dapat ditindaklanjuti, dan tidak sekadar preferensi gaya. Untuk setiap review, output harus mencakup `sources_checked` berupa array objek `{"title":"...","url":"URL yang benar-benar dibuka","supports":"klaim yang didukung"}`. Jangan mencantumkan sumber yang hanya diketahui dari ingatan atau tidak dibuka melalui pencarian. Bila tidak ada sumber yang dapat diperiksa, jangan memberi verdict `pass`. Output harus mengikuti JSON yang diminta pemanggil, tanpa markdown fence.
