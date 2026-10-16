@@ -16,7 +16,7 @@ const articles = allArticles
   .filter((a: CollectionEntry<'articles'>) => !a.data.draft)
   .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
 ---
-<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} canonical={page.data.canonical} noindex={page.data.noindex}>
+<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} canonical={page.data.canonical} noindex={page.data.noindex} pubDate={page.data.pubDate} updatedDate={page.data.updatedDate}>
     <SiteHeader />
   <main id="main-content" class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
     <header class="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr]">
