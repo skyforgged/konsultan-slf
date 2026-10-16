@@ -1,6 +1,8 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const utcDate = z.coerce.date();
+
 const sharedIdentity = {
   id: z.number().int().positive(),
   ulid: z.string().length(26),
@@ -196,8 +198,8 @@ const articles = defineCollection({
     type: z.literal('article'),
     schemaType: z.enum(['Article', 'BlogPosting', 'TechArticle', 'NewsArticle']).default('BlogPosting'),
     slug: z.string().min(1),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    pubDate: utcDate,
+    updatedDate: utcDate,
     author: z.string().optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).default([]),
@@ -214,8 +216,8 @@ const pages = defineCollection({
     ...sharedIdentity,
     type: z.literal('page'),
     slug: z.string().min(1),
-    pubDate: z.coerce.date().optional(),
-    updatedDate: z.coerce.date().optional(),
+    pubDate: utcDate,
+    updatedDate: utcDate,
     navLabel: z.string().optional(),
     seoTitle: z.string().optional(),
     keywords: z.array(z.string()).default([]),
@@ -295,8 +297,8 @@ const services = defineCollection({
     ...sharedIdentity,
     type: z.literal('service'),
     slug: z.string().min(1),
-    pubDate: z.coerce.date().optional(),
-    updatedDate: z.coerce.date().optional(),
+    pubDate: utcDate,
+    updatedDate: utcDate,
     serviceGroup: z.enum(['slf', 'pbg']).default('slf'),
     order: z.number().int().default(100),
     status: z.enum(['active', 'inactive']).default('active'),
