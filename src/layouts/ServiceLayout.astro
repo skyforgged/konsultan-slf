@@ -34,7 +34,7 @@ const serviceJsonLd = JSON.stringify({
   },
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt} pubDate={service.data.pubDate} updatedDate={service.data.updatedDate}>
+<BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt} pubDate={service.data.pubDate} updatedDate={service.data.updatedDate} mainEntityId={`${serviceUrl}#service`}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <SiteHeader />
   <main id="main-content" class="mx-auto max-w-7xl px-5 py-10 sm:py-12 lg:py-14">
