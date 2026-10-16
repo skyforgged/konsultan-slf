@@ -76,6 +76,14 @@ Gunakan format ringkas ini:
 - **Review manusia:** risiko/hal yang perlu ditinjau, atau “tidak ada yang teridentifikasi”.
 - **Commit/PR:** tautan dan SHA jika tersedia.
 
+## Lokasi file operasional
+
+- `.github/workflows/update-content.yml` — workflow GitHub Actions yang dijalankan manual.
+- `scripts/update-content-ai.mjs` — runtime Node.js yang memilih/audit satu artikel, memanggil endpoint Responses API kompatibel OpenAI melalui `AI_BASE_URL`, menjaga field identitas, dan menulis hasil.
+- `prompts/content-update.md` — instruksi operasional editor.
+- `prompts/content-review.md` — instruksi reviewer independen yang memakai model terpisah.
+- `docs/content-update-policy.md` dan dokumen ini tetap menjadi dokumentasi/kebijakan; keduanya bukan skrip yang dieksekusi.
+
 ## Catatan implementasi workflow GitHub Actions
 
 Saat kebijakan ini dijalankan dari GitHub Actions, workflow harus:
@@ -86,4 +94,4 @@ Saat kebijakan ini dijalankan dari GitHub Actions, workflow harus:
 - menyediakan input target opsional, batas jumlah target yang jelas, dan laporan hasil;
 - berhenti dengan aman jika kredensial/model tidak tersedia, sumber hukum tidak dapat diverifikasi, atau hasil model tidak memenuhi format yang diperlukan.
 
-**Status repo saat dokumen ini ditulis:** `.github/workflows/build.yml` adalah workflow GitHub Actions yang ada. Workflow AI khusus untuk update content belum ada; dokumen ini menetapkan kontrak operasionalnya, bukan mengklaim otomasi AI sudah berjalan. Implementasi runtime berikutnya harus memilih penyedia/model AI dan secret yang akan digunakan.
+**Status implementasi awal:** `.github/workflows/update-content.yml` tersedia dan hanya berjalan lewat `workflow_dispatch`. Workflow memerlukan secret `AI_API_KEY` serta repository variables `AI_BASE_URL` dan `AI_MODEL`. `AI_REVIEW_MODEL` opsional dan default ke `auto`; gunakan `auto` hanya jika penyedia API mendukung selector tersebut. `AI_BASE_URL` harus menunjuk ke endpoint yang kompatibel dengan OpenAI Responses API dan mendukung tool `web_search_preview`, karena verifikasi sumber adalah bagian dari review. Run yang mengubah artikel meminta reviewer independen untuk memeriksa fakta, sumber, risiko, dan kebijakan. Jika reviewer memberi verdict `revise`, editor mendapat satu kesempatan revisi lalu reviewer memeriksa ulang. Verdict selain `pass` menghentikan workflow tanpa PR. Artikel yang lolos review AI dan build akan diajukan sebagai PR untuk review manusia; run tanpa perubahan tidak membuka PR. Belum ada jadwal otomatis dan belum ada konten yang dipublikasikan otomatis.

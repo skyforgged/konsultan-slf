@@ -1,0 +1,94 @@
+name: AI Content Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_article:
+        description: "Path artikel opsional, mis. src/content/articles/pengertian-slf-dan-dasar-hukumnya.md"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-content-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      changed: ${{ steps.editor.outputs.changed }}
+      target_path: ${{ steps.editor.outputs.target_path }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        name: Install dependencies
+      - name: Check AI runtime syntax
+        run: node --check scripts/update-content-ai.mjs
+      - name: Audit and update one article
+        id: editor
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ vars.AI_BASE_URL }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          AI_REVIEW_MODEL: ${{ vars.AI_REVIEW_MODEL || 'auto' }}
+          TARGET_ARTICLE: ${{ inputs.target_article }}
+        run: npm run content:update:ai
+      - name: Build and validate
+        if: steps.editor.outputs.changed == 'true'
+        run: npm run build
+      - name: Upload proposed article
+        if: steps.editor.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-content-update
+          path: src/content/articles/
+          if-no-files-found: error
+
+  propose:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        name: Install dependencies
+      - name: Download proposed article
+        uses: actions/download-artifact@v4
+        with:
+          name: ai-content-update
+          path: src/content/articles/
+      - name: Re-run build before PR
+        run: npm run build
+      - name: Create review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ai/content-update
+          base: main
+          delete-branch: true
+          add-paths: src/content/articles/
+          title: "content: AI-proposed article update"
+          commit-message: "content: propose AI article update"
+          body: |
+            ## Ringkasan
+            Perubahan artikel diusulkan workflow AI dan telah melewati build.
+
+            - Target: ${{ needs.update.outputs.target_path }}
+            - Tidak dipublikasikan otomatis; tinjau diff dan sumber sebelum merge.
+            - Laporan lengkap tersedia pada job pertama di tab Summary.

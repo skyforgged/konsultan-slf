@@ -18,6 +18,7 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 ## Aturan wajib untuk update content
 
 Sebelum membuat atau memperbarui konten, baca dan patuhi:
+- `prompts/content-update.md` — instruksi operasional yang dibaca langsung oleh runtime AI update-content.
 - `docs/content-update-policy.md` — mandat editorial, batas topik, kriteria pemilihan, verifikasi fakta, dan batas perubahan.
 - `docs/content-update-workflow.md` — urutan kerja, validasi, dan format laporan.
 
@@ -31,6 +32,9 @@ Aturan praktis:
 - Jangan membuat artikel baru dalam run update-only; catat ide artikel baru sebagai usulan terpisah.
 - Perbarui `updatedDate` hanya jika konten yang dipublikasikan benar-benar berubah. Jangan mengubah `pubDate` untuk membuat artikel tampak baru.
 - Jika tidak ada perubahan substantif yang diperlukan, laporkan hasil audit tanpa memaksakan edit atau commit.
+- Workflow AI aktif: `.github/workflows/update-content.yml`; skrip runtime: `scripts/update-content-ai.mjs`; prompt editor/reviewer: `prompts/content-update.md` dan `prompts/content-review.md`.
+- Workflow AI hanya berjalan manual (`workflow_dispatch`), mengubah maksimal satu artikel, meminta review independen dari model kedua, menjalankan build, lalu mengajukan PR hanya jika review berstatus `pass`. Tidak ada publish otomatis ke `main`.
+- Workflow memerlukan GitHub Actions secret `OPENAI_API_KEY` serta repository variables `OPENAI_MODEL` dan `OPENAI_REVIEW_MODEL` (gunakan model reviewer yang berbeda dari editor); jangan menaruh nilainya di file repo.
 - Workflow AI tidak boleh langsung mempublikasikan konten ke `main` tanpa pemeriksaan. Perubahan konten harus divalidasi dan diajukan untuk peninjauan sesuai workflow yang digunakan.
 
 ## ATURAN INTI: pisahkan "theme" dari "data"
