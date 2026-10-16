@@ -1,4 +1,4 @@
-name: Build
+name: Validate Konsultan SLF Site
 
 on:
   pull_request:
@@ -10,10 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  validate_site:
+    name: Validate site and production build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,5 +25,5 @@ jobs:
         run: npm ci
       - name: Check AI content runtime syntax
         run: node --check scripts/update-content-ai.mjs
-      - name: Type-check and build
+      - name: Type-check and build Astro site
         run: npm run build
