@@ -13,7 +13,7 @@ draft: false
 status: active
 eyebrow: "Pengkajian Teknis"
 image: "/images/illustrations/service-technical-assessment.svg"
-socialImage: "/images/illustrations/building-compliance.png"
+socialImage: "/images/social/pengkajian-teknis-bangunan.png"
 imageAlt: "Ilustrasi bangunan untuk penelaahan teknis"
 blocks:
   - component: "section"

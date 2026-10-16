@@ -7,7 +7,7 @@ description: "Panduan praktis menginventarisasi informasi bangunan, dokumen yang
 pubDate: "2026-10-15T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 image: "/images/illustrations/article-checklist.svg"
-socialImage: "/images/illustrations/article-guide.png"
+socialImage: "/images/social/checklist-persiapan-konsultasi-slf.png"
 type: "article"
 category: "Persiapan SLF"
 relatedType: "service"

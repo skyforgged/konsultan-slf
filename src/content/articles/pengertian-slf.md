@@ -7,7 +7,7 @@ description: "Penjelasan awal tentang SLF, persiapan dokumen, dan hal yang perlu
 pubDate: "2026-01-15T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 image: "/images/illustrations/article-slf-overview.svg"
-socialImage: "/images/illustrations/building-compliance.png"
+socialImage: "/images/social/pengertian-slf.png"
 type: "article"
 category: "SLF"
 relatedType: "service"

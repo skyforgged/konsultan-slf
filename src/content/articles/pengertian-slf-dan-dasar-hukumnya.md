@@ -17,7 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/article-slf-law.svg"
-socialImage: "/images/illustrations/service-certificate.png"
+socialImage: "/images/social/pengertian-slf-dan-dasar-hukumnya.png"
 relatedType: "service"
 relatedId: 101
 blocks:
