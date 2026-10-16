@@ -12,7 +12,7 @@ order: 60
 draft: false
 status: active
 eyebrow: "Dokumen Teknis"
-image: "/images/illustrations/service-as-built.svg"
+image: "/images/illustrations/as-built-drawing.svg"
 socialImage: "/images/social/as-built-drawing.webp"
 imageAlt: "Ilustrasi dokumen gambar teknis"
 blocks:

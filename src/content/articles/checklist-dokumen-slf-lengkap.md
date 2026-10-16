@@ -16,7 +16,7 @@ tags:
   - "persiapan SLF"
 author: "Tim Konsultan SLF"
 draft: false
-image: "/images/illustrations/article-document.svg"
+image: "/images/illustrations/checklist-dokumen-slf-lengkap.svg"
 socialImage: "/images/social/checklist-dokumen-slf-lengkap.webp"
 relatedType: "service"
 relatedId: 101
@@ -91,7 +91,7 @@ blocks:
         required: false
   - component: image-panel
     id: "dokumen-slf-terorganisir"
-    src: "/images/illustrations/article-document.svg"
+    src: "/images/illustrations/checklist-dokumen-slf-lengkap.svg"
     alt: "Ilustrasi dokumen teknis bangunan yang terorganisir untuk pengajuan SLF"
     caption: "Dokumen yang terorganisir dengan baik mempercepat proses telaah dan mengurangi risiko keterlambatan."
   - component: note

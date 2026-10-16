@@ -12,7 +12,7 @@ order: 30
 draft: false
 status: active
 eyebrow: "SLF Bangunan Eksisting"
-image: "/images/illustrations/service-existing-building.svg"
+image: "/images/illustrations/slf-bangunan-eksisting.svg"
 socialImage: "/images/social/slf-bangunan-eksisting.webp"
 imageAlt: "Ilustrasi pemeriksaan kesesuaian bangunan dan dokumen"
 blocks:

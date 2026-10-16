@@ -12,7 +12,7 @@ order: 50
 draft: false
 status: active
 eyebrow: "Pengkajian Teknis"
-image: "/images/illustrations/service-technical-assessment.svg"
+image: "/images/illustrations/pengkajian-teknis-bangunan.svg"
 socialImage: "/images/social/pengkajian-teknis-bangunan.webp"
 imageAlt: "Ilustrasi bangunan untuk penelaahan teknis"
 blocks:

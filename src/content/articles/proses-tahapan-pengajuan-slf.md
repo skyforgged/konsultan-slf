@@ -16,7 +16,7 @@ tags:
   - "alur SLF"
 author: "Tim Konsultan SLF"
 draft: false
-image: "/images/illustrations/building-compliance.svg"
+image: "/images/illustrations/proses-tahapan-pengajuan-slf.svg"
 socialImage: "/images/social/proses-tahapan-pengajuan-slf.webp"
 relatedType: "service"
 relatedId: 101
@@ -65,7 +65,7 @@ blocks:
           - "Penerbitan: SLF diterbitkan secara elektronik melalui sistem jika semua kriteria terpenuhi."
   - component: image-panel
     id: "alur-pemeriksaan-slf"
-    src: "/images/illustrations/building-compliance.svg"
+    src: "/images/illustrations/proses-tahapan-pengajuan-slf.svg"
     alt: "Ilustrasi pemeriksaan kelaikan fungsi bangunan oleh tim teknis"
     caption: "Pemeriksaan teknis lapangan merupakan tahap kritis yang memverifikasi kesesuaian dokumen dengan kondisi aktual bangunan."
   - component: stats

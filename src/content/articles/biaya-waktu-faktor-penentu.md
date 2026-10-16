@@ -16,7 +16,7 @@ tags:
   - "estimasi SLF"
 author: "Tim Konsultan SLF"
 draft: false
-image: "/images/illustrations/service-certificate.svg"
+image: "/images/illustrations/biaya-waktu-faktor-penentu.svg"
 socialImage: "/images/social/biaya-waktu-faktor-penentu.webp"
 relatedType: "service"
 relatedId: 101

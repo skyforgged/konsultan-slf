@@ -16,7 +16,7 @@ tags:
   - "perizinan bangunan"
 author: "Tim Konsultan SLF"
 draft: false
-image: "/images/illustrations/article-slf-law.svg"
+image: "/images/illustrations/pengertian-slf-dasar-hukum.svg"
 socialImage: "/images/social/pengertian-slf-dasar-hukum.webp"
 relatedType: "service"
 relatedId: 101
