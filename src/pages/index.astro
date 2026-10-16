@@ -52,6 +52,8 @@ const organizationJsonLd = JSON.stringify({
   description={home.data.description}
   canonical={home.data.canonical}
   noindex={home.data.noindex}
+  pubDate={home.data.pubDate}
+  updatedDate={home.data.updatedDate}
 >
   <script slot="head" type="application/ld+json" set:html={organizationJsonLd}></script>
     <SiteHeader variant="home" />
