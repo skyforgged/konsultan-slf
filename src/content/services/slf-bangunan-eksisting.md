@@ -12,7 +12,8 @@ order: 30
 draft: false
 status: active
 eyebrow: "SLF Bangunan Eksisting"
-image: "/images/illustrations/building-compliance.svg"
+image: "/images/illustrations/service-existing-building.svg"
+socialImage: "/images/illustrations/building-compliance.png"
 imageAlt: "Ilustrasi pemeriksaan kesesuaian bangunan dan dokumen"
 blocks:
   - component: "section"

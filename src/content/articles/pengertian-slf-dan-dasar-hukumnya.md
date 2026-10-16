@@ -16,7 +16,8 @@ tags:
   - "perizinan bangunan"
 author: "Tim Konsultan SLF"
 draft: false
-image: "/images/illustrations/service-certificate.svg"
+image: "/images/illustrations/article-slf-law.svg"
+socialImage: "/images/illustrations/service-certificate.png"
 relatedType: "service"
 relatedId: 101
 blocks:
