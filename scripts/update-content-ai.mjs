@@ -3,16 +3,17 @@ import path from 'node:path';
 
 const root = process.cwd();
 const dir = path.join(root, 'src/content/articles');
-const apiKey = process.env.OPENAI_API_KEY;
-const model = process.env.OPENAI_MODEL;
-const reviewModel = process.env.OPENAI_REVIEW_MODEL;
+const apiKey = process.env.AI_API_KEY;
+const baseUrl = process.env.AI_BASE_URL?.trim().replace(/\\/+$/, '');
+const model = process.env.AI_MODEL;
+const reviewModel = process.env.AI_REVIEW_MODEL || 'auto';
 const requested = process.env.TARGET_ARTICLE?.trim();
 const outputPath = process.env.GITHUB_OUTPUT;
 const summaryPath = process.env.GITHUB_STEP_SUMMARY;
-if (!apiKey) throw new Error('Secret OPENAI_API_KEY belum dikonfigurasi.');
-if (!model) throw new Error('Variable OPENAI_MODEL belum dikonfigurasi.');
-if (!reviewModel) throw new Error('Variable OPENAI_REVIEW_MODEL belum dikonfigurasi untuk reviewer independen.');
-if (reviewModel === model) throw new Error('OPENAI_REVIEW_MODEL harus berbeda dari OPENAI_MODEL agar review benar-benar menggunakan model terpisah.');
+if (!apiKey) throw new Error('Secret AI_API_KEY belum dikonfigurasi.');
+if (!baseUrl) throw new Error('Variable AI_BASE_URL belum dikonfigurasi (gunakan base URL API yang kompatibel dengan OpenAI Responses API, biasanya diakhiri /v1).');
+if (!model) throw new Error('Variable AI_MODEL belum dikonfigurasi.');
+if (reviewModel !== 'auto' && reviewModel === model) throw new Error('AI_REVIEW_MODEL harus berbeda dari AI_MODEL atau gunakan auto jika penyedia mendukung pemilihan model otomatis.');
 if (requested && (!requested.startsWith('src/content/articles/') || !requested.endsWith('.md') || requested.includes('..'))) throw new Error('TARGET_ARTICLE harus berupa path artikel Markdown yang valid.');
 
 const read = (p) => readFile(path.join(root, p), 'utf8');
@@ -34,9 +35,10 @@ if (!eligible.length) throw new Error('Tidak ada artikel non-draft.');
 async function ask(input, useSearch = true, selectedModel = model) {
   const body = { model: selectedModel, input, max_output_tokens: 12000 };
   if (useSearch) body.tools = [{ type: 'web_search_preview' }];
-  const res = await fetch('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const endpoint = baseUrl.endsWith('/responses') ? baseUrl : `${baseUrl}/responses`;
+  const res = await fetch(endpoint, { method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`OpenAI API gagal (${res.status}): ${data.error?.message ?? 'respons tidak valid'}`);
+  if (!res.ok) throw new Error(`AI API gagal (${res.status}): ${data.error?.message ?? 'respons tidak valid'}`);
   const text = (data.output ?? []).flatMap((item) => item.content ?? []).filter((item) => item.type === 'output_text').map((item) => item.text).join('\n').trim();
   if (!text) throw new Error('Model tidak mengembalikan teks.');
   try { return JSON.parse(text); } catch {
