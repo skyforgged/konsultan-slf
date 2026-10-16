@@ -128,5 +128,5 @@ blocks:
     id: "cta-jasa-slf-terdekat"
     heading: "Diskusikan kebutuhan SLF bangunan Anda"
     message: "Hubungi tim melalui kanal telepon atau WhatsApp yang tersedia di situs untuk konsultasi awal. Sampaikan informasi dasar bangunan agar kebutuhan pendampingan dapat dipetakan."
-    button: "Lihat layanan SLF"
+    button: "Konsultasi via WhatsApp"
 ---

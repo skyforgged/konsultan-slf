@@ -141,5 +141,5 @@ blocks:
     id: "cta-konsultan-slf-terdekat"
     heading: "Mulai dengan konsultasi awal"
     message: "Gunakan kanal telepon atau WhatsApp yang tersedia di situs untuk mendiskusikan kebutuhan bangunan, dokumen yang tersedia, dan ruang lingkup pendampingan."
-    button: "Lihat layanan SLF"
+    button: "Konsultasi via WhatsApp"
 ---
