@@ -51,8 +51,8 @@ export const ui = {
   meta: {
     defaultTitle: 'Konsultan SLF & PBG',
     defaultDescription: 'Pendampingan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG).',
-    defaultImage: '/images/og-default.png',
-    articleImage: '/images/og-default.png',
+    defaultImage: '/images/og-default.webp',
+    articleImage: '/images/og-default.webp',
     socialImageAlt: 'Pratinjau sosial Konsultan SLF & PBG',
   },
   article: {

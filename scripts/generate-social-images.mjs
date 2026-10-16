@@ -13,6 +13,7 @@ const images = {
   'kontak': 'contact-support.svg',
   '404': 'not-found.svg',
   'checklist-persiapan-konsultasi-slf': 'article-checklist.svg',
+  'checklist-dokumen-slf-lengkap': 'article-document.svg',
   'pengertian-slf-dasar-hukum': 'article-slf-law.svg',
   'pengertian-slf': 'article-slf-overview.svg',
   'as-built-drawing': 'service-as-built.svg',
@@ -26,14 +27,14 @@ const images = {
 await mkdir(outputDir, { recursive: true });
 for (const [slug, filename] of Object.entries(images)) {
   const source = path.join(root, 'public/images/illustrations', filename);
-  const output = path.join(outputDir, `${slug}.png`);
+  const output = path.join(outputDir, `${slug}.webp`);
   try {
     if (!(await stat(source)).isFile()) throw new Error('source file is missing');
     const result = await sharp(source)
       .resize(1200, 630, { fit: 'contain', background: '#f8fafc' })
-      .png({ compressionLevel: 9 })
+      .webp({ quality: 80 })
       .toFile(output);
-    console.log(`Social image generated: ${slug}.png (${result.width}x${result.height}, ${result.size} bytes)`);
+    console.log(`Social image generated: ${slug}.webp (${result.width}x${result.height}, ${result.size} bytes)`);
   } catch (error) {
     console.error(`Failed to generate social image for ${slug}: ${error instanceof Error ? error.message : String(error)}`);
     process.exitCode = 1;

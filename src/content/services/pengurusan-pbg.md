@@ -13,7 +13,7 @@ draft: false
 status: active
 eyebrow: "Layanan PBG"
 image: "/images/illustrations/service-pbg.svg"
-socialImage: "/images/social/pengurusan-pbg.png"
+socialImage: "/images/social/pengurusan-pbg.webp"
 imageAlt: "Ilustrasi bangunan dan pemeriksaan kesesuaian dokumen"
 blocks:
   - component: "section"

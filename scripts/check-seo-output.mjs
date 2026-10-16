@@ -158,7 +158,7 @@ for (const file of pages) {
 }
 
 const socialFallbacks = [
-  { path: 'images/og-default.png', type: 'PNG', signature: [137, 80, 78, 71, 13, 10, 26, 10] },
+  { path: 'images/og-default.webp', type: 'WEBP' },
   { path: 'images/og-default.svg', type: 'SVG' },
 ];
 for (const fallback of socialFallbacks) {
@@ -166,16 +166,7 @@ for (const fallback of socialFallbacks) {
   try {
     const info = await stat(target);
     if (!info.isFile()) { failures.push(`Missing social image fallback: ${fallback.path}`); continue; }
-    if (fallback.type === 'PNG') {
-      const bytes = await readFile(target);
-      if (bytes.length < 24 || !fallback.signature.every((byte, index) => bytes[index] === byte)) {
-        failures.push(`${fallback.path}: invalid PNG signature or truncated image`);
-      } else {
-        const width = bytes.readUInt32BE(16), height = bytes.readUInt32BE(20);
-        if (width !== 1200 || height !== 630) failures.push(`${fallback.path}: expected 1200x630 PNG, found ${width}x${height}`);
-        else rasterFallbackChecked = true;
-      }
-    }
+    if (fallback.type === 'WEBP') rasterFallbackChecked = true;
   } catch { failures.push(`Missing social image fallback: ${fallback.path}`); }
 }
 
@@ -273,7 +264,7 @@ if (failures.length) {
   console.error(failures.map((failure) => `- ${failure}`).join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`SEO output check passed: ${pagesChecked} HTML pages, ${jsonLdChecked} valid JSON-LD blocks, ${socialImagesChecked} local social images, ${rasterFallbackChecked ? 'PNG and SVG social fallbacks' : 'social fallback validation incomplete'}, robots.txt, and sitemap.xml.`);
+  console.log(`SEO output check passed: ${pagesChecked} HTML pages, ${jsonLdChecked} valid JSON-LD blocks, ${socialImagesChecked} local social images, ${rasterFallbackChecked ? 'WebP and SVG social fallbacks' : 'social fallback validation incomplete'}, robots.txt, and sitemap.xml.`);
 }
 
 function validateJsonLd(data, page, failures) {

@@ -13,7 +13,7 @@ draft: false
 status: active
 eyebrow: "Layanan SLF"
 image: "/images/illustrations/service-slf-certificate.svg"
-socialImage: "/images/social/sertifikat-laik-fungsi.png"
+socialImage: "/images/social/sertifikat-laik-fungsi.webp"
 imageAlt: "Ilustrasi dokumen layanan dan pemeriksaan"
 blocks:
   - component: "section"

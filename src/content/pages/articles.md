@@ -5,7 +5,7 @@ title: "Artikel dan Panduan SLF/PBG"
 pubDate: "2026-10-16T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 description: "Artikel dan panduan untuk memahami SLF, PBG, persiapan dokumen, dan proses perizinan bangunan."
-socialImage: "/images/social/articles.png"
+socialImage: "/images/social/articles.webp"
 type: "page"
 slug: "articles"
 draft: false

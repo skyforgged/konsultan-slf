@@ -13,7 +13,7 @@ draft: false
 status: active
 eyebrow: "Dokumen Teknis"
 image: "/images/illustrations/service-as-built.svg"
-socialImage: "/images/social/as-built-drawing.png"
+socialImage: "/images/social/as-built-drawing.webp"
 imageAlt: "Ilustrasi dokumen gambar teknis"
 blocks:
   - component: "section"

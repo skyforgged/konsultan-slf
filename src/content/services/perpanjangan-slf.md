@@ -13,7 +13,7 @@ draft: false
 status: active
 eyebrow: "Perpanjangan SLF"
 image: "/images/illustrations/service-slf-renewal.svg"
-socialImage: "/images/social/perpanjangan-slf.png"
+socialImage: "/images/social/perpanjangan-slf.webp"
 imageAlt: "Ilustrasi dokumen SLF untuk ditelaah"
 blocks:
   - component: "section"

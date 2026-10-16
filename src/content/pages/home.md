@@ -5,7 +5,7 @@ title: "Konsultan SLF & PBG | Pendampingan Perizinan Bangunan"
 pubDate: "2026-10-16T00:00:00Z"
 updatedDate: "2026-10-16T00:00:00Z"
 description: "Konsultan pendampingan Sertifikat Laik Fungsi (SLF), Persetujuan Bangunan Gedung (PBG), dan evaluasi dokumen bangunan."
-socialImage: "/images/social/home.png"
+socialImage: "/images/social/home.webp"
 type: "page"
 slug: "home"
 draft: false
