@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const dir = path.join(root, 'src/content/articles');
 const apiKey = process.env.AI_API_KEY;
-const baseUrl = process.env.AI_BASE_URL?.trim().replace(/\\/+$/, '');
+const baseUrl = process.env.AI_BASE_URL?.trim().replace(/\/+$/, '');
 const model = process.env.AI_MODEL;
 const reviewModel = process.env.AI_REVIEW_MODEL || 'auto';
 const requested = process.env.TARGET_ARTICLE?.trim();
