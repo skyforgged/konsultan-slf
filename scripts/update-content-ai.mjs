@@ -12,6 +12,7 @@ const summaryPath = process.env.GITHUB_STEP_SUMMARY;
 if (!apiKey) throw new Error('Secret OPENAI_API_KEY belum dikonfigurasi.');
 if (!model) throw new Error('Variable OPENAI_MODEL belum dikonfigurasi.');
 if (!reviewModel) throw new Error('Variable OPENAI_REVIEW_MODEL belum dikonfigurasi untuk reviewer independen.');
+if (reviewModel === model) throw new Error('OPENAI_REVIEW_MODEL harus berbeda dari OPENAI_MODEL agar review benar-benar menggunakan model terpisah.');
 if (requested && (!requested.startsWith('src/content/articles/') || !requested.endsWith('.md') || requested.includes('..'))) throw new Error('TARGET_ARTICLE harus berupa path artikel Markdown yang valid.');
 
 const read = (p) => readFile(path.join(root, p), 'utf8');
@@ -62,7 +63,7 @@ if (requested) {
 }
 const context = all.filter((a) => a.path !== target.path).map(({ path, title, content }) => ({ path, title, excerpt: content.slice(0, 1200) }));
 const result = await ask(`Audit dan bila perlu perbarui hanya artikel target. Output JSON persis: {"status":"changed"|"no_change","content":"isi artikel Markdown lengkap jika changed, string kosong jika no_change","report":"temuan, perubahan, sumber yang benar-benar diperiksa, risiko review manusia"}. Jangan mengubah id, ulid, slug, pubDate, type, relatedType, relatedId, draft. Jika berubah substantif, ubah updatedDate ke ISO 8601 dengan offset +07:00. Jangan mengubah file lain.\nPath: ${target.path}\nAlasan target: ${rationale}\nInstruksi operasional: ${prompt}\nAGENTS.md: ${agents}\nKebijakan: ${policy}\nPanduan workflow: ${guide}\nSchema: ${schema}\nKonteks artikel lain: ${JSON.stringify(context)}\nISI ARTIKEL TARGET: \n${target.content}`);
-const report = String(result.report ?? '').trim();
+let report = String(result.report ?? '').trim();
 if (!['changed', 'no_change'].includes(result.status)) throw new Error('Status output model tidak valid.');
 if (result.status === 'no_change') {
   await out('changed', 'false');
@@ -85,6 +86,7 @@ if (review.verdict === 'pass' && !review.sources_checked.some((source) => source
 if (review.verdict === 'revise') {
   const revision = await ask(`Revisi artikel berdasarkan review independen. Tangani semua temuan material, jangan membuat klaim tanpa sumber, dan pertahankan field frontmatter yang dilindungi. Output JSON: {"content":"artikel Markdown lengkap","report":"ringkasan revisi"}.\nTemuan reviewer: ${JSON.stringify(review.findings)}\nArtikel asli: ${target.content}\nUsulan sebelumnya: ${reviewedContent}\nLaporan sebelumnya: ${report}\nInstruksi editor: ${prompt}\nKebijakan: ${policy}`);
   if (typeof revision.content !== 'string' || !revision.content.trim()) throw new Error('AI revisi tidak mengembalikan artikel.');
+  report = String(revision.report ?? report).trim();
   const revisedFm = getFm(revision.content);
   for (const key of ['id', 'ulid', 'slug', 'pubDate', 'type', 'relatedType', 'relatedId', 'draft']) if (before.get(key) !== revisedFm.get(key)) throw new Error(`Revisi diblokir: field ${key} berubah.`);
   if (before.get('updatedDate') === revisedFm.get('updatedDate') || !revision.content.startsWith('---\n') || !revision.content.endsWith('\n')) throw new Error('Format atau updatedDate hasil revisi tidak valid.');
