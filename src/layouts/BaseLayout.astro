@@ -6,6 +6,7 @@ const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, 
 const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(image.split(/[?#]/)[0]);
 const socialImage = isRasterImage ? image : ui.meta.defaultImage;
 const imageAlt = isRasterImage ? (Astro.props.imageAlt ?? title) : ui.meta.socialImageAlt;
+const utcIso = (date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
 const imageUrl = socialImage.startsWith('http') ? socialImage : new URL(socialImage, siteUrl || Astro.url).toString();
@@ -16,8 +17,8 @@ const pageJsonLd = JSON.stringify({
   name: title,
   description,
   inLanguage: 'id-ID',
-  ...(pubDate ? { datePublished: pubDate.toISOString() } : {}),
-  ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+  ...(pubDate ? { datePublished: utcIso(pubDate) } : {}),
+  ...(updatedDate ? { dateModified: utcIso(updatedDate) } : {}),
   url: canonicalUrl,
   isPartOf: { '@id': `${siteUrl || Astro.url.origin}/#website` },
   about: { '@id': `${siteUrl || Astro.url.origin}/#organization` },
@@ -32,8 +33,8 @@ const pageJsonLd = JSON.stringify({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {pubDate && <meta name="datePublished" content={pubDate.toISOString()} />}
-    {updatedDate && <meta name="dateModified" content={updatedDate.toISOString()} />}
+    {pubDate && <meta name="datePublished" content={utcIso(pubDate)} />}
+    {updatedDate && <meta name="dateModified" content={utcIso(updatedDate)} />}
     <script type="application/ld+json" set:html={pageJsonLd}></script>
     {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:type" content={Astro.url.pathname.startsWith('/articles/') && Astro.url.pathname !== '/articles/' ? 'article' : 'website'} />
