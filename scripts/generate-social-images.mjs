@@ -14,7 +14,7 @@ await mkdir(outputDir, { recursive: true });
 
 async function extractFrontmatterValue(filePath, key) {
   const content = await readFile(filePath, 'utf8');
-      const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  const frontmatter = content.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!frontmatter) {
     errors.push(`${path.relative(root, filePath)}: missing or malformed frontmatter`);
     return null;
