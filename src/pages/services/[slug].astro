@@ -14,8 +14,6 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props as { service: CollectionEntry<'services'> };
 const articles = await getCollection('articles');
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
-const serviceUrl = new URL(`/services/${service.data.slug}/`, siteUrl).toString();
 const faqItems = service.data.blocks
   .filter((block) => block.component === 'faq')
   .flatMap((block) => block.items);
