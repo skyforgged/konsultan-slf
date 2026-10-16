@@ -2,8 +2,8 @@
 id: 5
 ulid: "01JAKSLF000000000000000010"
 title: "Kontak | Konsultasi SLF & PBG"
-pubDate: "2026-10-16T00:00:00Z"
-updatedDate: "2026-10-16T00:00:00Z"
+pubDate: "2026-10-16T00:09:00Z"
+updatedDate: "2026-10-16T00:10:00Z"
 description: "Hubungi konsultan SLF & PBG untuk konsultasi kebutuhan Sertifikat Laik Fungsi dan Persetujuan Bangunan Gedung."
 socialImage: "/images/social/kontak.webp"
 type: "page"

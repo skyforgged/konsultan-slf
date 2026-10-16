@@ -5,7 +5,7 @@ type: "service"
 slug: "as-built-drawing"
 title: "Pendampingan As-Built Drawing"
 pubDate: "2026-10-16T13:00:00Z"
-updatedDate: "2026-10-16T13:00:00Z"
+updatedDate: "2026-10-16T13:30:00Z"
 description: "Pemetaan kebutuhan gambar kondisi terbangun berdasarkan dokumen lama, perubahan bangunan, dan kebutuhan penggunaannya."
 serviceGroup: "pbg"
 order: 60

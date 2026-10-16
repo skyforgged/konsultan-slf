@@ -2,8 +2,8 @@
 id: 1
 ulid: "01HQRT4X5Z9K3M2N7P6Q8S5T4V"
 title: "Konsultan SLF & PBG | Pendampingan Perizinan Bangunan"
-pubDate: "2026-10-16T00:00:00Z"
-updatedDate: "2026-10-16T00:00:00Z"
+pubDate: "2026-10-16T00:03:00Z"
+updatedDate: "2026-10-16T00:04:00Z"
 description: "Konsultan pendampingan Sertifikat Laik Fungsi (SLF), Persetujuan Bangunan Gedung (PBG), dan evaluasi dokumen bangunan."
 socialImage: "/images/social/home.webp"
 type: "page"

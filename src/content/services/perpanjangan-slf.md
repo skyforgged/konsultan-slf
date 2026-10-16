@@ -5,7 +5,7 @@ type: "service"
 slug: "perpanjangan-slf"
 title: "Pendampingan Perpanjangan SLF"
 pubDate: "2026-10-16T11:00:00Z"
-updatedDate: "2026-10-16T11:00:00Z"
+updatedDate: "2026-10-16T11:30:00Z"
 description: "Pemetaan awal dokumen, masa berlaku SLF, dan kebutuhan evaluasi bangunan sebelum tindak lanjut perpanjangan."
 serviceGroup: "slf"
 order: 40

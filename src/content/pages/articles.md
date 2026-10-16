@@ -2,8 +2,8 @@
 id: 3
 ulid: "01HQRT4X5Z9K3M2N7P6Q8S5T4X"
 title: "Artikel dan Panduan SLF/PBG"
-pubDate: "2026-10-16T00:00:00Z"
-updatedDate: "2026-10-16T00:00:00Z"
+pubDate: "2026-10-16T00:07:00Z"
+updatedDate: "2026-10-16T00:08:00Z"
 description: "Artikel dan panduan untuk memahami SLF, PBG, persiapan dokumen, dan proses perizinan bangunan."
 socialImage: "/images/social/articles.webp"
 type: "page"

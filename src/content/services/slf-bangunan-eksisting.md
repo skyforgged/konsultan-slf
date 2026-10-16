@@ -5,7 +5,7 @@ type: "service"
 slug: "slf-bangunan-eksisting"
 title: "Pendampingan SLF Bangunan Eksisting"
 pubDate: "2026-10-16T10:00:00Z"
-updatedDate: "2026-10-16T10:00:00Z"
+updatedDate: "2026-10-16T10:30:00Z"
 description: "Penelaahan awal untuk bangunan yang sudah berdiri, terutama ketika status dokumen atau kondisi aktual perlu dipetakan."
 serviceGroup: "slf"
 order: 30
