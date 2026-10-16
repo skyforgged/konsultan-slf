@@ -20,41 +20,56 @@ async function extractFrontmatterValue(filePath, key) {
     return null;
   }
 
-  const escapedKey = key.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&');
+  const escapedKey = key.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\  const match = frontmatter[1].match(');
   const match = frontmatter[1].match(
-    new RegExp('^' + key + ':\\s*"([^"]*)"\\s*$', 'm')
+    new RegExp('^' + escapedKey + ':\\s*"([^"]*)"\\s*$', 'm')
   );
   return match ? (match[1] ?? match[2] ?? match[3]).trim() : null;
 }
 
-async function processContent(dir) {
+async function processContent(dir, collection) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      await processContent(fullPath);
+      await processContent(fullPath, collection);
       continue;
     }
     if (!entry.isFile() || !entry.name.endsWith('.md')) continue;
 
-    const imageUrl = await extractFrontmatterValue(fullPath, 'image');
-    if (!imageUrl) continue;
-
+    let imageUrl = await extractFrontmatterValue(fullPath, 'image');
     const socialImage = await extractFrontmatterValue(fullPath, 'socialImage');
+    if (collection === 'pages') {
+      const content = await readFile(fullPath, 'utf8');
+      const frontmatter = content.match(/^---\\s*\\r?\\n([\\s\\S]*?)\\r?\\n---(?:\\r?\\n|$)/);
+      const blockImage = frontmatter?.[1].match(/^\\s+image:\\s*"([^"]+\\.svg)"\\s*$/m);
+      imageUrl = blockImage?.[1] ?? null;
+    }
+    if (!imageUrl) {
+      if (socialImage) errors.push(`${path.relative(root, fullPath)}: socialImage exists but no SVG image source was found`);
+      continue;
+    }
+    if (!socialImage) continue;
     if (!imageUrl.startsWith('/images/illustrations/') || path.extname(imageUrl) !== '.svg') {
       errors.push(`${path.relative(root, fullPath)}: image must point to an SVG in /images/illustrations/`);
       continue;
     }
 
-    const base = path.basename(imageUrl, '.svg');
-    const expectedSocialImage = `/images/social/${base}.webp`;
-    if (socialImage !== expectedSocialImage) {
-      errors.push(`${path.relative(root, fullPath)}: socialImage must be "${expectedSocialImage}" (found ${socialImage ?? 'missing'})`);
+    const sourceBase = path.basename(imageUrl, '.svg');
+    const outputBase = collection === 'pages' ? path.basename(socialImage, '.webp') : sourceBase;
+    const expectedSocialImage = `/images/social/${outputBase}.webp`;
+    if (collection === 'pages') {
+      if (!socialImage.startsWith('/images/social/') || path.extname(socialImage) !== '.webp' || path.basename(socialImage) !== `${outputBase}.webp`) {
+        errors.push(`${path.relative(root, fullPath)}: page socialImage must be a local /images/social/*.webp path`);
+        continue;
+      }
+    } else if (socialImage !== expectedSocialImage) {
+      errors.push(`${path.relative(root, fullPath)}: socialImage must be "${expectedSocialImage}" (found ${socialImage})`);
       continue;
     }
 
-    const sourcePath = path.join(illustrationDir, `${base}.svg`);
-    const outputPath = path.join(outputDir, `${base}.webp`);
+    const sourcePath = path.join(illustrationDir, `${sourceBase}.svg`);
+    const outputPath = path.join(outputDir, `${outputBase}.webp`);
     try {
       const sourceStat = await stat(sourcePath);
       if (!sourceStat.isFile()) throw new Error('source is not a file');
@@ -71,7 +86,7 @@ async function processContent(dir) {
 
 for (const collection of ['articles', 'services', 'pages']) {
   try {
-    await processContent(path.join(contentRoot, collection));
+    await processContent(path.join(contentRoot, collection), collection);
   } catch (err) {
     errors.push(`src/content/${collection}: ${err.message}`);
   }
