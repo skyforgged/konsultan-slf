@@ -60,6 +60,28 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 - `scripts/check-seo-output.mjs` memeriksa `dist`: `<title>` tunggal, meta description, `og:*`, `twitter:*`, canonical (kecuali `noindex`), JSON-LD valid, `robots.txt`, dan `sitemap.xml`.
 - Judul/deskripsi setiap halaman berasal dari frontmatter. Halaman baru tanpa entri frontmatter akan gagal validasi.
 
+## Aturan pubDate / updatedDate (faktual)
+
+Setiap article (`src/content/articles/*.md`) dan service (`src/content/services/*.md`) **harus** memiliki:
+
+- `pubDate` — tanggal penerbitan, format ISO 8601 (mis. `"2026-10-15T14:00:00Z"`).
+- `updatedDate` — tanggal pembaruan terakhir, format ISO 8601.
+
+Aturan keras:
+
+1. **Jangan pernah gunakan `T00:00:00Z`.** Gunakan jam non-midnight (mis. `T08:00:00Z`, `T13:54:00Z`) agar `sort((a, b) => b.updatedDate - a.updatedDate)` di `ArticleListBlock.astro`, `PageUpdatedArticles.astro`, `related.ts`, dan `sitemap.xml.ts` bekerja dengan benar.
+2. **Setiap article/service harus punya `updatedDate` faktual** — bukan nilai seragam. Setiap perubahan konten harus diikuti update `updatedDate` ke UTC saat itu juga.
+3. **Jangan salin-nilai `updatedDate` dari article lain.** Setiap entry harus punya nilai unik sesuai waktu edit terakhirnya.
+4. **File article harus berekstensi `.md`.** File tanpa ekstensi tidak dimuat oleh Astro content collection.
+5. **`ulid` harus tepat 26 karakter.**
+6. **`relatedArticles` hanya boleh merujuk ID article yang benar-benar ada** (dan tidak draft).
+
+Validasi otomatis: `npm run build` menjalankan `check-published-content.mjs` yang memeriksa halaman terpublish. Untuk pengecekan manual, gunakan:
+
+```bash
+grep -E "^updatedDate:" src/content/articles/*.md | sort -t'"' -k2
+```
+
 ## Skill terkait
 
 - Baca `.agents/skills/theme-data-separation/SKILL.md` sebelum mengubah halaman, layout, komponen, atau konten.
