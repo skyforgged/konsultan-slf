@@ -76,6 +76,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ai/content-update
+          base: main
           delete-branch: true
           add-paths: src/content/articles/
           title: "content: AI-proposed article update"
