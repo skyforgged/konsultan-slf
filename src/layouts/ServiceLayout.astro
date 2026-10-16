@@ -6,11 +6,7 @@ import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
 import '../styles/global.css';
 
-const { service, headings = [] } = Astro.props as {
-  service: CollectionEntry<'services'>;
-  headings?: Array<{ depth: number; text: string; slug: string }>;
-};
-const tocItems = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
+const { service } = Astro.props as { service: CollectionEntry<'services'> };
 const pageTitle = service.data.title;
 const description = service.data.description;
 const canonical = `/services/${service.data.slug}/`;
