@@ -5,11 +5,13 @@ const root = process.cwd();
 const dir = path.join(root, 'src/content/articles');
 const apiKey = process.env.OPENAI_API_KEY;
 const model = process.env.OPENAI_MODEL;
+const reviewModel = process.env.OPENAI_REVIEW_MODEL;
 const requested = process.env.TARGET_ARTICLE?.trim();
 const outputPath = process.env.GITHUB_OUTPUT;
 const summaryPath = process.env.GITHUB_STEP_SUMMARY;
 if (!apiKey) throw new Error('Secret OPENAI_API_KEY belum dikonfigurasi.');
 if (!model) throw new Error('Variable OPENAI_MODEL belum dikonfigurasi.');
+if (!reviewModel) throw new Error('Variable OPENAI_REVIEW_MODEL belum dikonfigurasi untuk reviewer independen.');
 if (requested && (!requested.startsWith('src/content/articles/') || !requested.endsWith('.md') || requested.includes('..'))) throw new Error('TARGET_ARTICLE harus berupa path artikel Markdown yang valid.');
 
 const read = (p) => readFile(path.join(root, p), 'utf8');
@@ -28,8 +30,8 @@ const all = await Promise.all(files.map(async (name) => {
 const eligible = all.filter((a) => !a.draft);
 if (!eligible.length) throw new Error('Tidak ada artikel non-draft.');
 
-async function ask(input, useSearch = true) {
-  const body = { model, input, max_output_tokens: 12000 };
+async function ask(input, useSearch = true, selectedModel = model) {
+  const body = { model: selectedModel, input, max_output_tokens: 12000 };
   if (useSearch) body.tools = [{ type: 'web_search_preview' }];
   const res = await fetch('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const data = await res.json().catch(() => ({}));
@@ -77,7 +79,7 @@ if (result.content === target.content) throw new Error('Model menyatakan changed
 if (before.get('updatedDate') === after.get('updatedDate')) throw new Error('Isi berubah tetapi updatedDate tidak berubah.');
 const reviewPrompt = await read('prompts/content-review.md');
 let reviewedContent = result.content;
-let review = await ask(`Bertindak sebagai reviewer independen. Periksa secara kritis usulan editor; jangan menganggap laporan editor benar tanpa bukti. Gunakan web search dan utamakan sumber primer resmi untuk klaim hukum/teknis. Periksa akurasi, sumber yang dapat ditelusuri, konsistensi, kegunaan pembaca, SEO, klaim menyesatkan, dan kepatuhan kebijakan. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. pass hanya jika tidak ada masalah material yang belum ditangani. Jika klaim hukum penting tidak dapat diverifikasi, pilih revise atau reject.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nUsulan editor:\n${reviewedContent}\nLaporan editor:\n${report}`);
+let review = await ask(`Bertindak sebagai reviewer independen. Periksa secara kritis usulan editor; jangan menganggap laporan editor benar tanpa bukti. Gunakan web search dan utamakan sumber primer resmi untuk klaim hukum/teknis. Periksa akurasi, sumber yang dapat ditelusuri, konsistensi, kegunaan pembaca, SEO, klaim menyesatkan, dan kepatuhan kebijakan. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. pass hanya jika tidak ada masalah material yang belum ditangani. Jika klaim hukum penting tidak dapat diverifikasi, pilih revise atau reject.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nUsulan editor:\n${reviewedContent}\nLaporan editor:\n${report}`, true, reviewModel);
 if (!['pass', 'revise', 'reject'].includes(review.verdict) || !Array.isArray(review.findings)) throw new Error('Output reviewer AI tidak valid.');
 if (review.verdict === 'revise') {
   const revision = await ask(`Revisi artikel berdasarkan review independen. Tangani semua temuan material, jangan membuat klaim tanpa sumber, dan pertahankan field frontmatter yang dilindungi. Output JSON: {"content":"artikel Markdown lengkap","report":"ringkasan revisi"}.\nTemuan reviewer: ${JSON.stringify(review.findings)}\nArtikel asli: ${target.content}\nUsulan sebelumnya: ${reviewedContent}\nLaporan sebelumnya: ${report}\nInstruksi editor: ${prompt}\nKebijakan: ${policy}`);
@@ -88,7 +90,7 @@ if (review.verdict === 'revise') {
   if (revision.content === target.content) throw new Error('Revisi tidak menghasilkan perubahan.');
   reviewedContent = revision.content;
   const firstFindings = review.findings;
-  review = await ask(`Lakukan review independen kedua setelah revisi. Gunakan web search dan sumber primer resmi. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. Hanya pass jika tidak ada masalah material tersisa.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nArtikel revisi:\n${reviewedContent}\nTemuan review pertama:\n${JSON.stringify(firstFindings)}`);
+  review = await ask(`Lakukan review independen kedua setelah revisi. Gunakan web search dan sumber primer resmi. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. Hanya pass jika tidak ada masalah material tersisa.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nArtikel revisi:\n${reviewedContent}\nTemuan review pertama:\n${JSON.stringify(firstFindings)}`, true, reviewModel);
   if (!['pass', 'revise', 'reject'].includes(review.verdict) || !Array.isArray(review.findings)) throw new Error('Output reviewer kedua tidak valid.');
 }
 if (review.verdict !== 'pass') {
