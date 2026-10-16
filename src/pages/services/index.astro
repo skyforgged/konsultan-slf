@@ -12,7 +12,7 @@ const header = page.data.pageHeader;
 if (!header) throw new Error('Missing "services" page content header.');
 const services = (await getCollection('services')).filter((item: CollectionEntry<'services'>) => !item.data.draft && item.data.status === 'active').sort((a, b) => a.data.order - b.data.order);
 ---
-<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} canonical={page.data.canonical} noindex={page.data.noindex}>
+<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} canonical={page.data.canonical} noindex={page.data.noindex} pubDate={page.data.pubDate} updatedDate={page.data.updatedDate}>
     <SiteHeader />
   <main id="main-content" class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
     <header class="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr]">
