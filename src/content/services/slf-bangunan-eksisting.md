@@ -61,4 +61,118 @@ faq:
     answer: "Tidak dapat ditentukan secara umum. Riwayat bangunan, dokumen yang masih tersedia, kondisi aktual, dan ketentuan yang berlaku perlu diperiksa untuk memetakan langkah yang relevan."
   - question: "Apakah konsultasi awal langsung memastikan bangunan memperoleh SLF?"
     answer: "Tidak. Konsultasi awal hanya membantu memetakan kebutuhan dan tindak lanjut. Pemeriksaan serta keputusan penerbitan mengikuti ketentuan dan kewenangan yang berlaku."
+blocks:
+  [
+    {
+      "component": "section",
+      "id": "ruang-lingkup",
+      "heading": "Ruang lingkup penelaahan awal",
+      "content": [
+        {
+          "type": "p",
+          "text": "Bangunan yang sudah beroperasi dapat memiliki kondisi dan riwayat dokumen yang beragam. Pendampingan awal membantu menginventarisasi dokumen yang tersedia, perubahan yang pernah terjadi, serta informasi kondisi aktual sebelum menentukan langkah teknis dan administratif berikutnya."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Menginventarisasi dokumen bangunan dan persetujuan yang tersedia.",
+            "Mencatat informasi perubahan fungsi, renovasi, atau perubahan kondisi yang diketahui.",
+            "Memetakan data dan pemeriksaan lanjutan yang mungkin diperlukan.",
+            "Membahas batasan serta pembagian tanggung jawab sebelum pekerjaan disepakati."
+          ]
+        }
+      ]
+    },
+    {
+      "component": "checklist-card",
+      "id": "persiapan-konsultasi",
+      "title": "Informasi untuk konsultasi awal",
+      "description": "Bahan awal berikut membantu memahami situasi bangunan. Daftar final ditentukan setelah informasi kasus ditelaah.",
+      "items": [
+        {
+          "label": "Lokasi, fungsi, dan perkiraan luas bangunan."
+        },
+        {
+          "label": "Status SLF saat ini, jika diketahui."
+        },
+        {
+          "label": "PBG, IMB, atau dokumen persetujuan lama yang tersedia."
+        },
+        {
+          "label": "Gambar teknis atau as-built drawing, jika tersedia."
+        },
+        {
+          "label": "Informasi renovasi, perubahan fungsi, atau temuan pemeriksaan sebelumnya."
+        }
+      ]
+    },
+    {
+      "component": "feature-card-grid",
+      "id": "manfaat",
+      "title": "Manfaat penelaahan",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Mendapatkan gambaran awal tentang kelengkapan dokumen dan informasi bangunan."
+        },
+        {
+          "title": "Mengenali hal yang perlu diverifikasi sebelum menetapkan langkah berikutnya."
+        },
+        {
+          "title": "Mengurangi asumsi saat menyusun ruang lingkup dan kebutuhan tindak lanjut."
+        }
+      ]
+    },
+    {
+      "component": "process-timeline",
+      "id": "tahapan",
+      "title": "Tahapan pembahasan",
+      "steps": [
+        {
+          "title": "Inventarisasi informasi",
+          "description": "Mengumpulkan informasi dasar mengenai bangunan, pemanfaatan, dan riwayat dokumen."
+        },
+        {
+          "title": "Telaah dokumen",
+          "description": "Mencatat dokumen yang tersedia, ketidaksesuaian informasi, dan bagian yang perlu dikonfirmasi."
+        },
+        {
+          "title": "Pemetaan kondisi",
+          "description": "Menentukan apakah diperlukan survei atau pemeriksaan lanjutan berdasarkan ruang lingkup yang akan disepakati."
+        },
+        {
+          "title": "Rencana tindak lanjut",
+          "description": "Membahas kebutuhan pekerjaan, hasil kerja, dependensi, dan tanggung jawab para pihak."
+        }
+      ]
+    },
+    {
+      "component": "note",
+      "id": "catatan",
+      "variant": "warning",
+      "title": "Catatan untuk bangunan eksisting",
+      "text": "Bangunan eksisting tidak otomatis memenuhi atau tidak memenuhi persyaratan hanya berdasarkan ada atau tidaknya satu dokumen. Kondisi aktual, fungsi, riwayat perubahan, dokumen, dan ketentuan yang berlaku perlu ditelaah. Keputusan penerbitan berada pada pihak berwenang."
+    },
+    {
+      "component": "faq",
+      "id": "faq",
+      "heading": "Pertanyaan umum",
+      "items": [
+        {
+          "question": "Bagaimana jika gambar bangunan sudah tidak tersedia?",
+          "answer": "Ketersediaan dokumen perlu dipetakan terlebih dahulu. Survei atau penggambaran kondisi aktual mungkin dibutuhkan, tetapi kebutuhan dan lingkupnya harus ditentukan berdasarkan kasus."
+        },
+        {
+          "question": "Apakah bangunan tanpa dokumen lama pasti harus mengulang seluruh proses?",
+          "answer": "Tidak dapat ditentukan secara umum. Riwayat bangunan, dokumen yang masih tersedia, kondisi aktual, dan ketentuan yang berlaku perlu diperiksa untuk memetakan langkah yang relevan."
+        },
+        {
+          "question": "Apakah konsultasi awal langsung memastikan bangunan memperoleh SLF?",
+          "answer": "Tidak. Konsultasi awal hanya membantu memetakan kebutuhan dan tindak lanjut. Pemeriksaan serta keputusan penerbitan mengikuti ketentuan dan kewenangan yang berlaku."
+        }
+      ]
+    }
+  ]
+
 ---
