@@ -17,6 +17,13 @@ import FeatureCardGrid from './shared/FeatureCardGrid.astro';
 import StatsGrid from './shared/StatsGrid.astro';
 import SourceLinks from './shared/SourceLinks.astro';
 import ContactPanel from './shared/ContactPanel.astro';
+import PageHeaderBlock from './shared/PageHeaderBlock.astro';
+import HomeHeroBlock from './shared/HomeHeroBlock.astro';
+import ServiceListBlock from './shared/ServiceListBlock.astro';
+import HomeProcessBlock from './shared/HomeProcessBlock.astro';
+import ArticleListBlock from './shared/ArticleListBlock.astro';
+import HomeCtaBlock from './shared/HomeCtaBlock.astro';
+import NotFoundBlock from './shared/NotFoundBlock.astro';
 
 const blocks: Record<string, any> = {
   card: ContentCard,
@@ -38,6 +45,13 @@ const blocks: Record<string, any> = {
   'stats-grid': StatsGrid,
   'source-links': SourceLinks,
   'contact-panel': ContactPanel,
+  'page-header': PageHeaderBlock,
+  'home-hero': HomeHeroBlock,
+  'service-list': ServiceListBlock,
+  'home-process': HomeProcessBlock,
+  'article-list': ArticleListBlock,
+  'home-cta': HomeCtaBlock,
+  'not-found': NotFoundBlock,
 };
 
 export default blocks;
