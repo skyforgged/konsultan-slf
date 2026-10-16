@@ -21,7 +21,7 @@ const services = (await getCollection('services')).filter((item: CollectionEntry
         <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950">{header.heading}</h1>
         <p class="mt-4 text-lg leading-8 text-slate-600">{header.intro}</p>
       </div>
-      <img src={header.image} alt={header.imageAlt} class="mx-auto w-full max-w-md" width="560" height="420" fetchpriority="high" />
+      <img src={header.image} alt={header.imageAlt ?? header.heading} class="mx-auto w-full max-w-md" width="560" height="420" fetchpriority="high" />
     </header>
     {services.length ? (
       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
