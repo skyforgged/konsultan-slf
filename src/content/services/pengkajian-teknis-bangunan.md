@@ -4,6 +4,8 @@ ulid: "01JAKSLF000000000000000005"
 type: "service"
 slug: "pengkajian-teknis-bangunan"
 title: "Pendampingan Pengkajian Teknis Bangunan"
+pubDate: "2026-10-16T00:00:00Z"
+updatedDate: "2026-10-16T00:00:00Z"
 description: "Pemetaan kebutuhan pengkajian teknis berdasarkan fungsi, kondisi aktual, dokumen, dan tujuan evaluasi bangunan."
 serviceGroup: "pbg"
 order: 50
