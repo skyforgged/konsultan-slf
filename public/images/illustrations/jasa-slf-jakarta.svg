@@ -1,12 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" fill="none" role="img" aria-labelledby="title desc">
-  <title id="title">Ilustrasi panduan dan artikel</title>
-  <desc id="desc">Buku panduan terbuka dengan lembar catatan dan penanda.</desc>
-  <rect x="24" y="20" width="512" height="320" rx="26" fill="#EFF6FF"/>
-  <path d="M90 102c49-18 96-11 143 14v150c-47-25-94-32-143-14V102Z" fill="#fff" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
-  <path d="M233 116c47-25 94-32 143-14v150c-49-18-96-11-143 14V116Z" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
-  <path d="M116 137c28-7 54-5 79 4m-79 25c28-7 54-5 79 4m-79 25c28-7 54-5 79 4m64-62c28-14 55-18 84-17m-84 43c28-14 55-18 84-17m-84 43c28-14 55-18 84-17" stroke="#93C5FD" stroke-width="7" stroke-linecap="round"/>
-  <path d="m390 75 19 19-69 69-28 8 9-28 69-68Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="6" stroke-linejoin="round"/>
-  <path d="m370 95 19 19" stroke="#1D4ED8" stroke-width="6"/>
-  <circle cx="431" cy="246" r="27" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
-  <path d="m419 246 8 8 16-18" stroke="#15803D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <title id="title">Ilustrasi Jasa SLF Jakarta</title>
+  <desc id="desc">Gedung perkantoran Jakarta dengan tanda kelaikan fungsi dan peta lokasi.</desc>
+  <rect x="24" y="20" width="512" height="320" rx="26" fill="#F0FDFA"/>
+  
+  <!-- Jakarta Skyline Silhouette -->
+  <path d="M60 280h440v-40H440v-60h-40v-80h-60v40h-40V60h-60v120h-40v60h-40v40H60v40Z" fill="#CCFBF1"/>
+  
+  <!-- Main Office Building -->
+  <rect x="200" y="100" width="160" height="180" rx="4" fill="#fff" stroke="#0D9488" stroke-width="7"/>
+  <path d="M225 130h30m-30 30h30m-30 30h30m-30 30h30m55-120h30m-30 30h30m-30 30h30m-30 30h30" stroke="#99F6E4" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Location/Jakarta Indicator -->
+  <circle cx="420" cy="120" r="35" fill="#FEF2F2" stroke="#EF4444" stroke-width="6"/>
+  <path d="M420 100c-8 0-15 7-15 15 0 11 15 25 15 25s15-14 15-25c0-8-7-15-15-15Z" fill="#FEE2E2" stroke="#EF4444" stroke-width="4"/>
+  <circle cx="420" cy="115" r="4" fill="#EF4444"/>
+  
+  <!-- Certification/Checkmark Badge -->
+  <circle cx="140" cy="220" r="45" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
+  <path d="M120 220l15 15 25-30" stroke="#15803D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Document/SLF Text Lines -->
+  <path d="M220 250h120m-120 15h80" stroke="#0D9488" stroke-width="5" stroke-linecap="round"/>
 </svg>
