@@ -87,6 +87,3 @@ jobs:
             - Target: ${{ needs.update.outputs.target_path }}
             - Tidak dipublikasikan otomatis; tinjau diff dan sumber sebelum merge.
             - Laporan lengkap tersedia pada job pertama di tab Summary.
-          labels: |
-            content
-            ai-review
