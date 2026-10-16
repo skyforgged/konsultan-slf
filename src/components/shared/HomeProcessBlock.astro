@@ -1,5 +1,5 @@
 ---
-const { id = 'proses', eyebrow, heading, description, stepPrefix, steps } = Astro.props;
+const { id = 'proses', eyebrow, heading, description, stepPrefix, steps } = Astro.props as { id?: string; eyebrow: string; heading: string; description: string; stepPrefix: string; steps: Array<{ title: string; text: string }> };
 ---
 <section id={id} class="scroll-mt-8 border-y border-slate-200 bg-slate-50 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-5">
