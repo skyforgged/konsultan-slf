@@ -31,6 +31,8 @@ let footerServiceTitle: string | undefined;
 let relatedServiceHref = '/services/';
 let articleCtaText = ui.article.ctaText;
 let articleCtaButton = ui.article.ctaButton;
+let relatedServiceJsonLd: any = null;
+
 if (article.data.relatedType === 'service' && article.data.relatedId) {
   const services = await getCollection('services');
   const related = services.find((s) => s.data.id === article.data.relatedId && !s.data.draft && s.data.status === 'active');
@@ -39,30 +41,53 @@ if (article.data.relatedType === 'service' && article.data.relatedId) {
     relatedServiceHref = `/services/${related.data.slug}/`;
     articleCtaText = `Pelajari layanan ${related.data.title} dan diskusikan kebutuhan bangunan Anda bersama tim kami.`;
     articleCtaButton = 'Lihat layanan terkait';
+
+    // Build related service JSON-LD
+    const relServiceUrl = new URL(relatedServiceHref, siteUrl).toString();
+    const relServiceImageSource = related.data.socialImage ?? ui.meta.defaultImage;
+    const relIsRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(relServiceImageSource.split(/[?#]/)[0]);
+    const relServiceImage = new URL(relIsRasterImage ? relServiceImageSource : ui.meta.defaultImage, siteUrl).toString();
+
+    relatedServiceJsonLd = {
+      '@type': 'Service',
+      '@id': `${relServiceUrl}#service`,
+      name: related.data.title,
+      description: related.data.description,
+      inLanguage: 'id-ID',
+      image: [relServiceImage],
+      url: relServiceUrl,
+      provider: { '@id': `${siteUrl}/#organization` },
+    };
   }
 }
 const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': article.data.schemaType,
-  '@id': `${articleUrl}#article`,
-  headline: pageTitle,
-  description,
-  inLanguage: 'id-ID',
-  image: [articleImage],
-  datePublished: utcIso(article.data.pubDate),
-  ...(article.data.updatedDate ? { dateModified: utcIso(article.data.updatedDate) } : {}),
-  ...(authorName ? { author: { '@type': 'Person', name: authorName, ...(authorUrl ? { url: authorUrl } : {}) } } : {}),
-  publisher: {
-    '@type': 'Organization',
-    '@id': `${siteUrl}/#organization`,
-    name: ui.brand.name,
-    url: siteUrl,
-    ...(article.data.serviceArea ? { areaServed: article.data.serviceArea } : {}),
-  },
-  ...(article.data.serviceArea ? { contentLocation: article.data.serviceArea.map(name => ({ '@type': 'Place', name })) } : {}),
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
-  url: articleUrl,
+  '@graph': [
+    {
+      '@type': article.data.schemaType,
+      '@id': `${articleUrl}#article`,
+      headline: pageTitle,
+      description,
+      inLanguage: 'id-ID',
+      image: [articleImage],
+      datePublished: utcIso(article.data.pubDate),
+      ...(article.data.updatedDate ? { dateModified: utcIso(article.data.updatedDate) } : {}),
+      ...(authorName ? { author: { '@type': 'Person', name: authorName, ...(authorUrl ? { url: authorUrl } : {}) } } : {}),
+      publisher: {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+        name: ui.brand.name,
+        url: siteUrl,
+        ...(article.data.serviceArea ? { areaServed: article.data.serviceArea } : {}),
+      },
+      ...(article.data.serviceArea ? { contentLocation: article.data.serviceArea.map(name => ({ '@type': 'Place', name })) } : {}),
+      ...(relatedServiceJsonLd ? { about: { '@id': relatedServiceJsonLd['@id'] } } : {}),
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
+      url: articleUrl,
+    },
+    ...(relatedServiceJsonLd ? [relatedServiceJsonLd] : [])
+  ]
 }).replace(/</g, '\\u003c');
 ---
 <BaseLayout title={pageTitle} description={description} canonical={canonical} socialImage={article.data.socialImage ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate} mainEntityId={`${articleUrl}#article`}>
