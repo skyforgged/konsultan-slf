@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { ui } from '../config/ui.ts';
-const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, canonical, noindex = false, image = ui.meta.defaultImage, pubDate, updatedDate } = Astro.props;
+const { title = ui.meta.defaultTitle, description = ui.meta.defaultDescription, canonical, noindex = false, image = ui.meta.defaultImage, pubDate, updatedDate, mainEntityId } = Astro.props as { title?: string; description?: string; canonical?: string; noindex?: boolean; image?: string; pubDate?: Date; updatedDate?: Date; mainEntityId?: string };
 // Crawler sosial (Facebook, LinkedIn, WhatsApp, X) tidak merender SVG. Gambar non-raster diganti fallback PNG.
 const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(image.split(/[?#]/)[0]);
 const socialImage = isRasterImage ? image : ui.meta.defaultImage;
@@ -56,8 +56,29 @@ const pageJsonLd = JSON.stringify({
   ...(pubDate ? { datePublished: utcIso(pubDate) } : {}),
   ...(updatedDate ? { dateModified: utcIso(updatedDate) } : {}),
   url: canonicalUrl,
+  ...(mainEntityId ? { mainEntity: { '@id': mainEntityId } } : {}),
   isPartOf: { '@id': `${siteUrl || Astro.url.origin}/#website` },
   about: { '@id': `${siteUrl || Astro.url.origin}/#organization` },
+}).replace(/</g, '\\u003c');
+const siteGraphJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl || Astro.url.origin}/#organization`,
+      name: ui.brand.name,
+      url: siteUrl || Astro.url.origin,
+      description: ui.meta.defaultDescription,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl || Astro.url.origin}/#website`,
+      name: ui.meta.defaultTitle,
+      url: siteUrl || Astro.url.origin,
+      inLanguage: ui.locale,
+      publisher: { '@id': `${siteUrl || Astro.url.origin}/#organization` },
+    },
+  ],
 }).replace(/</g, '\\u003c');
 ---
 <!doctype html>
@@ -71,6 +92,7 @@ const pageJsonLd = JSON.stringify({
     <meta name="description" content={description} />
     {pubDate && <meta name="datePublished" content={utcIso(pubDate)} />}
     {updatedDate && <meta name="dateModified" content={utcIso(updatedDate)} />}
+    <script type="application/ld+json" set:html={siteGraphJsonLd}></script>
     <script type="application/ld+json" set:html={pageJsonLd}></script>
     <script type="application/ld+json" set:html={breadcrumbJsonLd}></script>
     {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalUrl} />}
