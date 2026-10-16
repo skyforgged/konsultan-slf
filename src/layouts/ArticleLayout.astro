@@ -58,7 +58,9 @@ const articleJsonLd = JSON.stringify({
     '@id': `${siteUrl}/#organization`,
     name: ui.brand.name,
     url: siteUrl,
+    ...(article.data.serviceArea ? { areaServed: article.data.serviceArea } : {}),
   },
+  ...(article.data.serviceArea ? { contentLocation: article.data.serviceArea.map(name => ({ '@type': 'Place', name })) } : {}),
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${articleUrl}#webpage` },
   url: articleUrl,
 }).replace(/</g, '\\u003c');

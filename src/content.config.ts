@@ -11,6 +11,8 @@ const sharedIdentity = {
   draft: z.boolean().default(false),
   image: z.string().optional(),
   socialImage: z.string().optional(),
+  contentType: z.string().optional(),
+  serviceArea: z.array(z.string()).optional(),
 };
 
 const contentBlocks = z.discriminatedUnion('component', [
