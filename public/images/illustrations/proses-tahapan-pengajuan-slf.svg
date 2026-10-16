@@ -1,15 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-labelledby="title desc">
-  <title id="title">Ilustrasi bangunan dan kepatuhan</title>
-  <desc id="desc">Gambar garis bangunan, dokumen, dan tanda pemeriksaan.</desc>
-  <rect x="68" y="54" width="504" height="412" rx="34" fill="#EFF6FF"/>
-  <circle cx="490" cy="126" r="38" fill="#DBEAFE"/>
-  <path d="M142 392V198l113-62 112 62v194" stroke="#1D4ED8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M116 392h278M177 222h40m-40 39h40m-40 39h40m-40 39h40m-40 39h40M286 222h40m-40 39h40m-40 39h40m-40 39h40" stroke="#60A5FA" stroke-width="7" stroke-linecap="round"/>
-  <path d="M232 392v-54a23 23 0 0 1 46 0v54" stroke="#1D4ED8" stroke-width="8" stroke-linejoin="round"/>
-  <rect x="356" y="222" width="144" height="178" rx="16" fill="#fff" stroke="#1E40AF" stroke-width="7"/>
-  <path d="M385 263h83m-83 28h64m-64 28h48" stroke="#93C5FD" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="448" cy="358" r="25" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
-  <path d="m436 358 8 8 16-18" stroke="#15803D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M105 130h68M139 96v68" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="505" cy="399" r="9" fill="#2563EB"/>
+  <title id="title">Ilustrasi proses dan tahapan SLF</title>
+  <desc id="desc">Diagram alur tahapan pengajuan SLF dari persiapan hingga terbit.</desc>
+  <rect x="48" y="36" width="544" height="448" rx="32" fill="#EFF6FF"/>
+  <path d="M148 108h-24a16 16 0 0 1-16-16V72a16 16 0 0 1 16-16h24" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="136" cy="58" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="136" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">1</text>
+  <path d="M200 58h80" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="316" cy="58" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="316" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">2</text>
+  <path d="M366 58h80" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="482" cy="58" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="482" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">3</text>
+  <path d="M532 58h30" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M554 58v36a16 16 0 0 1-16 16h-24" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="528" cy="130" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="528" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">4</text>
+  <path d="M528 172v40" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M528 204h-60" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M452 204v-16a16 16 0 0 0-16-16h-248a16 16 0 0 0-16 16v16" stroke="#1D4ED8" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="188" cy="212" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="188" y="218" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">5</text>
+  <path d="M188 254v40" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="188" cy="334" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="188" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">6</text>
+  <path d="M238 334h160" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="434" cy="334" r="22" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="7"/>
+  <text x="434" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1D4ED8">7</text>
+  <path d="M434 376v28a16 16 0 0 1-16 16h-12" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="246" cy="428" r="22" fill="#DCFCE7" stroke="#16A34A" stroke-width="7"/>
+  <path d="m238 428 7 7 14-16" stroke="#15803D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="290" y="390" width="200" height="76" rx="16" fill="#DCFCE7" stroke="#16A34A" stroke-width="6"/>
+  <path d="M318 428h32M318 448h20" stroke="#16A34A" stroke-width="6" stroke-linecap="round"/>
+  <path d="M378 428h20M378 448h12" stroke="#16A34A" stroke-width="6" stroke-linecap="round"/>
 </svg>
