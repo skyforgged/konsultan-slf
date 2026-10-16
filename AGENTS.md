@@ -1,19 +1,37 @@
 # AGENTS.md
 
-Panduan untuk agen/AI yang bekerja di repo ini.
+Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Ringkasan proyek
 
 - Situs statis **Astro 5** untuk konsultan SLF & PBG (bahasa Indonesia).
-- Konten berada di `src/content/` (markdown + schema Zod), hasil build di `dist/` (gitignored).
+- Konten berada di `src/content/` (Markdown + schema Zod), hasil build di `dist/` (gitignored).
 - Styling: Tailwind v4. Skill daisyUI tersedia di `.agents/skills/daisyui/`.
 
 ## Perintah
 
-- `npm run build` — `astro check` + `astro build` + `check-internal-links.mjs` + `check-seo-output.mjs`. **Wajib lulus sebelum tugas dianggap selesai.**
+- `npm run build` — `astro check` + `astro build` + pemeriksaan tautan internal, SEO output, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
 - Gunakan **npm** (ada `package-lock.json`); jangan ganti ke pnpm/yarn.
+
+## Aturan wajib untuk update content
+
+Sebelum membuat atau memperbarui konten, baca dan patuhi:
+- `docs/content-update-policy.md` — mandat editorial, batas topik, kriteria pemilihan, verifikasi fakta, dan batas perubahan.
+- `docs/content-update-workflow.md` — urutan kerja, validasi, dan format laporan.
+
+Aturan praktis:
+- Agent boleh memilih sendiri artikel yang perlu diperbarui dan mengembangkan subtopik baru selama relevan dengan SLF/PBG. Tidak perlu menunggu daftar topik per artikel.
+- Utamakan akurasi hukum, kebutuhan pembaca, kelengkapan, kegunaan praktis, tautan sumber, dan kualitas editorial. Jangan mengedit hanya demi menghasilkan commit.
+- Topik di luar cakupan situs dilarang. Jangan menyisipkan topik seperti sepak bola dalam artikel PBG tanpa hubungan substantif.
+- Untuk klaim hukum/teknis penting, periksa sumber primer resmi. Jangan mengarang ketentuan, biaya, durasi, statistik, atau sumber.
+- Satu run berfokus pada satu target utama. File tambahan harus relevan dan alasannya dicatat.
+- Pertahankan slug, ID/ULID, relasi artikel-layanan, URL, struktur data, dan aset spesifik halaman kecuali ada alasan teknis nyata.
+- Jangan membuat artikel baru dalam run update-only; catat ide artikel baru sebagai usulan terpisah.
+- Perbarui `updatedDate` hanya jika konten yang dipublikasikan benar-benar berubah. Jangan mengubah `pubDate` untuk membuat artikel tampak baru.
+- Jika tidak ada perubahan substantif yang diperlukan, laporkan hasil audit tanpa memaksakan edit atau commit.
+- Workflow AI tidak boleh langsung mempublikasikan konten ke `main` tanpa pemeriksaan. Perubahan konten harus divalidasi dan diajukan untuk peninjauan sesuai workflow yang digunakan.
 
 ## ATURAN INTI: pisahkan "theme" dari "data"
 
@@ -24,7 +42,6 @@ Ini tujuan utama repo. Layout, komponen, dan blok adalah **theme**; frontmatter/
 - **Label UI bersama** (navigasi, footer, label mikro blok seperti "Prioritas", label form, tombol bersama) berasal dari `src/config/ui.ts`. Teks yang spesifik untuk satu halaman tetap di frontmatter `src/content/pages/*.md`.
 
 Konsekuensi:
-
 - Jangan menulis teks apa pun di dalam layout/komponen. Terima sebagai prop.
 - Nilai "sekadar fallback"/default di dalam theme tetap dianggap pelanggaran; sediakan nilainya di data.
 - Halaman statis `.astro` pun wajib mengambil data dari `src/content/pages/*.md` (bukan literal di file halaman).
@@ -50,38 +67,33 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 
 ## Menambah / mengubah halaman
 
-1. Tambah atau ubah entri frontmatter di `src/content/pages/` (lihat schema di `src/content.config.ts`).
+1. Tambah atau ubah entri frontmatter di `src/content/pages/` sesuai schema di `src/content.config.ts`.
 2. Tulis halaman `.astro` seminimal mungkin: ambil data dengan `getEntry('pages', '<slug>')`, lalu render theme dengan prop tersebut.
 3. Jangan menaruh teks di file halaman — pindahkan ke frontmatter.
 4. Jalankan `npm run build` dan pastikan semua validasi lulus.
 
 ## SEO
 
-- `scripts/check-seo-output.mjs` memeriksa `dist`: `<title>` tunggal, meta description, `og:*`, `twitter:*`, canonical (kecuali `noindex`), JSON-LD valid, `robots.txt`, dan `sitemap.xml`.
+- `scripts/check-seo-output.mjs` memeriksa output `dist`: `<title>` tunggal, meta description, `og:*`, `twitter:*`, canonical (kecuali `noindex`), JSON-LD valid, `robots.txt`, dan `sitemap.xml`.
 - Judul/deskripsi setiap halaman berasal dari frontmatter. Halaman baru tanpa entri frontmatter akan gagal validasi.
 
-## Aturan pubDate / updatedDate (faktual)
+## Aturan pubDate / updatedDate
 
-Setiap article (`src/content/articles/*.md`) dan service (`src/content/services/*.md`) **harus** memiliki:
+Setiap article (`src/content/articles/*.md`) dan service (`src/content/services/*.md`) harus memiliki:
+- `pubDate` — tanggal publikasi asli, format ISO 8601.
+- `updatedDate` — tanggal perubahan konten terakhir yang benar-benar terjadi, format ISO 8601.
 
-- `pubDate` — tanggal penerbitan, format ISO 8601 (mis. `"2026-10-15T14:00:00Z"`).
-- `updatedDate` — tanggal pembaruan terakhir, format ISO 8601.
+Aturan:
+1. Jangan gunakan `T00:00:00Z`; gunakan waktu ISO 8601 yang valid dan konsisten dengan konvensi repo.
+2. Jangan ubah `pubDate` saat memperbarui konten lama.
+3. `updatedDate` harus mencerminkan perubahan konten yang sebenarnya, bukan build rutin atau perubahan metadata yang tidak relevan.
+4. Beberapa halaman yang memang diperbarui dalam satu pekerjaan boleh memiliki timestamp yang sama. Jangan memaksakan timestamp unik jika perubahan terjadi pada waktu yang sama.
+5. File artikel harus berekstensi `.md`.
+6. `ulid` harus tepat 26 karakter.
+7. `relatedArticles` hanya boleh merujuk ID artikel yang benar-benar ada dan bukan draft.
 
-Aturan keras:
-
-1. **Jangan pernah gunakan `T00:00:00Z`.** Gunakan jam non-midnight (mis. `T08:00:00Z`, `T13:54:00Z`) agar `sort((a, b) => b.updatedDate - a.updatedDate)` di `ArticleListBlock.astro`, `PageUpdatedArticles.astro`, `related.ts`, dan `sitemap.xml.ts` bekerja dengan benar.
-2. **Setiap article/service harus punya `updatedDate` faktual** — bukan nilai seragam. Setiap perubahan konten harus diikuti update `updatedDate` ke UTC saat itu juga.
-3. **Jangan salin-nilai `updatedDate` dari article lain.** Setiap entry harus punya nilai unik sesuai waktu edit terakhirnya.
-4. **File article harus berekstensi `.md`.** File tanpa ekstensi tidak dimuat oleh Astro content collection.
-5. **`ulid` harus tepat 26 karakter.**
-6. **`relatedArticles` hanya boleh merujuk ID article yang benar-benar ada** (dan tidak draft).
-
-Validasi otomatis: `npm run build` menjalankan `check-published-content.mjs` yang memeriksa halaman terpublish. Untuk pengecekan manual, gunakan:
-
-```bash
-grep -E "^updatedDate:" src/content/articles/*.md | sort -t'"' -k2
-```
+Validasi otomatis dijalankan melalui `npm run build`. Jangan mengklaim pemeriksaan lulus jika belum dijalankan.
 
 ## Skill terkait
 
-- Baca `.agents/skills/theme-data-separation/SKILL.md` sebelum mengubah halaman, layout, komponen, atau konten.
+Baca `.agents/skills/theme-data-separation/SKILL.md` sebelum mengubah halaman, layout, komponen, atau konten yang melibatkan pemisahan theme/data.
