@@ -1,6 +1,6 @@
 ---
 id: 12
-ulid: "01K7KONSULTSLF000000000001"
+ulid: "01K7K0N5S0F000000000000001"
 type: "article"
 contentType: "national-service"
 slug: "konsultan-slf-terdekat"

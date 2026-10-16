@@ -1,6 +1,6 @@
 ---
 id: 11
-ulid: "01K7JASASLF000000000000001"
+ulid: "01K7JASAS0F000000000000001"
 type: "article"
 contentType: "national-service"
 slug: "jasa-slf-terdekat"
