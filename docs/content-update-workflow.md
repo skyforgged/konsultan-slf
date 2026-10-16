@@ -76,6 +76,13 @@ Gunakan format ringkas ini:
 - **Review manusia:** risiko/hal yang perlu ditinjau, atau “tidak ada yang teridentifikasi”.
 - **Commit/PR:** tautan dan SHA jika tersedia.
 
+## Lokasi file operasional
+
+- `.github/workflows/update-content.yml` — workflow GitHub Actions yang dijalankan manual.
+- `scripts/update-content-ai.mjs` — runtime Node.js yang memilih/audit satu artikel, memanggil OpenAI Responses API, menjaga field identitas, dan menulis hasil.
+- `prompts/content-update.md` — instruksi operasional yang dikirim ke model.
+- `docs/content-update-policy.md` dan dokumen ini tetap menjadi dokumentasi/kebijakan; keduanya bukan skrip yang dieksekusi.
+
 ## Catatan implementasi workflow GitHub Actions
 
 Saat kebijakan ini dijalankan dari GitHub Actions, workflow harus:
@@ -86,4 +93,4 @@ Saat kebijakan ini dijalankan dari GitHub Actions, workflow harus:
 - menyediakan input target opsional, batas jumlah target yang jelas, dan laporan hasil;
 - berhenti dengan aman jika kredensial/model tidak tersedia, sumber hukum tidak dapat diverifikasi, atau hasil model tidak memenuhi format yang diperlukan.
 
-**Status repo saat dokumen ini ditulis:** `.github/workflows/build.yml` adalah workflow GitHub Actions yang ada. Workflow AI khusus untuk update content belum ada; dokumen ini menetapkan kontrak operasionalnya, bukan mengklaim otomasi AI sudah berjalan. Implementasi runtime berikutnya harus memilih penyedia/model AI dan secret yang akan digunakan.
+**Status implementasi awal:** `.github/workflows/update-content.yml` tersedia dan hanya berjalan lewat `workflow_dispatch`. Workflow memerlukan secret `OPENAI_API_KEY` serta repository variable `OPENAI_MODEL`. Run yang mengubah artikel akan menjalankan build dan membuka PR untuk review; run tanpa perubahan tidak membuka PR. Belum ada jadwal otomatis dan belum ada konten yang dipublikasikan otomatis.
