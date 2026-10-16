@@ -331,6 +331,7 @@ const services = defineCollection({
     ctaLinkLabel: z.string().default('Baca panduan awal'),
     ctaHref: z.string().default('/articles/'),
     relatedArticlesTitle: z.string().default('Artikel terkait layanan'),
+    blocks: z.array(contentBlocks).default([]),
   }),
 });
 
