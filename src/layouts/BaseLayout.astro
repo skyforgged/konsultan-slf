@@ -10,6 +10,42 @@ const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = canonical ? new URL(canonical, siteUrl || Astro.url).toString() : new URL(Astro.url.pathname, siteUrl || Astro.url).toString();
 const imageUrl = socialImage.startsWith('http') ? socialImage : new URL(socialImage, siteUrl || Astro.url).toString();
+// Build one canonical BreadcrumbList for every route using this layout.
+const pathname = new URL(canonicalUrl).pathname.replace(/\/+$/, '') || '/';
+const pathSegments = pathname.split('/').filter(Boolean);
+const breadcrumbLabels: Record<string, string> = {
+  articles: ui.nav.articles,
+  services: ui.nav.services,
+  kontak: ui.nav.contact,
+};
+const breadcrumbItems = [{ name: ui.nav.home, url: new URL('/', siteUrl || Astro.url).toString() }];
+if (pathSegments.length > 0) {
+  let accumulatedPath = '';
+  for (let index = 0; index < pathSegments.length; index += 1) {
+    const segment = pathSegments[index];
+    accumulatedPath += `/${segment}`;
+    const isLast = index === pathSegments.length - 1;
+    const name = isLast
+      ? title
+      : breadcrumbLabels[segment] ?? segment.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+    breadcrumbItems.push({
+      name,
+      url: new URL(`${accumulatedPath}/`, siteUrl || Astro.url).toString(),
+    });
+  }
+} else {
+  breadcrumbItems[0] = { name: title, url: canonicalUrl };
+}
+const breadcrumbJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+}).replace(/</g, '\\u003c');
 const pageJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -36,6 +72,7 @@ const pageJsonLd = JSON.stringify({
     {pubDate && <meta name="datePublished" content={utcIso(pubDate)} />}
     {updatedDate && <meta name="dateModified" content={utcIso(updatedDate)} />}
     <script type="application/ld+json" set:html={pageJsonLd}></script>
+    <script type="application/ld+json" set:html={breadcrumbJsonLd}></script>
     {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:type" content={Astro.url.pathname.startsWith('/articles/') && Astro.url.pathname !== '/articles/' ? 'article' : 'website'} />
     <meta property="og:locale" content="id_ID" />
