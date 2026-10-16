@@ -5,9 +5,12 @@ import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
 import '../styles/global.css';
-const { service } = Astro.props as {
+
+const { service, headings = [] } = Astro.props as {
   service: CollectionEntry<'services'>;
+  headings?: Array<{ depth: number; text: string; slug: string }>;
 };
+const tocItems = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
 const pageTitle = service.data.title;
 const description = service.data.description;
 const canonical = `/services/${service.data.slug}/`;
@@ -16,7 +19,6 @@ const serviceUrl = new URL(canonical, siteUrl).toString();
 const serviceImageSource = service.data.image ?? ui.services.defaultImage;
 const isRasterImage = /\.(png|jpe?g|webp|gif)$/i.test(serviceImageSource.split(/[?#]/)[0]);
 const serviceImage = new URL(isRasterImage ? serviceImageSource : ui.meta.defaultImage, siteUrl).toString();
-let footerServiceTitle: string | undefined = pageTitle;
 const serviceJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -38,21 +40,37 @@ const serviceJsonLd = JSON.stringify({
 <BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <SiteHeader />
-  <main id="main-content" class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
-    <article class="min-w-0">
+  <main id="main-content" class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
+    {tocItems.length > 0 && (
+      <aside class="self-start lg:sticky lg:top-6">
+        <details class="rounded-xl border border-slate-200 p-4 lg:hidden">
+          <summary class="cursor-pointer font-semibold text-slate-800">{ui.article.tocMobile}</summary>
+          <nav class="mt-3" aria-label={ui.article.tocAriaLabel}>
+            <ul class="space-y-2 pl-4 text-sm">
+              {tocItems.map((item) => <li class={item.depth === 3 ? 'ml-4' : ''}><a class="text-slate-600 hover:text-blue-700" href={`#${item.slug}`}>{item.text}</a></li>)}
+            </ul>
+          </nav>
+        </details>
+        <nav class="hidden lg:block" aria-label={ui.article.tocAriaLabel}>
+          <p class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">{ui.article.tocTitle}</p>
+          <ul class="space-y-2 border-l border-slate-200 pl-4">
+            {tocItems.map((item) => <li class={item.depth === 3 ? 'ml-4' : ''}><a class="text-sm text-slate-600 no-underline hover:text-blue-700" href={`#${item.slug}`}>{item.text}</a></li>)}
+          </ul>
+        </nav>
+      </aside>
+    )}
+    <article class="prose-content min-w-0">
       <header class="mb-8 border-b border-slate-200 pb-7">
         {service.data.eyebrow && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{service.data.eyebrow}</p>}
         <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{pageTitle}</h1>
         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+        <img src={service.data.image ?? ui.services.defaultImage} alt={service.data.imageAlt} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
       </header>
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
       <slot name="related" />
     </article>
   </main>
-  <section id="artikel-terkait" class="mx-auto max-w-7xl px-5 py-12">
-    <slot name="related-content" />
-  </section>
-  <section id="cta-layanan" class="border-t border-slate-200 bg-blue-50/60">
+  <section class="border-t border-slate-200 bg-blue-50/60">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
       <div class="max-w-2xl">
         <h2 class="text-xl font-extrabold tracking-tight text-slate-950">{ui.article.ctaHeading}</h2>
@@ -61,6 +79,5 @@ const serviceJsonLd = JSON.stringify({
       <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
-  <slot name="footer-related" />
-  <SiteFooter serviceTitle={footerServiceTitle} />
+  <SiteFooter group={service.data.serviceGroup} />
 </BaseLayout>
