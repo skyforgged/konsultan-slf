@@ -27,6 +27,7 @@ if (article.data.relatedType === 'service' && article.data.relatedId) {
   const related = services.find((s) => s.data.id === article.data.relatedId && !s.data.draft && s.data.status === 'active');
   if (related) footerServiceTitle = related.data.title;
 }
+const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': article.data.schemaType,
@@ -34,8 +35,8 @@ const articleJsonLd = JSON.stringify({
   description,
   inLanguage: 'id-ID',
   image: [articleImage],
-  datePublished: article.data.pubDate.toISOString(),
-  ...(article.data.updatedDate ? { dateModified: article.data.updatedDate.toISOString() } : {}),
+  datePublished: utcIso(article.data.pubDate),
+  ...(article.data.updatedDate ? { dateModified: utcIso(article.data.updatedDate) } : {}),
   ...(article.data.author ? { author: { '@type': 'Person', name: article.data.author } } : {}),
   publisher: {
     '@type': 'Organization',
@@ -49,8 +50,8 @@ const articleJsonLd = JSON.stringify({
 ---
 <BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate}>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
-  <meta slot="head" property="article:published_time" content={article.data.pubDate.toISOString()} />
-  {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={article.data.updatedDate.toISOString()} />}
+  <meta slot="head" property="article:published_time" content={utcIso(article.data.pubDate)} />
+  {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={utcIso(article.data.updatedDate)} />}
   {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
     <SiteHeader />
   <main id="main-content" class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
@@ -79,7 +80,7 @@ const articleJsonLd = JSON.stringify({
         <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
         <img src={article.data.image ?? ui.article.defaultImage} alt={`${ui.article.inlineAltPrefix}${pageTitle}`} class="mt-6 w-full max-w-2xl rounded-2xl" width="560" height="320" fetchpriority="high" />
         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-          <time datetime={article.data.pubDate.toISOString()}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time>
+          <time datetime={utcIso(article.data.pubDate)}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time>
           {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</span>}
           {article.data.author && <span>{ui.article.authorPrefix} {article.data.author}</span>}
         </div>
