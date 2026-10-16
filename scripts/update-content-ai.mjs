@@ -1,0 +1,83 @@
+import { appendFile, readFile, readdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+
+const root = process.cwd();
+const dir = path.join(root, 'src/content/articles');
+const apiKey = process.env.OPENAI_API_KEY;
+const model = process.env.OPENAI_MODEL;
+const requested = process.env.TARGET_ARTICLE?.trim();
+const outputPath = process.env.GITHUB_OUTPUT;
+const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+if (!apiKey) throw new Error('Secret OPENAI_API_KEY belum dikonfigurasi.');
+if (!model) throw new Error('Variable OPENAI_MODEL belum dikonfigurasi.');
+if (requested && (!requested.startsWith('src/content/articles/') || !requested.endsWith('.md') || requested.includes('..'))) throw new Error('TARGET_ARTICLE harus berupa path artikel Markdown yang valid.');
+
+const read = (p) => readFile(path.join(root, p), 'utf8');
+const [policy, guide, agents, schema, prompt] = await Promise.all([
+  read('docs/content-update-policy.md'), read('docs/content-update-workflow.md'),
+  read('AGENTS.md'), read('src/content.config.ts'), read('prompts/content-update.md'),
+]);
+const files = (await readdir(dir)).filter((n) => n.endsWith('.md')).sort();
+const all = await Promise.all(files.map(async (name) => {
+  const content = await readFile(path.join(dir, name), 'utf8');
+  const fm = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!fm) throw new Error(`Frontmatter tidak ditemukan: ${name}`);
+  const field = (key) => fm[1].match(new RegExp('^' + key + ':\\s*(.+)$', 'm'))?.[1]?.trim().replace(/^["']|["']$/g, '') ?? '';
+  return { path: `src/content/articles/${name}`, content, title: field('title'), id: field('id'), slug: field('slug'), pubDate: field('pubDate'), updatedDate: field('updatedDate'), draft: field('draft') === 'true' };
+}));
+const eligible = all.filter((a) => !a.draft);
+if (!eligible.length) throw new Error('Tidak ada artikel non-draft.');
+
+async function ask(input, useSearch = true) {
+  const body = { model, input, max_output_tokens: 12000 };
+  if (useSearch) body.tools = [{ type: 'web_search_preview' }];
+  const res = await fetch('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`OpenAI API gagal (${res.status}): ${data.error?.message ?? 'respons tidak valid'}`);
+  const text = (data.output ?? []).flatMap((item) => item.content ?? []).filter((item) => item.type === 'output_text').map((item) => item.text).join('\n').trim();
+  if (!text) throw new Error('Model tidak mengembalikan teks.');
+  try { return JSON.parse(text); } catch {
+    const match = text.match(/\{[\s\S]*\}/);
+    if (match) return JSON.parse(match[0]);
+    throw new Error('Output model bukan JSON valid.');
+  }
+}
+const out = async (k, v) => { if (outputPath) await appendFile(outputPath, `${k}=${String(v).replace(/[\r\n]/g, ' ')}\n`); };
+const getFm = (content) => {
+  const m = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!m) throw new Error('Frontmatter YAML tidak valid.');
+  return { raw: m[1], get: (k) => m[1].match(new RegExp('^' + k + ':\\s*(.+)$', 'm'))?.[1]?.trim().replace(/^["']|["']$/g, '') ?? '' };
+};
+let target, rationale = 'Dipilih berdasarkan prioritas editorial.';
+if (requested) {
+  target = eligible.find((a) => a.path === requested);
+  if (!target) throw new Error('Target tidak ditemukan atau merupakan draft.');
+} else {
+  const choice = await ask(`Pilih satu artikel non-draft yang paling layak diaudit. Jangan memilih hanya karena tanggal lama. Gunakan path persis dari inventaris dan kembalikan JSON {"path":"...","rationale":"..."}.\nInventaris: ${JSON.stringify(eligible.map(({ path, title, id, slug, updatedDate }) => ({ path, title, id, slug, updatedDate })))}\nKebijakan: ${policy}`, false);
+  target = eligible.find((a) => a.path === choice.path);
+  if (!target) throw new Error('Model memilih path yang tidak ada dalam inventaris.');
+  rationale = String(choice.rationale ?? rationale);
+}
+const context = all.filter((a) => a.path !== target.path).map(({ path, title, content }) => ({ path, title, excerpt: content.slice(0, 1200) }));
+const result = await ask(`Audit dan bila perlu perbarui hanya artikel target. Output JSON persis: {"status":"changed"|"no_change","content":"isi artikel Markdown lengkap jika changed, string kosong jika no_change","report":"temuan, perubahan, sumber yang benar-benar diperiksa, risiko review manusia"}. Jangan mengubah id, ulid, slug, pubDate, type, relatedType, relatedId, draft. Jika berubah substantif, ubah updatedDate ke ISO 8601 dengan offset +07:00. Jangan mengubah file lain.\nPath: ${target.path}\nAlasan target: ${rationale}\nInstruksi operasional: ${prompt}\nAGENTS.md: ${agents}\nKebijakan: ${policy}\nPanduan workflow: ${guide}\nSchema: ${schema}\nKonteks artikel lain: ${JSON.stringify(context)}\nISI ARTIKEL TARGET: \n${target.content}`);
+const report = String(result.report ?? '').trim();
+if (!['changed', 'no_change'].includes(result.status)) throw new Error('Status output model tidak valid.');
+if (result.status === 'no_change') {
+  await out('changed', 'false');
+  const summary = `# AI Content Update — Tidak ada perubahan\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan: ${report || 'Tidak ada perubahan substantif yang layak.'}\n`;
+  if (summaryPath) await appendFile(summaryPath, summary);
+  console.log(summary);
+  process.exit(0);
+}
+if (typeof result.content !== 'string' || !result.content.trim()) throw new Error('Isi artikel hasil model kosong.');
+const before = getFm(target.content), after = getFm(result.content);
+for (const key of ['id', 'ulid', 'slug', 'pubDate', 'type', 'relatedType', 'relatedId', 'draft']) if (before.get(key) !== after.get(key)) throw new Error(`Perubahan diblokir: field ${key} berubah.`);
+if (!result.content.startsWith('---\n') || !result.content.endsWith('\n')) throw new Error('Format artikel hasil model tidak valid.');
+if (result.content === target.content) throw new Error('Model menyatakan changed tetapi tidak ada diff.');
+if (before.get('updatedDate') === after.get('updatedDate')) throw new Error('Isi berubah tetapi updatedDate tidak berubah.');
+await writeFile(path.join(root, target.path), result.content, 'utf8');
+await out('changed', 'true');
+await out('target_path', target.path);
+const summary = `# AI Content Update — Perubahan siap ditinjau\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan: ${report || 'Tidak ada laporan tambahan.'}\n- Identitas/URL dipertahankan; hanya satu artikel diubah.\n- Pemeriksaan frontmatter dasar lulus; build dijalankan pada langkah berikutnya.\n- Review manusia wajib sebelum merge.\n`;
+if (summaryPath) await appendFile(summaryPath, summary);
+console.log(summary);
