@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi checklist dokumen PBG</title>
+  <desc id="desc">Daftar pemeriksaan persyaratan dokumen PBG.</desc>
+  <rect x="48" y="36" width="544" height="448" rx="32" fill="#F0FDF4"/>
+  <rect x="128" y="88" width="220" height="300" rx="16" fill="#fff" stroke="#16A34A" stroke-width="7"/>
+  <path d="M128 138h220" stroke="#DCFCE7" stroke-width="5"/>
+  <path d="M158 178h160M158 218h140M158 258h160M158 298h100" stroke="#86EFAC" stroke-width="6" stroke-linecap="round"/>
+  <rect x="388" y="188" width="160" height="200" rx="16" fill="#DCFCE7" stroke="#15803D" stroke-width="6"/>
+  <path d="M418 228h100M418 268h80M418 308h100" stroke="#22C55E" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="468" cy="348" r="32" fill="#fff" stroke="#16A34A" stroke-width="6"/>
+  <path d="m453 348 8 8 16-18" stroke="#15803D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
