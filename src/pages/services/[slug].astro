@@ -4,7 +4,6 @@ import { getCollection } from 'astro:content';
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
-import { ui } from '../../config/ui.ts';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -29,19 +28,9 @@ const faqJsonLd = faqItems.length > 0 ? JSON.stringify({
     acceptedAnswer: { '@type': 'Answer', text: item.answer },
   })),
 }).replace(/</g, '\\u003c') : undefined;
-const breadcrumbJsonLd = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: ui.nav.home, item: new URL('/', siteUrl).toString() },
-    { '@type': 'ListItem', position: 2, name: ui.nav.services, item: new URL('/services/', siteUrl).toString() },
-    { '@type': 'ListItem', position: 3, name: service.data.title, item: serviceUrl },
-  ],
-}).replace(/</g, '\\u003c');
 
 ---
 <ServiceLayout service={service}>
-  <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
   <div class="space-y-6">
     {service.data.blocks.map((block) => <BlockRenderer block={block} />)}
