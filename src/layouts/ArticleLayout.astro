@@ -31,6 +31,7 @@ const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': article.data.schemaType,
+  '@id': `${articleUrl}#article`,
   headline: pageTitle,
   description,
   inLanguage: 'id-ID',
@@ -48,7 +49,7 @@ const articleJsonLd = JSON.stringify({
   url: articleUrl,
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate}>
+<BaseLayout title={pageTitle} description={description} canonical={canonical} image={article.data.image ?? ui.meta.articleImage} imageAlt={article.data.image ? `${ui.article.heroAltPrefix}${pageTitle}` : ui.article.socialImageAlt} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate} mainEntityId={`${articleUrl}#article`}>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <meta slot="head" property="article:published_time" content={utcIso(article.data.pubDate)} />
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={utcIso(article.data.updatedDate)} />}
