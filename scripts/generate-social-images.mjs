@@ -16,6 +16,7 @@ const images = {
   'checklist-dokumen-slf-lengkap': 'article-document.svg',
   'proses-tahapan-pengajuan-slf': 'building-compliance.svg',
   'biaya-waktu-faktor-penentu': 'service-certificate.svg',
+  'skenario-umum-studi-kasus-slf': 'building-compliance.svg',
   'pengertian-slf-dasar-hukum': 'article-slf-law.svg',
   'pengertian-slf': 'article-slf-overview.svg',
   'as-built-drawing': 'service-as-built.svg',
