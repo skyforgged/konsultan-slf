@@ -2,18 +2,17 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
-import FeatureCardGrid from '../../components/shared/FeatureCardGrid.astro';
-import ChecklistCard from '../../components/shared/ChecklistCard.astro';
-import ProcessTimeline from '../../components/shared/ProcessTimeline.astro';
-import FaqBlock from '../../components/shared/FaqBlock.astro';
-import SourceLinks from '../../components/shared/SourceLinks.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
 import { ui } from '../../config/ui.ts';
+
 export async function getStaticPaths() {
   const services = await getCollection('services');
-  return services.filter((service) => !service.data.draft && service.data.status === 'active').map((service) => ({ params: { slug: service.data.slug }, props: { service } }));
+  return services
+    .filter((service) => !service.data.draft && service.data.status === 'active')
+    .map((service) => ({ params: { slug: service.data.slug }, props: { service } }));
 }
+
 const { service } = Astro.props as { service: CollectionEntry<'services'> };
 const articles = await getCollection('articles');
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? Astro.url.origin;
@@ -35,10 +34,13 @@ const serviceJsonLd = JSON.stringify({
     url: siteUrl,
   },
 }).replace(/</g, '\\u003c');
-const faqJsonLd = service.data.faq.length > 0 ? JSON.stringify({
+const faqItems = service.data.blocks
+  .filter((block) => block.component === 'faq')
+  .flatMap((block) => block.items);
+const faqJsonLd = faqItems.length > 0 ? JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: service.data.faq.map((item) => ({
+  mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: { '@type': 'Answer', text: item.answer },
@@ -53,140 +55,30 @@ const breadcrumbJsonLd = JSON.stringify({
     { '@type': 'ListItem', position: 3, name: service.data.title, item: serviceUrl },
   ],
 }).replace(/</g, '\\u003c');
-const scopeItems = service.data.scope.map((s: string) => ({ title: s }));
-const requirementItems = service.data.requirements.map((r: string) => ({ label: r, required: true }));
-const benefitItems = service.data.benefits.map((b: string) => ({ title: b }));
-const processSteps = service.data.process.map((p: any) => ({ title: p.title, description: p.text }));
-const faqItems = service.data.faq.map((f: any) => ({ question: f.question, answer: f.answer }));
-const sourceItems = [
-  {
-    label: 'PP Nomor 16 Tahun 2021 — JDIH Kementerian PUPR',
-    url: 'https://jdih.pu.go.id/detail-dokumen/PP-nomor-16-Tahun-2021-tahun-2021-Peraturan-Pelaksanaan-Undang-Undang-Nomor-28-Tahun-2002-Tentang-Bangunan-Gedung',
-    description: 'Rujukan peraturan pelaksanaan Undang-Undang Bangunan Gedung.',
-  },
-  {
-    label: 'Sistem Informasi Manajemen Bangunan Gedung (SIMBG)',
-    url: 'https://simbg.pu.go.id/',
-    description: 'Portal resmi untuk memeriksa informasi layanan dan alur yang berlaku.',
-  },
-];
-const slugify = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const scopeId = service.data.scopeId ?? slugify(service.data.scopeTitle);
-const requirementsId = service.data.requirementsId ?? slugify(service.data.requirementsTitle);
-const benefitsId = service.data.benefitsId ?? slugify(service.data.benefitsTitle);
-const processId = service.data.processId ?? slugify(service.data.processTitle);
-const faqId = service.data.faqId ?? 'faq';
-const notesId = service.data.notesId ?? 'catatan';
+const slugify = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const headings = service.data.blocks.flatMap((block) => {
+  if (block.component === 'section') {
+    return [{ depth: 2, text: block.heading, slug: block.id ?? slugify(block.heading) }];
+  }
+  if (
+    block.component === 'process-timeline' ||
+    block.component === 'checklist-card' ||
+    block.component === 'comparison-table' ||
+    block.component === 'document-list' ||
+    block.component === 'feature-card-grid' ||
+    block.component === 'source-links'
+  ) {
+    return [{ depth: 2, text: block.title, slug: `${block.id}-title` }];
+  }
+  return [];
+});
 ---
-<ServiceLayout service={service} headings={[]}>
+<ServiceLayout service={service} headings={headings}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
-
-  <section id="hero" class="relative isolate overflow-hidden bg-slate-950 text-white py-16 sm:py-20">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-800/40 via-slate-950 to-slate-950"></div>
-    <div class="mx-auto max-w-7xl px-5 md:grid md:grid-cols-2 md:gap-12 md:items-center">
-      <div>
-        {service.data.eyebrow && <p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">{service.data.eyebrow}</p>}
-        <h1 class="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">{service.data.title}</h1>
-        <p class="mt-5 text-lg leading-8 text-slate-300">{service.data.description}</p>
-        <a href="#konsultasi" class="mt-8 inline-flex rounded-lg bg-blue-600 px-6 py-3.5 font-bold text-white no-underline transition hover:bg-blue-500">Konsultasi sekarang <span aria-hidden="true">→</span></a>
-      </div>
-      {service.data.image && (
-        <div class="mt-10 md:mt-0 flex justify-center">
-          <img src={service.data.image} alt={service.data.imageAlt} class="h-auto max-h-56 w-full max-w-xs object-contain" width="560" height="420" loading="eager" />
-        </div>
-      )}
-    </div>
-  </section>
-
-  {service.data.blocks.length > 0 ? (
-    <div class="space-y-6">
-      {service.data.blocks.map((block) => <BlockRenderer block={block} />)}
-    </div>
-  ) : (
-    <>
-  <section id={scopeId + '-section'} class="py-16 bg-white">
-    <div class="mx-auto max-w-7xl px-5">
-      <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Ruang lingkup</p>
-      <h2 class="mt-3 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">{service.data.scopeTitle}</h2>
-      <p class="mt-3 text-base leading-7 text-slate-600">{service.data.intro}</p>
-      <FeatureCardGrid id={scopeId} title="" columns={2} items={scopeItems} />
-    </div>
-  </section>
-
-  <section id={requirementsId + '-section'} class="py-16 bg-slate-50">
-    <div class="mx-auto max-w-7xl px-5">
-      <ChecklistCard
-        id={requirementsId}
-        title={service.data.requirementsTitle}
-        description={service.data.requirementsIntro}
-        items={requirementItems}
-        note="Daftar ini merupakan bahan awal untuk penelaahan. Kebutuhan final perlu dikonfirmasi berdasarkan karakteristik bangunan dan ketentuan yang berlaku."
-      />
-    </div>
-  </section>
-
-  {service.data.benefits.length > 0 && (
-    <section id={benefitsId + '-section'} class="py-16 bg-white">
-      <div class="mx-auto max-w-7xl px-5">
-        <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Keuntungan</p>
-        <h2 class="mt-3 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">{service.data.benefitsTitle}</h2>
-        <FeatureCardGrid id={benefitsId} title="" columns={3} items={benefitItems} />
-      </div>
-    </section>
-  )}
-
-  {service.data.process.length > 0 && (
-    <section id={processId + '-section'} class="py-16 bg-slate-50">
-      <div class="mx-auto max-w-7xl px-5">
-        <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Tahapan</p>
-        <ProcessTimeline id={processId} title={service.data.processTitle} steps={processSteps} />
-      </div>
-    </section>
-  )}
-
-  {service.data.notes && (
-    <section id={notesId + '-section'} class="py-12 bg-white">
-      <div class="mx-auto max-w-7xl px-5">
-        <div class="rounded-2xl border border-amber-200 bg-amber-50 p-6">
-          <h2 id={notesId} class="text-xl font-extrabold text-slate-950">{service.data.notesTitle}</h2>
-          <p class="mt-3 text-sm leading-7 text-slate-700">{service.data.notes}</p>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {service.data.faq.length > 0 && (
-    <section id={faqId + '-section'} class="py-16 bg-slate-50">
-      <div class="mx-auto max-w-7xl px-5">
-        <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">FAQ</p>
-        <FaqBlock id={faqId} heading={service.data.faqTitle} items={faqItems} />
-      </div>
-    </section>
-  )}
-
-  <SourceLinks
-    id="rujukan-resmi-layanan"
-    title="Rujukan resmi"
-    intro="Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Kebutuhan serta penerapan pada bangunan tertentu perlu diverifikasi sesuai kasus."
-    items={sourceItems}
-  />
-    </>
-  )}
-
-  <section id="konsultasi" class="scroll-mt-8 py-16 bg-slate-950 text-white">
-    <div class="mx-auto max-w-7xl px-5 md:grid md:grid-cols-2 md:items-center md:gap-12">
-      <div>
-        <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-300">Langkah berikutnya</p>
-        <h2 class="mt-3 text-2xl font-black tracking-tight text-white sm:text-3xl">{service.data.ctaLabel}</h2>
-        <p class="mt-3 text-base leading-7 text-slate-300">{service.data.ctaDescription}</p>
-      </div>
-      <div class="mt-8 md:mt-0 flex justify-start md:justify-end">
-        <a href={service.data.ctaHref} class="inline-flex rounded-lg bg-white px-7 py-4 font-bold text-slate-950 no-underline transition hover:bg-blue-50">{service.data.ctaLinkLabel} <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <RelatedArticles slot="related" articles={articles} type="service" id={service.data.id} heading={service.data.relatedArticlesTitle} />
+  <div class="space-y-6">
+    {service.data.blocks.map((block) => <BlockRenderer block={block} />)}
+  </div>
+  <RelatedArticles slot="related" articles={articles} type="service" id={service.data.id} heading="Artikel terkait layanan" />
 </ServiceLayout>
