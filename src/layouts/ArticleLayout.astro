@@ -24,6 +24,9 @@ const articleImageSource = article.data.socialImage ?? ui.meta.articleImage;
 const isRasterArticleImage = /\.(png|jpe?g|webp|gif)$/i.test(articleImageSource.split(/[?#]/)[0]);
 const articleImage = new URL(isRasterArticleImage ? articleImageSource : ui.meta.defaultImage, siteUrl).toString();
 
+const authorName = typeof article.data.author === 'object' ? article.data.author.name : article.data.author;
+const authorUrl = typeof article.data.author === 'object' ? article.data.author.url : undefined;
+
 let footerServiceTitle: string | undefined;
 let relatedServiceHref = '/services/';
 let articleCtaText = ui.article.ctaText;
@@ -49,7 +52,7 @@ const articleJsonLd = JSON.stringify({
   image: [articleImage],
   datePublished: utcIso(article.data.pubDate),
   ...(article.data.updatedDate ? { dateModified: utcIso(article.data.updatedDate) } : {}),
-  ...(article.data.author ? { author: { '@type': 'Person', name: article.data.author } } : {}),
+  ...(authorName ? { author: { '@type': 'Person', name: authorName, ...(authorUrl ? { url: authorUrl } : {}) } } : {}),
   publisher: {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
@@ -64,7 +67,7 @@ const articleJsonLd = JSON.stringify({
   <script slot="head" type="application/ld+json" set:html={articleJsonLd}></script>
   <meta slot="head" property="article:published_time" content={utcIso(article.data.pubDate)} />
   {article.data.updatedDate && <meta slot="head" property="article:modified_time" content={utcIso(article.data.updatedDate)} />}
-  {article.data.author && <meta slot="head" property="article:author" content={article.data.author} />}
+  {authorName && <meta slot="head" property="article:author" content={authorName} />}
     <SiteHeader />
   <main id="main-content" class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-10 lg:grid-cols-[250px_minmax(0,1fr)] lg:py-14">
     {(tocItems.length > 0 || hasPreviousArticles) && (
@@ -95,7 +98,18 @@ const articleJsonLd = JSON.stringify({
         <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
           <time datetime={utcIso(article.data.pubDate)}>{article.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time>
           {article.data.updatedDate && <span>{ui.article.updatedPrefix} {article.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</span>}
-          {article.data.author && <span>{ui.article.authorPrefix} {article.data.author}</span>}
+          {authorName && (
+            <span>
+              {ui.article.authorPrefix}{' '}
+              {authorUrl ? (
+                <a href={authorUrl} target="_blank" rel="noopener noreferrer" class="text-slate-500 underline decoration-slate-300 underline-offset-4 transition hover:text-blue-700 hover:decoration-blue-700">
+                  {authorName}
+                </a>
+              ) : (
+                authorName
+              )}
+            </span>
+          )}
         </div>
       </header>
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>

@@ -274,7 +274,13 @@ const articles = defineCollection({
     slug: z.string().min(1),
     pubDate: utcDate,
     updatedDate: utcDate,
-    author: z.string().optional(),
+    author: z.union([
+      z.string(),
+      z.object({
+        name: z.string().min(1),
+        url: z.string().url().optional()
+      })
+    ]).optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).default([]),
     relatedType: z.enum(['service', 'page', 'article']).optional(),
