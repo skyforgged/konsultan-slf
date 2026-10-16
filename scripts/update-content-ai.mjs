@@ -75,9 +75,31 @@ for (const key of ['id', 'ulid', 'slug', 'pubDate', 'type', 'relatedType', 'rela
 if (!result.content.startsWith('---\n') || !result.content.endsWith('\n')) throw new Error('Format artikel hasil model tidak valid.');
 if (result.content === target.content) throw new Error('Model menyatakan changed tetapi tidak ada diff.');
 if (before.get('updatedDate') === after.get('updatedDate')) throw new Error('Isi berubah tetapi updatedDate tidak berubah.');
-await writeFile(path.join(root, target.path), result.content, 'utf8');
+const reviewPrompt = await read('prompts/content-review.md');
+let reviewedContent = result.content;
+let review = await ask(`Bertindak sebagai reviewer independen. Periksa secara kritis usulan editor; jangan menganggap laporan editor benar tanpa bukti. Gunakan web search dan utamakan sumber primer resmi untuk klaim hukum/teknis. Periksa akurasi, sumber yang dapat ditelusuri, konsistensi, kegunaan pembaca, SEO, klaim menyesatkan, dan kepatuhan kebijakan. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. pass hanya jika tidak ada masalah material yang belum ditangani. Jika klaim hukum penting tidak dapat diverifikasi, pilih revise atau reject.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nUsulan editor:\n${reviewedContent}\nLaporan editor:\n${report}`);
+if (!['pass', 'revise', 'reject'].includes(review.verdict) || !Array.isArray(review.findings)) throw new Error('Output reviewer AI tidak valid.');
+if (review.verdict === 'revise') {
+  const revision = await ask(`Revisi artikel berdasarkan review independen. Tangani semua temuan material, jangan membuat klaim tanpa sumber, dan pertahankan field frontmatter yang dilindungi. Output JSON: {"content":"artikel Markdown lengkap","report":"ringkasan revisi"}.\nTemuan reviewer: ${JSON.stringify(review.findings)}\nArtikel asli: ${target.content}\nUsulan sebelumnya: ${reviewedContent}\nLaporan sebelumnya: ${report}\nInstruksi editor: ${prompt}\nKebijakan: ${policy}`);
+  if (typeof revision.content !== 'string' || !revision.content.trim()) throw new Error('AI revisi tidak mengembalikan artikel.');
+  const revisedFm = getFm(revision.content);
+  for (const key of ['id', 'ulid', 'slug', 'pubDate', 'type', 'relatedType', 'relatedId', 'draft']) if (before.get(key) !== revisedFm.get(key)) throw new Error(`Revisi diblokir: field ${key} berubah.`);
+  if (before.get('updatedDate') === revisedFm.get('updatedDate') || !revision.content.startsWith('---\n') || !revision.content.endsWith('\n')) throw new Error('Format atau updatedDate hasil revisi tidak valid.');
+  if (revision.content === target.content) throw new Error('Revisi tidak menghasilkan perubahan.');
+  reviewedContent = revision.content;
+  const firstFindings = review.findings;
+  review = await ask(`Lakukan review independen kedua setelah revisi. Gunakan web search dan sumber primer resmi. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"summary":"alasan singkat"}. Hanya pass jika tidak ada masalah material tersisa.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nArtikel revisi:\n${reviewedContent}\nTemuan review pertama:\n${JSON.stringify(firstFindings)}`);
+  if (!['pass', 'revise', 'reject'].includes(review.verdict) || !Array.isArray(review.findings)) throw new Error('Output reviewer kedua tidak valid.');
+}
+if (review.verdict !== 'pass') {
+  const summary = `# AI Content Update — Ditahan oleh review independen\n\n- Target: ${target.path}\n- Verdict: ${review.verdict}\n- Ringkasan reviewer: ${String(review.summary ?? '')}\n- Temuan: ${JSON.stringify(review.findings)}\n- Tidak ada perubahan artikel yang diajukan sebagai PR.\n`;
+  if (summaryPath) await appendFile(summaryPath, summary);
+  console.error(summary);
+  throw new Error(`Review independen tidak meloloskan artikel (verdict: ${review.verdict}); tidak ada PR dibuat.`);
+}
+await writeFile(path.join(root, target.path), reviewedContent, 'utf8');
 await out('changed', 'true');
 await out('target_path', target.path);
-const summary = `# AI Content Update — Perubahan siap ditinjau\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan: ${report || 'Tidak ada laporan tambahan.'}\n- Identitas/URL dipertahankan; hanya satu artikel diubah.\n- Pemeriksaan frontmatter dasar lulus; build dijalankan pada langkah berikutnya.\n- Review manusia wajib sebelum merge.\n`;
+const summary = `# AI Content Update — Lolos review AI independen\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan editor: ${report || 'Tidak ada laporan tambahan.'}\n- Verdict reviewer independen: pass\n- Ringkasan reviewer: ${String(review.summary ?? '')}\n- Temuan reviewer: ${JSON.stringify(review.findings)}\n- Identitas/URL dipertahankan; hanya satu artikel diubah.\n- Pemeriksaan frontmatter dasar dan review AI lulus; build dijalankan pada langkah berikutnya.\n- Review manusia tetap wajib sebelum merge.\n`;
 if (summaryPath) await appendFile(summaryPath, summary);
 console.log(summary);
