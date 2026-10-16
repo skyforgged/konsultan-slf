@@ -13,7 +13,7 @@ const { article, headings = [] } = Astro.props as {
 };
 const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 const articles = await getCollection('articles');
-const hasPreviousArticles = articles.some((item) => !item.data.draft && item.data.id < article.data.id);
+const hasPreviousArticles = articles.some((item) => !item.data.draft && item.data.contentType !== 'local-seo' && item.data.id < article.data.id);
 const pageTitle = article.data.title;
 const description = article.data.description;
 const canonical = `/articles/${article.data.slug}/`;
