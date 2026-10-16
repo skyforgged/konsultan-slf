@@ -13,7 +13,7 @@ const images = {
   'kontak': 'contact-support.svg',
   '404': 'not-found.svg',
   'checklist-persiapan-konsultasi-slf': 'article-checklist.svg',
-  'pengertian-slf-dan-dasar-hukumnya': 'article-slf-law.svg',
+  'pengertian-slf-dasar-hukum': 'article-slf-law.svg',
   'pengertian-slf': 'article-slf-overview.svg',
   'as-built-drawing': 'service-as-built.svg',
   'pengkajian-teknis-bangunan': 'service-technical-assessment.svg',
