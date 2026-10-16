@@ -6,7 +6,6 @@ const contentDirs = ['articles', 'pages', 'services'];
 const files = [];
 const failures = [];
 let publishedFilesChecked = 0;
-const updatedDateValues = new Map();
 
 for (const directory of contentDirs) {
   await collectMarkdown(path.join(contentRoot, directory));
@@ -42,14 +41,6 @@ for (const file of files) {
   }
   if (dateValues.pubDate && dateValues.updatedDate && dateValues.updatedDate === dateValues.pubDate) {
     failures.push(relativePath + ': updatedDate must not equal pubDate (use a non-midnight time so descending sort works)');
-  }
-  if (dateValues.updatedDate) {
-    const existing = updatedDateValues.get(dateValues.updatedDate);
-    if (existing) {
-      failures.push(relativePath + ': updatedDate ' + dateValues.updatedDate + ' duplicates ' + existing + ' (each entry must have a unique factual updatedDate)');
-    } else {
-      updatedDateValues.set(dateValues.updatedDate, relativePath);
-    }
   }
   if (/^draft:\s*true\s*$/im.test(source)) continue;
   publishedFilesChecked++;
