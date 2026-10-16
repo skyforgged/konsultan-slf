@@ -38,25 +38,9 @@ const breadcrumbJsonLd = JSON.stringify({
     { '@type': 'ListItem', position: 3, name: service.data.title, item: serviceUrl },
   ],
 }).replace(/</g, '\\u003c');
-const slugify = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const headings = service.data.blocks.flatMap((block) => {
-  if (block.component === 'section') {
-    return [{ depth: 2, text: block.heading, slug: block.id ?? slugify(block.heading) }];
-  }
-  if (
-    block.component === 'process-timeline' ||
-    block.component === 'checklist-card' ||
-    block.component === 'comparison-table' ||
-    block.component === 'document-list' ||
-    block.component === 'feature-card-grid' ||
-    block.component === 'source-links'
-  ) {
-    return [{ depth: 2, text: block.title, slug: `${block.id}-title` }];
-  }
-  return [];
-});
+
 ---
-<ServiceLayout service={service} headings={headings}>
+<ServiceLayout service={service}>
   <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd}></script>
   {faqJsonLd && <script slot="head" type="application/ld+json" set:html={faqJsonLd}></script>}
   <div class="space-y-6">
