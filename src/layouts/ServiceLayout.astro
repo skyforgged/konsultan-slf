@@ -37,7 +37,7 @@ const serviceJsonLd = JSON.stringify({
   },
 }).replace(/</g, '\\u003c');
 ---
-<BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt}>
+<BaseLayout title={pageTitle} description={description} canonical={canonical} image={service.data.image ?? ui.meta.articleImage} imageAlt={service.data.image ? service.data.imageAlt : ui.article.socialImageAlt} pubDate={service.data.pubDate} updatedDate={service.data.updatedDate}>
   <script slot="head" type="application/ld+json" set:html={serviceJsonLd}></script>
   <SiteHeader />
   <main id="main-content" class="mx-auto max-w-7xl px-5 py-10 sm:py-12 lg:py-14">
@@ -47,6 +47,10 @@ const serviceJsonLd = JSON.stringify({
           {service.data.eyebrow && <p class="text-xs font-bold uppercase tracking-wider text-blue-700">{service.data.eyebrow}</p>}
           <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl lg:text-5xl">{pageTitle}</h1>
           <p class="mt-4 text-lg leading-8 text-slate-600">{description}</p>
+          <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-500">
+            <time datetime={service.data.pubDate.toISOString()}>{service.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time>
+            <span>{ui.article.updatedPrefix} {service.data.updatedDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</span>
+          </div>
         </div>
         <img src={service.data.image ?? ui.services.defaultImage} alt={service.data.imageAlt} class="mx-auto w-full max-w-xl rounded-2xl object-contain" width="560" height="420" fetchpriority="high" />
       </header>
