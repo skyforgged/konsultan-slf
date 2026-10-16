@@ -36,6 +36,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_REVIEW_MODEL: ${{ vars.OPENAI_REVIEW_MODEL }}
           TARGET_ARTICLE: ${{ inputs.target_article }}
         run: npm run content:update:ai
       - name: Build and validate
