@@ -7,6 +7,7 @@ import ChecklistCard from '../../components/shared/ChecklistCard.astro';
 import ProcessTimeline from '../../components/shared/ProcessTimeline.astro';
 import FaqBlock from '../../components/shared/FaqBlock.astro';
 import SourceLinks from '../../components/shared/SourceLinks.astro';
+import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import RelatedArticles from '../../components/shared/RelatedArticles.astro';
 import { ui } from '../../config/ui.ts';
 export async function getStaticPaths() {
@@ -99,6 +100,12 @@ const notesId = service.data.notesId ?? 'catatan';
     </div>
   </section>
 
+  {service.data.blocks.length > 0 ? (
+    <div class="space-y-6">
+      {service.data.blocks.map((block) => <BlockRenderer block={block} />)}
+    </div>
+  ) : (
+    <>
   <section id={scopeId + '-section'} class="py-16 bg-white">
     <div class="mx-auto max-w-7xl px-5">
       <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Ruang lingkup</p>
@@ -165,6 +172,8 @@ const notesId = service.data.notesId ?? 'catatan';
     intro="Gunakan sumber pemerintah berikut untuk memeriksa dasar regulasi dan informasi layanan terbaru. Kebutuhan serta penerapan pada bangunan tertentu perlu diverifikasi sesuai kasus."
     items={sourceItems}
   />
+    </>
+  )}
 
   <section id="konsultasi" class="scroll-mt-8 py-16 bg-slate-950 text-white">
     <div class="mx-auto max-w-7xl px-5 md:grid md:grid-cols-2 md:items-center md:gap-12">
