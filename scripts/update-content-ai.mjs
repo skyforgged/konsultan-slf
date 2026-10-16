@@ -93,7 +93,7 @@ if (review.verdict === 'revise') {
   const firstFindings = review.findings;
   review = await ask(`Lakukan review independen kedua setelah revisi. Gunakan web search dan sumber primer resmi. Output JSON: {"verdict":"pass"|"revise"|"reject","findings":["temuan konkret"],"sources_checked":[{"title":"judul sumber","url":"URL sumber yang benar-benar dibuka","supports":"klaim yang didukung"}],"summary":"alasan singkat"}. Cantumkan sumber yang benar-benar dibuka. Hanya pass jika tidak ada masalah material tersisa dan sumber yang diperlukan telah diperiksa.\nInstruksi reviewer: ${reviewPrompt}\nTarget: ${target.path}\nArtikel asli:\n${target.content}\nArtikel revisi:\n${reviewedContent}\nTemuan review pertama:\n${JSON.stringify(firstFindings)}`, true, reviewModel);
   if (!['pass', 'revise', 'reject'].includes(review.verdict) || !Array.isArray(review.findings) || !Array.isArray(review.sources_checked)) throw new Error('Output reviewer kedua tidak valid atau tidak mencantumkan sumber.');
-  if (review.verdict === 'pass' && !review.sources_checked.some((source) => source && typeof source.title === 'string' && /^https?:\\/\\//.test(source.url ?? '') && typeof source.supports === 'string')) throw new Error('Reviewer kedua tidak mencantumkan sumber valid yang diperiksa; artikel ditahan.');
+  if (review.verdict === 'pass' && !review.sources_checked.some((source) => source && typeof source.title === 'string' && (source.url?.startsWith('https://') || source.url?.startsWith('http://')) && typeof source.supports === 'string')) throw new Error('Reviewer kedua tidak mencantumkan sumber valid yang diperiksa; artikel ditahan.');
 }
 if (review.verdict !== 'pass') {
   const summary = `# AI Content Update — Ditahan oleh review independen\n\n- Target: ${target.path}\n- Verdict: ${review.verdict}\n- Ringkasan reviewer: ${String(review.summary ?? '')}\n- Temuan: ${JSON.stringify(review.findings)}\n- Tidak ada perubahan artikel yang diajukan sebagai PR.\n`;
@@ -104,6 +104,6 @@ if (review.verdict !== 'pass') {
 await writeFile(path.join(root, target.path), reviewedContent, 'utf8');
 await out('changed', 'true');
 await out('target_path', target.path);
-const summary = `# AI Content Update — Lolos review AI independen\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan editor: ${report || 'Tidak ada laporan tambahan.'}\n- Verdict reviewer independen: pass\n- Ringkasan reviewer: ${String(review.summary ?? '')}\n- Temuan reviewer: ${JSON.stringify(review.findings)}\n- Identitas/URL dipertahankan; hanya satu artikel diubah.\n- Pemeriksaan frontmatter dasar dan review AI lulus; build dijalankan pada langkah berikutnya.\n- Review manusia tetap wajib sebelum merge.\n`;
+const summary = `# AI Content Update — Lolos review AI independen\n\n- Target: ${target.path}\n- Alasan: ${rationale}\n- Laporan editor: ${report || 'Tidak ada laporan tambahan.'}\n- Verdict reviewer independen: pass\n- Ringkasan reviewer: ${String(review.summary ?? '')}\n- Temuan reviewer: ${JSON.stringify(review.findings)}\n- Sumber reviewer: ${JSON.stringify(review.sources_checked)}\n- Identitas/URL dipertahankan; hanya satu artikel diubah.\n- Pemeriksaan frontmatter dasar dan review AI lulus; build dijalankan pada langkah berikutnya.\n- Review manusia tetap wajib sebelum merge.\n`;
 if (summaryPath) await appendFile(summaryPath, summary);
 console.log(summary);
