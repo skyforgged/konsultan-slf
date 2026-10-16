@@ -10,10 +10,14 @@ slug: "articles"
 draft: false
 navLabel: "Artikel"
 canonical: "/articles/"
-pageHeader:
-  eyebrow: "Pusat informasi"
-  heading: "Artikel dan panduan SLF/PBG"
-  intro: "Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan."
-  image: "/images/illustrations/article-guide.svg"
-  imageAlt: "Ilustrasi buku panduan dan catatan"
+blocks:
+  - component: "page-header"
+    eyebrow: "Pusat informasi"
+    heading: "Artikel dan panduan SLF/PBG"
+    intro: "Informasi awal untuk membantu memahami istilah, dokumen, dan langkah pendampingan. Persyaratan akhir tetap perlu diverifikasi sesuai kondisi bangunan."
+    image: "/images/illustrations/article-guide.svg"
+    imageAlt: "Ilustrasi buku panduan dan catatan"
+  - component: "article-list"
+    mode: "listing"
+    heading: "Semua artikel"
 ---
