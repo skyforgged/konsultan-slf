@@ -10,10 +10,14 @@ slug: "services"
 draft: false
 navLabel: "Layanan"
 canonical: "/services/"
-pageHeader:
-  eyebrow: "Layanan"
-  heading: "Pendampingan perizinan bangunan"
-  intro: "Pahami ruang lingkup pendampingan dan persiapan awal. Kebutuhan final ditentukan berdasarkan kondisi bangunan dan ketentuan yang berlaku."
-  image: "/images/illustrations/service-certificate.svg"
-  imageAlt: "Ilustrasi dokumen layanan dan verifikasi"
+blocks:
+  - component: "page-header"
+    eyebrow: "Layanan"
+    heading: "Pendampingan perizinan bangunan"
+    intro: "Pahami ruang lingkup pendampingan dan persiapan awal. Kebutuhan final ditentukan berdasarkan kondisi bangunan dan ketentuan yang berlaku."
+    image: "/images/illustrations/service-certificate.svg"
+    imageAlt: "Ilustrasi dokumen layanan dan verifikasi"
+  - component: "service-list"
+    variant: "listing"
+    columns: 3
 ---
