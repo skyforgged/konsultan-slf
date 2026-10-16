@@ -12,167 +12,63 @@ status: active
 eyebrow: "Perpanjangan SLF"
 image: "/images/illustrations/service-certificate.svg"
 imageAlt: "Ilustrasi dokumen SLF untuk ditelaah"
-intro: "Persiapan perpanjangan SLF sebaiknya dimulai dengan memeriksa informasi sertifikat yang ada, perubahan pada bangunan, dokumen teknis, dan kondisi pemanfaatan saat ini. Penelaahan awal membantu mengidentifikasi informasi yang perlu diperbarui atau diverifikasi sebelum menyusun rencana tindak lanjut."
-scopeTitle: "Ruang lingkup penelaahan awal"
-scope:
-  - "Menelaah informasi SLF yang dimiliki, termasuk masa berlaku dan data bangunan."
-  - "Menginventarisasi dokumen teknis serta persetujuan yang tersedia."
-  - "Mencatat perubahan fungsi, tata ruang, sistem bangunan, atau kondisi yang diketahui."
-  - "Membahas kebutuhan pemeriksaan lanjutan dan ruang lingkup pekerjaan yang sesuai."
-requirementsTitle: "Informasi untuk konsultasi awal"
-requirementsIntro: "Dokumen yang diperlukan dapat berbeda menurut kondisi bangunan dan ketentuan yang berlaku. Siapkan bahan berikut jika tersedia."
-requirements:
-  - "Salinan SLF yang dimiliki dan informasi masa berlakunya."
-  - "Informasi fungsi, lokasi, luas, dan jumlah lantai bangunan."
-  - "Dokumen PBG/IMB atau persetujuan sebelumnya, jika tersedia."
-  - "Gambar teknis, laporan pemeriksaan, atau dokumen pemeliharaan yang relevan."
-  - "Catatan perubahan atau perbaikan sejak pemeriksaan sebelumnya."
-benefitsTitle: "Manfaat persiapan awal"
-benefits:
-  - "Mengetahui dokumen yang tersedia dan informasi yang perlu diperbarui."
-  - "Mengidentifikasi perubahan bangunan yang perlu dijelaskan atau diverifikasi."
-  - "Menyusun pembahasan lingkup kerja berdasarkan kondisi aktual, bukan asumsi."
-processTitle: "Tahapan pembahasan"
-process:
-  - title: "Pemeriksaan informasi sertifikat"
-    text: "Menelaah data sertifikat dan status masa berlaku berdasarkan dokumen yang disampaikan."
-  - title: "Inventarisasi perubahan"
-    text: "Mendata perubahan fungsi, tata ruang, sistem, dan kondisi bangunan yang diketahui."
-  - title: "Penelaahan dokumen"
-    text: "Memeriksa dokumen pendukung yang tersedia dan mencatat kekurangan informasi."
-  - title: "Penentuan tindak lanjut"
-    text: "Membahas pemeriksaan, dokumen, dan tahapan yang relevan untuk disepakati."
-notesTitle: "Hal yang perlu diperhatikan"
-notes: "Kebutuhan perpanjangan dan pemeriksaan tidak dapat dipastikan hanya dari tanggal sertifikat. Kondisi aktual, perubahan bangunan, dokumen, fungsi, dan ketentuan yang berlaku perlu diperiksa. Penerbitan atau keputusan tetap berada pada pihak berwenang; durasi proses bergantung pada berbagai faktor."
-asideTitle: "Siapkan dokumen SLF"
-asideDescription: "Salinan SLF, dokumen bangunan, dan catatan perubahan membantu penelaahan awal."
-guideLinkLabel: "Lihat artikel"
-guideLinkHref: "/articles/"
-ctaLabel: "Panduan Awal Sebelum Konsultasi"
-ctaDescription: "Baca panduan awal untuk menyiapkan informasi masa berlaku SLF, kondisi bangunan, dan dokumen yang tersedia."
-ctaLinkLabel: "Baca panduan awal"
-ctaHref: "/articles/"
-relatedArticlesTitle: "Informasi terkait"
-faqTitle: "Pertanyaan umum"
-faq:
-  - question: "Apakah perpanjangan selalu membutuhkan pemeriksaan yang sama?"
-    answer: "Tidak selalu. Kebutuhan evaluasi bergantung pada fungsi, kondisi aktual, perubahan bangunan, dokumen yang tersedia, dan ketentuan yang berlaku."
-  - question: "Kapan sebaiknya persiapan dimulai?"
-    answer: "Mulailah dengan memeriksa masa berlaku dan dokumen yang tersedia, lalu konfirmasikan kebutuhan tindak lanjut sesuai ketentuan yang berlaku. Jangan mengandalkan perkiraan umum sebagai pengganti pemeriksaan kasus."
-  - question: "Apakah SLF pasti diperpanjang jika dokumen lengkap?"
-    answer: "Tidak ada jaminan otomatis. Kesesuaian dokumen dan kondisi bangunan serta keputusan pihak berwenang tetap menjadi bagian dari proses."
 blocks:
-  [
-    {
-      "component": "section",
-      "id": "ruang-lingkup",
-      "heading": "Ruang lingkup penelaahan awal",
-      "content": [
-        {
-          "type": "p",
-          "text": "Persiapan perpanjangan SLF sebaiknya dimulai dengan memeriksa informasi sertifikat yang ada, perubahan pada bangunan, dokumen teknis, dan kondisi pemanfaatan saat ini. Penelaahan awal membantu mengidentifikasi informasi yang perlu diperbarui atau diverifikasi sebelum menyusun rencana tindak lanjut."
-        },
-        {
-          "type": "list",
-          "ordered": false,
-          "items": [
-            "Menelaah informasi SLF yang dimiliki, termasuk masa berlaku dan data bangunan.",
-            "Menginventarisasi dokumen teknis serta persetujuan yang tersedia.",
-            "Mencatat perubahan fungsi, tata ruang, sistem bangunan, atau kondisi yang diketahui.",
-            "Membahas kebutuhan pemeriksaan lanjutan dan ruang lingkup pekerjaan yang sesuai."
-          ]
-        }
-      ]
-    },
-    {
-      "component": "checklist-card",
-      "id": "persiapan-konsultasi",
-      "title": "Informasi untuk konsultasi awal",
-      "description": "Dokumen yang diperlukan dapat berbeda menurut kondisi bangunan dan ketentuan yang berlaku. Siapkan bahan berikut jika tersedia.",
-      "items": [
-        {
-          "label": "Salinan SLF yang dimiliki dan informasi masa berlakunya."
-        },
-        {
-          "label": "Informasi fungsi, lokasi, luas, dan jumlah lantai bangunan."
-        },
-        {
-          "label": "Dokumen PBG/IMB atau persetujuan sebelumnya, jika tersedia."
-        },
-        {
-          "label": "Gambar teknis, laporan pemeriksaan, atau dokumen pemeliharaan yang relevan."
-        },
-        {
-          "label": "Catatan perubahan atau perbaikan sejak pemeriksaan sebelumnya."
-        }
-      ]
-    },
-    {
-      "component": "feature-card-grid",
-      "id": "manfaat",
-      "title": "Manfaat persiapan awal",
-      "columns": 3,
-      "items": [
-        {
-          "title": "Mengetahui dokumen yang tersedia dan informasi yang perlu diperbarui."
-        },
-        {
-          "title": "Mengidentifikasi perubahan bangunan yang perlu dijelaskan atau diverifikasi."
-        },
-        {
-          "title": "Menyusun pembahasan lingkup kerja berdasarkan kondisi aktual, bukan asumsi."
-        }
-      ]
-    },
-    {
-      "component": "process-timeline",
-      "id": "tahapan",
-      "title": "Tahapan pembahasan",
-      "steps": [
-        {
-          "title": "Pemeriksaan informasi sertifikat",
-          "description": "Menelaah data sertifikat dan status masa berlaku berdasarkan dokumen yang disampaikan."
-        },
-        {
-          "title": "Inventarisasi perubahan",
-          "description": "Mendata perubahan fungsi, tata ruang, sistem, dan kondisi bangunan yang diketahui."
-        },
-        {
-          "title": "Penelaahan dokumen",
-          "description": "Memeriksa dokumen pendukung yang tersedia dan mencatat kekurangan informasi."
-        },
-        {
-          "title": "Penentuan tindak lanjut",
-          "description": "Membahas pemeriksaan, dokumen, dan tahapan yang relevan untuk disepakati."
-        }
-      ]
-    },
-    {
-      "component": "note",
-      "id": "catatan",
-      "variant": "warning",
-      "title": "Hal yang perlu diperhatikan",
-      "text": "Kebutuhan perpanjangan dan pemeriksaan tidak dapat dipastikan hanya dari tanggal sertifikat. Kondisi aktual, perubahan bangunan, dokumen, fungsi, dan ketentuan yang berlaku perlu diperiksa. Penerbitan atau keputusan tetap berada pada pihak berwenang; durasi proses bergantung pada berbagai faktor."
-    },
-    {
-      "component": "faq",
-      "id": "faq",
-      "heading": "Pertanyaan umum",
-      "items": [
-        {
-          "question": "Apakah perpanjangan selalu membutuhkan pemeriksaan yang sama?",
-          "answer": "Tidak selalu. Kebutuhan evaluasi bergantung pada fungsi, kondisi aktual, perubahan bangunan, dokumen yang tersedia, dan ketentuan yang berlaku."
-        },
-        {
-          "question": "Kapan sebaiknya persiapan dimulai?",
-          "answer": "Mulailah dengan memeriksa masa berlaku dan dokumen yang tersedia, lalu konfirmasikan kebutuhan tindak lanjut sesuai ketentuan yang berlaku. Jangan mengandalkan perkiraan umum sebagai pengganti pemeriksaan kasus."
-        },
-        {
-          "question": "Apakah SLF pasti diperpanjang jika dokumen lengkap?",
-          "answer": "Tidak ada jaminan otomatis. Kesesuaian dokumen dan kondisi bangunan serta keputusan pihak berwenang tetap menjadi bagian dari proses."
-        }
-      ]
-    }
-  ]
-
+  - component: "section"
+    id: "ruang-lingkup"
+    heading: "Ruang lingkup penelaahan awal"
+    content:
+      - type: "p"
+        text: "Persiapan perpanjangan SLF sebaiknya dimulai dengan memeriksa informasi sertifikat yang ada, perubahan pada bangunan, dokumen teknis, dan kondisi pemanfaatan saat ini. Penelaahan awal membantu mengidentifikasi informasi yang perlu diperbarui atau diverifikasi sebelum menyusun rencana tindak lanjut."
+      - type: "list"
+        ordered: false
+        items:
+          - "Menelaah informasi SLF yang dimiliki, termasuk masa berlaku dan data bangunan."
+          - "Menginventarisasi dokumen teknis serta persetujuan yang tersedia."
+          - "Mencatat perubahan fungsi, tata ruang, sistem bangunan, atau kondisi yang diketahui."
+          - "Membahas kebutuhan pemeriksaan lanjutan dan ruang lingkup pekerjaan yang sesuai."
+  - component: "checklist-card"
+    id: "persiapan-konsultasi"
+    title: "Informasi untuk konsultasi awal"
+    description: "Dokumen yang diperlukan dapat berbeda menurut kondisi bangunan dan ketentuan yang berlaku. Siapkan bahan berikut jika tersedia."
+    items:
+      - label: "Salinan SLF yang dimiliki dan informasi masa berlakunya."
+      - label: "Informasi fungsi, lokasi, luas, dan jumlah lantai bangunan."
+      - label: "Dokumen PBG/IMB atau persetujuan sebelumnya, jika tersedia."
+      - label: "Gambar teknis, laporan pemeriksaan, atau dokumen pemeliharaan yang relevan."
+      - label: "Catatan perubahan atau perbaikan sejak pemeriksaan sebelumnya."
+  - component: "feature-card-grid"
+    id: "manfaat"
+    title: "Manfaat persiapan awal"
+    columns: 3
+    items:
+      - title: "Mengetahui dokumen yang tersedia dan informasi yang perlu diperbarui."
+      - title: "Mengidentifikasi perubahan bangunan yang perlu dijelaskan atau diverifikasi."
+      - title: "Menyusun pembahasan lingkup kerja berdasarkan kondisi aktual, bukan asumsi."
+  - component: "process-timeline"
+    id: "tahapan"
+    title: "Tahapan pembahasan"
+    steps:
+      - title: "Pemeriksaan informasi sertifikat"
+        description: "Menelaah data sertifikat dan status masa berlaku berdasarkan dokumen yang disampaikan."
+      - title: "Inventarisasi perubahan"
+        description: "Mendata perubahan fungsi, tata ruang, sistem, dan kondisi bangunan yang diketahui."
+      - title: "Penelaahan dokumen"
+        description: "Memeriksa dokumen pendukung yang tersedia dan mencatat kekurangan informasi."
+      - title: "Penentuan tindak lanjut"
+        description: "Membahas pemeriksaan, dokumen, dan tahapan yang relevan untuk disepakati."
+  - component: "note"
+    id: "catatan"
+    variant: "warning"
+    title: "Hal yang perlu diperhatikan"
+    text: "Kebutuhan perpanjangan dan pemeriksaan tidak dapat dipastikan hanya dari tanggal sertifikat. Kondisi aktual, perubahan bangunan, dokumen, fungsi, dan ketentuan yang berlaku perlu diperiksa. Penerbitan atau keputusan tetap berada pada pihak berwenang; durasi proses bergantung pada berbagai faktor."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apakah perpanjangan selalu membutuhkan pemeriksaan yang sama?"
+        answer: "Tidak selalu. Kebutuhan evaluasi bergantung pada fungsi, kondisi aktual, perubahan bangunan, dokumen yang tersedia, dan ketentuan yang berlaku."
+      - question: "Kapan sebaiknya persiapan dimulai?"
+        answer: "Mulailah dengan memeriksa masa berlaku dan dokumen yang tersedia, lalu konfirmasikan kebutuhan tindak lanjut sesuai ketentuan yang berlaku. Jangan mengandalkan perkiraan umum sebagai pengganti pemeriksaan kasus."
+      - question: "Apakah SLF pasti diperpanjang jika dokumen lengkap?"
+        answer: "Tidak ada jaminan otomatis. Kesesuaian dokumen dan kondisi bangunan serta keputusan pihak berwenang tetap menjadi bagian dari proses."
 ---
