@@ -2,7 +2,7 @@
 id: 11
 ulid: "01K7JASAS0F000000000000001"
 type: "article"
-contentType: "national-service"
+contentType: "local-seo"
 slug: "jasa-slf-terdekat"
 title: "Jasa SLF Terdekat"
 description: >-
