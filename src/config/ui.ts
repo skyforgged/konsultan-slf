@@ -77,7 +77,7 @@ export const ui = {
     heroAltPrefix: 'Ilustrasi artikel: ',
     inlineAltPrefix: 'Ilustrasi: ',
     socialImageAlt: 'Pratinjau sosial Konsultan SLF & PBG',
-    defaultImage: '/images/illustrations/article-document.svg',
+    defaultImage: '/images/illustrations/article-guide.svg',
   },
   blocks: {
     checklistRequiredLabel: 'Prioritas',
