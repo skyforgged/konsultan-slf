@@ -7,7 +7,7 @@ const { articles = [], heading = ui.article.latestHeading, description = ui.arti
   heading?: string;
   description?: string;
 };
-const latest = [...articles].filter((item) => !item.data.draft).sort((a: any, b: any) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf()).slice(0, 3);
+const latest = [...articles].filter((item) => !item.data.draft && item.data.contentType !== 'local-seo').sort((a: any, b: any) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf()).slice(0, 3);
 ---
 <section class="mx-auto max-w-7xl px-5 py-16">
   <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">

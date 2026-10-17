@@ -1,5 +1,5 @@
 ---
-id: 12
+id: 10
 ulid: "01K7K0N5S0F000000000000001"
 type: "article"
 contentType: "local-seo"
@@ -9,7 +9,7 @@ description: >-
   Pelajari cara memilih konsultan SLF, memahami ruang lingkup pendampingan,
   dan menyiapkan informasi bangunan melalui konsultasi jarak jauh.
 pubDate: "2026-10-17T12:00:00Z"
-updatedDate: "2026-10-17T12:00:00Z"
+updatedDate: "2026-10-17T15:52:42Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"
@@ -25,8 +25,6 @@ serviceArea:
   - "Indonesia"
 relatedType: "service"
 relatedId: 101
-relatedArticles:
-  - 11
 blocks:
   - component: "section"
     id: "memilih-konsultan-slf"

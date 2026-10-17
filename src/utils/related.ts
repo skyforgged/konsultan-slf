@@ -8,7 +8,7 @@ export function articlesForParent(
   excludeId?: number,
 ): CollectionEntry<'articles'>[] {
   return articles
-    .filter((a) => !a.data.draft && a.data.relatedType === type && a.data.relatedId === id && a.data.id !== excludeId)
+    .filter((a) => !a.data.draft && a.data.contentType !== 'local-seo' && a.data.relatedType === type && a.data.relatedId === id && a.data.id !== excludeId)
     .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf())
     .slice(0, limit);
 }

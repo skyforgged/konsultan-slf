@@ -1,5 +1,5 @@
 ---
-id: 10
+id: 12
 ulid: "01K7H2M8N4Q6T9V3W5X7Y0Z1A1"
 type: article
 contentType: local-seo
@@ -10,8 +10,8 @@ description: >-
   Butuh Jasa SLF Jakarta? Kami adalah Konsultan SLF Jakarta terpercaya untuk 
   pengurusan Sertifikat Laik Fungsi bangunan Anda. Hubungi 0859-4746-8548 
   untuk konsultasi awal.
-pubDate: '2026-10-16T00:00:00Z'
-updatedDate: "2026-10-16T22:13:28Z"
+pubDate: '2026-10-17T13:00:00Z'
+updatedDate: "2026-10-17T15:52:42Z"
 author:
   name: admin
   url: "https://konsultan-slf.com"
@@ -26,8 +26,6 @@ image: "/images/illustrations/jasa-slf-jakarta.svg"
 socialImage: "/images/social/jasa-slf-jakarta.webp"
 relatedType: "service"
 relatedId: 101
-relatedArticles:
-  - 1
 blocks:
   - component: section
     id: pengantar-jasa-slf-jakarta
