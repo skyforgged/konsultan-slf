@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "prebuild": "node scripts/generate-social-images.mjs",
-    "build": "astro check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
+    "check": "astro check --minimumFailingSeverity hint",
+    "build": "npm run check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview",
     "hooks:install": "git config core.hooksPath .githooks",
     "content:dates": "node scripts/update-content-dates.mjs",
