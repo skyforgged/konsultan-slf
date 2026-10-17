@@ -4,7 +4,7 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Ringkasan proyek
 
-- Situs statis **Astro 5** untuk konsultan SLF & PBG (bahasa Indonesia).
+- Situs statis **Astro 7** untuk konsultan SLF & PBG (bahasa Indonesia).
 - Konten berada di `src/content/` (Markdown + schema Zod), hasil build di `dist/` (gitignored).
 - Styling: Tailwind v4. Skill daisyUI tersedia di `.agents/skills/daisyui/`.
 

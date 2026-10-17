@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const utcDate = z.coerce.date();
@@ -21,7 +22,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     id: z.string().min(1).optional(),
     heading: z.string().min(1),
     icon: z.string().optional(),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
     body: z.array(z.discriminatedUnion('type', [
       z.object({ type: z.literal('p'), text: z.string().min(1), class: z.string().optional() }),
       z.object({ type: z.literal('list'), ordered: z.boolean().default(false), items: z.array(z.string().min(1)).min(1), class: z.string().optional(), itemClass: z.string().optional() }),
@@ -33,7 +34,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     id: z.string().min(1).optional(),
     heading: z.string().min(1),
     icon: z.string().optional(),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
     items: z.array(z.object({ question: z.string().min(1), answer: z.string().min(1) })).min(1),
   }),
   z.object({
@@ -43,7 +44,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     icon: z.string().optional(),
     message: z.string().min(1),
     button: z.string().min(1).optional(),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('table'),
@@ -52,7 +53,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     icon: z.string().optional(),
     head: z.array(z.string().min(1)).min(1),
     rows: z.array(z.array(z.string().min(1))).min(1),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('note'),
@@ -61,7 +62,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     title: z.string().min(1).optional(),
     text: z.string().min(1),
     icon: z.string().optional(),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('steps'),
@@ -69,7 +70,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     heading: z.string().min(1),
     icon: z.string().optional(),
     items: z.array(z.object({ title: z.string().min(1), text: z.string().min(1) })).min(1),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('stats'),
@@ -77,7 +78,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     heading: z.string().min(1).optional(),
     icon: z.string().optional(),
     items: z.array(z.object({ value: z.string().min(1), label: z.string().min(1) })).min(1),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('glossary'),
@@ -85,14 +86,14 @@ const contentBlocks = z.discriminatedUnion('component', [
     heading: z.string().min(1),
     icon: z.string().optional(),
     items: z.array(z.object({ term: z.string().min(1), definition: z.string().min(1) })).min(1),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('quote'),
     id: z.string().min(1).optional(),
     text: z.string().min(1),
     source: z.string().min(1).optional(),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('section'),
@@ -102,7 +103,7 @@ const contentBlocks = z.discriminatedUnion('component', [
       z.object({ type: z.literal('p'), text: z.string().min(1) }),
       z.object({ type: z.literal('list'), ordered: z.boolean().default(false), items: z.array(z.string().min(1)).min(1) }),
     ])).default([]),
-    class: z.record(z.string()).optional(),
+    class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({
     component: z.literal('process-timeline'),
@@ -178,7 +179,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     intro: z.string().optional(),
     items: z.array(z.object({
       label: z.string().min(1),
-      url: z.string().url(),
+      url: z.url(),
       description: z.string().optional(),
     })).min(1),
   }),
@@ -280,7 +281,7 @@ const articles = defineCollection({
       z.string(),
       z.object({
         name: z.string().min(1),
-        url: z.string().url().optional()
+        url: z.url().optional()
       })
     ]).optional(),
     category: z.string().optional(),
