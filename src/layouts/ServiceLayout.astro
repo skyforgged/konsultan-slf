@@ -25,6 +25,21 @@ const howToNode = service.data.howTo ? howToJsonLd({
   howTo: service.data.howTo,
   blocks: service.data.blocks,
 }) : null;
+// FAQPage diturunkan hanya dari FAQ yang juga dirender pada halaman layanan.
+const faqBlock = service.data.blocks.find((block) => block.component === 'faq');
+const faqJsonLd = faqBlock && 'items' in faqBlock ? {
+  '@type': 'FAQPage',
+  '@id': `${serviceUrl}#faq`,
+  inLanguage: 'id-ID',
+  mainEntity: faqBlock.items.map((item: { question: string; answer: string }) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+} : null;
 const serviceJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@graph': [
@@ -37,13 +52,10 @@ const serviceJsonLd = JSON.stringify({
       url: serviceUrl,
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${serviceUrl}#webpage` },
       serviceType: pageTitle,
-      provider: {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-        name: ui.brand.name,
-        url: siteUrl,
-      },
+      provider: { '@id': `${siteUrl}/#organization` },
+      ...(service.data.serviceArea?.length ? { areaServed: service.data.serviceArea } : {}),
     },
+    ...(faqJsonLd ? [faqJsonLd] : []),
     ...(howToNode ? [howToNode] : []),
   ],
 }).replace(/</g, '\\u003c');
