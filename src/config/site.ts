@@ -6,12 +6,15 @@ export const site = {
   whatsappDisplay: '0859-4746-8548',
   phone: '6285947468548',
   phoneDisplay: '0859-4746-8548',
+  logo: '/images/logo-konsultan-slf-pbg.webp',
   address: {
     street: 'Jl. Nusantara 6 Blok D13 No. 11-12',
     village: 'Cipare',
     city: 'Kota Serang',
     province: 'Banten',
     country: 'Indonesia',
+    countryCode: 'ID',
     full: 'Jl. Nusantara 6 Blok D13 No. 11-12, Kelurahan Cipare, Kota Serang - Banten',
   },
+  areaServed: ['Indonesia'],
 };

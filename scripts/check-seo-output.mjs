@@ -317,6 +317,23 @@ function validateJsonLd(data, page, failures) {
         failures.push(`${page}: Service JSON-LD url must be an absolute HTTP(S) URL`);
       }
     }
+    // LocalBusiness dan subkelasnya (mis. ProfessionalService) — fitur "Bisnis lokal".
+    const isLocalBusiness = types.some(
+      (type) => typeof type === 'string' && (type === 'LocalBusiness' || type === 'ProfessionalService'),
+    );
+    if (isLocalBusiness) {
+      for (const key of ['name', 'telephone', 'address']) {
+        if (!item[key]) failures.push(`${page}: LocalBusiness JSON-LD is missing required field "${key}"`);
+      }
+      const address = item.address;
+      if (!address || typeof address !== 'object' || !address.streetAddress || !address.addressLocality ||
+          !address.addressCountry) {
+        failures.push(`${page}: LocalBusiness JSON-LD address must contain streetAddress, addressLocality, and addressCountry`);
+      }
+      if (item.url && !isAbsoluteHttpUrl(item.url)) {
+        failures.push(`${page}: LocalBusiness JSON-LD url must be an absolute HTTP(S) URL`);
+      }
+    }
     if (types.includes('FAQPage')) {
       if (!Array.isArray(item.mainEntity) || item.mainEntity.length === 0) {
         failures.push(page + ': FAQPage JSON-LD must contain at least one Question in mainEntity');
