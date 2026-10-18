@@ -25,13 +25,15 @@ const howToNode = service.data.howTo ? howToJsonLd({
   howTo: service.data.howTo,
   blocks: service.data.blocks,
 }) : null;
-// FAQPage diturunkan hanya dari FAQ yang juga dirender pada halaman layanan.
-const faqBlock = service.data.blocks.find((block) => block.component === 'faq');
-const faqJsonLd = faqBlock && 'items' in faqBlock ? {
+// FAQPage diturunkan hanya dari seluruh FAQ yang juga dirender pada halaman layanan.
+const faqItems = service.data.blocks
+  .filter((block) => block.component === 'faq')
+  .flatMap((block) => block.items);
+const faqJsonLd = faqItems.length > 0 ? {
   '@type': 'FAQPage',
   '@id': `${serviceUrl}#faq`,
   inLanguage: 'id-ID',
-  mainEntity: faqBlock.items.map((item: { question: string; answer: string }) => ({
+  mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {
