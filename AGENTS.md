@@ -10,7 +10,7 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Perintah
 
-- `npm run build` — integritas frontmatter + `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, `alt` gambar, isi artikel terbit, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
+- `npm run build` — integritas frontmatter + validasi `pubDate`/`updatedDate` (format UTC tanpa milisekon dan keunikan) + `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, `alt` gambar, isi artikel terbit, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
 - Gunakan **npm** (ada `package-lock.json`); jangan ganti ke pnpm/yarn.
@@ -71,6 +71,8 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 | `src/config/ui.ts` | label UI bersama (navigasi, footer, tombol, badge blok, label form) |
 | `scripts/check-seo-output.mjs` | validasi SEO pada output `dist` |
 | `scripts/check-image-alt.mjs` | validasi `alt`/`src` setiap `<img>` pada output `dist` |
+| `scripts/check-content-dates.mjs` | validasi format + keunikan `pubDate`/`updatedDate` pada seluruh berkas konten (termasuk draft) |
+| `scripts/update-content-dates.mjs` | hook pre-commit: menulis `updatedDate` unik saat artikel berubah |
 
 ## Menambah / mengubah halaman
 
@@ -104,6 +106,7 @@ Validasi terkait:
 - `scripts/check-frontmatter-integrity.mjs` — menolak jumlah delimiter `---` selain 2 dan body yang tidak kosong (termasuk frontmatter terpotong).
 - `scripts/check-article-content-output.mjs` — memastikan setiap artikel terbit benar-benar merender seluruh heading/title bloknya di `dist`; artikel draft dilewati.
 - `scripts/check-published-content.mjs` — placeholder, format tanggal, dan kualitas konten terpublikasi.
+- `scripts/check-content-dates.mjs` — format UTC tanpa milisekon, urutan `updatedDate`/`pubDate`, dan keunikan setiap timestamp di seluruh koleksi (termasuk draft).
 
 ## Aturan pubDate / updatedDate
 
@@ -112,13 +115,16 @@ Setiap article (`src/content/articles/*.md`) dan service (`src/content/services/
 - `updatedDate` — tanggal perubahan konten terakhir yang benar-benar terjadi, format ISO 8601.
 
 Aturan:
-1. Jangan gunakan `T00:00:00Z`; gunakan waktu ISO 8601 yang valid dan konsisten dengan konvensi repo.
-2. Jangan ubah `pubDate` saat memperbarui konten lama.
-3. `updatedDate` harus mencerminkan perubahan konten yang sebenarnya, bukan build rutin atau perubahan metadata yang tidak relevan.
-4. Beberapa halaman yang memang diperbarui dalam satu pekerjaan boleh memiliki timestamp yang sama. Jangan memaksakan timestamp unik jika perubahan terjadi pada waktu yang sama.
-5. File artikel harus berekstensi `.md`.
-6. `ulid` harus tepat 26 karakter dan unik di seluruh koleksi (`articles`, `pages`, `services`).
-7. `relatedArticles` hanya boleh merujuk ID artikel yang benar-benar ada dan bukan draft.
+1. Format wajib UTC tanpa milisekon: `YYYY-MM-DDTHH:mm:ssZ` (mis. `2026-10-17T12:00:00Z`). Hindari `T00:00:00Z`; pakai waktu yang konsisten dengan konvensi repo agar urutan menurun tetap deterministik.
+2. `updatedDate` tidak boleh lebih awal dari `pubDate`, dan tidak boleh sama dengan `pubDate`.
+3. Jangan ubah `pubDate` saat memperbarui konten lama.
+4. `updatedDate` harus mencerminkan perubahan konten yang sebenarnya, bukan build rutin atau perubahan metadata yang tidak relevan.
+5. Setiap nilai `pubDate` dan `updatedDate` harus **unik** di seluruh koleksi (`articles`, `pages`, `services`) — dua konten tidak mungkin disubmit pada detik yang sama. Tidak boleh ada duplikat, termasuk antara `pubDate` dan `updatedDate` yang berbeda berkas.
+6. File artikel harus berekstensi `.md`.
+7. `ulid` harus tepat 26 karakter dan unik di seluruh koleksi (`articles`, `pages`, `services`).
+8. `relatedArticles` hanya boleh merujuk ID artikel yang benar-benar ada dan bukan draft.
+
+Hook `.githooks/pre-commit` → `scripts/update-content-dates.mjs` menulis ulang `updatedDate` artikel yang berubah (dan halaman home, articles, services). Skrip ini memberi setiap berkas timestamp unik (satu detik berbeda per berkas) dan melewati nilai yang sudah dipakai, sehingga otomatis tidak menghasilkan duplikat.
 
 Validasi otomatis dijalankan melalui `npm run build`. Jangan mengklaim pemeriksaan lulus jika belum dijalankan.
 

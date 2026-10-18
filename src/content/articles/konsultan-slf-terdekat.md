@@ -8,8 +8,8 @@ title: "Konsultan SLF Terdekat"
 description: >-
   Pelajari cara memilih konsultan SLF, memahami ruang lingkup pendampingan,
   dan menyiapkan informasi bangunan melalui konsultasi jarak jauh.
-pubDate: "2026-10-17T12:00:00Z"
-updatedDate: "2026-10-17T15:52:42Z"
+pubDate: "2026-10-17T12:00:01Z"
+updatedDate: "2026-10-18T02:15:04Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"

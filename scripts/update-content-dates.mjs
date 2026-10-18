@@ -1,8 +1,9 @@
 import { execFileSync } from 'node:child_process';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
+const collections = ['articles', 'pages', 'services'];
 const pagePaths = [
   'src/content/pages/home.md',
   'src/content/pages/articles.md',
@@ -12,6 +13,39 @@ const gitNames = (args) => execFileSync('git', args, {
   cwd: root,
   encoding: 'utf8',
 }).split('\n').map((file) => file.trim()).filter(Boolean);
+
+async function markdownFiles(dir) {
+  const files = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const entryPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...await markdownFiles(entryPath));
+    else if (entry.isFile() && entry.name.endsWith('.md')) files.push(entryPath);
+  }
+  return files;
+}
+
+// Kumpulkan semua pubDate/updatedDate yang sudah dipakai supaya timestamp baru
+// tidak pernah menabrak milik berkas lain — mencegah duplikat yang ditolak
+// scripts/check-content-dates.mjs.
+async function collectUsedTimestamps() {
+  const used = new Set();
+  for (const collection of collections) {
+    for (const file of await markdownFiles(path.join(root, 'src/content', collection))) {
+      let source;
+      try {
+        source = await readFile(file, 'utf8');
+      } catch {
+        continue;
+      }
+      const frontmatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!frontmatterMatch) continue;
+      for (const match of frontmatterMatch[1].matchAll(/^(?:pubDate|updatedDate):\s*["']?([^"'\r\n]+)["']?\s*$/gm)) {
+        used.add(match[1].trim());
+      }
+    }
+  }
+  return used;
+}
 
 const stagedPaths = gitNames(['diff', '--cached', '--name-only', '--diff-filter=ACMR']);
 const changedArticles = stagedPaths.filter(
@@ -32,7 +66,22 @@ if (unstagedTargets.length > 0) {
   );
 }
 
-const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+// Satu detik berbeda per berkas, dimulai dari waktu sekarang, dan melewati
+// nilai yang sudah dipakai berkas lain.
+const usedTimestamps = await collectUsedTimestamps();
+const base = Date.now();
+let offset = 0;
+const nextTimestamp = () => {
+  for (;;) {
+    const candidate = new Date(base + offset * 1000).toISOString().replace(/\.\d{3}Z$/, 'Z');
+    offset += 1;
+    if (!usedTimestamps.has(candidate)) {
+      usedTimestamps.add(candidate);
+      return candidate;
+    }
+  }
+};
+
 const missingFiles = [];
 
 for (const relativePath of filesToUpdate) {
@@ -62,6 +111,8 @@ for (const relativePath of filesToUpdate) {
   if (Number.isNaN(pubDate.valueOf())) {
     throw new Error(`Invalid pubDate in ${relativePath}: ${pubDateMatch[1]}`);
   }
+
+  const timestamp = nextTimestamp();
   if (pubDate.valueOf() > Date.parse(timestamp)) {
     throw new Error(`pubDate is in the future; cannot set updatedDate earlier than pubDate: ${relativePath}`);
   }
@@ -81,4 +132,4 @@ if (missingFiles.length > 0) {
 }
 
 execFileSync('git', ['add', '--', ...filesToUpdate], { cwd: root, stdio: 'inherit' });
-console.log(`Content dates updated to ${timestamp} for ${changedArticles.length} article(s) and the home, articles, and services pages; all changes staged.`);
+console.log(`Content dates updated with unique timestamps for ${changedArticles.length} article(s) and the home, articles, and services pages; all changes staged.`);

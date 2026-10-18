@@ -9,7 +9,7 @@ description: >-
   Cari jasa SLF untuk konsultasi jarak jauh, memahami kebutuhan dokumen,
   dan memetakan tahapan pendampingan Sertifikat Laik Fungsi bangunan.
 pubDate: "2026-10-17T12:00:00Z"
-updatedDate: "2026-10-17T15:52:42Z"
+updatedDate: "2026-10-18T02:15:03Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"
