@@ -15,6 +15,8 @@ eyebrow: "Layanan PBG"
 image: "/images/illustrations/pengurusan-pbg.svg"
 socialImage: "/images/social/pengurusan-pbg.webp"
 imageAlt: "Ilustrasi bangunan dan pemeriksaan kesesuaian dokumen"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

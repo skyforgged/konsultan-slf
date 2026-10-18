@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import { howToJsonLd } from '../utils/howto.ts';
 import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
@@ -90,6 +91,15 @@ const faqJsonLd = faqBlock && 'items' in faqBlock ? {
   })),
 } : null;
 
+// HowTo opsional: dirakit dari blok prosedural (steps/process-timeline) yang dirujuk frontmatter `howTo`.
+const howToNode = article.data.howTo ? howToJsonLd({
+  pageUrl: articleUrl,
+  name: article.data.howTo.name ?? pageTitle,
+  description: article.data.howTo.description ?? description,
+  howTo: article.data.howTo,
+  blocks: article.data.blocks,
+}) : null;
+
 const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -118,7 +128,8 @@ const articleJsonLd = JSON.stringify({
     },
     ...(relatedServiceJsonLd ? [relatedServiceJsonLd] : []),
     ...(buildingTypesJsonLd ? [buildingTypesJsonLd] : []),
-    ...(faqJsonLd ? [faqJsonLd] : [])
+    ...(faqJsonLd ? [faqJsonLd] : []),
+    ...(howToNode ? [howToNode] : [])
   ]
 }).replace(/</g, '\\u003c');
 ---

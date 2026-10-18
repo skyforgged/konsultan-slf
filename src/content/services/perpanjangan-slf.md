@@ -15,6 +15,8 @@ eyebrow: "Perpanjangan SLF"
 image: "/images/illustrations/perpanjangan-slf.svg"
 socialImage: "/images/social/perpanjangan-slf.webp"
 imageAlt: "Ilustrasi dokumen SLF untuk ditelaah"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

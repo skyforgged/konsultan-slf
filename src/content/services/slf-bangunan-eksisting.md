@@ -15,6 +15,8 @@ eyebrow: "SLF Bangunan Eksisting"
 image: "/images/illustrations/slf-bangunan-eksisting.svg"
 socialImage: "/images/social/slf-bangunan-eksisting.webp"
 imageAlt: "Ilustrasi pemeriksaan kesesuaian bangunan dan dokumen"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

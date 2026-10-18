@@ -15,6 +15,8 @@ eyebrow: "Layanan SLF"
 image: "/images/illustrations/sertifikat-laik-fungsi.svg"
 socialImage: "/images/social/sertifikat-laik-fungsi.webp"
 imageAlt: "Ilustrasi dokumen layanan dan pemeriksaan"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

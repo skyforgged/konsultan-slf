@@ -15,6 +15,8 @@ eyebrow: "Pengkajian Teknis"
 image: "/images/illustrations/pengkajian-teknis-bangunan.svg"
 socialImage: "/images/social/pengkajian-teknis-bangunan.webp"
 imageAlt: "Ilustrasi bangunan untuk penelaahan teknis"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

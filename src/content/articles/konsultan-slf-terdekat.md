@@ -9,7 +9,7 @@ description: >-
   Pelajari cara memilih konsultan SLF, memahami ruang lingkup pendampingan,
   dan menyiapkan informasi bangunan melalui konsultasi jarak jauh.
 pubDate: "2026-10-17T12:00:01Z"
-updatedDate: "2026-10-18T02:15:04Z"
+updatedDate: "2026-10-18T20:49:42Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"
@@ -25,6 +25,8 @@ serviceArea:
   - "Indonesia"
 relatedType: "service"
 relatedId: 101
+howTo:
+  blockId: "proses-konsultasi-konsultan-slf"
 blocks:
   - component: "section"
     id: "memilih-konsultan-slf"

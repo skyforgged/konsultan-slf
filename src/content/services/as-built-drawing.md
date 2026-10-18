@@ -15,6 +15,8 @@ eyebrow: "Dokumen Teknis"
 image: "/images/illustrations/as-built-drawing.svg"
 socialImage: "/images/social/as-built-drawing.webp"
 imageAlt: "Ilustrasi dokumen gambar teknis"
+howTo:
+  blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"

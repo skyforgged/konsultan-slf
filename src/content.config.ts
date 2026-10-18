@@ -289,6 +289,11 @@ const articles = defineCollection({
     relatedType: z.enum(['service', 'page', 'article']).optional(),
     relatedId: z.number().int().positive().optional(),
     relatedArticles: z.array(z.number().int().positive()).default([]),
+    howTo: z.object({
+      blockId: z.string().min(1),
+      name: z.string().min(1).optional(),
+      description: z.string().min(1).optional(),
+    }).optional(),
     blocks: z.array(contentBlocks).default([]),
   }),
 });
@@ -323,6 +328,11 @@ const services = defineCollection({
     status: z.enum(['active', 'inactive']).default('active'),
     eyebrow: z.string().default('Layanan'),
     imageAlt: z.string().default('Ilustrasi layanan konsultasi'),
+    howTo: z.object({
+      blockId: z.string().min(1),
+      name: z.string().min(1).optional(),
+      description: z.string().min(1).optional(),
+    }).optional(),
     blocks: z.array(contentBlocks).default([]),
   }),
 });
