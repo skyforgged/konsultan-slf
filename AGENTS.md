@@ -10,7 +10,7 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Perintah
 
-- `npm run build` — integritas frontmatter + `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, isi artikel terbit, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
+- `npm run build` — integritas frontmatter + `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, `alt` gambar, isi artikel terbit, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
 - Gunakan **npm** (ada `package-lock.json`); jangan ganti ke pnpm/yarn.
@@ -70,6 +70,7 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 | `src/config/site.ts` | data identitas situs (nama, WhatsApp, alamat) |
 | `src/config/ui.ts` | label UI bersama (navigasi, footer, tombol, badge blok, label form) |
 | `scripts/check-seo-output.mjs` | validasi SEO pada output `dist` |
+| `scripts/check-image-alt.mjs` | validasi `alt`/`src` setiap `<img>` pada output `dist` |
 
 ## Menambah / mengubah halaman
 
@@ -82,6 +83,12 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 
 - `scripts/check-seo-output.mjs` memeriksa output `dist`: `<title>` tunggal, meta description, `og:*`, `twitter:*`, canonical (kecuali `noindex`), JSON-LD valid, `robots.txt`, dan `sitemap.xml`.
 - Judul/deskripsi setiap halaman berasal dari frontmatter. Halaman baru tanpa entri frontmatter akan gagal validasi.
+
+## Aksesibilitas gambar
+
+- `scripts/check-image-alt.mjs` memeriksa setiap `<img>` pada output `dist`: atribut `alt` wajib ada, dan `src` tidak boleh kosong atau berisi markup (mis. SVG mentah yang merusak HTML dan menyembunyikan atribut setelahnya).
+- `alt=""` **diizinkan** — itu cara standar (WCAG) menandai gambar dekoratif. Yang dilarang adalah `alt` yang hilang sama sekali.
+- Field data yang menyertai gambar wajib mengisi alt-nya: `page-header.imageAlt` dan `home-hero.imageAlt` sudah `z.string().min(1)`, sedangkan `services.imageAlt` punya nilai default sehingga selalu terisi.
 
 ## Struktur berkas konten
 

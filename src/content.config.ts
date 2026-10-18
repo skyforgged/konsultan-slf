@@ -190,7 +190,7 @@ const contentBlocks = z.discriminatedUnion('component', [
     heading: z.string().min(1),
     intro: z.string().min(1),
     image: z.string().min(1),
-    imageAlt: z.string().optional(),
+    imageAlt: z.string().min(1),
   }),
   z.object({
     component: z.literal('home-hero'),

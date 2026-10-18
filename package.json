@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "prebuild": "node scripts/generate-social-images.mjs",
     "typecheck": "astro sync && tsc --noEmit",
-    "build": "node scripts/check-frontmatter-integrity.mjs && npm run typecheck && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-article-content-output.mjs && node scripts/check-published-content.mjs",
+    "build": "node scripts/check-frontmatter-integrity.mjs && npm run typecheck && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-image-alt.mjs && node scripts/check-article-content-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview",
     "hooks:install": "git config core.hooksPath .githooks",
     "content:dates": "node scripts/update-content-dates.mjs",
