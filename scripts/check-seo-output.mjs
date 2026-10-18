@@ -317,6 +317,30 @@ function validateJsonLd(data, page, failures) {
         failures.push(`${page}: Service JSON-LD url must be an absolute HTTP(S) URL`);
       }
     }
+    if (types.includes('FAQPage')) {
+      if (!Array.isArray(item.mainEntity) || item.mainEntity.length === 0) {
+        failures.push(page + ': FAQPage JSON-LD must contain at least one Question in mainEntity');
+      } else {
+        for (const [index, question] of item.mainEntity.entries()) {
+          if (!question || question['@type'] !== 'Question' || !question.name ||
+              !question.acceptedAnswer || question.acceptedAnswer['@type'] !== 'Answer' ||
+              !question.acceptedAnswer.text) {
+            failures.push(page + ': FAQPage question ' + (index + 1) + ' must contain a name and acceptedAnswer.text');
+          }
+        }
+      }
+    }
+    if (types.includes('HowTo')) {
+      if (!Array.isArray(item.step) || item.step.length < 2) {
+        failures.push(page + ': HowTo JSON-LD must contain at least two steps');
+      } else {
+        for (const [index, step] of item.step.entries()) {
+          if (!step || step['@type'] !== 'HowToStep' || !step.name || !step.text) {
+            failures.push(page + ': HowTo step ' + (index + 1) + ' must contain name and text');
+          }
+        }
+      }
+    }
     if (types.includes('BreadcrumbList')) {
       if (!Array.isArray(item.itemListElement) || item.itemListElement.length === 0) {
         failures.push(`${page}: BreadcrumbList JSON-LD must contain itemListElement`);
