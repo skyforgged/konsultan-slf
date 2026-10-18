@@ -1,11 +1,11 @@
 ---
 id: 6
-ulid: "01JAX1SLF00000000000000006"
+ulid: "01M5773Q3J6KC2M3EKM9W2EQ3Y"
 slug: "biaya-waktu-faktor-penentu-slf"
 title: "Biaya, Waktu, dan Faktor Penentu Proses SLF"
 description: "Pahami komponen biaya pengajuan SLF, estimasi waktu yang realistis, dan faktor-faktor yang memengaruhi kelancaran proses."
 pubDate: "2026-10-15T16:00:00Z"
-updatedDate: "2026-10-16T13:54:00Z"
+updatedDate: "2026-10-18T10:04:12Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"

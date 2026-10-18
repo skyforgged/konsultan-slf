@@ -1,11 +1,11 @@
 ---
 id: 3
-ulid: "01JAX1SLF00000000000000003"
+ulid: "01M5773Q4FRJS3124836WSTAV4"
 slug: "pengertian-slf-dasar-hukum"
 title: "Pengertian SLF dan Dasar Hukum: Panduan Lengkap Pemilik Bangunan"
 description: "Memahami apa itu Sertifikat Laik Fungsi (SLF), dasar hukumnya, dan mengapa dokumen ini penting bagi pemilik dan pengelola bangunan gedung."
 pubDate: "2026-10-15T11:00:00Z"
-updatedDate: "2026-10-18T02:15:05Z"
+updatedDate: "2026-10-18T10:04:15Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"

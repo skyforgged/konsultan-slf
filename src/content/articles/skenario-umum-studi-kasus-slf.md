@@ -1,11 +1,11 @@
 ---
 id: 7
-ulid: "01JAX1SLF00000000000000007"
+ulid: "01M5773Q4HDM34SNWTK7NSGB0W"
 slug: "skenario-umum-studi-kasus-slf"
 title: "Skenario Umum SLF: Dari Bangunan Baru hingga Eksisting"
 description: "Pelajari berbagai skenario pengajuan SLF untuk bangunan baru, eksisting, dan bangunan dengan riwayat perubahan fungsi."
 pubDate: "2026-10-15T17:00:00Z"
-updatedDate: "2026-10-16T14:08:00Z"
+updatedDate: "2026-10-18T10:04:18Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"

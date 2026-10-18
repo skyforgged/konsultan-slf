@@ -1,11 +1,11 @@
 ---
 id: 4
-ulid: "01JAX1SLF00000000000000004"
+ulid: "01M5773Q4EG7Q3TS4XZN2A68TY"
 slug: "checklist-dokumen-slf-lengkap"
 title: "Checklist Dokumen SLF Lengkap: Apa Saja yang Harus Disiapkan?"
 description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan SLF, termasuk dokumen teknis, administratif, dan persyaratan khusus."
 pubDate: "2026-10-15T14:00:00Z"
-updatedDate: "2026-10-16T13:01:00Z"
+updatedDate: "2026-10-18T10:04:13Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"

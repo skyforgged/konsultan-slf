@@ -121,7 +121,7 @@ Aturan:
 4. `updatedDate` harus mencerminkan perubahan konten yang sebenarnya, bukan build rutin atau perubahan metadata yang tidak relevan.
 5. Setiap nilai `pubDate` dan `updatedDate` harus **unik** di seluruh koleksi (`articles`, `pages`, `services`) — dua konten tidak mungkin disubmit pada detik yang sama. Tidak boleh ada duplikat, termasuk antara `pubDate` dan `updatedDate` yang berbeda berkas.
 6. File artikel harus berekstensi `.md`.
-7. `ulid` harus tepat 26 karakter dan unik di seluruh koleksi (`articles`, `pages`, `services`).
+7. `ulid` harus 26 karakter Crockford base32 (`/^[0-7][0-9A-HJKMNP-TV-Z]{25}$/`, tanpa I/L/O/U, diawali 0-7) dan unik di seluruh koleksi (`articles`, `pages`, `services`).
 8. `relatedArticles` hanya boleh merujuk ID artikel yang benar-benar ada dan bukan draft.
 
 Hook `.githooks/pre-commit` → `scripts/update-content-dates.mjs` menulis ulang `updatedDate` artikel yang berubah (dan halaman home, articles, services). Skrip ini memberi setiap berkas timestamp unik (satu detik berbeda per berkas) dan melewati nilai yang sudah dipakai, sehingga otomatis tidak menghasilkan duplikat.

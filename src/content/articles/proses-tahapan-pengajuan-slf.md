@@ -1,11 +1,11 @@
 ---
 id: 5
-ulid: "01JAX1SLF00000000000000005"
+ulid: "01M5773Q4G6K598C7PEMPKWBN9"
 slug: "proses-tahapan-pengajuan-slf"
 title: "Proses dan Tahapan Pengajuan SLF: Dari Persiapan hingga Terbit"
 description: "Pahami alur lengkap pengajuan SLF, tahapan pemeriksaan, dan apa yang terjadi di setiap langkah proses."
 pubDate: "2026-10-15T15:00:00Z"
-updatedDate: "2026-10-16T13:02:00Z"
+updatedDate: "2026-10-18T10:04:17Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"

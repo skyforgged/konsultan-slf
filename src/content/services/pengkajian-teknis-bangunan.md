@@ -1,6 +1,6 @@
 ---
 id: 105
-ulid: "01JAKSLF000000000000000005"
+ulid: "01M5773Q4JE10H2D918Y552X0T"
 type: "service"
 slug: "pengkajian-teknis-bangunan"
 title: "Pendampingan Pengkajian Teknis Bangunan"

@@ -1,6 +1,6 @@
 ---
 id: 102
-ulid: "01JAKSLF000000000000000002"
+ulid: "01M5773Q4KSASTXPB37Q37M995"
 type: "service"
 slug: "pengurusan-pbg"
 title: "Pendampingan Persetujuan Bangunan Gedung (PBG)"

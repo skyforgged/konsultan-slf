@@ -1,6 +1,6 @@
 ---
 id: 101
-ulid: "01JAKSLF000000000000000001"
+ulid: "01M5773Q4MGZY1AZC70BBTGR0Y"
 type: "service"
 slug: "sertifikat-laik-fungsi"
 title: "Pendampingan Sertifikat Laik Fungsi (SLF)"

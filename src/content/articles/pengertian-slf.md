@@ -1,11 +1,11 @@
 ---
 id: 1
-ulid: "01HQRT5Y6A0L4N3O8Q7R9T6U5W"
+ulid: "01M5773Q4GPH9AAQEV7V3FCDR3"
 slug: "pengertian-slf"
 title: "Apa Itu SLF (Sertifikat Laik Fungsi)?"
 description: "Penjelasan awal tentang SLF, persiapan dokumen, dan hal yang perlu diperiksa sebelum memulai proses."
 pubDate: "2026-01-15T09:00:00Z"
-updatedDate: "2026-10-18T02:15:06Z"
+updatedDate: "2026-10-18T10:04:16Z"
 image: "/images/illustrations/pengertian-slf.svg"
 socialImage: "/images/social/pengertian-slf.webp"
 type: "article"
