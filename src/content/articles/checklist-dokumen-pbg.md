@@ -5,7 +5,7 @@ slug: "checklist-dokumen-pbg"
 title: "Checklist Dokumen PBG: Persyaratan Lengkap Pengajuan"
 description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan PBG, dari dokumen administratif hingga gambar teknis."
 pubDate: "2026-10-16T15:10:00Z"
-updatedDate: "2026-10-16T15:20:00Z"
+updatedDate: "2026-10-18T00:36:41Z"
 type: "article"
 schemaType: "Article"
 category: "PBG"
@@ -22,7 +22,6 @@ relatedType: "service"
 relatedId: 102
 relatedArticles:
   - 8
----
 blocks:
   - component: section
     id: "pentingnya-dokumen-pbg"
@@ -94,7 +93,7 @@ blocks:
         required: false
   - component: image-panel
     id: "dokumen-pbg-terorganisir"
-    src: "/images/illustrations/article-document.svg"
+    src: "/images/illustrations/checklist-dokumen-pbg.svg"
     alt: "Ilustrasi dokumen teknis PBG yang lengkap dan terorganisir"
     caption: "Dokumen teknis yang lengkap dan akurat mempercepat proses verifikasi PBG."
   - component: note

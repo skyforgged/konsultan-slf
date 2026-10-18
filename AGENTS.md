@@ -10,7 +10,7 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Perintah
 
-- `npm run build` — `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
+- `npm run build` — integritas frontmatter + `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, isi artikel terbit, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
 - Gunakan **npm** (ada `package-lock.json`); jangan ganti ke pnpm/yarn.
@@ -82,6 +82,21 @@ Alasan: satu sumber kebenaran, audit mudah, ganti konten tanpa menyentuh theme, 
 
 - `scripts/check-seo-output.mjs` memeriksa output `dist`: `<title>` tunggal, meta description, `og:*`, `twitter:*`, canonical (kecuali `noindex`), JSON-LD valid, `robots.txt`, dan `sitemap.xml`.
 - Judul/deskripsi setiap halaman berasal dari frontmatter. Halaman baru tanpa entri frontmatter akan gagal validasi.
+
+## Struktur berkas konten
+
+Seluruh data konten harus berada **di dalam frontmatter**. Body Markdown tidak dirender oleh layout mana pun, sehingga teks apa pun setelah `---` penutup akan hilang tanpa peringatan.
+
+Aturan:
+1. Berkas `.md` wajib dibuka dengan `---` dan memiliki tepat satu delimiter pembuka serta satu penutup.
+2. Jangan menulis konten di body. Pindahkan ke `blocks` (artikel) atau field frontmatter yang sesuai.
+3. Jangan menambahkan baris `---` di dalam frontmatter; delimiter tambahan memotong frontmatter dan membuang seluruh `blocks` sehingga artikel terbit tanpa isi.
+4. `blocks` tidak boleh kosong pada artikel terbit; setiap `heading`/`title` blok wajib muncul di halaman hasil build.
+
+Validasi terkait:
+- `scripts/check-frontmatter-integrity.mjs` — menolak jumlah delimiter `---` selain 2 dan body yang tidak kosong (termasuk frontmatter terpotong).
+- `scripts/check-article-content-output.mjs` — memastikan setiap artikel terbit benar-benar merender seluruh heading/title bloknya di `dist`; artikel draft dilewati.
+- `scripts/check-published-content.mjs` — placeholder, format tanggal, dan kualitas konten terpublikasi.
 
 ## Aturan pubDate / updatedDate
 
