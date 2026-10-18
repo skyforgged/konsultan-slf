@@ -10,10 +10,12 @@ Panduan wajib untuk agen/AI yang bekerja di repo ini.
 
 ## Perintah
 
-- `npm run build` — `astro check` + `astro build` + pemeriksaan tautan internal, SEO output, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
+- `npm run build` — `npm run typecheck` (`astro sync` + `tsc --noEmit`) + `astro build` + pemeriksaan tautan internal, SEO output, dan konten terpublikasi. **Wajib lulus sebelum tugas dianggap selesai.**
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
 - Gunakan **npm** (ada `package-lock.json`); jangan ganti ke pnpm/yarn.
+
+Catatan type-check: proyek memakai TypeScript 7 dan `npm run typecheck` (`astro sync` + `tsc --noEmit`). `tsc` **hanya memeriksa berkas `.ts`**, tidak memeriksa `frontmatter`/`<script>` pada berkas `.astro`. `astro check` tidak dipakai karena belum mendukung TypeScript 7. Karena itu, jangan mengandalkan type-check untuk menangkap kesalahan props komponen atau tipe di dalam `.astro`; periksa secara manual dan andalkan validasi build (`astro build` + script pemeriksa) untuk menangkap kesalahan data.
 
 ## Aturan wajib untuk update content
 
@@ -93,7 +95,7 @@ Aturan:
 3. `updatedDate` harus mencerminkan perubahan konten yang sebenarnya, bukan build rutin atau perubahan metadata yang tidak relevan.
 4. Beberapa halaman yang memang diperbarui dalam satu pekerjaan boleh memiliki timestamp yang sama. Jangan memaksakan timestamp unik jika perubahan terjadi pada waktu yang sama.
 5. File artikel harus berekstensi `.md`.
-6. `ulid` harus tepat 26 karakter.
+6. `ulid` harus tepat 26 karakter dan unik di seluruh koleksi (`articles`, `pages`, `services`).
 7. `relatedArticles` hanya boleh merujuk ID artikel yang benar-benar ada dan bukan draft.
 
 Validasi otomatis dijalankan melalui `npm run build`. Jangan mengklaim pemeriksaan lulus jika belum dijalankan.

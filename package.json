@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "prebuild": "node scripts/generate-social-images.mjs",
-    "check": "astro check --minimumFailingSeverity hint",
-    "build": "npm run check && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
+    "typecheck": "astro sync && tsc --noEmit",
+    "build": "npm run typecheck && astro build && node scripts/check-internal-links.mjs && node scripts/check-seo-output.mjs && node scripts/check-published-content.mjs",
     "preview": "astro preview",
     "hooks:install": "git config core.hooksPath .githooks",
     "content:dates": "node scripts/update-content-dates.mjs",
@@ -16,10 +16,9 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
     "astro": "^7.4.0",
     "sharp": "^0.34.5",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

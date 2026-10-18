@@ -35,7 +35,7 @@ Jalankan pemeriksaan tipe dan build:
 npm run build
 ```
 
-Script build menjalankan `astro check` sebelum `astro build`. Hasil situs statis dibuat di direktori `dist/`.
+Script build menjalankan `npm run typecheck` (`astro sync` lalu `tsc --noEmit`) sebelum `astro build`, dilanjutkan pemeriksaan tautan internal, SEO output, dan konten terpublikasi. Pemeriksaan tipe hanya mencakup berkas `.ts`; berkas `.astro` tidak diperiksa tipe sejak proyek memakai TypeScript 7 (lihat `AGENTS.md`). Hasil situs statis dibuat di direktori `dist/`.
 
 Untuk memeriksa hasil build:
 

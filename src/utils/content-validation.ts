@@ -11,6 +11,8 @@ export async function validateContentRelations(): Promise<void> {
   assertUnique(pages, 'page');
   assertUnique(services, 'service');
 
+  assertUniqueUlids([...articles, ...pages, ...services]);
+
   const targets = { article: articles, page: pages, service: services };
 
   for (const article of articles) {
@@ -68,6 +70,17 @@ export async function validateContentRelations(): Promise<void> {
         throw new Error(`Article "${article.data.slug}" cannot reference itself in relatedArticles.`);
       }
     }
+  }
+}
+
+function assertUniqueUlids(items: Array<{ data: { ulid: string; slug: string } }>): void {
+  const seen = new Map<string, string>();
+  for (const item of items) {
+    const previous = seen.get(item.data.ulid);
+    if (previous) {
+      throw new Error(`Duplicate ULID "${item.data.ulid}" used by "${previous}" and "${item.data.slug}".`);
+    }
+    seen.set(item.data.ulid, item.data.slug);
   }
 }
 

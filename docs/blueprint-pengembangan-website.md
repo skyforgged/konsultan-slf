@@ -426,7 +426,7 @@ Pekerjaan dibagi menjadi perubahan kecil yang dapat diperiksa, bukan satu peruba
 
 ### Kriteria rilis minimum
 
-- Build `astro check && astro build` berhasil.
+- Build `npm run build` berhasil.
 - Tidak ada kesalahan schema content collection.
 - Tidak ada rute atau tautan internal penting yang hilang.
 - Sitemap dan canonical konsisten dengan URL publik.
