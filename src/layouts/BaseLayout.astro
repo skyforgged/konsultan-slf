@@ -60,7 +60,6 @@ const pageJsonLd = JSON.stringify({
   url: canonicalUrl,
   ...(mainEntityId ? { mainEntity: { '@id': mainEntityId } } : {}),
   isPartOf: { '@id': `${siteOrigin}/#website` },
-  about: { '@id': `${siteOrigin}/#organization` },
 }).replace(/</g, '\\u003c');
 const logoUrl = site.logo.startsWith('http') ? site.logo : new URL(site.logo, siteOrigin).toString();
 const siteGraphJsonLd = JSON.stringify({
