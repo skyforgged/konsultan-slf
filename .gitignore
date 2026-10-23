@@ -9,3 +9,6 @@ dist/
 .agents/
 skills-lock.json
 public/images/social/
+
+# Docs
+docs/
