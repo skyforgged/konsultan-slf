@@ -5,7 +5,7 @@ slug: "pengertian-pbg-perbedaan-imb"
 title: "Apa Itu PBG? Pengertian dan Perbedaannya dengan IMB"
 description: "Memahami Persetujuan Bangunan Gedung (PBG), dasar hukumnya, dan perbedaan mendasar dengan IMB yang lama."
 pubDate: "2026-10-16T14:18:00Z"
-updatedDate: "2026-10-24T11:02:23Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "PBG"
@@ -83,6 +83,32 @@ blocks:
     variant: info
     title: "IMB masih berlaku?"
     text: "IMB yang sudah terbit sebelum PBG berlaku tetap memiliki kekuatan hukum sesuai ketentuan transisi. Namun, pengajuan baru menggunakan sistem PBG melalui SIMBG."
+  - component: section
+    id: "kapan-menelaah-pbg"
+    heading: "Kapan Pemilik Bangunan Perlu Menelaah Kebutuhan PBG?"
+    content:
+      - type: p
+        text: "Penelaahan PBG relevan ketika merencanakan pembangunan atau perubahan bangunan, maupun saat pemilik perlu memahami status dokumen bangunan yang sudah ada. Jenis tindakan yang diperlukan tidak dapat ditentukan hanya dari istilah renovasi; ruang lingkup perubahan, riwayat persetujuan, fungsi bangunan, dan ketentuan yang berlaku perlu diperiksa."
+      - type: list
+        ordered: false
+        items:
+          - "Sebelum pembangunan baru, siapkan informasi lahan, fungsi, dan rancangan bangunan."
+          - "Jika akan mengubah tata ruang, fungsi, kapasitas, atau elemen bangunan, telaah apakah perubahan memerlukan persetujuan atau proses tertentu."
+          - "Untuk bangunan dengan dokumen lama, kumpulkan dokumen yang ada dan konfirmasikan status serta relevansinya."
+          - "Periksa ketentuan dan alur resmi terbaru melalui SIMBG atau instansi yang berwenang."
+  - component: comparison-table
+    id: "dokumen-pbg-imb"
+    title: "Memahami PBG, IMB, dan Dokumen Bangunan yang Dimiliki"
+    intro: "Tabel ini membantu membedakan konteks dokumen; status hukum suatu dokumen perlu diperiksa berdasarkan riwayat dan ketentuan yang berlaku."
+    headers:
+      - "Dokumen"
+      - "Konteks umum"
+      - "Yang perlu dilakukan pemilik"
+    rows:
+      - ["PBG", "Persetujuan terkait rencana pembangunan atau perubahan sesuai ketentuan", "Periksa lingkup dan data yang tercantum serta kesesuaiannya dengan rencana"]
+      - ["IMB yang telah terbit", "Dokumen dari rezim perizinan sebelumnya", "Simpan dokumen dan konfirmasikan implikasi perubahan bangunan atau kebutuhan layanan baru"]
+      - ["Gambar rencana", "Menggambarkan rancangan yang menjadi dasar dokumen terkait", "Periksa apakah kondisi aktual berbeda dari rancangan"]
+      - ["Gambar kondisi terbangun", "Mendokumentasikan kondisi aktual berdasarkan survei", "Pastikan sumber data dan lingkup verifikasinya jelas"]
   - component: faq
     id: "faq-pengertian-pbg"
     heading: "Pertanyaan umum tentang PBG"
