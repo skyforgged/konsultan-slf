@@ -6,7 +6,7 @@ slug: "sertifikat-laik-fungsi"
 title: "Pendampingan Sertifikat Laik Fungsi (SLF)"
 pubDate: "2026-10-16T08:00:00Z"
 updatedDate: "2026-10-24T08:01:00Z"
-description: "Pendampingan awal untuk memetakan kebutuhan dokumen dan tahapan pemeriksaan kelaikan fungsi bangunan."
+description: "Pendampingan Sertifikat Laik Fungsi (SLF) adalah layanan profesional untuk membantu pemilik atau pengelola bangunan memenuhi persyaratan administratif dan teknis agar bangunan dinyatakan aman, nyaman, dan layak digunakan melalui sistem SIMBG (Sistem Informasi Bangunan Gedung) dan OSS (Online Single Submission)."
 serviceGroup: "slf"
 order: 10
 draft: false
@@ -14,10 +14,14 @@ status: active
 eyebrow: "Layanan SLF"
 image: "/images/illustrations/sertifikat-laik-fungsi.svg"
 socialImage: "/images/social/sertifikat-laik-fungsi.webp"
-imageAlt: "Ilustrasi dokumen layanan dan pemeriksaan"
+imageAlt: "Pendampingan Sertifikat Laik Fungsi (SLF) adalah solusi profesional yang mempermudah pemilik bisnis dalam mengurus legalitas kelaikan bangunan gedung guna memastikan aspek keselamatan, kesehatan, dan kenyamanan pengguna sesuai standar teknis resmi, melalui integrasi sistem SIMBG dan OSS."
 howTo:
   blockId: "tahapan"
 blocks:
+  - component: "note"
+    id: "tujuan-pendampingan-slf"
+    variant: "info"
+    text: "Layanan ini dirancang untuk mempermudah proses verifikasi dokumen administrasi dan pemeriksaan lapangan (uji teknis struktur, proteksi kebakaran, instalasi listrik, hingga tata ruang) agar sesuai dengan regulasi pemerintah terbaru melalui sistem SIMBG (Sistem Informasi Bangunan Gedung) dan OSS (Online Single Submission)."
   - component: "section"
     id: "ruang-lingkup"
     heading: "Ruang lingkup pendampingan"

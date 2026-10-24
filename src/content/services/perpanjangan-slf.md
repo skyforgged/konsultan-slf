@@ -6,7 +6,7 @@ slug: "perpanjangan-slf"
 title: "Pendampingan Perpanjangan SLF"
 pubDate: "2026-10-16T11:00:00Z"
 updatedDate: "2026-10-24T08:02:00Z"
-description: "Pemetaan awal dokumen, masa berlaku SLF, dan kebutuhan evaluasi bangunan sebelum tindak lanjut perpanjangan."
+description: "Pendampingan Perpanjangan Sertifikat Laik Fungsi (SLF) adalah layanan profesional bagi pemilik gedung untuk memperbarui legalitas bangunan mereka secara resmi, guna memastikan seluruh aspek arsitektur dan struktur tetap mematuhi regulasi pemerintah yang paling mutakhir."
 serviceGroup: "slf"
 order: 40
 draft: false
@@ -14,13 +14,13 @@ status: active
 eyebrow: "Perpanjangan SLF"
 image: "/images/illustrations/perpanjangan-slf.svg"
 socialImage: "/images/social/perpanjangan-slf.webp"
-imageAlt: "Ilustrasi dokumen SLF untuk ditelaah"
+imageAlt: "Pendampingan perpanjangan SLF merupakan jasa profesional yang membantu pemilik gedung memperbarui masa berlaku izin bangunan agar tetap sejalan dengan aturan hukum yang berlaku."
 howTo:
   blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"
-    heading: "Ruang lingkup penelaahan awal"
+    heading: "Ruang lingkup pendampingan perpanjangan SLF"
     content:
       - type: "p"
         text: "Pendampingan perpanjangan Sertifikat Laik Fungsi (SLF) merupakan layanan konsultasi untuk membantu pemilik atau pengelola bangunan menilai kesiapan dokumen, memetakan perubahan kondisi bangunan, dan mengidentifikasi kebutuhan evaluasi teknis sebelum menentukan langkah perpanjangan sesuai ketentuan yang berlaku."

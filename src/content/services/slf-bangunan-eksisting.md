@@ -6,7 +6,7 @@ slug: "slf-bangunan-eksisting"
 title: "Pendampingan SLF Bangunan Eksisting"
 pubDate: "2026-10-16T10:00:00Z"
 updatedDate: "2026-10-24T08:03:00Z"
-description: "Penelaahan awal untuk bangunan yang sudah berdiri, terutama ketika status dokumen atau kondisi aktual perlu dipetakan."
+description: "Pendampingan Sertifikat Laik Fungsi (SLF) Bangunan Eksisting adalah layanan konsultasi profesional untuk membantu pemilik atau pengelola bangunan yang sudah berdiri dalam mengurus legalitas dan uji kelaikan bangunan."
 serviceGroup: "slf"
 order: 30
 draft: false
@@ -14,13 +14,13 @@ status: active
 eyebrow: "SLF Bangunan Eksisting"
 image: "/images/illustrations/slf-bangunan-eksisting.svg"
 socialImage: "/images/social/slf-bangunan-eksisting.webp"
-imageAlt: "Ilustrasi pemeriksaan kesesuaian bangunan dan dokumen"
+imageAlt: "Pendampingan Sertifikat Laik Fungsi (SLF) Bangunan Eksisting merupakan jasa audit dan konsultasi teknis yang membantu pemilik gedung dalam memvalidasi keamanan, kesehatan, dan legalitas bangunan yang telah beroperasi agar sesuai dengan standar regulasi pemerintah."
 howTo:
   blockId: "tahapan"
 blocks:
   - component: "section"
     id: "ruang-lingkup"
-    heading: "Ruang lingkup penelaahan awal"
+    heading: "Ruang Lingkup Pendampingan SLF Bangunan Eksisting"
     content:
       - type: "p"
         text: "Pendampingan SLF bangunan eksisting merupakan layanan penelaahan awal bagi pemilik atau pengelola bangunan yang telah berdiri atau digunakan untuk memetakan status dokumen, riwayat perubahan, kondisi aktual, dan kebutuhan tindak lanjut menuju pemenuhan kelaikan fungsi."
@@ -33,6 +33,11 @@ blocks:
           - "Mencatat informasi perubahan fungsi, renovasi, atau perubahan kondisi yang diketahui."
           - "Memetakan data dan pemeriksaan lanjutan yang mungkin diperlukan."
           - "Membahas batasan serta pembagian tanggung jawab sebelum pekerjaan disepakati."
+
+  - component: "note"
+    id: "tujuan-pendampingan-slf-bangunan-eksisting"
+    variant: "info"
+    text: "Layanan ini dirancang untuk mempermudah proses verifikasi dokumen administrasi dan pemeriksaan lapangan (uji teknis struktur, proteksi kebakaran, instalasi listrik, hingga tata ruang) agar sesuai dengan regulasi pemerintah terbaru melalui sistem SIMBG (Sistem Informasi Bangunan Gedung) dan OSS (Online Single Submission)."
   - component: "checklist-card"
     id: "persiapan-konsultasi"
     title: "Informasi untuk konsultasi awal"

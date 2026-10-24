@@ -128,6 +128,15 @@ Hook `.githooks/pre-commit` → `scripts/update-content-dates.mjs` menulis ulang
 
 Validasi otomatis dijalankan melalui `npm run build`. Jangan mengklaim pemeriksaan lulus jika belum dijalankan.
 
+## Pola revisi halaman layanan
+
+Untuk file `src/content/services/*.md`:
+
+- **`description`**: Tulis deskripsi layanan yang konkret (apa yang dilakukan, siapa yang dibantu, hasilnya), bukan sekadar "pemetaan kebutuhan..." Hindari deskripsi terlalu umum. Contoh pola: "Pendampingan ... adalah layanan ... untuk membantu ... menyusun/memproses ... hingga ... diterbitkan/tersedia."
+- **`imageAlt`**: Buat alt yang deskriptif menjelaskan layanan (relevan dengan konteks SEO/a11y), bukan hanya "Ilustrasi ...". Bisa berupa penjelasan singkat tentang layanan yang divisualisasikan.
+- **Struktur blok**: Mulai dengan blok pengertian (`component: "note"` dengan `id` pengertian) atau langsung ke lingkup. Gunakan `component: "checklist-card"` untuk "Fungsi dan Tujuan Pendampingan" dan "Lingkup Kerja Pendampingan" (gabung penelaahan awal + kegiatan pelaksanaan jadi satu checklist-card yang praktis). Tambahkan poin operasional seperti tenaga ahli bersertifikat, dokumen teknis siap upload, manajemen akun/aplikasi, pendampingan sidang/pleno jika relevan.
+- **Fokus ke pelaksanaan**: Pindahkan penekanan dari "penelaahan awal" ke "kegiatan pendampingan yang akan dilakukan" agar pembaca langsung paham apa yang didapat.
+
 ## Skill terkait
 
 Baca `.agents/skills/theme-data-separation/SKILL.md` sebelum mengubah halaman, layout, komponen, atau konten yang melibatkan pemisahan theme/data.
