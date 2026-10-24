@@ -5,7 +5,7 @@ slug: "pengkajian-teknis-bangunan-pengantar"
 title: "Pendampingan Pengkajian Teknis Bangunan"
 description: "Panduan lengkap pengkajian teknis bangunan sebagai bagian penting dalam proses Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG)."
 pubDate: "2026-10-20T08:20:00Z"
-updatedDate: "2026-10-24T11:02:26Z"
+updatedDate: "2026-10-24T08:30:00Z"
 image: "/images/illustrations/checklist-persiapan-konsultasi-slf.svg"
 socialImage: "/images/social/checklist-persiapan-konsultasi-slf.webp"
 type: "article"
@@ -39,6 +39,35 @@ blocks:
       - label: "Spesifikasi material dan perhitungan struktural."
       - label: "Laporan inspeksi instalasi listrik."
       - label: "Dokumen sistem proteksi kebakaran (sprinkler, alarm)."
+  - component: section
+    id: "aspek-pengkajian-teknis"
+    heading: "Aspek Teknis Apa yang Perlu Ditelaah?"
+    content:
+      - type: p
+        text: "Lingkup pengkajian teknis ditentukan oleh fungsi, karakteristik, kondisi, dan tujuan evaluasi bangunan. Aspek yang ditelaah dapat melibatkan struktur, proteksi kebakaran, instalasi listrik, sanitasi, atau sistem lain yang relevan; tidak setiap pekerjaan memerlukan paket pemeriksaan yang identik."
+      - type: list
+        ordered: false
+        items:
+          - "Struktur dan elemen bangunan sesuai lingkup evaluasi serta data yang tersedia."
+          - "Sistem proteksi kebakaran dan jalur evakuasi yang relevan bagi bangunan."
+          - "Instalasi listrik, mekanikal, sanitasi, dan utilitas sesuai kebutuhan pemeriksaan."
+          - "Kesesuaian dokumen teknis dengan kondisi aktual serta catatan pemeliharaan."
+          - "Kebutuhan pengujian khusus apabila hasil penelaahan awal menunjukkan perlunya verifikasi tambahan."
+  - component: checklist-card
+    id: "tindak-lanjut-temuan-teknis"
+    title: "Cara Menindaklanjuti Temuan Pengkajian Teknis"
+    description: "Gunakan daftar ini untuk mengelola temuan; prioritas dan metode perbaikan harus ditentukan oleh pihak yang kompeten."
+    items:
+      - label: "Catat temuan dan lokasinya"
+        detail: "Sertakan foto, tanggal, atau referensi area jika tersedia."
+      - label: "Pisahkan fakta dan dugaan penyebab"
+        detail: "Jangan menetapkan penyebab teknis tanpa evaluasi yang memadai."
+      - label: "Tetapkan penanggung jawab tindak lanjut"
+        detail: "Tentukan pihak yang berwenang menilai dan melaksanakan perbaikan."
+      - label: "Simpan bukti perbaikan atau pengujian"
+        detail: "Catat dokumen, hasil uji, atau pemeriksaan lanjutan yang relevan."
+      - label: "Verifikasi status penyelesaian"
+        detail: "Pastikan setiap temuan memiliki status dan bukti tindak lanjut yang jelas."
   - component: "faq"
     id: "faq"
     heading: "Pertanyaan Umum"
