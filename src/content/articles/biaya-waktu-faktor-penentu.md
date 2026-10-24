@@ -5,7 +5,7 @@ slug: "biaya-waktu-faktor-penentu-slf"
 title: "Biaya, Waktu, dan Faktor Penentu Proses SLF"
 description: "Pahami komponen biaya pengajuan SLF, estimasi waktu yang realistis, dan faktor-faktor yang memengaruhi kelancaran proses."
 pubDate: "2026-10-15T16:00:00Z"
-updatedDate: "2026-10-24T11:02:17Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"
@@ -82,6 +82,32 @@ blocks:
     variant: warning
     title: "Hindari jaminan berlebihan"
     text: "Waspadai pihak yang menjanjikan SLF pasti terbit dalam waktu singkat tanpa pemeriksaan. Proses SLF mengikuti ketentuan resmi dan melibatkan verifikasi teknis yang tidak dapat dilewati."
+  - component: section
+    id: "faktor-pemicu-biaya-waktu"
+    heading: "Faktor yang Dapat Menambah Biaya dan Waktu SLF"
+    content:
+      - type: p
+        text: "Biaya dan jadwal tidak hanya ditentukan oleh luas bangunan. Ketidaksesuaian dokumen dengan kondisi aktual, kebutuhan survei atau pengujian tambahan, serta tindak lanjut atas temuan dapat mengubah lingkup pekerjaan. Faktor tersebut perlu diidentifikasi sebelum membuat estimasi yang lebih terukur."
+      - type: list
+        ordered: false
+        items:
+          - "Dokumen perizinan atau gambar teknis belum tersedia atau perlu ditelusuri."
+          - "Perubahan fungsi, tata ruang, atau sistem bangunan belum tercermin dalam dokumen."
+          - "Temuan teknis membutuhkan analisis, pengujian, atau perbaikan oleh pihak yang kompeten."
+          - "Jadwal akses bangunan dan koordinasi dengan pemilik atau pengelola membatasi pelaksanaan pemeriksaan."
+  - component: comparison-table
+    id: "evaluasi-kesiapan-slf"
+    title: "Membandingkan Kesiapan Bangunan Sebelum Pengajuan"
+    intro: "Perbandingan ini merupakan gambaran umum untuk membantu pemetaan awal, bukan prediksi waktu atau biaya yang pasti."
+    headers:
+      - "Aspek"
+      - "Relatif siap ditelaah"
+      - "Perlu tindak lanjut awal"
+    rows:
+      - ["Dokumen", "Dokumen tersedia dan statusnya diketahui", "Dokumen hilang, tidak lengkap, atau perlu dikonfirmasi"]
+      - ["Kondisi aktual", "Perubahan utama sudah dicatat", "Perubahan fisik atau fungsi belum terdokumentasi"]
+      - ["Temuan teknis", "Catatan pemeriksaan tersedia jika relevan", "Perlu penilaian atau pengujian lebih lanjut"]
+      - ["Perencanaan", "Penanggung jawab dan akses pemeriksaan jelas", "Lingkup kerja dan koordinasi belum disepakati"]
   - component: faq
     id: "faq-biaya-waktu-slf"
     heading: "Pertanyaan umum tentang biaya dan waktu"
