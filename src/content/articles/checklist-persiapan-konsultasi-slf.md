@@ -5,7 +5,7 @@ slug: "checklist-persiapan-konsultasi-slf"
 title: "Checklist Persiapan Konsultasi SLF untuk Bangunan Eksisting"
 description: "Panduan praktis menginventarisasi informasi bangunan, dokumen yang tersedia, perubahan bangunan, dan pertanyaan sebelum konsultasi SLF."
 pubDate: "2026-10-15T10:00:00Z"
-updatedDate: "2026-10-24T11:02:20Z"
+updatedDate: "2026-10-24T08:30:00Z"
 image: "/images/illustrations/checklist-persiapan-konsultasi-slf.svg"
 socialImage: "/images/social/checklist-persiapan-konsultasi-slf.webp"
 type: "article"
@@ -82,6 +82,34 @@ blocks:
     variant: warning
     title: "Jangan menganggap checklist ini sebagai penetapan kelayakan"
     text: "Daftar ini tidak menggantikan pemeriksaan teknis, pengujian, atau verifikasi persyaratan oleh pihak yang berwenang. Konsultasi dan pendampingan tidak menjamin penerbitan SLF."
+  - component: section
+    id: "ringkasan-kondisi-bangunan"
+    heading: "Bagaimana Menyusun Ringkasan Kondisi Bangunan untuk Konsultasi?"
+    content:
+      - type: p
+        text: "Ringkasan satu atau dua halaman dapat membantu konsultasi awal lebih terarah. Isinya tidak perlu berupa kesimpulan teknis; cukup sajikan fakta yang diketahui, dokumen yang tersedia, perubahan yang pernah dilakukan, serta pertanyaan yang belum terjawab."
+      - type: list
+        ordered: true
+        items:
+          - "Tuliskan lokasi, fungsi saat ini, perkiraan luas, jumlah lantai, dan status penggunaan."
+          - "Daftarkan dokumen yang tersedia serta dokumen yang belum ditemukan."
+          - "Catat renovasi, perubahan fungsi, temuan pemeliharaan, atau gangguan yang diketahui beserta waktunya jika tersedia."
+          - "Pisahkan fakta yang sudah dikonfirmasi dari perkiraan atau informasi yang masih perlu diperiksa."
+  - component: checklist-card
+    id: "agenda-konsultasi-slf"
+    title: "Pertanyaan yang Perlu Dibahas dalam Konsultasi Awal"
+    description: "Gunakan agenda ini untuk menyepakati kebutuhan dan batas pekerjaan sebelum memulai."
+    items:
+      - label: "Apa tujuan konsultasi dan hasil yang diharapkan?"
+        detail: "Misalnya pemetaan dokumen, identifikasi kesenjangan, atau penelaahan teknis awal."
+      - label: "Dokumen dan pemeriksaan apa yang perlu ditinjau?"
+        detail: "Minta dasar penentuan kebutuhan sesuai karakteristik bangunan."
+      - label: "Siapa yang bertanggung jawab atas setiap tindak lanjut?"
+        detail: "Perjelas peran pemilik, pengelola, konsultan, dan tenaga ahli."
+      - label: "Bagaimana lingkup, biaya, dan perubahan pekerjaan disepakati?"
+        detail: "Minta penawaran tertulis dan uraian keluaran pekerjaan."
+      - label: "Apa yang tidak termasuk dalam layanan?"
+        detail: "Pastikan batas tanggung jawab dan kewenangan penerbitan dokumen dipahami."
   - component: faq
     id: "faq-checklist-slf"
     heading: "Pertanyaan umum"
