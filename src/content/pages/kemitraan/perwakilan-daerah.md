@@ -1,37 +1,35 @@
 ---
 id: 203
 ulid: "01M5773Q50MJMDQY4XKBRHCED2"
-title: "Perwakilan Pemasaran Layanan SLF/PBG"
-description: "Jadi perwakilan pemasaran layanan SLF/PBG di kota Anda: edukasi awal, penjaringan calon klien, dan koordinasi lokal tanpa kajian teknis sendiri."
+title: "Perwakilan Daerah Layanan SLF/PBG"
+description: "Jadi perwakilan daerah layanan SLF/PBG di kota Anda: edukasi awal, penjaringan calon klien, dan koordinasi lokal tanpa kajian teknis sendiri."
 pubDate: "2026-10-25T08:30:00Z"
 updatedDate: "2026-10-25T08:31:00Z"
 image: "/images/illustrations/slf-bangunan-eksisting.svg"
-socialImage: "/images/social/kemitraan-perwakilan-pemasaran.webp"
+socialImage: "/images/social/kemitraan-perwakilan-daerah.webp"
 type: "page"
 draft: false
-navLabel: "Perwakilan Pemasaran"
-canonical: "/kemitraan/perwakilan-pemasaran/"
-slug: "kemitraan/perwakilan-pemasaran"
+navLabel: "Perwakilan Daerah"
+canonical: "/kemitraan/perwakilan-daerah/"
+slug: "kemitraan/perwakilan-daerah"
 blocks:
   - component: "page-header"
     eyebrow: "Skema kemitraan"
-    heading: "Perwakilan pemasaran layanan SLF/PBG di daerah"
+    heading: "Perwakilan daerah layanan SLF/PBG"
     intro: "Untuk profesional dengan jaringan lokal yang ingin membantu pemilik bangunan memahami kebutuhan SLF/PBG dan menghubungkannya dengan tim pendampingan kami. Kajian teknis tetap ditangani tenaga yang kompeten."
     image: "/images/illustrations/slf-bangunan-eksisting.svg"
     imageAlt: "Ilustrasi bangunan, dokumen, dan garis waktu yang menggambarkan perwakilan daerah mendampingi calon klien dari tahap awal"
   - component: "section"
     id: "gambaran"
-    heading: "Apa itu perwakilan pemasaran?"
+    heading: "Apa itu perwakilan daerah?"
     content:
       - type: "p"
-        text: "Perwakilan pemasaran mengembangkan pasar dan membantu koordinasi lokal secara lebih terstruktur daripada referral: mulai dari edukasi awal, pengumpulan informasi dasar bangunan, hingga menjadi penghubung antara calon klien dan tim perusahaan."
+        text: "Perwakilan daerah bertugas mengembangkan pasar dan membantu koordinasi lokal secara lebih terstruktur daripada referral: mulai dari edukasi awal, pengumpulan informasi dasar bangunan, hingga menjadi penghubung antara calon klien dan tim perusahaan."
       - type: "p"
-        text: "Pada tabel skema di halaman Kemitraan, skema ini disebut perwakilan daerah. Keduanya merujuk pada skema yang sama."
-      - type: "p"
-        text: "Perwakilan pemasaran tidak otomatis menjadi cabang resmi. Perwakilan juga tidak berwenang melakukan kajian teknis, menandatangani dokumen atas nama perusahaan, membuat komitmen komersial, atau menjanjikan hasil proses SLF/PBG."
+        text: "Perwakilan daerah berfokus pada pengembangan jaringan dan koordinasi lokal, serta tidak otomatis menjadi cabang resmi. Perwakilan juga tidak berwenang melakukan kajian teknis, menandatangani dokumen atas nama perusahaan, membuat komitmen komersial, atau menjanjikan hasil proses SLF/PBG."
   - component: "checklist-card"
     id: "cocok-untuk"
-    title: "Profil perwakilan yang dicari"
+    title: "Profil perwakilan daerah yang dicari"
     description: "Latar belakang teknik tidak selalu diwajibkan, tetapi perwakilan harus bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
     items:
       - label: "Berdomisili atau memiliki jaringan kuat di kota atau wilayah yang diajukan."
@@ -41,7 +39,7 @@ blocks:
       - label: "Bersedia melalui verifikasi dan kesepakatan tertulis sebelum menggunakan merek perusahaan."
   - component: "feature-card-grid"
     id: "peran"
-    title: "Yang dapat dilakukan perwakilan pemasaran"
+    title: "Yang dapat dilakukan perwakilan daerah"
     columns: 2
     items:
       - title: "Edukasi dan penjaringan"
@@ -56,7 +54,7 @@ blocks:
           - "Mendampingi koordinasi survei atau pertemuan awal."
   - component: "section"
     id: "batasan-peran"
-    heading: "Yang tidak boleh diklaim atau dilakukan perwakilan"
+    heading: "Yang tidak boleh diklaim atau dilakukan perwakilan daerah"
     content:
       - type: "list"
         ordered: false
@@ -68,11 +66,11 @@ blocks:
           - "Menggunakan merek perusahaan tanpa persetujuan tertulis."
   - component: "comparison-table"
     id: "ketentuan"
-    title: "Ketentuan skema perwakilan pemasaran"
+    title: "Ketentuan skema perwakilan daerah"
     intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis."
     headers:
       - "Aspek"
-      - "Ketentuan pada skema perwakilan pemasaran"
+      - "Ketentuan pada skema perwakilan daerah"
     rows:
       - ["Peran utama", "Mengembangkan pasar dan koordinasi lokal"]
       - ["Pengelolaan klien", "Terkoordinasi dengan perusahaan"]
@@ -118,7 +116,7 @@ blocks:
         text: "Dukungan disesuaikan dengan kesiapan operasional dan tidak semuanya tersedia sejak awal. Dukungan lain, seperti materi branding atau pelatihan, hanya berlaku bila disebutkan dalam kesepakatan tertulis."
   - component: "process-timeline"
     id: "alur"
-    title: "Alur bergabung sebagai perwakilan pemasaran"
+    title: "Alur bergabung sebagai perwakilan daerah"
     steps:
       - title: "Kirim minat"
         description: "Sampaikan profil, kota yang diajukan, dan gambaran jaringan calon klien yang Anda jangkau."
@@ -136,13 +134,13 @@ blocks:
     id: "catatan-perwakilan"
     variant: "warning"
     title: "Batasan penting"
-    text: "Perwakilan pemasaran bukan jaminan penerbitan SLF/PBG, bukan jalur pintas regulasi, dan tidak memberi wewenang untuk menjanjikan hasil atau durasi proses. Keputusan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
+    text: "Perwakilan daerah bukan jaminan penerbitan SLF/PBG, bukan jalur pintas regulasi, dan tidak memberi wewenang untuk menjanjikan hasil atau durasi proses. Keputusan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
   - component: "faq"
     id: "faq"
-    heading: "Pertanyaan seputar perwakilan pemasaran"
+    heading: "Pertanyaan seputar perwakilan daerah"
     items:
       - question: "Apakah perwakilan harus berlatar belakang teknik?"
-        answer: "Tidak selalu. Perwakilan pemasaran dapat berasal dari latar belakang bisnis atau properti, selama bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
+        answer: "Tidak selalu. Perwakilan daerah dapat berasal dari latar belakang bisnis atau properti, selama bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
       - question: "Apakah perwakilan boleh menangani kajian teknis sendiri?"
         answer: "Tidak. Pekerjaan teknis hanya dilakukan oleh tenaga kompeten sesuai ruang lingkup yang disepakati."
       - question: "Apakah perwakilan otomatis menjadi cabang resmi?"
@@ -153,7 +151,7 @@ blocks:
         answer: "Pendaftaran dibuka dari seluruh wilayah. Membangun jaringan dan menjangkau calon klien adalah bagian dari peran perwakilan."
   - component: "cta"
     id: "cta-perwakilan"
-    heading: "Tertarik menjadi perwakilan di kota Anda?"
+    heading: "Tertarik menjadi perwakilan daerah di kota Anda?"
     message: "Sampaikan profil, kota yang Anda ajukan, dan jaringan calon klien yang Anda jangkau. Kami akan meninjau kesesuaian awal sebelum membahas skema kerja sama."
     serviceHref: "/kemitraan/"
     serviceLabel: "Lihat semua skema kemitraan"
