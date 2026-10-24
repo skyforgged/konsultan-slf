@@ -5,7 +5,7 @@ slug: "proses-tahapan-pengajuan-slf"
 title: "Proses dan Tahapan Pengajuan SLF: Dari Persiapan hingga Terbit"
 description: "Pahami alur lengkap pengajuan SLF, tahapan pemeriksaan, dan apa yang terjadi di setiap langkah proses."
 pubDate: "2026-10-15T15:00:00Z"
-updatedDate: "2026-10-24T11:02:27Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"
@@ -82,6 +82,34 @@ blocks:
     variant: info
     title: "Durasi proses bervariasi"
     text: "Estimasi waktu di atas bersifat umum. Durasi aktual bergantung pada kelengkapan dokumen, kondisi bangunan, hasil pemeriksaan, dan beban kerja instansi penerbit."
+  - component: section
+    id: "jika-ditemukan-ketidaksesuaian"
+    heading: "Apa yang Terjadi Jika Ditemukan Ketidaksesuaian?"
+    content:
+      - type: p
+        text: "Ketidaksesuaian antara dokumen, kondisi lapangan, dan persyaratan yang berlaku perlu dicatat lalu diklarifikasi. Tindak lanjutnya dapat berupa pelengkapan informasi, pembaruan dokumen, evaluasi lebih lanjut, atau perbaikan teknis sesuai jenis temuan dan arahan pihak yang berwenang."
+      - type: list
+        ordered: true
+        items:
+          - "Pahami uraian temuan, lokasi, dan bukti yang mendasarinya."
+          - "Tentukan apakah tindak lanjut membutuhkan klarifikasi dokumen, kajian tenaga kompeten, atau pekerjaan perbaikan."
+          - "Catat penanggung jawab dan bukti yang diperlukan untuk menunjukkan tindak lanjut."
+          - "Konfirmasikan prosedur verifikasi ulang dengan pihak terkait; jangan menganggap semua kasus mengikuti alur yang sama."
+  - component: checklist-card
+    id: "kesiapan-pemeriksaan-teknis"
+    title: "Kesiapan Bangunan Sebelum Pemeriksaan Teknis"
+    description: "Checklist koordinasi awal untuk membantu pemeriksaan berlangsung terarah, tanpa menggantikan persyaratan resmi."
+    items:
+      - label: "Dokumen dan gambar yang tersedia mudah diakses"
+        detail: "Sampaikan versi yang digunakan dan catat bagian yang belum tersedia."
+      - label: "Akses ke area yang relevan telah dikoordinasikan"
+        detail: "Atur pendamping dan prosedur keselamatan lokasi."
+      - label: "Riwayat perubahan dan pemeliharaan diketahui"
+        detail: "Siapkan informasi renovasi dan catatan pemeriksaan yang relevan."
+      - label: "Penanggung jawab teknis dapat dihubungi"
+        detail: "Pastikan ada pihak yang dapat menjelaskan sistem bangunan."
+      - label: "Temuan lama dan tindak lanjutnya tercatat"
+        detail: "Sediakan bukti perbaikan atau pengujian jika tersedia."
   - component: faq
     id: "faq-proses-slf"
     heading: "Pertanyaan umum tentang proses SLF"
