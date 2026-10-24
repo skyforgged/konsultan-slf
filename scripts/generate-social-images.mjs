@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import sharp from 'sharp';
-import { mkdir, stat, readdir, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { mkdir, stat, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -70,19 +71,46 @@ async function processContent(dir, collection) {
 
     const sourcePath = path.join(illustrationDir, `${sourceBase}.svg`);
     const outputPath = path.join(outputDir, `${outputBase}.webp`);
+    const metadataPath = `${outputPath}.meta.json`;
     try {
-      const sourceStat = await stat(sourcePath);
-      if (!sourceStat.isFile()) throw new Error('source is not a file');
-      
-      const outStat = await stat(outputPath).catch(() => null);
-      if (outStat && outStat.mtimeMs >= sourceStat.mtimeMs) {
+      const sourceBuffer = await readFile(sourcePath);
+      const transformOptions = {
+        generatorVersion: 2,
+        width: 1200,
+        height: 630,
+        fit: 'contain',
+        background: '#f8fafc',
+        format: 'webp',
+        quality: 80,
+      };
+      const sourceHash = createHash('sha256')
+        .update(JSON.stringify(transformOptions))
+        .update(sourceBuffer)
+        .digest('hex');
+
+      const [outStat, metadataContent] = await Promise.all([
+        stat(outputPath).catch(() => null),
+        readFile(metadataPath, 'utf8').catch(() => null),
+      ]);
+      let metadata = null;
+      try {
+        metadata = metadataContent ? JSON.parse(metadataContent) : null;
+      } catch {
+        // Missing or malformed metadata forces regeneration.
+      }
+
+      if (outStat?.isFile() && metadata?.sourceHash === sourceHash) {
         continue;
       }
-      
-      const result = await sharp(sourcePath)
-        .resize(1200, 630, { fit: 'contain', background: '#f8fafc' })
-        .webp({ quality: 80 })
+
+      const result = await sharp(sourceBuffer)
+        .resize(transformOptions.width, transformOptions.height, {
+          fit: transformOptions.fit,
+          background: transformOptions.background,
+        })
+        .webp({ quality: transformOptions.quality })
         .toFile(outputPath);
+      await writeFile(metadataPath, `${JSON.stringify({ sourceHash }, null, 2)}\n`, 'utf8');
       console.log(`Social image generated: ${outputBase}.webp (${result.width}x${result.height}, ${result.size} bytes)`);
     } catch (err) {
       errors.push(`${path.relative(root, fullPath)}: failed to generate ${outputBase}.webp: ${err.message}`);
