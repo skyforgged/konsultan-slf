@@ -5,7 +5,7 @@ slug: "pengertian-slf-dasar-hukum"
 title: "Pengertian SLF dan Dasar Hukum: Panduan Lengkap Pemilik Bangunan"
 description: "Memahami apa itu Sertifikat Laik Fungsi (SLF), dasar hukumnya, dan mengapa dokumen ini penting bagi pemilik dan pengelola bangunan gedung."
 pubDate: "2026-10-15T11:00:00Z"
-updatedDate: "2026-10-24T11:02:24Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"
@@ -60,6 +60,32 @@ blocks:
     variant: info
     title: "Perbedaan SLF dan PBG"
     text: "PBG diperoleh sebelum atau selama pembangunan untuk menyetujui rencana. SLF diperoleh setelah bangunan berdiri untuk mengonfirmasi kelaikan fungsi. Keduanya merupakan dokumen berbeda dengan tujuan berbeda."
+  - component: section
+    id: "bagaimana-kelaikan-fungsi-ditelaah"
+    heading: "Bagaimana Persyaratan Kelaikan Fungsi Dinilai?"
+    content:
+      - type: p
+        text: "Penilaian kelaikan fungsi mempertimbangkan karakteristik dan fungsi bangunan serta bukti yang relevan mengenai kondisi teknisnya. Dokumen administratif dan gambar membantu menjelaskan objek, sedangkan pemeriksaan atau pengujian yang diperlukan ditentukan menurut lingkup evaluasi dan ketentuan yang berlaku."
+      - type: list
+        ordered: false
+        items:
+          - "Kesesuaian informasi bangunan dengan dokumen yang menjadi acuan."
+          - "Aspek keselamatan, kesehatan, kenyamanan, dan kemudahan yang relevan bagi fungsi bangunan."
+          - "Kondisi sistem dan elemen bangunan yang termasuk lingkup pemeriksaan."
+          - "Catatan temuan, klarifikasi, dan tindak lanjut yang diperlukan."
+  - component: checklist-card
+    id: "membaca-ketentuan-slf"
+    title: "Hal yang Perlu Diperhatikan Saat Membaca Ketentuan SLF"
+    description: "Gunakan daftar ini untuk menghindari kesimpulan yang terlalu umum dari satu kutipan aturan."
+    items:
+      - label: "Periksa sumber resmi dan status regulasi"
+        detail: "Gunakan JDIH atau portal pemerintah, bukan hanya ringkasan pihak ketiga."
+      - label: "Perhatikan konteks pasal dan ketentuan terkait"
+        detail: "Baca definisi, ruang lingkup, ketentuan peralihan, dan aturan terkait bila relevan."
+      - label: "Cocokkan dengan fungsi dan kondisi bangunan"
+        detail: "Jangan menganggap satu skenario berlaku bagi seluruh bangunan."
+      - label: "Konfirmasi penerapan pada kasus tertentu"
+        detail: "Mintalah penelaahan pihak kompeten atau instansi berwenang jika ada ketidakjelasan."
   - component: faq
     id: "faq-pengertian-slf"
     heading: "Pertanyaan umum tentang SLF"
