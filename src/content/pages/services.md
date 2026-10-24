@@ -3,7 +3,7 @@ id: 4
 ulid: "01HQRT4X5Z9K3M2N7P6Q8S5T4Y"
 title: "Layanan Konsultan SLF dan PBG"
 pubDate: "2026-10-16T00:05:00Z"
-updatedDate: "2026-10-24T12:09:45Z"
+updatedDate: "2026-10-24T16:21:16Z"
 description: "Layanan pendampingan SLF, PBG, dan kebutuhan perizinan bangunan sesuai kondisi proyek."
 socialImage: "/images/social/services.webp"
 type: "page"

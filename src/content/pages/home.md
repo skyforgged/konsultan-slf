@@ -3,7 +3,7 @@ id: 1
 ulid: "01HQRT4X5Z9K3M2N7P6Q8S5T4V"
 title: "Konsultan SLF & PBG | Pendampingan Perizinan Bangunan"
 pubDate: "2026-10-16T00:03:00Z"
-updatedDate: "2026-10-24T12:09:43Z"
+updatedDate: "2026-10-24T16:21:14Z"
 description: "Konsultan pendampingan Sertifikat Laik Fungsi (SLF), Persetujuan Bangunan Gedung (PBG), dan evaluasi dokumen bangunan."
 socialImage: "/images/social/home.webp"
 type: "page"
@@ -57,7 +57,9 @@ blocks:
       - title: "Rencana tindak lanjut"
         text: "Susun tahapan kerja dan koordinasi berdasarkan ruang lingkup yang disepakati."
   - component: "article-list"
+    id: "artikel-terbaru"
     mode: "latest"
+    offset: 0
     limit: 3
     heading: "Artikel dan panduan"
     description: "Pelajari istilah, persyaratan, dan informasi dasar seputar SLF serta PBG."
