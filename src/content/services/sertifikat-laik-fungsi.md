@@ -5,7 +5,7 @@ type: "service"
 slug: "sertifikat-laik-fungsi"
 title: "Pendampingan Sertifikat Laik Fungsi (SLF)"
 pubDate: "2026-10-16T08:00:00Z"
-updatedDate: "2026-10-16T08:30:00Z"
+updatedDate: "2026-10-24T08:00:00Z"
 description: "Pendampingan awal untuk memetakan kebutuhan dokumen dan tahapan pemeriksaan kelaikan fungsi bangunan."
 serviceGroup: "slf"
 order: 10
@@ -22,6 +22,8 @@ blocks:
     id: "ruang-lingkup"
     heading: "Ruang lingkup pendampingan"
     content:
+      - type: "p"
+        text: "Pendampingan Sertifikat Laik Fungsi (SLF) merupakan layanan konsultasi untuk membantu pemilik atau pengelola bangunan memetakan kesiapan dokumen, kebutuhan pemeriksaan kelaikan fungsi, dan tahapan tindak lanjut sesuai kondisi bangunan serta ketentuan yang berlaku."
       - type: "p"
         text: "Pendampingan SLF dimulai dengan memahami fungsi bangunan, kondisi aktual, dan dokumen yang sudah tersedia. Penelaahan awal membantu menentukan informasi yang perlu dilengkapi sebelum menyusun langkah kerja lebih lanjut."
       - type: "list"
