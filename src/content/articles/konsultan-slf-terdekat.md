@@ -9,7 +9,7 @@ description: >-
   Pelajari cara memilih konsultan SLF, memahami ruang lingkup pendampingan,
   dan menyiapkan informasi bangunan melalui konsultasi jarak jauh.
 pubDate: "2026-10-17T12:00:01Z"
-updatedDate: "2026-10-24T11:40:34Z"
+updatedDate: "2026-10-24T12:09:42Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"
@@ -107,6 +107,12 @@ blocks:
         text: "Minta uraian tahapan, keluaran, tanggung jawab para pihak, biaya, dan kebutuhan kunjungan jika ada."
       - title: "Tinjau kesepakatan"
         text: "Pastikan asumsi, jadwal perkiraan, biaya, perlindungan data, dan mekanisme perubahan pekerjaan dipahami kedua pihak."
+  - component: "cta"
+    id: "cta-konsultan-slf-terdekat"
+    heading: "Mulai dengan konsultasi awal"
+    message: "Diskusikan kebutuhan bangunan, dokumen yang tersedia, dan ruang lingkup pendampingan agar langkah awal dapat dipetakan sesuai kondisi Anda."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
   - component: "section"
     id: "layanan-nasional-konsultan-slf"
     heading: "Konsultasi jarak jauh untuk berbagai wilayah"
@@ -137,10 +143,4 @@ blocks:
         answer: "Bandingkan ruang lingkup, keluaran, kompetensi yang relevan, biaya yang termasuk dan tidak termasuk, perkiraan tahapan, pembagian tanggung jawab, serta penanganan dokumen."
       - question: "Apakah konsultasi bisa dilakukan dari luar kota?"
         answer: "Ya, konsultasi awal dapat dilakukan jarak jauh untuk berbagai wilayah Indonesia. Kebutuhan pendampingan lanjutan dan pemeriksaan langsung perlu dikonfirmasi sesuai kasus."
-  - component: "cta"
-    id: "cta-konsultan-slf-terdekat"
-    heading: "Mulai dengan konsultasi awal"
-    message: "Diskusikan kebutuhan bangunan, dokumen yang tersedia, dan ruang lingkup pendampingan agar langkah awal dapat dipetakan sesuai kondisi Anda."
-    serviceHref: "/services/sertifikat-laik-fungsi/"
-    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
 ---

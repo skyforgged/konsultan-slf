@@ -9,7 +9,7 @@ description: >-
   Cari jasa SLF untuk konsultasi jarak jauh, memahami kebutuhan dokumen,
   dan memetakan tahapan pendampingan Sertifikat Laik Fungsi bangunan.
 pubDate: "2026-10-17T12:00:00Z"
-updatedDate: "2026-10-24T11:40:33Z"
+updatedDate: "2026-10-24T12:09:41Z"
 author:
   name: "admin"
   url: "https://konsultan-slf.com"
@@ -83,6 +83,12 @@ blocks:
         text: "Minta penjelasan tentang hal yang perlu ditindaklanjuti, pihak yang bertanggung jawab, dan hal yang berada di luar lingkup layanan."
       - title: "Sepakati rencana kerja"
         text: "Pastikan lingkup, biaya, keluaran, asumsi, dan tahapan pekerjaan tercantum secara jelas sebelum menyetujui penawaran."
+  - component: "cta"
+    id: "cta-jasa-slf-terdekat"
+    heading: "Diskusikan kebutuhan SLF bangunan Anda"
+    message: "Hubungi tim kami untuk konsultasi awal dan pemetaan kebutuhan pendampingan berdasarkan kondisi bangunan serta dokumen yang tersedia."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
   - component: "checklist-card"
     id: "data-konsultasi-jasa-slf"
     title: "Data yang sebaiknya disiapkan"
@@ -124,10 +130,4 @@ blocks:
         answer: "Biaya bergantung pada karakteristik bangunan, kelengkapan dokumen, kebutuhan teknis, dan lingkup pekerjaan. Mintalah penawaran tertulis yang menjelaskan komponen biaya dan hal yang belum termasuk."
       - question: "Bisakah penyedia jasa menjamin SLF pasti terbit?"
         answer: "Hindari klaim jaminan penerbitan. Hasil proses bergantung pada pemenuhan persyaratan, kondisi bangunan, evaluasi teknis, dan keputusan pihak yang berwenang."
-  - component: "cta"
-    id: "cta-jasa-slf-terdekat"
-    heading: "Diskusikan kebutuhan SLF bangunan Anda"
-    message: "Hubungi tim kami untuk konsultasi awal dan pemetaan kebutuhan pendampingan berdasarkan kondisi bangunan serta dokumen yang tersedia."
-    serviceHref: "/services/sertifikat-laik-fungsi/"
-    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
 ---
