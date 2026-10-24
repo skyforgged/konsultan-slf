@@ -5,7 +5,7 @@ slug: "pengertian-pbg-perbedaan-imb"
 title: "Apa Itu PBG? Pengertian dan Perbedaannya dengan IMB"
 description: "Memahami Persetujuan Bangunan Gedung (PBG), dasar hukumnya, dan perbedaan mendasar dengan IMB yang lama."
 pubDate: "2026-10-16T14:18:00Z"
-updatedDate: "2026-10-24T08:30:00Z"
+updatedDate: "2026-10-24T11:40:35Z"
 type: "article"
 schemaType: "Article"
 category: "PBG"
@@ -109,6 +109,12 @@ blocks:
       - ["IMB yang telah terbit", "Dokumen dari rezim perizinan sebelumnya", "Simpan dokumen dan konfirmasikan implikasi perubahan bangunan atau kebutuhan layanan baru"]
       - ["Gambar rencana", "Menggambarkan rancangan yang menjadi dasar dokumen terkait", "Periksa apakah kondisi aktual berbeda dari rancangan"]
       - ["Gambar kondisi terbangun", "Mendokumentasikan kondisi aktual berdasarkan survei", "Pastikan sumber data dan lingkup verifikasinya jelas"]
+  - component: "cta"
+    id: "cta-pengertian-pbg-perbedaan-imb"
+    heading: "Butuh pendampingan pengurusan PBG?"
+    message: "Konsultasikan kebutuhan PBG bangunan Anda untuk mendapatkan panduan persyaratan yang tepat."
+    serviceHref: "/services/pengurusan-pbg/"
+    serviceLabel: "Lihat layanan PBG"
   - component: faq
     id: "faq-pengertian-pbg"
     heading: "Pertanyaan umum tentang PBG"
@@ -130,11 +136,5 @@ blocks:
       - label: "Sistem Informasi Manajemen Bangunan Gedung (SIMBG)"
         url: "https://simbg.pu.go.id/"
         description: "Portal resmi pengajuan PBG."
-  - component: "cta"
-    id: "cta-pengertian-pbg-perbedaan-imb"
-    heading: "Butuh pendampingan pengurusan PBG?"
-    message: "Konsultasikan kebutuhan PBG bangunan Anda untuk mendapatkan panduan persyaratan yang tepat."
-    serviceHref: "/services/pengurusan-pbg/"
-    serviceLabel: "Lihat layanan PBG"
 
 ---

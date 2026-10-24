@@ -11,7 +11,7 @@ description: >-
   pengurusan Sertifikat Laik Fungsi bangunan Anda. Hubungi 0859-4746-8548 
   untuk konsultasi awal.
 pubDate: '2026-10-17T13:00:00Z'
-updatedDate: "2026-10-24T08:30:00Z"
+updatedDate: "2026-10-24T11:40:32Z"
 author:
   name: admin
   url: "https://konsultan-slf.com"

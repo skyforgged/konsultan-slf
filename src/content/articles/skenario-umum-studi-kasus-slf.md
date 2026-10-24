@@ -5,7 +5,7 @@ slug: "skenario-umum-studi-kasus-slf"
 title: "Skenario Umum SLF: Dari Bangunan Baru hingga Eksisting"
 description: "Pelajari berbagai skenario pengajuan SLF untuk bangunan baru, eksisting, dan bangunan dengan riwayat perubahan fungsi."
 pubDate: "2026-10-15T17:00:00Z"
-updatedDate: "2026-10-18T10:04:18Z"
+updatedDate: "2026-10-24T11:40:41Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"
@@ -98,15 +98,15 @@ blocks:
     src: "/images/illustrations/skenario-umum-studi-kasus-slf.svg"
     alt: "Ilustrasi berbagai jenis bangunan dengan skenario SLF yang berbeda"
     caption: "Mengenali skenario bangunan Anda adalah langkah pertama untuk menentukan pendekatan pengajuan SLF yang tepat."
-  - component: quote
-    id: "prinsip-utama-slf"
-    text: "Kunci keberhasilan pengajuan SLF bukan pada kecepatan, melainkan pada kesiapan dokumen dan kesesuaian kondisi bangunan dengan persyaratan yang berlaku."
-    source: "Prinsip kerja Tim Konsultan SLF"
   - component: cta
     id: "cta-konsultasi-slf"
     heading: "Tidak yakin skenario bangunan Anda?"
     message: "Konsultasikan kondisi spesifik bangunan Anda dengan tim kami untuk mendapatkan pemetaan kebutuhan yang akurat."
     button: "Konsultasikan Sekarang"
+  - component: quote
+    id: "prinsip-utama-slf"
+    text: "Kunci keberhasilan pengajuan SLF bukan pada kecepatan, melainkan pada kesiapan dokumen dan kesesuaian kondisi bangunan dengan persyaratan yang berlaku."
+    source: "Prinsip kerja Tim Konsultan SLF"
   - component: faq
     id: "faq-skenario-slf"
     heading: "Pertanyaan umum tentang skenario SLF"

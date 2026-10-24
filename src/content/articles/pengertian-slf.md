@@ -5,7 +5,7 @@ slug: "pengertian-slf"
 title: "Apa Itu SLF (Sertifikat Laik Fungsi)?"
 description: "Penjelasan awal tentang SLF, persiapan dokumen, dan hal yang perlu diperiksa sebelum memulai proses."
 pubDate: "2026-01-15T09:00:00Z"
-updatedDate: "2026-10-24T08:30:00Z"
+updatedDate: "2026-10-24T11:40:37Z"
 image: "/images/illustrations/pengertian-slf.svg"
 socialImage: "/images/social/pengertian-slf.webp"
 type: "article"
@@ -85,6 +85,12 @@ blocks:
         description: "Tandai dokumen yang belum ditemukan dan aspek yang perlu dikonfirmasi."
       - title: "Tentukan tindak lanjut"
         description: "Sepakati kebutuhan penelaahan teknis atau administratif berdasarkan kasus dan ketentuan yang berlaku."
+  - component: "cta"
+    id: "cta-pengertian-slf"
+    heading: "Butuh pendampingan pengurusan SLF?"
+    message: "Konsultasikan kebutuhan SLF bangunan Anda untuk mendapatkan pemetaan dokumen dan langkah tindak lanjut yang tepat."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
   - component: faq
     heading: "Pertanyaan umum"
     items:
@@ -103,11 +109,5 @@ blocks:
       - label: "Sistem Informasi Manajemen Bangunan Gedung (SIMBG)"
         url: "https://simbg.pu.go.id/"
         description: "Portal resmi untuk informasi dan layanan bangunan gedung."
-  - component: "cta"
-    id: "cta-pengertian-slf"
-    heading: "Butuh pendampingan pengurusan SLF?"
-    message: "Konsultasikan kebutuhan SLF bangunan Anda untuk mendapatkan pemetaan dokumen dan langkah tindak lanjut yang tepat."
-    serviceHref: "/services/sertifikat-laik-fungsi/"
-    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
 
 ---
