@@ -11,7 +11,7 @@ description: >-
   pengurusan Sertifikat Laik Fungsi bangunan Anda. Hubungi 0859-4746-8548 
   untuk konsultasi awal.
 pubDate: '2026-10-17T13:00:00Z'
-updatedDate: "2026-10-17T15:52:42Z"
+updatedDate: "2026-10-24T11:02:22Z"
 author:
   name: admin
   url: "https://konsultan-slf.com"
@@ -175,4 +175,11 @@ blocks:
           Siapkan data dasar bangunan dan dokumen yang tersedia, lalu hubungi
           penyedia layanan yang kompeten untuk mendiskusikan kebutuhan, ruang
           lingkup pekerjaan, biaya, dan tahapan yang mungkin diperlukan.
+  - component: "cta"
+    id: "cta-jasa-slf-jakarta"
+    heading: "Butuh pendampingan pengurusan SLF?"
+    message: "Konsultasikan kebutuhan SLF bangunan Anda untuk mendapatkan pemetaan dokumen dan langkah tindak lanjut yang tepat."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
+
 ---

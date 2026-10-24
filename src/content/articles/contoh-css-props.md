@@ -5,7 +5,7 @@ slug: "contoh-css-props"
 title: "Contoh Penggunaan CSS Props di Frontmatter"
 description: "Demo cara menambahkan custom CSS classes ke component blocks melalui frontmatter."
 pubDate: "2026-01-20T09:00:00Z"
-updatedDate: "2026-10-18T10:04:14Z"
+updatedDate: "2026-10-24T11:02:21Z"
 draft: true
 type: "article"
 category: "Demo"
@@ -32,4 +32,10 @@ blocks:
     content:
       - type: p
         text: "Ini adalah contoh section block biasa."
+  - component: "cta"
+    id: "cta-contoh-css-props"
+    heading: "Butuh pendampingan SLF?"
+    message: "Konsultasikan kebutuhan SLF bangunan Anda untuk mendapatkan pemetaan dokumen dan langkah tindak lanjut yang tepat."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
 ---
