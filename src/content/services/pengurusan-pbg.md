@@ -5,7 +5,7 @@ type: "service"
 slug: "pengurusan-pbg"
 title: "Pendampingan Persetujuan Bangunan Gedung (PBG)"
 pubDate: "2026-10-16T09:00:00Z"
-updatedDate: "2026-10-16T09:30:00Z"
+updatedDate: "2026-10-24T08:00:00Z"
 description: "Penelaahan awal kebutuhan PBG berdasarkan fungsi, kondisi rencana bangunan, dan dokumen yang tersedia."
 serviceGroup: "pbg"
 order: 20
@@ -22,6 +22,8 @@ blocks:
     id: "ruang-lingkup"
     heading: "Ruang lingkup pendampingan awal"
     content:
+      - type: "p"
+        text: "Pendampingan Persetujuan Bangunan Gedung (PBG) merupakan layanan konsultasi untuk membantu pemilik atau penanggung jawab proyek memetakan kebutuhan dokumen teknis dan administratif berdasarkan fungsi, lokasi, karakteristik, serta tahap pembangunan sebelum menentukan langkah pengajuan yang relevan."
       - type: "p"
         text: "Pendampingan PBG diawali dengan memetakan fungsi bangunan, status rencana atau kondisi bangunan, serta dokumen teknis dan administratif yang tersedia. Dari penelaahan awal ini, kebutuhan data dan langkah berikutnya dapat dibahas sebelum ruang lingkup pekerjaan disepakati."
       - type: "list"
