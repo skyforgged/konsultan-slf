@@ -98,11 +98,12 @@ blocks:
     src: "/images/illustrations/skenario-umum-studi-kasus-slf.svg"
     alt: "Ilustrasi berbagai jenis bangunan dengan skenario SLF yang berbeda"
     caption: "Mengenali skenario bangunan Anda adalah langkah pertama untuk menentukan pendekatan pengajuan SLF yang tepat."
-  - component: cta
+  - component: "cta"
     id: "cta-konsultasi-slf"
     heading: "Tidak yakin skenario bangunan Anda?"
     message: "Konsultasikan kondisi spesifik bangunan Anda dengan tim kami untuk mendapatkan pemetaan kebutuhan yang akurat."
-    button: "Konsultasikan Sekarang"
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
   - component: quote
     id: "prinsip-utama-slf"
     text: "Kunci keberhasilan pengajuan SLF bukan pada kecepatan, melainkan pada kesiapan dokumen dan kesesuaian kondisi bangunan dengan persyaratan yang berlaku."
