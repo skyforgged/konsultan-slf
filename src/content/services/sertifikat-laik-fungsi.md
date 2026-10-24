@@ -5,7 +5,7 @@ type: "service"
 slug: "sertifikat-laik-fungsi"
 title: "Pendampingan Sertifikat Laik Fungsi (SLF)"
 pubDate: "2026-10-16T08:00:00Z"
-updatedDate: "2026-10-24T08:00:00Z"
+updatedDate: "2026-10-24T08:01:00Z"
 description: "Pendampingan awal untuk memetakan kebutuhan dokumen dan tahapan pemeriksaan kelaikan fungsi bangunan."
 serviceGroup: "slf"
 order: 10
