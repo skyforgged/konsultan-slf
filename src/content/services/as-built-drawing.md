@@ -5,7 +5,7 @@ type: "service"
 slug: "as-built-drawing"
 title: "Pendampingan As-Built Drawing"
 pubDate: "2026-10-16T13:00:00Z"
-updatedDate: "2026-10-16T13:30:00Z"
+updatedDate: "2026-10-24T08:06:00Z"
 description: "Pemetaan kebutuhan gambar kondisi terbangun berdasarkan dokumen lama, perubahan bangunan, dan kebutuhan penggunaannya."
 serviceGroup: "pbg"
 order: 60
@@ -22,6 +22,8 @@ blocks:
     id: "ruang-lingkup"
     heading: "Ruang lingkup penelaahan awal"
     content:
+      - type: "p"
+        text: "Pendampingan as-built drawing merupakan layanan untuk memetakan kebutuhan gambar yang merekam kondisi bangunan sebagaimana terbangun atau terukur, termasuk penelaahan dokumen lama, identifikasi perubahan, serta penentuan kebutuhan survei dan tingkat detail sesuai tujuan penggunaan gambar."
       - type: "p"
         text: "As-built drawing menggambarkan kondisi bangunan sebagaimana terbangun atau terukur pada lingkup pekerjaan yang ditetapkan. Penelaahan awal diperlukan untuk mengetahui gambar yang masih tersedia, perubahan yang terjadi, area yang perlu diukur, dan tingkat detail gambar yang dibutuhkan."
       - type: "list"
