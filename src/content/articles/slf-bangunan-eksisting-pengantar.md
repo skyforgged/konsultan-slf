@@ -5,7 +5,7 @@ slug: "slf-bangunan-eksisting-pengantar"
 title: "Pendampingan SLF Bangunan Eksisting"
 description: "Panduan lengkap tentang proses pendampingan Sertifikat Laik Fungsi (SLF) untuk bangunan yang sudah berdiri, mencakup penelaahan dokumen, kondisi aktual, dan langkah-langkah evaluasi terbaru."
 pubDate: "2026-10-20T08:00:00Z"
-updatedDate: "2026-10-24T11:02:28Z"
+updatedDate: "2026-10-24T08:30:00Z"
 image: "/images/illustrations/article-guide.svg"
 socialImage: "/images/social/article-guide.webp"
 type: "article"
@@ -40,6 +40,31 @@ blocks:
       - label: "Verifikasi kondisi aktual struktur, instalasi listrik, dan sistem keselamatan."
       - label: "Catat perubahan fungsi atau renovasi yang telah dilakukan."
       - label: "Susun rekomendasi perbaikan atau penyesuaian dokumen."
+  - component: section
+    id: "dokumen-lama-kondisi-aktual"
+    heading: "Bagaimana Menangani Perbedaan antara Dokumen Lama dan Kondisi Aktual?"
+    content:
+      - type: p
+        text: "Perbedaan antara dokumen lama dan kondisi bangunan saat ini perlu dipetakan sebelum menentukan tindak lanjut. Jangan langsung menganggap dokumen lama tidak berlaku atau kondisi aktual sudah sesuai; telusuri riwayat perubahan, status dokumen, serta bagian yang belum terverifikasi."
+      - type: list
+        ordered: true
+        items:
+          - "Kelompokkan dokumen berdasarkan jenis, tanggal, dan status revisi."
+          - "Catat perubahan fungsi, tata ruang, struktur, atau instalasi yang diketahui."
+          - "Bandingkan informasi dokumen dengan kondisi lapangan melalui pemeriksaan yang sesuai."
+          - "Minta penelaahan tenaga kompeten atau konfirmasi pihak terkait untuk menentukan dokumen dan tindak lanjut yang diperlukan."
+  - component: process-timeline
+    id: "tahapan-penanganan-bangunan-eksisting"
+    title: "Tahapan Penanganan Bangunan Eksisting"
+    steps:
+      - title: "Inventarisasi"
+        description: "Kumpulkan dokumen perizinan, gambar, catatan pemeriksaan, dan informasi penggunaan bangunan."
+      - title: "Penelaahan awal"
+        description: "Identifikasi perbedaan, dokumen yang belum ditemukan, dan informasi yang perlu dikonfirmasi."
+      - title: "Evaluasi kebutuhan"
+        description: "Tentukan kebutuhan pemeriksaan atau kajian teknis berdasarkan karakteristik bangunan."
+      - title: "Rencana tindak lanjut"
+        description: "Susun prioritas, penanggung jawab, bukti yang diperlukan, dan langkah berikutnya sesuai ketentuan."
   - component: "faq"
     id: "faq"
     heading: "Pertanyaan Umum"
