@@ -5,7 +5,7 @@ slug: "checklist-dokumen-slf-lengkap"
 title: "Checklist Dokumen SLF Lengkap: Apa Saja yang Harus Disiapkan?"
 description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan SLF, termasuk dokumen teknis, administratif, dan persyaratan khusus."
 pubDate: "2026-10-15T14:00:00Z"
-updatedDate: "2026-10-24T11:02:19Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "SLF"
@@ -98,6 +98,32 @@ blocks:
     variant: warning
     title: "Dokumen yang tidak sesuai kondisi aktual"
     text: "Jika bangunan mengalami renovasi atau perubahan fungsi setelah PBG/IMB terbit, gambar dan dokumen teknis harus diperbarui untuk mencerminkan kondisi aktual. Ketidaksesuaian ini sering menjadi penyebab keterlambatan pengajuan SLF."
+  - component: section
+    id: "dokumen-tidak-lengkap-slf"
+    heading: "Apa yang Dilakukan Jika Dokumen SLF Belum Lengkap?"
+    content:
+      - type: p
+        text: "Dokumen yang belum tersedia sebaiknya dicatat secara terbuka, bukan dianggap tidak diperlukan. Mulailah dengan membedakan dokumen yang belum ditemukan, dokumen yang perlu diperbarui, dan dokumen yang memang harus dikonfirmasi relevansinya untuk bangunan tersebut."
+      - type: list
+        ordered: true
+        items:
+          - "Buat daftar dokumen yang tersedia, belum ditemukan, atau perlu diperbarui."
+          - "Telusuri arsip pemilik, pengelola, perencana, kontraktor, dan catatan pemeliharaan yang masih tersedia."
+          - "Bandingkan informasi dokumen dengan fungsi dan kondisi bangunan saat ini."
+          - "Tentukan bersama tenaga kompeten atau pihak terkait apakah diperlukan pengukuran, evaluasi, atau dokumen pengganti."
+  - component: comparison-table
+    id: "hubungan-dokumen-slf"
+    title: "Memahami Hubungan Dokumen Persetujuan, Gambar Rencana, dan Kondisi Terbangun"
+    intro: "Ketiga sumber informasi ini saling melengkapi dan tidak otomatis saling menggantikan."
+    headers:
+      - "Jenis informasi"
+      - "Fungsi utama"
+      - "Hal yang perlu diperiksa"
+    rows:
+      - ["Dokumen persetujuan/perizinan", "Menunjukkan riwayat persetujuan dan informasi administratif yang relevan", "Identitas objek, fungsi, dan perubahan yang pernah disetujui"]
+      - ["Gambar rencana", "Menjelaskan rancangan yang menjadi acuan", "Apakah pelaksanaan atau perubahan sesuai dengan gambar"]
+      - ["Gambar kondisi terbangun", "Mendokumentasikan kondisi aktual yang terukur", "Apakah survei dan informasi perubahan sudah cukup untuk lingkup penggunaannya"]
+      - ["Catatan pemeriksaan/pemeliharaan", "Memberi konteks tentang kondisi dan riwayat penanganan", "Tanggal, ruang lingkup, hasil, dan pihak yang bertanggung jawab"]
   - component: faq
     id: "faq-dokumen-slf"
     heading: "Pertanyaan umum tentang dokumen SLF"
