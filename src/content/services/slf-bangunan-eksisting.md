@@ -5,7 +5,7 @@ type: "service"
 slug: "slf-bangunan-eksisting"
 title: "Pendampingan SLF Bangunan Eksisting"
 pubDate: "2026-10-16T10:00:00Z"
-updatedDate: "2026-10-16T10:30:00Z"
+updatedDate: "2026-10-24T08:00:00Z"
 description: "Penelaahan awal untuk bangunan yang sudah berdiri, terutama ketika status dokumen atau kondisi aktual perlu dipetakan."
 serviceGroup: "slf"
 order: 30
@@ -22,6 +22,8 @@ blocks:
     id: "ruang-lingkup"
     heading: "Ruang lingkup penelaahan awal"
     content:
+      - type: "p"
+        text: "Pendampingan SLF bangunan eksisting merupakan layanan penelaahan awal bagi pemilik atau pengelola bangunan yang telah berdiri atau digunakan untuk memetakan status dokumen, riwayat perubahan, kondisi aktual, dan kebutuhan tindak lanjut menuju pemenuhan kelaikan fungsi."
       - type: "p"
         text: "Bangunan yang sudah beroperasi dapat memiliki kondisi dan riwayat dokumen yang beragam. Pendampingan awal membantu menginventarisasi dokumen yang tersedia, perubahan yang pernah terjadi, serta informasi kondisi aktual sebelum menentukan langkah teknis dan administratif berikutnya."
       - type: "list"
