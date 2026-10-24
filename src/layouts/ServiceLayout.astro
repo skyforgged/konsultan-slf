@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 import { ui } from '../config/ui.ts';
@@ -8,6 +10,7 @@ import { howToJsonLd } from '../utils/howto.ts';
 import '../styles/global.css';
 
 const { service } = Astro.props as { service: CollectionEntry<'services'> };
+const articles = await getCollection('articles');
 const pageTitle = service.data.title;
 const description = service.data.description;
 const canonical = `/services/${service.data.slug}/`;
@@ -82,8 +85,7 @@ const serviceJsonLd = JSON.stringify({
       <div class="prose-content [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24"><slot /></div>
       <slot name="related" />
     </article>
-  </main>
-  <section id="service-cta" class="border-t border-slate-200 bg-blue-50/60">
+    <section id="service-cta" class="full-width-section border-t border-slate-200 bg-blue-50/60 my-8">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
       <div class="max-w-2xl">
         <h2 class="text-xl font-extrabold tracking-tight text-slate-950">{ui.article.ctaHeading}</h2>
@@ -92,5 +94,7 @@ const serviceJsonLd = JSON.stringify({
       <a href="/services/" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{ui.article.ctaButton}</a>
     </div>
   </section>
+<RelatedArticles slot="related" articles={articles} type="service" id={service.data.id} heading="Artikel terkait layanan" />
+</main>
   <SiteFooter group={service.data.serviceGroup} serviceTitle={pageTitle} />
 </BaseLayout>

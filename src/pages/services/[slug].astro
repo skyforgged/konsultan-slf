@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
-import RelatedArticles from '../../components/shared/RelatedArticles.astro';
+
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -33,5 +33,4 @@ const faqJsonLd = faqItems.length > 0 ? JSON.stringify({
   <div class="space-y-6">
     {service.data.blocks.map((block) => <BlockRenderer block={block} />)}
   </div>
-  <RelatedArticles slot="related" articles={articles} type="service" id={service.data.id} heading="Artikel terkait layanan" />
 </ServiceLayout>

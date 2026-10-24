@@ -15,6 +15,16 @@ a { text-underline-offset: 4px; }
 .prose-content h3 { margin-top: 1.5rem; font-size: 1.2rem; font-weight: 650; }
 .prose-content p, .prose-content li { line-height: 1.8; color: #4b5563; }
 
+/* Full‑width section that breaks out of the max‑width container */
+.full-width-section {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
