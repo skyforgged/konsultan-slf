@@ -56,7 +56,7 @@ if (serviceTitle) {
     </div>
     <div>
       <nav aria-label={ariaLabel}>
-        <ul class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold text-slate-300 sm:grid-cols-4">
+        <ul class="flex flex-col gap-3 text-sm font-semibold text-slate-300">
           {ui.nav.items.footer.map((item) => (
             <li>
               <a class="no-underline transition hover:text-white" href={item.href}>{item.label}</a>
