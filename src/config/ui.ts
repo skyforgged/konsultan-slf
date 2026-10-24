@@ -23,6 +23,7 @@ export const ui = {
         { label: 'Beranda', href: '/' },
         { label: 'Layanan', href: '/services/' },
         { label: 'Artikel', href: '/articles/' },
+        { label: 'Kemitraan', href: '/kemitraan/' },
         { label: 'Kontak', href: '/kontak/' },
       ],
       home: [
@@ -30,12 +31,14 @@ export const ui = {
         { label: 'Layanan', href: '#layanan' },
         { label: 'Alur Pendampingan', href: '#proses' },
         { label: 'Artikel', href: '/articles/' },
+        { label: 'Kemitraan', href: '/kemitraan/' },
         { label: 'Kontak', href: '/kontak/' },
       ],
       footer: [
         { label: 'Beranda', href: '/' },
         { label: 'Layanan', href: '/services/' },
         { label: 'Artikel', href: '/articles/' },
+        { label: 'Kemitraan', href: '/kemitraan/' },
         { label: 'Kontak', href: '/kontak/' },
       ],
     },
