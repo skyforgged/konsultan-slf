@@ -4,11 +4,11 @@ ulid: "01M5773Q4Z1X2C3V4B5N6M7Q8W"
 title: "Kemitraan Cabang & Perwakilan SLF/PBG"
 description: "Kesempatan bagi konsultan, profesional, dan badan usaha lokal untuk menjadi cabang atau perwakilan pendampingan SLF/PBG di kota dengan kebutuhan peminat."
 pubDate: "2026-10-25T08:00:00Z"
-updatedDate: "2026-10-25T08:01:00Z"
+updatedDate: "2026-10-25T08:02:00Z"
 image: "/images/illustrations/service-directory.svg"
 socialImage: "/images/social/kemitraan.webp"
 type: "page"
-draft: true
+draft: false
 navLabel: "Kemitraan"
 canonical: "/kemitraan/"
 slug: "kemitraan"
