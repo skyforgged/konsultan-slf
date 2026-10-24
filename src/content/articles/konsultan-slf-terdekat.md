@@ -140,6 +140,7 @@ blocks:
   - component: "cta"
     id: "cta-konsultan-slf-terdekat"
     heading: "Mulai dengan konsultasi awal"
-    message: "Gunakan kanal telepon atau WhatsApp yang tersedia di situs untuk mendiskusikan kebutuhan bangunan, dokumen yang tersedia, dan ruang lingkup pendampingan."
-    button: "Konsultasi via WhatsApp"
+    message: "Diskusikan kebutuhan bangunan, dokumen yang tersedia, dan ruang lingkup pendampingan agar langkah awal dapat dipetakan sesuai kondisi Anda."
+    serviceHref: "/services/sertifikat-laik-fungsi/"
+    serviceLabel: "Lihat layanan Sertifikat Laik Fungsi"
 ---
