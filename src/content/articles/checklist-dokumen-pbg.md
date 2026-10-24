@@ -5,7 +5,7 @@ slug: "checklist-dokumen-pbg"
 title: "Checklist Dokumen PBG: Persyaratan Lengkap Pengajuan"
 description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan PBG, dari dokumen administratif hingga gambar teknis."
 pubDate: "2026-10-16T15:10:00Z"
-updatedDate: "2026-10-24T11:02:18Z"
+updatedDate: "2026-10-24T08:30:00Z"
 type: "article"
 schemaType: "Article"
 category: "PBG"
@@ -100,6 +100,34 @@ blocks:
     variant: warning
     title: "Tenaga kompeten wajib"
     text: "Gambar dan perhitungan teknis PBG harus disusun dan ditandatangani oleh tenaga kompeten yang sesuai bidangnya. Dokumen tanpa tanda tangan tenaga kompeten akan ditolak."
+  - component: section
+    id: "konsistensi-dokumen-pbg"
+    heading: "Bagaimana Memastikan Dokumen PBG Saling Konsisten?"
+    content:
+      - type: p
+        text: "Pemeriksaan dokumen tidak berhenti pada keberadaan berkas. Informasi pokok seperti identitas pemilik atau pemohon, lokasi, fungsi, dimensi, jumlah lantai, dan rancangan teknis perlu ditinjau agar tidak saling bertentangan. Persyaratan final tetap perlu diverifikasi melalui ketentuan dan sistem resmi sesuai karakteristik bangunan."
+      - type: list
+        ordered: false
+        items:
+          - "Cocokkan identitas objek dan data lahan pada dokumen yang relevan."
+          - "Pastikan fungsi dan parameter bangunan konsisten di uraian serta gambar."
+          - "Periksa apakah gambar arsitektur, struktur, dan utilitas saling terkoordinasi."
+          - "Tandai perbedaan untuk diklarifikasi oleh pihak yang menyusun atau bertanggung jawab atas dokumen."
+  - component: checklist-card
+    id: "pemeriksaan-akhir-pbg"
+    title: "Pemeriksaan Akhir Berkas Sebelum Diajukan"
+    description: "Checklist kendali mutu untuk melengkapi inventaris dokumen yang telah dibahas di atas."
+    items:
+      - label: "Versi dokumen terkini telah ditentukan"
+        detail: "Hindari mengirim versi lama dan revisi terbaru secara bersamaan tanpa penjelasan."
+      - label: "Nama file mudah dikenali"
+        detail: "Gunakan penamaan yang konsisten dengan jenis dokumen dan tanggal atau revisi."
+      - label: "Perbedaan data telah dicatat"
+        detail: "Jangan mengubah data tanpa konfirmasi kepada pihak yang bertanggung jawab."
+      - label: "Penanggung jawab teknis teridentifikasi"
+        detail: "Pastikan dokumen teknis ditangani tenaga yang kompeten sesuai bidangnya."
+      - label: "Ketentuan pengajuan diperiksa kembali"
+        detail: "Verifikasi daftar dan format berkas melalui SIMBG serta instansi terkait."
   - component: faq
     id: "faq-dokumen-pbg"
     heading: "Pertanyaan umum tentang dokumen PBG"
