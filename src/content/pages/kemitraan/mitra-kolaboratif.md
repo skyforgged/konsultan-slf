@@ -1,0 +1,123 @@
+---
+id: 202
+ulid: "01M5773Q50PFBEKZ9DZ01BDC6F"
+title: "Mitra Kolaboratif Pendampingan SLF/PBG"
+description: "Kemitraan kolaboratif SLF/PBG untuk konsultan, arsitek, dan engineer lokal yang sudah punya klien. Peran dan ruang lingkup disepakati per proyek."
+pubDate: "2026-10-25T08:20:00Z"
+updatedDate: "2026-10-25T08:21:00Z"
+image: "/images/illustrations/building-compliance.svg"
+socialImage: "/images/social/kemitraan-mitra-kolaboratif.webp"
+type: "page"
+draft: false
+navLabel: "Mitra Kolaboratif"
+canonical: "/kemitraan/mitra-kolaboratif/"
+slug: "kemitraan/mitra-kolaboratif"
+blocks:
+  - component: "page-header"
+    eyebrow: "Skema kemitraan"
+    heading: "Mitra kolaboratif pendampingan SLF/PBG"
+    intro: "Untuk profesional lokal yang sudah memiliki klien atau proyek bangunan dan membutuhkan dukungan dokumen, koordinasi, atau pendampingan proses SLF/PBG. Pembagian peran disepakati sejak awal."
+    image: "/images/illustrations/building-compliance.svg"
+    imageAlt: "Ilustrasi bangunan dan dokumen bertanda centang yang menggambarkan kerja sama menyiapkan kelengkapan SLF dan PBG"
+  - component: "section"
+    id: "gambaran"
+    heading: "Apa itu mitra kolaboratif?"
+    content:
+      - type: "p"
+        text: "Dalam skema ini, mitra membawa jaringan, klien, atau proyek lokal, sedangkan perusahaan mendukung aspek teknis, dokumen, atau pendampingan proses sesuai kesepakatan. Para pihak mengerjakan bagian yang sesuai dengan kompetensi masing-masing."
+      - type: "p"
+        text: "Skema ini berbeda dengan referral karena kedua pihak sama-sama terlibat dalam pelaksanaan. Skema ini juga berbeda dengan perwakilan atau cabang karena tidak otomatis memberi penetapan wilayah, dan penggunaan merek hanya terbatas sesuai izin tertulis."
+  - component: "checklist-card"
+    id: "cocok-untuk"
+    title: "Siapa yang cocok menjadi mitra kolaboratif?"
+    description: "Kompetensi yang sesuai diperlukan untuk pekerjaan teknis. Badan usaha tidak wajib untuk semua skema; kebutuhan legal ditinjau sesuai jenis kerja sama."
+    items:
+      - label: "Konsultan lokal yang sudah memiliki klien tetapi belum memiliki kapasitas teknis penuh untuk perizinan bangunan."
+      - label: "Arsitek, engineer, atau pengawas proyek yang sering bertemu kebutuhan SLF/PBG pada proyeknya."
+      - label: "Badan usaha jasa konstruksi atau konsultan perencana yang ingin bekerja sama pada proyek tertentu."
+      - label: "Profesional yang bersedia menjelaskan pembagian peran, kompetensi, dan tanggung jawabnya secara terbuka."
+  - component: "comparison-table"
+    id: "ketentuan"
+    title: "Ketentuan skema mitra kolaboratif"
+    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis."
+    headers:
+      - "Aspek"
+      - "Ketentuan pada skema mitra kolaboratif"
+    rows:
+      - ["Peran utama", "Mendukung proyek sesuai kesepakatan"]
+      - ["Pengelolaan klien", "Disepakati per proyek"]
+      - ["Pekerjaan teknis", "Sesuai kompetensi dan ruang lingkup masing-masing pihak"]
+      - ["Penggunaan merek", "Terbatas, sesuai izin tertulis"]
+      - ["Eksklusivitas", "Ditentukan per kasus"]
+      - ["Administrasi", "Sesuai kebutuhan proyek"]
+  - component: "section"
+    id: "pembagian-peran"
+    heading: "Yang perlu disepakati sebelum proyek berjalan"
+    content:
+      - type: "p"
+        text: "Ruang lingkup setiap proyek berbeda, sehingga kolaborasi dituangkan dalam kesepakatan tertulis, bukan paket baku. Hal berikut sebaiknya jelas sebelum pekerjaan dimulai:"
+      - type: "list"
+        ordered: false
+        items:
+          - "Ruang lingkup pekerjaan masing-masing pihak, termasuk bagian yang menjadi tanggung jawab tenaga ahli."
+          - "Pihak yang berkomunikasi dengan klien dan pihak yang berkoordinasi dengan instansi terkait."
+          - "Penanggung jawab dokumen dan tanda tangan, sesuai kompetensi dan kewenangan yang berlaku."
+          - "Dasar kompensasi atau pembagian hasil, waktu pembayaran, dan perlakuan bila proyek batal atau pembayaran belum lunas."
+          - "Pihak yang menanggung biaya survei, perjalanan, tenaga ahli, dan biaya operasional lain."
+          - "Batas penggunaan nama dan merek perusahaan."
+  - component: "section"
+    id: "dukungan"
+    heading: "Dukungan dari perusahaan"
+    content:
+      - type: "p"
+        text: "Dukungan yang dapat dibahas, sesuai kebutuhan proyek:"
+      - type: "list"
+        ordered: false
+        items:
+          - "Pendampingan penyusunan kebutuhan dokumen."
+          - "Koordinasi untuk kasus yang memerlukan kajian teknis."
+          - "Jalur eskalasi pertanyaan teknis kepada tim yang kompeten."
+          - "Pedoman komunikasi dan etika penyampaian informasi kepada klien."
+      - type: "p"
+        text: "Dukungan disesuaikan dengan kesepakatan dan kesiapan operasional, sehingga tidak semuanya tersedia untuk setiap proyek sejak awal."
+  - component: "process-timeline"
+    id: "alur"
+    title: "Alur bergabung sebagai mitra kolaboratif"
+    steps:
+      - title: "Kirim minat dan gambaran proyek"
+        description: "Sampaikan profil Anda, kota, serta jenis proyek atau klien yang ingin dikerjakan bersama."
+      - title: "Peninjauan awal"
+        description: "Perusahaan menilai kesesuaian kompetensi, kebutuhan proyek, dan kapasitas masing-masing pihak."
+      - title: "Diskusi pembagian peran"
+        description: "Dibahas ruang lingkup, tanggung jawab, kompensasi, dan batas penggunaan merek."
+      - title: "Verifikasi dan kesepakatan"
+        description: "Dokumen legalitas atau bukti kompetensi diverifikasi bila relevan, lalu kesepakatan ditandatangani sebelum pekerjaan dimulai."
+      - title: "Pelaksanaan dan peninjauan"
+        description: "Pekerjaan berjalan sesuai kesepakatan, dan status kerja sama ditinjau secara berkala."
+  - component: "note"
+    id: "catatan-kolaboratif"
+    variant: "warning"
+    title: "Batasan penting"
+    text: "Kolaborasi tidak mengalihkan tanggung jawab teknis tanpa dasar kompetensi. Kajian, perhitungan, dan tanda tangan dokumen teknis hanya dilakukan pihak yang kompeten dan berwenang sesuai ketentuan yang berlaku. Kolaborasi bukan jaminan terbitnya SLF/PBG dan bukan jalur pintas regulasi; keputusan penerbitan tetap berada pada pihak berwenang."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan seputar mitra kolaboratif"
+    items:
+      - question: "Apakah skema ini hanya untuk mitra yang sudah punya klien?"
+        answer: "Skema ini ditujukan bagi mitra yang sudah memiliki klien atau kebutuhan proyek. Bila Anda baru memiliki jaringan tanpa proyek berjalan, skema referral atau perwakilan mungkin lebih sesuai."
+      - question: "Siapa yang bertanggung jawab atas pekerjaan teknis?"
+        answer: "Pihak yang kompeten dan berwenang sesuai ruang lingkup yang disepakati secara tertulis. Tanggung jawab teknis tidak dialihkan hanya karena adanya kerja sama."
+      - question: "Bagaimana pembagian kompensasi?"
+        answer: "Disepakati secara tertulis per proyek atau melalui perjanjian kerja sama. Besarannya tidak ditampilkan di halaman publik, dan tidak ada jaminan penghasilan tertentu."
+      - question: "Apakah mitra kolaboratif boleh memakai nama perusahaan?"
+        answer: "Hanya terbatas sesuai izin tertulis dan pedoman penggunaan merek yang disepakati."
+      - question: "Apakah ada wilayah eksklusif?"
+        answer: "Tidak otomatis. Eksklusivitas, bila dibahas, ditentukan per kasus melalui kesepakatan tertulis."
+  - component: "cta"
+    id: "cta-kolaboratif"
+    heading: "Punya proyek yang ingin dikerjakan bersama?"
+    message: "Ceritakan profil Anda, kota, dan jenis proyek atau klien yang ingin dikerjakan bersama. Kami akan meninjau kesesuaian awal sebelum membahas pembagian peran."
+    serviceHref: "/kemitraan/"
+    serviceLabel: "Lihat semua skema kemitraan"
+    button: "Hubungi via WhatsApp"
+---

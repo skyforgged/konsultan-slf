@@ -1,0 +1,125 @@
+---
+id: 201
+ulid: "01M5773Q50WSZDBG3ADQ2JPNJB"
+title: "Program Referral Kemitraan SLF/PBG"
+description: "Skema referral SLF/PBG untuk perorangan dan komunitas yang ingin memperkenalkan calon klien kepada tim kami tanpa menangani kajian teknis."
+pubDate: "2026-10-25T08:10:00Z"
+updatedDate: "2026-10-25T08:11:00Z"
+image: "/images/illustrations/contact-support.svg"
+socialImage: "/images/social/kemitraan-referral.webp"
+type: "page"
+draft: false
+navLabel: "Referral"
+canonical: "/kemitraan/referral/"
+slug: "kemitraan/referral"
+blocks:
+  - component: "page-header"
+    eyebrow: "Skema kemitraan"
+    heading: "Referral calon klien SLF/PBG"
+    intro: "Perkenalkan pemilik atau pengelola bangunan yang membutuhkan pendampingan SLF/PBG kepada tim kami. Konsultasi, penilaian kebutuhan, dan tindak lanjut teknis ditangani perusahaan."
+    image: "/images/illustrations/contact-support.svg"
+    imageAlt: "Ilustrasi dua gelembung percakapan yang menggambarkan perkenalan calon klien kepada tim pendampingan SLF dan PBG"
+  - component: "section"
+    id: "gambaran"
+    heading: "Apa itu skema referral?"
+    content:
+      - type: "p"
+        text: "Referral adalah skema paling ringan dalam program kemitraan. Mitra memperkenalkan calon klien yang membutuhkan pendampingan SLF/PBG, lalu perusahaan menindaklanjutinya: konsultasi awal, penilaian kebutuhan, dan pelaksanaan pendampingan apabila ada kesepakatan dengan klien."
+      - type: "p"
+        text: "Skema ini cocok bagi Anda yang ingin berkontribusi lewat jaringan tanpa membangun operasi layanan sendiri. Mitra referral tidak menggunakan merek perusahaan dan tidak mengaku sebagai cabang atau perwakilan, kecuali ada persetujuan tertulis dan perjanjian tersendiri."
+  - component: "checklist-card"
+    id: "cocok-untuk"
+    title: "Siapa yang cocok menjadi mitra referral?"
+    description: "Latar belakang teknik tidak diwajibkan untuk skema ini, selama mitra bekerja sesuai batasan dan etika informasi."
+    items:
+      - label: "Pengelola gedung, pengurus asosiasi, atau anggota komunitas bisnis yang sering mendengar kebutuhan legalitas bangunan."
+      - label: "Kontraktor, profesional properti, atau pihak lain yang bertemu pemilik bangunan dalam pekerjaan sehari-hari."
+      - label: "Perorangan dengan jaringan di kota tertentu yang ingin menghubungkan kenalan dengan layanan yang tepat."
+      - label: "Konsultan atau profesional yang belum siap menangani perizinan bangunan, tetapi ingin mengarahkan kliennya kepada tim yang kompeten."
+  - component: "comparison-table"
+    id: "ketentuan"
+    title: "Ketentuan skema referral"
+    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis, bukan otomatis berlaku karena Anda memilih skema ini."
+    headers:
+      - "Aspek"
+      - "Ketentuan pada skema referral"
+    rows:
+      - ["Peran utama", "Memperkenalkan calon klien kepada perusahaan"]
+      - ["Pengelolaan klien", "Perusahaan yang menindaklanjuti calon klien"]
+      - ["Pekerjaan teknis", "Tidak termasuk peran mitra referral"]
+      - ["Penggunaan merek", "Tidak otomatis; memerlukan persetujuan tertulis"]
+      - ["Eksklusivitas", "Umumnya tidak diperlukan"]
+      - ["Administrasi", "Minimal: pencatatan sumber referral dan kesepakatan kompensasi"]
+  - component: "checklist-card"
+    id: "yang-dapat-dilakukan"
+    title: "Yang dapat dilakukan mitra referral"
+    items:
+      - label: "Memperkenalkan calon klien kepada tim perusahaan dan menyampaikan kontak yang dapat dihubungi."
+      - label: "Menyampaikan informasi dasar yang sudah diketahui, seperti jenis bangunan dan kota, agar tindak lanjut lebih cepat."
+      - label: "Menjelaskan bahwa kebutuhan SLF/PBG perlu dikaji sesuai kondisi bangunan oleh tenaga yang kompeten."
+  - component: "section"
+    id: "batasan-mitra"
+    heading: "Yang tidak boleh dilakukan mitra referral"
+    content:
+      - type: "list"
+        ordered: false
+        items:
+          - "Menjanjikan SLF/PBG pasti terbit atau selesai dalam durasi tertentu."
+          - "Mengatasnamakan keputusan instansi yang berwenang."
+          - "Memberikan kesimpulan teknis tentang kondisi atau kelaikan bangunan."
+          - "Menawarkan harga, menerima pembayaran, atau membuat komitmen komersial atas nama perusahaan tanpa persetujuan tertulis."
+          - "Menggunakan nama, logo, atau identitas perusahaan tanpa persetujuan tertulis."
+  - component: "section"
+    id: "kompensasi"
+    heading: "Kompensasi dan pencatatan referral"
+    content:
+      - type: "p"
+        text: "Bentuk dan besar kompensasi tidak ditampilkan di halaman ini karena disepakati secara tertulis sebelum kerja sama berjalan. Perusahaan tidak menjanjikan penghasilan, jumlah klien, atau hasil tertentu kepada mitra referral."
+      - type: "p"
+        text: "Hal yang dibahas dalam kesepakatan tertulis:"
+      - type: "list"
+        ordered: false
+        items:
+          - "Dasar perhitungan kompensasi, misalnya pembayaran yang benar-benar diterima perusahaan atau dasar lain yang disepakati."
+          - "Kapan hak kompensasi timbul dan kapan dibayarkan."
+          - "Perlakuan bila proyek dibatalkan, pembayaran belum lunas, atau terjadi pengembalian dana."
+          - "Pencatatan sumber referral dan cara menyelesaikan klaim bila calon klien yang sama diperkenalkan oleh lebih dari satu pihak."
+  - component: "process-timeline"
+    id: "alur"
+    title: "Alur bergabung sebagai mitra referral"
+    steps:
+      - title: "Kirim minat"
+        description: "Sampaikan nama, kota, dan gambaran jaringan calon klien yang Anda miliki."
+      - title: "Peninjauan awal"
+        description: "Perusahaan menilai profil Anda dan kesesuaiannya dengan skema referral."
+      - title: "Kesepakatan tertulis"
+        description: "Peran, kompensasi, dan pencatatan sumber referral disepakati sebelum perkenalan calon klien dilakukan."
+      - title: "Perkenalan calon klien"
+        description: "Anda memperkenalkan calon klien, lalu perusahaan menindaklanjuti konsultasi dan penilaian kebutuhan."
+  - component: "note"
+    id: "catatan-referral"
+    variant: "warning"
+    title: "Batasan penting"
+    text: "Referral bukan jual beli izin dan bukan jalur pintas regulasi. Mitra tidak berwenang menjanjikan terbitnya SLF/PBG, durasi proses, atau hasil tertentu. Keputusan penerbitan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan seputar referral"
+    items:
+      - question: "Apakah saya perlu memiliki badan usaha untuk menjadi mitra referral?"
+        answer: "Tidak wajib untuk semua skema. Kebutuhan legal dan administratif ditinjau sesuai jenis kerja sama dan dijelaskan saat diskusi."
+      - question: "Apakah mitra referral boleh mengaku sebagai cabang atau perwakilan perusahaan?"
+        answer: "Tidak. Penggunaan nama, logo, dan status sebagai perwakilan atau cabang memerlukan persetujuan tertulis dan perjanjian tersendiri."
+      - question: "Apakah mitra referral ikut menangani survei atau kajian teknis?"
+        answer: "Tidak. Pekerjaan teknis ditangani tenaga kompeten sesuai ruang lingkup yang disepakati dengan klien."
+      - question: "Apakah ada jaminan jumlah klien atau penghasilan?"
+        answer: "Tidak ada. Perusahaan tidak menjanjikan penghasilan, jumlah klien, atau hasil tertentu kepada mitra."
+      - question: "Bagaimana jika saya ingin berperan lebih jauh daripada referral?"
+        answer: "Bentuk kerja sama dapat dibahas ulang, misalnya sebagai mitra kolaboratif atau perwakilan, melalui peninjauan dan kesepakatan baru."
+  - component: "cta"
+    id: "cta-referral"
+    heading: "Tertarik menjadi mitra referral?"
+    message: "Sampaikan nama, kota, dan jaringan calon klien yang Anda miliki. Kami akan meninjau kesesuaian awal sebelum membahas kesepakatan referral."
+    serviceHref: "/kemitraan/"
+    serviceLabel: "Lihat semua skema kemitraan"
+    button: "Hubungi via WhatsApp"
+---

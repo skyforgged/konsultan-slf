@@ -1,0 +1,620 @@
+Date: Sat, 24 Oct 2026 23:03:00 +0000
+Subject: [PATCH] Tambah 4 halaman turunan kemitraan: referral, mitra
+ kolaboratif, perwakilan pemasaran, cabang resmi
+
+- Konten di src/content/pages/kemitraan/*.md (slug kemitraan/<skema>), mengikuti
+  docs/rancangan-halaman-kemitraan-cabang-perwakilan.md bagian 16 dan hasil kemitraan.md
+- Route dinamis src/pages/kemitraan/[slug].astro (mengambil data dari collection pages)
+- npm run build lulus penuh
+---
+ src/content/pages/kemitraan/cabang-resmi.md   | 128 ++++++++++++++
+ .../pages/kemitraan/mitra-kolaboratif.md      | 123 +++++++++++++
+ .../pages/kemitraan/perwakilan-pemasaran.md   | 161 ++++++++++++++++++
+ src/content/pages/kemitraan/referral.md       | 125 ++++++++++++++
+ src/pages/kemitraan/[slug].astro              |  29 ++++
+ 5 files changed, 566 insertions(+)
+ create mode 100644 src/content/pages/kemitraan/cabang-resmi.md
+ create mode 100644 src/content/pages/kemitraan/mitra-kolaboratif.md
+ create mode 100644 src/content/pages/kemitraan/perwakilan-pemasaran.md
+ create mode 100644 src/content/pages/kemitraan/referral.md
+ create mode 100644 src/pages/kemitraan/[slug].astro
+
+diff --git a/src/content/pages/kemitraan/cabang-resmi.md b/src/content/pages/kemitraan/cabang-resmi.md
+new file mode 100644
+index 0000000..9d5c883
+--- /dev/null
++++ b/src/content/pages/kemitraan/cabang-resmi.md
+@@ -0,0 +1,128 @@
++---
++id: 204
++ulid: "01M5773Q50BWCD4D238RE44WYZ"
++title: "Cabang Resmi Layanan SLF/PBG"
++description: "Kemitraan cabang resmi SLF/PBG untuk tim lokal dengan kapasitas bisnis dan teknis, melalui seleksi, perjanjian, SOP, dan pengawasan mutu."
++pubDate: "2026-10-25T08:40:00Z"
++updatedDate: "2026-10-25T08:41:00Z"
++image: "/images/illustrations/service-directory.svg"
++socialImage: "/images/social/kemitraan-cabang-resmi.webp"
++type: "page"
++draft: false
++navLabel: "Cabang Resmi"
++canonical: "/kemitraan/cabang-resmi/"
++slug: "kemitraan/cabang-resmi"
++blocks:
++  - component: "page-header"
++    eyebrow: "Skema kemitraan"
++    heading: "Cabang resmi layanan SLF/PBG"
++    intro: "Skema dengan tanggung jawab dan tata kelola paling lengkap, untuk tim lokal yang memiliki kapasitas operasional, sumber daya, dan komitmen mutu. Status cabang ditetapkan setelah seleksi dan perjanjian tertulis."
++    image: "/images/illustrations/service-directory.svg"
++    imageAlt: "Ilustrasi katalog layanan SLF dan PBG yang menggambarkan layanan seragam di bawah tata kelola perusahaan"
++  - component: "section"
++    id: "gambaran"
++    heading: "Apa itu cabang resmi?"
++    content:
++      - type: "p"
++        text: "Cabang resmi adalah skema bagi mitra yang menjalankan operasi layanan di wilayah tertentu sesuai tata kelola perusahaan: standar mutu, alur kerja, pembagian kewenangan, dan pelaporan."
++      - type: "p"
++        text: "Karena tanggung jawab dan risikonya lebih besar, skema ini tidak dibuka otomatis. Calon mitra dievaluasi lebih ketat, dan sebutan cabang resmi baru digunakan setelah perjanjian ditandatangani serta aspek hukum dan administratifnya ditinjau."
++      - type: "p"
++        text: "Sebutan cabang tidak dipakai untuk kantor atau badan usaha lokal yang belum benar-benar terbentuk dan disetujui."
++  - component: "checklist-card"
++    id: "kriteria"
++    title: "Kriteria evaluasi calon cabang"
++    description: "Kriteria berikut dinilai bersama dan tidak dianggap terpenuhi hanya karena pendaftaran telah dikirim."
++    items:
++      - label: "Kapasitas operasional dan sumber daya yang memadai untuk menjalankan layanan di wilayah yang diajukan."
++      - label: "Kebutuhan pasar dan potensi peminat SLF/PBG di wilayah tersebut."
++      - label: "Akses ke tenaga teknis yang kompeten dan berwenang, karena pekerjaan teknis hanya dilakukan melalui tenaga yang memenuhi syarat."
++      - label: "Struktur tata kelola dan legalitas usaha yang ditinjau sesuai kebutuhan skema."
++      - label: "Komitmen pada SOP, pengawasan mutu, dan etika penyampaian informasi."
++      - label: "Kesediaan menandatangani perjanjian tertulis sebelum aktivitas yang membutuhkan otorisasi dimulai."
++  - component: "comparison-table"
++    id: "ketentuan"
++    title: "Ketentuan skema cabang resmi"
++    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam perjanjian tertulis."
++    headers:
++      - "Aspek"
++      - "Ketentuan pada skema cabang resmi"
++    rows:
++      - ["Peran utama", "Menjalankan operasi wilayah sesuai tata kelola perusahaan"]
++      - ["Pengelolaan klien", "Mengikuti SOP dan pembagian kewenangan"]
++      - ["Pekerjaan teknis", "Hanya melalui tenaga dan kewenangan yang memenuhi syarat"]
++      - ["Penggunaan merek", "Memerlukan perjanjian dan otorisasi"]
++      - ["Eksklusivitas", "Dapat dipertimbangkan berdasarkan evaluasi"]
++      - ["Administrasi", "Tata kelola paling lengkap dibanding skema lain"]
++  - component: "section"
++    id: "tata-kelola"
++    heading: "Tata kelola dan pengawasan mutu"
++    content:
++      - type: "p"
++        text: "Cabang hanya berjalan setelah hal berikut ditetapkan bersama:"
++      - type: "list"
++        ordered: false
++        items:
++          - "Perjanjian tertulis yang mengatur wilayah, penggunaan merek, kompensasi, dan tanggung jawab."
++          - "SOP komunikasi, pelaporan lead, dan eskalasi pertanyaan teknis."
++          - "Mekanisme pengawasan mutu dan peninjauan berkala."
++          - "Pembagian biaya survei, perjalanan, tenaga ahli, dan biaya operasional lain."
++          - "Aturan pencatatan sumber lead dan penyelesaian klaim bila calon klien yang sama diperkenalkan lebih dari satu pihak."
++          - "Batas kewenangan dalam menyampaikan penawaran, menyepakati harga, menerima pembayaran, atau membuat komitmen atas nama perusahaan."
++  - component: "section"
++    id: "wilayah"
++    heading: "Wilayah kerja dan eksklusivitas"
++    content:
++      - type: "p"
++        text: "Penetapan wilayah kerja didasarkan pada evaluasi kebutuhan pasar, kapasitas mitra, dan perjanjian tertulis, bukan urutan pendaftaran. Eksklusivitas dapat dipertimbangkan berdasarkan evaluasi, tetapi tidak diberikan otomatis dan bergantung pada kesepakatan."
++      - type: "p"
++        text: "Wilayah prioritas bersifat umum, yaitu kota dengan peminat SLF/PBG. Pendaftaran terbuka dari seluruh wilayah Indonesia."
++  - component: "section"
++    id: "kompensasi"
++    heading: "Kompensasi dan biaya"
++    content:
++      - type: "p"
++        text: "Skema kompensasi, pembagian biaya, dan waktu pembayaran disepakati secara tertulis dan tidak ditampilkan di halaman publik. Perusahaan tidak menjanjikan omzet, keuntungan, atau jumlah proyek tertentu kepada calon cabang."
++  - component: "process-timeline"
++    id: "alur"
++    title: "Alur seleksi calon cabang resmi"
++    steps:
++      - title: "Kirim minat"
++        description: "Sampaikan profil usaha atau tim, kota yang diajukan, dan gambaran kesiapan operasional."
++      - title: "Peninjauan awal"
++        description: "Perusahaan menilai lokasi, kebutuhan pasar, dan kapasitas awal kandidat."
++      - title: "Diskusi dan evaluasi kapasitas"
++        description: "Dibahas kebutuhan, ekspektasi, sumber daya, dan akses ke tenaga teknis yang kompeten."
++      - title: "Verifikasi legal dan kompetensi"
++        description: "Dokumen legalitas dan bukti kompetensi diverifikasi, serta aspek hukum dan administratif status cabang ditinjau."
++      - title: "Perjanjian"
++        description: "Wilayah, merek, kompensasi, SOP, dan pengawasan mutu disepakati secara tertulis sebelum status cabang digunakan."
++      - title: "Onboarding dan peninjauan berkala"
++        description: "Mitra menerima pedoman kerja dan jalur eskalasi teknis, lalu statusnya ditinjau berkala sesuai mekanisme yang disepakati."
++  - component: "note"
++    id: "catatan-cabang"
++    variant: "warning"
++    title: "Batasan penting"
++    text: "Status cabang resmi tidak berlaku otomatis karena Anda mendaftar atau karena suatu wilayah diminati; status baru berlaku setelah perjanjian tertulis ditandatangani. Kemitraan ini bukan jaminan terbitnya SLF/PBG, bukan jalur pintas regulasi, dan tidak memberi wewenang untuk menjanjikan hasil atau durasi proses. Keputusan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
++  - component: "faq"
++    id: "faq"
++    heading: "Pertanyaan seputar cabang resmi"
++    items:
++      - question: "Apakah saya harus memiliki badan usaha untuk menjadi cabang resmi?"
++        answer: "Kebutuhan legalitas dan struktur usaha ditinjau saat seleksi dan dijelaskan dalam diskusi skema. Status cabang tidak diberikan sebelum aspek hukum dan administratifnya ditinjau."
++      - question: "Apakah cabang resmi mendapat wilayah eksklusif?"
++        answer: "Tidak otomatis. Eksklusivitas dapat dipertimbangkan berdasarkan evaluasi dan hanya berlaku bila ditetapkan dalam perjanjian tertulis."
++      - question: "Apa bedanya cabang resmi dengan perwakilan pemasaran?"
++        answer: "Perwakilan pemasaran berfokus pada pengembangan pasar dan koordinasi lokal serta tidak menangani kajian teknis sendiri. Cabang resmi menjalankan operasi wilayah dengan tata kelola, SOP, dan pengawasan mutu yang lebih ketat, termasuk melibatkan tenaga teknis yang memenuhi syarat."
++      - question: "Berapa lama proses menjadi cabang resmi?"
++        answer: "Bergantung pada kelengkapan informasi, hasil evaluasi kapasitas, verifikasi, dan penyusunan perjanjian. Perkiraan waktu dibahas setelah peninjauan awal."
++      - question: "Apakah cabang resmi boleh menangani kajian teknis?"
++        answer: "Hanya melalui tenaga teknis yang kompeten dan berwenang sesuai ketentuan yang berlaku serta ruang lingkup yang disepakati."
++  - component: "cta"
++    id: "cta-cabang"
++    heading: "Tertarik menjajaki cabang resmi?"
++    message: "Sampaikan profil usaha atau tim, kota yang diajukan, dan kesiapan operasional Anda. Kami akan meninjau kesesuaian awal sebelum membahas evaluasi lebih lanjut."
++    serviceHref: "/kemitraan/"
++    serviceLabel: "Lihat semua skema kemitraan"
++    button: "Hubungi via WhatsApp"
++---
+diff --git a/src/content/pages/kemitraan/mitra-kolaboratif.md b/src/content/pages/kemitraan/mitra-kolaboratif.md
+new file mode 100644
+index 0000000..4b16e67
+--- /dev/null
++++ b/src/content/pages/kemitraan/mitra-kolaboratif.md
+@@ -0,0 +1,123 @@
++---
++id: 202
++ulid: "01M5773Q50PFBEKZ9DZ01BDC6F"
++title: "Mitra Kolaboratif Pendampingan SLF/PBG"
++description: "Kemitraan kolaboratif SLF/PBG untuk konsultan, arsitek, dan engineer lokal yang sudah punya klien. Peran dan ruang lingkup disepakati per proyek."
++pubDate: "2026-10-25T08:20:00Z"
++updatedDate: "2026-10-25T08:21:00Z"
++image: "/images/illustrations/building-compliance.svg"
++socialImage: "/images/social/kemitraan-mitra-kolaboratif.webp"
++type: "page"
++draft: false
++navLabel: "Mitra Kolaboratif"
++canonical: "/kemitraan/mitra-kolaboratif/"
++slug: "kemitraan/mitra-kolaboratif"
++blocks:
++  - component: "page-header"
++    eyebrow: "Skema kemitraan"
++    heading: "Mitra kolaboratif pendampingan SLF/PBG"
++    intro: "Untuk profesional lokal yang sudah memiliki klien atau proyek bangunan dan membutuhkan dukungan dokumen, koordinasi, atau pendampingan proses SLF/PBG. Pembagian peran disepakati sejak awal."
++    image: "/images/illustrations/building-compliance.svg"
++    imageAlt: "Ilustrasi bangunan dan dokumen bertanda centang yang menggambarkan kerja sama menyiapkan kelengkapan SLF dan PBG"
++  - component: "section"
++    id: "gambaran"
++    heading: "Apa itu mitra kolaboratif?"
++    content:
++      - type: "p"
++        text: "Dalam skema ini, mitra membawa jaringan, klien, atau proyek lokal, sedangkan perusahaan mendukung aspek teknis, dokumen, atau pendampingan proses sesuai kesepakatan. Para pihak mengerjakan bagian yang sesuai dengan kompetensi masing-masing."
++      - type: "p"
++        text: "Skema ini berbeda dengan referral karena kedua pihak sama-sama terlibat dalam pelaksanaan. Skema ini juga berbeda dengan perwakilan atau cabang karena tidak otomatis memberi penetapan wilayah, dan penggunaan merek hanya terbatas sesuai izin tertulis."
++  - component: "checklist-card"
++    id: "cocok-untuk"
++    title: "Siapa yang cocok menjadi mitra kolaboratif?"
++    description: "Kompetensi yang sesuai diperlukan untuk pekerjaan teknis. Badan usaha tidak wajib untuk semua skema; kebutuhan legal ditinjau sesuai jenis kerja sama."
++    items:
++      - label: "Konsultan lokal yang sudah memiliki klien tetapi belum memiliki kapasitas teknis penuh untuk perizinan bangunan."
++      - label: "Arsitek, engineer, atau pengawas proyek yang sering bertemu kebutuhan SLF/PBG pada proyeknya."
++      - label: "Badan usaha jasa konstruksi atau konsultan perencana yang ingin bekerja sama pada proyek tertentu."
++      - label: "Profesional yang bersedia menjelaskan pembagian peran, kompetensi, dan tanggung jawabnya secara terbuka."
++  - component: "comparison-table"
++    id: "ketentuan"
++    title: "Ketentuan skema mitra kolaboratif"
++    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis."
++    headers:
++      - "Aspek"
++      - "Ketentuan pada skema mitra kolaboratif"
++    rows:
++      - ["Peran utama", "Mendukung proyek sesuai kesepakatan"]
++      - ["Pengelolaan klien", "Disepakati per proyek"]
++      - ["Pekerjaan teknis", "Sesuai kompetensi dan ruang lingkup masing-masing pihak"]
++      - ["Penggunaan merek", "Terbatas, sesuai izin tertulis"]
++      - ["Eksklusivitas", "Ditentukan per kasus"]
++      - ["Administrasi", "Sesuai kebutuhan proyek"]
++  - component: "section"
++    id: "pembagian-peran"
++    heading: "Yang perlu disepakati sebelum proyek berjalan"
++    content:
++      - type: "p"
++        text: "Ruang lingkup setiap proyek berbeda, sehingga kolaborasi dituangkan dalam kesepakatan tertulis, bukan paket baku. Hal berikut sebaiknya jelas sebelum pekerjaan dimulai:"
++      - type: "list"
++        ordered: false
++        items:
++          - "Ruang lingkup pekerjaan masing-masing pihak, termasuk bagian yang menjadi tanggung jawab tenaga ahli."
++          - "Pihak yang berkomunikasi dengan klien dan pihak yang berkoordinasi dengan instansi terkait."
++          - "Penanggung jawab dokumen dan tanda tangan, sesuai kompetensi dan kewenangan yang berlaku."
++          - "Dasar kompensasi atau pembagian hasil, waktu pembayaran, dan perlakuan bila proyek batal atau pembayaran belum lunas."
++          - "Pihak yang menanggung biaya survei, perjalanan, tenaga ahli, dan biaya operasional lain."
++          - "Batas penggunaan nama dan merek perusahaan."
++  - component: "section"
++    id: "dukungan"
++    heading: "Dukungan dari perusahaan"
++    content:
++      - type: "p"
++        text: "Dukungan yang dapat dibahas, sesuai kebutuhan proyek:"
++      - type: "list"
++        ordered: false
++        items:
++          - "Pendampingan penyusunan kebutuhan dokumen."
++          - "Koordinasi untuk kasus yang memerlukan kajian teknis."
++          - "Jalur eskalasi pertanyaan teknis kepada tim yang kompeten."
++          - "Pedoman komunikasi dan etika penyampaian informasi kepada klien."
++      - type: "p"
++        text: "Dukungan disesuaikan dengan kesepakatan dan kesiapan operasional, sehingga tidak semuanya tersedia untuk setiap proyek sejak awal."
++  - component: "process-timeline"
++    id: "alur"
++    title: "Alur bergabung sebagai mitra kolaboratif"
++    steps:
++      - title: "Kirim minat dan gambaran proyek"
++        description: "Sampaikan profil Anda, kota, serta jenis proyek atau klien yang ingin dikerjakan bersama."
++      - title: "Peninjauan awal"
++        description: "Perusahaan menilai kesesuaian kompetensi, kebutuhan proyek, dan kapasitas masing-masing pihak."
++      - title: "Diskusi pembagian peran"
++        description: "Dibahas ruang lingkup, tanggung jawab, kompensasi, dan batas penggunaan merek."
++      - title: "Verifikasi dan kesepakatan"
++        description: "Dokumen legalitas atau bukti kompetensi diverifikasi bila relevan, lalu kesepakatan ditandatangani sebelum pekerjaan dimulai."
++      - title: "Pelaksanaan dan peninjauan"
++        description: "Pekerjaan berjalan sesuai kesepakatan, dan status kerja sama ditinjau secara berkala."
++  - component: "note"
++    id: "catatan-kolaboratif"
++    variant: "warning"
++    title: "Batasan penting"
++    text: "Kolaborasi tidak mengalihkan tanggung jawab teknis tanpa dasar kompetensi. Kajian, perhitungan, dan tanda tangan dokumen teknis hanya dilakukan pihak yang kompeten dan berwenang sesuai ketentuan yang berlaku. Kolaborasi bukan jaminan terbitnya SLF/PBG dan bukan jalur pintas regulasi; keputusan penerbitan tetap berada pada pihak berwenang."
++  - component: "faq"
++    id: "faq"
++    heading: "Pertanyaan seputar mitra kolaboratif"
++    items:
++      - question: "Apakah skema ini hanya untuk mitra yang sudah punya klien?"
++        answer: "Skema ini ditujukan bagi mitra yang sudah memiliki klien atau kebutuhan proyek. Bila Anda baru memiliki jaringan tanpa proyek berjalan, skema referral atau perwakilan mungkin lebih sesuai."
++      - question: "Siapa yang bertanggung jawab atas pekerjaan teknis?"
++        answer: "Pihak yang kompeten dan berwenang sesuai ruang lingkup yang disepakati secara tertulis. Tanggung jawab teknis tidak dialihkan hanya karena adanya kerja sama."
++      - question: "Bagaimana pembagian kompensasi?"
++        answer: "Disepakati secara tertulis per proyek atau melalui perjanjian kerja sama. Besarannya tidak ditampilkan di halaman publik, dan tidak ada jaminan penghasilan tertentu."
++      - question: "Apakah mitra kolaboratif boleh memakai nama perusahaan?"
++        answer: "Hanya terbatas sesuai izin tertulis dan pedoman penggunaan merek yang disepakati."
++      - question: "Apakah ada wilayah eksklusif?"
++        answer: "Tidak otomatis. Eksklusivitas, bila dibahas, ditentukan per kasus melalui kesepakatan tertulis."
++  - component: "cta"
++    id: "cta-kolaboratif"
++    heading: "Punya proyek yang ingin dikerjakan bersama?"
++    message: "Ceritakan profil Anda, kota, dan jenis proyek atau klien yang ingin dikerjakan bersama. Kami akan meninjau kesesuaian awal sebelum membahas pembagian peran."
++    serviceHref: "/kemitraan/"
++    serviceLabel: "Lihat semua skema kemitraan"
++    button: "Hubungi via WhatsApp"
++---
+diff --git a/src/content/pages/kemitraan/perwakilan-pemasaran.md b/src/content/pages/kemitraan/perwakilan-pemasaran.md
+new file mode 100644
+index 0000000..b644aa6
+--- /dev/null
++++ b/src/content/pages/kemitraan/perwakilan-pemasaran.md
+@@ -0,0 +1,161 @@
++---
++id: 203
++ulid: "01M5773Q50MJMDQY4XKBRHCED2"
++title: "Perwakilan Pemasaran Layanan SLF/PBG"
++description: "Jadi perwakilan pemasaran layanan SLF/PBG di kota Anda: edukasi awal, penjaringan calon klien, dan koordinasi lokal tanpa kajian teknis sendiri."
++pubDate: "2026-10-25T08:30:00Z"
++updatedDate: "2026-10-25T08:31:00Z"
++image: "/images/illustrations/slf-bangunan-eksisting.svg"
++socialImage: "/images/social/kemitraan-perwakilan-pemasaran.webp"
++type: "page"
++draft: false
++navLabel: "Perwakilan Pemasaran"
++canonical: "/kemitraan/perwakilan-pemasaran/"
++slug: "kemitraan/perwakilan-pemasaran"
++blocks:
++  - component: "page-header"
++    eyebrow: "Skema kemitraan"
++    heading: "Perwakilan pemasaran layanan SLF/PBG di daerah"
++    intro: "Untuk profesional dengan jaringan lokal yang ingin membantu pemilik bangunan memahami kebutuhan SLF/PBG dan menghubungkannya dengan tim pendampingan kami. Kajian teknis tetap ditangani tenaga yang kompeten."
++    image: "/images/illustrations/slf-bangunan-eksisting.svg"
++    imageAlt: "Ilustrasi bangunan, dokumen, dan garis waktu yang menggambarkan perwakilan daerah mendampingi calon klien dari tahap awal"
++  - component: "section"
++    id: "gambaran"
++    heading: "Apa itu perwakilan pemasaran?"
++    content:
++      - type: "p"
++        text: "Perwakilan pemasaran mengembangkan pasar dan membantu koordinasi lokal secara lebih terstruktur daripada referral: mulai dari edukasi awal, pengumpulan informasi dasar bangunan, hingga menjadi penghubung antara calon klien dan tim perusahaan."
++      - type: "p"
++        text: "Pada tabel skema di halaman Kemitraan, skema ini disebut perwakilan daerah. Keduanya merujuk pada skema yang sama."
++      - type: "p"
++        text: "Perwakilan pemasaran tidak otomatis menjadi cabang resmi. Perwakilan juga tidak berwenang melakukan kajian teknis, menandatangani dokumen atas nama perusahaan, membuat komitmen komersial, atau menjanjikan hasil proses SLF/PBG."
++  - component: "checklist-card"
++    id: "cocok-untuk"
++    title: "Profil perwakilan yang dicari"
++    description: "Latar belakang teknik tidak selalu diwajibkan, tetapi perwakilan harus bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
++    items:
++      - label: "Berdomisili atau memiliki jaringan kuat di kota atau wilayah yang diajukan."
++      - label: "Memahami dunia properti, konstruksi, perizinan, atau layanan profesional."
++      - label: "Mampu berkomunikasi dengan pemilik bangunan, pengelola gedung, kontraktor, atau konsultan lokal."
++      - label: "Setuju bekerja sesuai etika dan tidak menjanjikan SLF/PBG pasti terbit."
++      - label: "Bersedia melalui verifikasi dan kesepakatan tertulis sebelum menggunakan merek perusahaan."
++  - component: "feature-card-grid"
++    id: "peran"
++    title: "Yang dapat dilakukan perwakilan pemasaran"
++    columns: 2
++    items:
++      - title: "Edukasi dan penjaringan"
++        points:
++          - "Memberikan edukasi awal tentang SLF/PBG."
++          - "Mengumpulkan informasi dasar bangunan."
++          - "Mempromosikan layanan perusahaan sesuai pedoman merek."
++      - title: "Koordinasi lokal"
++        points:
++          - "Membantu calon klien menyiapkan dokumen awal."
++          - "Menjadi penghubung komunikasi lokal."
++          - "Mendampingi koordinasi survei atau pertemuan awal."
++  - component: "section"
++    id: "batasan-peran"
++    heading: "Yang tidak boleh diklaim atau dilakukan perwakilan"
++    content:
++      - type: "list"
++        ordered: false
++        items:
++          - "Menjamin SLF/PBG pasti terbit atau selesai dalam durasi tertentu."
++          - "Mengatasnamakan keputusan instansi yang berwenang."
++          - "Memberikan kesimpulan teknis tanpa data dan kompetensi yang sesuai."
++          - "Menandatangani dokumen atau membuat komitmen komersial atas nama perusahaan."
++          - "Menggunakan merek perusahaan tanpa persetujuan tertulis."
++  - component: "comparison-table"
++    id: "ketentuan"
++    title: "Ketentuan skema perwakilan pemasaran"
++    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis."
++    headers:
++      - "Aspek"
++      - "Ketentuan pada skema perwakilan pemasaran"
++    rows:
++      - ["Peran utama", "Mengembangkan pasar dan koordinasi lokal"]
++      - ["Pengelolaan klien", "Terkoordinasi dengan perusahaan"]
++      - ["Pekerjaan teknis", "Tidak termasuk peran perwakilan; pertanyaan teknis dieskalasi kepada tim yang kompeten"]
++      - ["Penggunaan merek", "Memerlukan persetujuan tertulis"]
++      - ["Eksklusivitas", "Dapat dipertimbangkan, tidak diberikan otomatis"]
++      - ["Administrasi", "Pelaporan terstruktur sesuai pedoman yang disepakati"]
++  - component: "section"
++    id: "wilayah"
++    heading: "Wilayah kerja dan eksklusivitas"
++    content:
++      - type: "p"
++        text: "Penetapan wilayah kerja didasarkan pada evaluasi kebutuhan pasar, kapasitas mitra, dan kesepakatan tertulis, bukan urutan pendaftaran. Eksklusivitas dapat dipertimbangkan, tetapi tidak diberikan otomatis dan bergantung pada kesepakatan."
++      - type: "p"
++        text: "Wilayah prioritas bersifat umum, yaitu kota dengan peminat SLF/PBG. Pendaftaran terbuka dari seluruh wilayah Indonesia."
++  - component: "section"
++    id: "kompensasi"
++    heading: "Kompensasi dan pengelolaan lead"
++    content:
++      - type: "p"
++        text: "Besaran kompensasi disepakati secara tertulis dan tidak ditampilkan di halaman publik. Perusahaan tidak menjanjikan penghasilan, jumlah proyek, atau keberhasilan tertentu."
++      - type: "p"
++        text: "Hal yang ditetapkan sebelum kerja sama berjalan:"
++      - type: "list"
++        ordered: false
++        items:
++          - "Dasar perhitungan kompensasi dan kapan hak kompensasi timbul."
++          - "Cara mencatat sumber lead dan menyelesaikan klaim bila calon klien yang sama diperkenalkan oleh lebih dari satu pihak."
++          - "Batas kewenangan perwakilan dalam menyampaikan penawaran, menyepakati harga, atau menerima pembayaran."
++  - component: "section"
++    id: "dukungan"
++    heading: "Dukungan dari perusahaan"
++    content:
++      - type: "list"
++        ordered: false
++        items:
++          - "Panduan layanan SLF/PBG dan penjelasan awal untuk calon klien."
++          - "Pendampingan penyusunan kebutuhan dokumen."
++          - "Jalur eskalasi pertanyaan teknis kepada tim yang kompeten."
++          - "Pedoman komunikasi, etika promosi, dan penggunaan merek."
++          - "Pelaporan lead dan status proyek yang terstruktur."
++      - type: "p"
++        text: "Dukungan disesuaikan dengan kesiapan operasional dan tidak semuanya tersedia sejak awal. Dukungan lain, seperti materi branding atau pelatihan, hanya berlaku bila disebutkan dalam kesepakatan tertulis."
++  - component: "process-timeline"
++    id: "alur"
++    title: "Alur bergabung sebagai perwakilan pemasaran"
++    steps:
++      - title: "Kirim minat"
++        description: "Sampaikan profil, kota yang diajukan, dan gambaran jaringan calon klien yang Anda jangkau."
++      - title: "Peninjauan awal"
++        description: "Perusahaan menilai kesesuaian lokasi, kapasitas, dan profil kandidat."
++      - title: "Diskusi dan verifikasi"
++        description: "Dibahas peran, wilayah, dan ekspektasi, disertai verifikasi dokumen bila relevan."
++      - title: "Perjanjian tertulis"
++        description: "Ruang lingkup, wilayah, kompensasi, dan batas penggunaan merek disepakati sebelum aktivitas yang membutuhkan otorisasi dimulai."
++      - title: "Onboarding"
++        description: "Perwakilan menerima pedoman komunikasi dan memahami jalur eskalasi pertanyaan teknis."
++      - title: "Berjalan dan ditinjau berkala"
++        description: "Status perwakilan dicatat dan ditinjau berkala sesuai mekanisme yang disepakati."
++  - component: "note"
++    id: "catatan-perwakilan"
++    variant: "warning"
++    title: "Batasan penting"
++    text: "Perwakilan pemasaran bukan jaminan penerbitan SLF/PBG, bukan jalur pintas regulasi, dan tidak memberi wewenang untuk menjanjikan hasil atau durasi proses. Keputusan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
++  - component: "faq"
++    id: "faq"
++    heading: "Pertanyaan seputar perwakilan pemasaran"
++    items:
++      - question: "Apakah perwakilan harus berlatar belakang teknik?"
++        answer: "Tidak selalu. Perwakilan pemasaran dapat berasal dari latar belakang bisnis atau properti, selama bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
++      - question: "Apakah perwakilan boleh menangani kajian teknis sendiri?"
++        answer: "Tidak. Pekerjaan teknis hanya dilakukan oleh tenaga kompeten sesuai ruang lingkup yang disepakati."
++      - question: "Apakah perwakilan otomatis menjadi cabang resmi?"
++        answer: "Tidak. Cabang resmi adalah skema terpisah dengan evaluasi, perjanjian, dan pengawasan mutu yang lebih ketat."
++      - question: "Apakah perwakilan boleh menggunakan nama perusahaan?"
++        answer: "Hanya dengan persetujuan tertulis dan sesuai pedoman penggunaan merek yang disepakati."
++      - question: "Bagaimana jika di kota saya belum ada klien?"
++        answer: "Pendaftaran dibuka dari seluruh wilayah. Membangun jaringan dan menjangkau calon klien adalah bagian dari peran perwakilan."
++  - component: "cta"
++    id: "cta-perwakilan"
++    heading: "Tertarik menjadi perwakilan di kota Anda?"
++    message: "Sampaikan profil, kota yang Anda ajukan, dan jaringan calon klien yang Anda jangkau. Kami akan meninjau kesesuaian awal sebelum membahas skema kerja sama."
++    serviceHref: "/kemitraan/"
++    serviceLabel: "Lihat semua skema kemitraan"
++    button: "Hubungi via WhatsApp"
++---
+diff --git a/src/content/pages/kemitraan/referral.md b/src/content/pages/kemitraan/referral.md
+new file mode 100644
+index 0000000..a25f01b
+--- /dev/null
++++ b/src/content/pages/kemitraan/referral.md
+@@ -0,0 +1,125 @@
++---
++id: 201
++ulid: "01M5773Q50WSZDBG3ADQ2JPNJB"
++title: "Program Referral Kemitraan SLF/PBG"
++description: "Skema referral SLF/PBG untuk perorangan dan komunitas yang ingin memperkenalkan calon klien kepada tim kami tanpa menangani kajian teknis."
++pubDate: "2026-10-25T08:10:00Z"
++updatedDate: "2026-10-25T08:11:00Z"
++image: "/images/illustrations/contact-support.svg"
++socialImage: "/images/social/kemitraan-referral.webp"
++type: "page"
++draft: false
++navLabel: "Referral"
++canonical: "/kemitraan/referral/"
++slug: "kemitraan/referral"
++blocks:
++  - component: "page-header"
++    eyebrow: "Skema kemitraan"
++    heading: "Referral calon klien SLF/PBG"
++    intro: "Perkenalkan pemilik atau pengelola bangunan yang membutuhkan pendampingan SLF/PBG kepada tim kami. Konsultasi, penilaian kebutuhan, dan tindak lanjut teknis ditangani perusahaan."
++    image: "/images/illustrations/contact-support.svg"
++    imageAlt: "Ilustrasi dua gelembung percakapan yang menggambarkan perkenalan calon klien kepada tim pendampingan SLF dan PBG"
++  - component: "section"
++    id: "gambaran"
++    heading: "Apa itu skema referral?"
++    content:
++      - type: "p"
++        text: "Referral adalah skema paling ringan dalam program kemitraan. Mitra memperkenalkan calon klien yang membutuhkan pendampingan SLF/PBG, lalu perusahaan menindaklanjutinya: konsultasi awal, penilaian kebutuhan, dan pelaksanaan pendampingan apabila ada kesepakatan dengan klien."
++      - type: "p"
++        text: "Skema ini cocok bagi Anda yang ingin berkontribusi lewat jaringan tanpa membangun operasi layanan sendiri. Mitra referral tidak menggunakan merek perusahaan dan tidak mengaku sebagai cabang atau perwakilan, kecuali ada persetujuan tertulis dan perjanjian tersendiri."
++  - component: "checklist-card"
++    id: "cocok-untuk"
++    title: "Siapa yang cocok menjadi mitra referral?"
++    description: "Latar belakang teknik tidak diwajibkan untuk skema ini, selama mitra bekerja sesuai batasan dan etika informasi."
++    items:
++      - label: "Pengelola gedung, pengurus asosiasi, atau anggota komunitas bisnis yang sering mendengar kebutuhan legalitas bangunan."
++      - label: "Kontraktor, profesional properti, atau pihak lain yang bertemu pemilik bangunan dalam pekerjaan sehari-hari."
++      - label: "Perorangan dengan jaringan di kota tertentu yang ingin menghubungkan kenalan dengan layanan yang tepat."
++      - label: "Konsultan atau profesional yang belum siap menangani perizinan bangunan, tetapi ingin mengarahkan kliennya kepada tim yang kompeten."
++  - component: "comparison-table"
++    id: "ketentuan"
++    title: "Ketentuan skema referral"
++    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis, bukan otomatis berlaku karena Anda memilih skema ini."
++    headers:
++      - "Aspek"
++      - "Ketentuan pada skema referral"
++    rows:
++      - ["Peran utama", "Memperkenalkan calon klien kepada perusahaan"]
++      - ["Pengelolaan klien", "Perusahaan yang menindaklanjuti calon klien"]
++      - ["Pekerjaan teknis", "Tidak termasuk peran mitra referral"]
++      - ["Penggunaan merek", "Tidak otomatis; memerlukan persetujuan tertulis"]
++      - ["Eksklusivitas", "Umumnya tidak diperlukan"]
++      - ["Administrasi", "Minimal: pencatatan sumber referral dan kesepakatan kompensasi"]
++  - component: "checklist-card"
++    id: "yang-dapat-dilakukan"
++    title: "Yang dapat dilakukan mitra referral"
++    items:
++      - label: "Memperkenalkan calon klien kepada tim perusahaan dan menyampaikan kontak yang dapat dihubungi."
++      - label: "Menyampaikan informasi dasar yang sudah diketahui, seperti jenis bangunan dan kota, agar tindak lanjut lebih cepat."
++      - label: "Menjelaskan bahwa kebutuhan SLF/PBG perlu dikaji sesuai kondisi bangunan oleh tenaga yang kompeten."
++  - component: "section"
++    id: "batasan-mitra"
++    heading: "Yang tidak boleh dilakukan mitra referral"
++    content:
++      - type: "list"
++        ordered: false
++        items:
++          - "Menjanjikan SLF/PBG pasti terbit atau selesai dalam durasi tertentu."
++          - "Mengatasnamakan keputusan instansi yang berwenang."
++          - "Memberikan kesimpulan teknis tentang kondisi atau kelaikan bangunan."
++          - "Menawarkan harga, menerima pembayaran, atau membuat komitmen komersial atas nama perusahaan tanpa persetujuan tertulis."
++          - "Menggunakan nama, logo, atau identitas perusahaan tanpa persetujuan tertulis."
++  - component: "section"
++    id: "kompensasi"
++    heading: "Kompensasi dan pencatatan referral"
++    content:
++      - type: "p"
++        text: "Bentuk dan besar kompensasi tidak ditampilkan di halaman ini karena disepakati secara tertulis sebelum kerja sama berjalan. Perusahaan tidak menjanjikan penghasilan, jumlah klien, atau hasil tertentu kepada mitra referral."
++      - type: "p"
++        text: "Hal yang dibahas dalam kesepakatan tertulis:"
++      - type: "list"
++        ordered: false
++        items:
++          - "Dasar perhitungan kompensasi, misalnya pembayaran yang benar-benar diterima perusahaan atau dasar lain yang disepakati."
++          - "Kapan hak kompensasi timbul dan kapan dibayarkan."
++          - "Perlakuan bila proyek dibatalkan, pembayaran belum lunas, atau terjadi pengembalian dana."
++          - "Pencatatan sumber referral dan cara menyelesaikan klaim bila calon klien yang sama diperkenalkan oleh lebih dari satu pihak."
++  - component: "process-timeline"
++    id: "alur"
++    title: "Alur bergabung sebagai mitra referral"
++    steps:
++      - title: "Kirim minat"
++        description: "Sampaikan nama, kota, dan gambaran jaringan calon klien yang Anda miliki."
++      - title: "Peninjauan awal"
++        description: "Perusahaan menilai profil Anda dan kesesuaiannya dengan skema referral."
++      - title: "Kesepakatan tertulis"
++        description: "Peran, kompensasi, dan pencatatan sumber referral disepakati sebelum perkenalan calon klien dilakukan."
++      - title: "Perkenalan calon klien"
++        description: "Anda memperkenalkan calon klien, lalu perusahaan menindaklanjuti konsultasi dan penilaian kebutuhan."
++  - component: "note"
++    id: "catatan-referral"
++    variant: "warning"
++    title: "Batasan penting"
++    text: "Referral bukan jual beli izin dan bukan jalur pintas regulasi. Mitra tidak berwenang menjanjikan terbitnya SLF/PBG, durasi proses, atau hasil tertentu. Keputusan penerbitan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
++  - component: "faq"
++    id: "faq"
++    heading: "Pertanyaan seputar referral"
++    items:
++      - question: "Apakah saya perlu memiliki badan usaha untuk menjadi mitra referral?"
++        answer: "Tidak wajib untuk semua skema. Kebutuhan legal dan administratif ditinjau sesuai jenis kerja sama dan dijelaskan saat diskusi."
++      - question: "Apakah mitra referral boleh mengaku sebagai cabang atau perwakilan perusahaan?"
++        answer: "Tidak. Penggunaan nama, logo, dan status sebagai perwakilan atau cabang memerlukan persetujuan tertulis dan perjanjian tersendiri."
++      - question: "Apakah mitra referral ikut menangani survei atau kajian teknis?"
++        answer: "Tidak. Pekerjaan teknis ditangani tenaga kompeten sesuai ruang lingkup yang disepakati dengan klien."
++      - question: "Apakah ada jaminan jumlah klien atau penghasilan?"
++        answer: "Tidak ada. Perusahaan tidak menjanjikan penghasilan, jumlah klien, atau hasil tertentu kepada mitra."
++      - question: "Bagaimana jika saya ingin berperan lebih jauh daripada referral?"
++        answer: "Bentuk kerja sama dapat dibahas ulang, misalnya sebagai mitra kolaboratif atau perwakilan, melalui peninjauan dan kesepakatan baru."
++  - component: "cta"
++    id: "cta-referral"
++    heading: "Tertarik menjadi mitra referral?"
++    message: "Sampaikan nama, kota, dan jaringan calon klien yang Anda miliki. Kami akan meninjau kesesuaian awal sebelum membahas kesepakatan referral."
++    serviceHref: "/kemitraan/"
++    serviceLabel: "Lihat semua skema kemitraan"
++    button: "Hubungi via WhatsApp"
++---
+diff --git a/src/pages/kemitraan/[slug].astro b/src/pages/kemitraan/[slug].astro
+new file mode 100644
+index 0000000..0a8a06d
+--- /dev/null
++++ b/src/pages/kemitraan/[slug].astro
+@@ -0,0 +1,29 @@
++---
++import type { CollectionEntry } from 'astro:content';
++import { getCollection } from 'astro:content';
++import BaseLayout from '../../layouts/BaseLayout.astro';
++import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
++import SiteHeader from '../../components/shared/SiteHeader.astro';
++import SiteFooter from '../../components/shared/SiteFooter.astro';
++
++export async function getStaticPaths() {
++  const pages = await getCollection('pages');
++  return pages
++    .filter((page) => !page.data.draft && page.data.slug.startsWith('kemitraan/'))
++    .map((page) => ({
++      params: { slug: page.data.slug.slice('kemitraan/'.length) },
++      props: { page },
++    }));
++}
++
++const { page } = Astro.props as { page: CollectionEntry<'pages'> };
++---
++<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.description} socialImage={page.data.socialImage} canonical={page.data.canonical} noindex={page.data.noindex} pubDate={page.data.pubDate} updatedDate={page.data.updatedDate}>
++  <SiteHeader />
++  <main id="main-content" class="mx-auto max-w-7xl px-5 py-12 sm:py-16">
++    <div class="space-y-8">
++      {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
++    </div>
++  </main>
++  <SiteFooter />
++</BaseLayout>
+-- 
+2.43.0
+

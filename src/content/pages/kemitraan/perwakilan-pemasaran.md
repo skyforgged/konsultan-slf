@@ -1,0 +1,161 @@
+---
+id: 203
+ulid: "01M5773Q50MJMDQY4XKBRHCED2"
+title: "Perwakilan Pemasaran Layanan SLF/PBG"
+description: "Jadi perwakilan pemasaran layanan SLF/PBG di kota Anda: edukasi awal, penjaringan calon klien, dan koordinasi lokal tanpa kajian teknis sendiri."
+pubDate: "2026-10-25T08:30:00Z"
+updatedDate: "2026-10-25T08:31:00Z"
+image: "/images/illustrations/slf-bangunan-eksisting.svg"
+socialImage: "/images/social/kemitraan-perwakilan-pemasaran.webp"
+type: "page"
+draft: false
+navLabel: "Perwakilan Pemasaran"
+canonical: "/kemitraan/perwakilan-pemasaran/"
+slug: "kemitraan/perwakilan-pemasaran"
+blocks:
+  - component: "page-header"
+    eyebrow: "Skema kemitraan"
+    heading: "Perwakilan pemasaran layanan SLF/PBG di daerah"
+    intro: "Untuk profesional dengan jaringan lokal yang ingin membantu pemilik bangunan memahami kebutuhan SLF/PBG dan menghubungkannya dengan tim pendampingan kami. Kajian teknis tetap ditangani tenaga yang kompeten."
+    image: "/images/illustrations/slf-bangunan-eksisting.svg"
+    imageAlt: "Ilustrasi bangunan, dokumen, dan garis waktu yang menggambarkan perwakilan daerah mendampingi calon klien dari tahap awal"
+  - component: "section"
+    id: "gambaran"
+    heading: "Apa itu perwakilan pemasaran?"
+    content:
+      - type: "p"
+        text: "Perwakilan pemasaran mengembangkan pasar dan membantu koordinasi lokal secara lebih terstruktur daripada referral: mulai dari edukasi awal, pengumpulan informasi dasar bangunan, hingga menjadi penghubung antara calon klien dan tim perusahaan."
+      - type: "p"
+        text: "Pada tabel skema di halaman Kemitraan, skema ini disebut perwakilan daerah. Keduanya merujuk pada skema yang sama."
+      - type: "p"
+        text: "Perwakilan pemasaran tidak otomatis menjadi cabang resmi. Perwakilan juga tidak berwenang melakukan kajian teknis, menandatangani dokumen atas nama perusahaan, membuat komitmen komersial, atau menjanjikan hasil proses SLF/PBG."
+  - component: "checklist-card"
+    id: "cocok-untuk"
+    title: "Profil perwakilan yang dicari"
+    description: "Latar belakang teknik tidak selalu diwajibkan, tetapi perwakilan harus bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
+    items:
+      - label: "Berdomisili atau memiliki jaringan kuat di kota atau wilayah yang diajukan."
+      - label: "Memahami dunia properti, konstruksi, perizinan, atau layanan profesional."
+      - label: "Mampu berkomunikasi dengan pemilik bangunan, pengelola gedung, kontraktor, atau konsultan lokal."
+      - label: "Setuju bekerja sesuai etika dan tidak menjanjikan SLF/PBG pasti terbit."
+      - label: "Bersedia melalui verifikasi dan kesepakatan tertulis sebelum menggunakan merek perusahaan."
+  - component: "feature-card-grid"
+    id: "peran"
+    title: "Yang dapat dilakukan perwakilan pemasaran"
+    columns: 2
+    items:
+      - title: "Edukasi dan penjaringan"
+        points:
+          - "Memberikan edukasi awal tentang SLF/PBG."
+          - "Mengumpulkan informasi dasar bangunan."
+          - "Mempromosikan layanan perusahaan sesuai pedoman merek."
+      - title: "Koordinasi lokal"
+        points:
+          - "Membantu calon klien menyiapkan dokumen awal."
+          - "Menjadi penghubung komunikasi lokal."
+          - "Mendampingi koordinasi survei atau pertemuan awal."
+  - component: "section"
+    id: "batasan-peran"
+    heading: "Yang tidak boleh diklaim atau dilakukan perwakilan"
+    content:
+      - type: "list"
+        ordered: false
+        items:
+          - "Menjamin SLF/PBG pasti terbit atau selesai dalam durasi tertentu."
+          - "Mengatasnamakan keputusan instansi yang berwenang."
+          - "Memberikan kesimpulan teknis tanpa data dan kompetensi yang sesuai."
+          - "Menandatangani dokumen atau membuat komitmen komersial atas nama perusahaan."
+          - "Menggunakan merek perusahaan tanpa persetujuan tertulis."
+  - component: "comparison-table"
+    id: "ketentuan"
+    title: "Ketentuan skema perwakilan pemasaran"
+    intro: "Ringkasan berikut adalah gambaran konseptual. Ketentuan final ditetapkan dalam kesepakatan tertulis."
+    headers:
+      - "Aspek"
+      - "Ketentuan pada skema perwakilan pemasaran"
+    rows:
+      - ["Peran utama", "Mengembangkan pasar dan koordinasi lokal"]
+      - ["Pengelolaan klien", "Terkoordinasi dengan perusahaan"]
+      - ["Pekerjaan teknis", "Tidak termasuk peran perwakilan; pertanyaan teknis dieskalasi kepada tim yang kompeten"]
+      - ["Penggunaan merek", "Memerlukan persetujuan tertulis"]
+      - ["Eksklusivitas", "Dapat dipertimbangkan, tidak diberikan otomatis"]
+      - ["Administrasi", "Pelaporan terstruktur sesuai pedoman yang disepakati"]
+  - component: "section"
+    id: "wilayah"
+    heading: "Wilayah kerja dan eksklusivitas"
+    content:
+      - type: "p"
+        text: "Penetapan wilayah kerja didasarkan pada evaluasi kebutuhan pasar, kapasitas mitra, dan kesepakatan tertulis, bukan urutan pendaftaran. Eksklusivitas dapat dipertimbangkan, tetapi tidak diberikan otomatis dan bergantung pada kesepakatan."
+      - type: "p"
+        text: "Wilayah prioritas bersifat umum, yaitu kota dengan peminat SLF/PBG. Pendaftaran terbuka dari seluruh wilayah Indonesia."
+  - component: "section"
+    id: "kompensasi"
+    heading: "Kompensasi dan pengelolaan lead"
+    content:
+      - type: "p"
+        text: "Besaran kompensasi disepakati secara tertulis dan tidak ditampilkan di halaman publik. Perusahaan tidak menjanjikan penghasilan, jumlah proyek, atau keberhasilan tertentu."
+      - type: "p"
+        text: "Hal yang ditetapkan sebelum kerja sama berjalan:"
+      - type: "list"
+        ordered: false
+        items:
+          - "Dasar perhitungan kompensasi dan kapan hak kompensasi timbul."
+          - "Cara mencatat sumber lead dan menyelesaikan klaim bila calon klien yang sama diperkenalkan oleh lebih dari satu pihak."
+          - "Batas kewenangan perwakilan dalam menyampaikan penawaran, menyepakati harga, atau menerima pembayaran."
+  - component: "section"
+    id: "dukungan"
+    heading: "Dukungan dari perusahaan"
+    content:
+      - type: "list"
+        ordered: false
+        items:
+          - "Panduan layanan SLF/PBG dan penjelasan awal untuk calon klien."
+          - "Pendampingan penyusunan kebutuhan dokumen."
+          - "Jalur eskalasi pertanyaan teknis kepada tim yang kompeten."
+          - "Pedoman komunikasi, etika promosi, dan penggunaan merek."
+          - "Pelaporan lead dan status proyek yang terstruktur."
+      - type: "p"
+        text: "Dukungan disesuaikan dengan kesiapan operasional dan tidak semuanya tersedia sejak awal. Dukungan lain, seperti materi branding atau pelatihan, hanya berlaku bila disebutkan dalam kesepakatan tertulis."
+  - component: "process-timeline"
+    id: "alur"
+    title: "Alur bergabung sebagai perwakilan pemasaran"
+    steps:
+      - title: "Kirim minat"
+        description: "Sampaikan profil, kota yang diajukan, dan gambaran jaringan calon klien yang Anda jangkau."
+      - title: "Peninjauan awal"
+        description: "Perusahaan menilai kesesuaian lokasi, kapasitas, dan profil kandidat."
+      - title: "Diskusi dan verifikasi"
+        description: "Dibahas peran, wilayah, dan ekspektasi, disertai verifikasi dokumen bila relevan."
+      - title: "Perjanjian tertulis"
+        description: "Ruang lingkup, wilayah, kompensasi, dan batas penggunaan merek disepakati sebelum aktivitas yang membutuhkan otorisasi dimulai."
+      - title: "Onboarding"
+        description: "Perwakilan menerima pedoman komunikasi dan memahami jalur eskalasi pertanyaan teknis."
+      - title: "Berjalan dan ditinjau berkala"
+        description: "Status perwakilan dicatat dan ditinjau berkala sesuai mekanisme yang disepakati."
+  - component: "note"
+    id: "catatan-perwakilan"
+    variant: "warning"
+    title: "Batasan penting"
+    text: "Perwakilan pemasaran bukan jaminan penerbitan SLF/PBG, bukan jalur pintas regulasi, dan tidak memberi wewenang untuk menjanjikan hasil atau durasi proses. Keputusan tetap berada pada pihak berwenang sesuai kondisi bangunan dan ketentuan yang berlaku."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan seputar perwakilan pemasaran"
+    items:
+      - question: "Apakah perwakilan harus berlatar belakang teknik?"
+        answer: "Tidak selalu. Perwakilan pemasaran dapat berasal dari latar belakang bisnis atau properti, selama bekerja sesuai batasan dan tidak memberi kesimpulan teknis tanpa kompetensi yang sesuai."
+      - question: "Apakah perwakilan boleh menangani kajian teknis sendiri?"
+        answer: "Tidak. Pekerjaan teknis hanya dilakukan oleh tenaga kompeten sesuai ruang lingkup yang disepakati."
+      - question: "Apakah perwakilan otomatis menjadi cabang resmi?"
+        answer: "Tidak. Cabang resmi adalah skema terpisah dengan evaluasi, perjanjian, dan pengawasan mutu yang lebih ketat."
+      - question: "Apakah perwakilan boleh menggunakan nama perusahaan?"
+        answer: "Hanya dengan persetujuan tertulis dan sesuai pedoman penggunaan merek yang disepakati."
+      - question: "Bagaimana jika di kota saya belum ada klien?"
+        answer: "Pendaftaran dibuka dari seluruh wilayah. Membangun jaringan dan menjangkau calon klien adalah bagian dari peran perwakilan."
+  - component: "cta"
+    id: "cta-perwakilan"
+    heading: "Tertarik menjadi perwakilan di kota Anda?"
+    message: "Sampaikan profil, kota yang Anda ajukan, dan jaringan calon klien yang Anda jangkau. Kami akan meninjau kesesuaian awal sebelum membahas skema kerja sama."
+    serviceHref: "/kemitraan/"
+    serviceLabel: "Lihat semua skema kemitraan"
+    button: "Hubungi via WhatsApp"
+---
