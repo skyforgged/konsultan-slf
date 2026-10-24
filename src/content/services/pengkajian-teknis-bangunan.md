@@ -5,7 +5,7 @@ type: "service"
 slug: "pengkajian-teknis-bangunan"
 title: "Pendampingan Pengkajian Teknis Bangunan"
 pubDate: "2026-10-16T12:00:00Z"
-updatedDate: "2026-10-16T12:30:00Z"
+updatedDate: "2026-10-24T08:00:00Z"
 description: "Pemetaan kebutuhan pengkajian teknis berdasarkan fungsi, kondisi aktual, dokumen, dan tujuan evaluasi bangunan."
 serviceGroup: "pbg"
 order: 50
@@ -22,6 +22,8 @@ blocks:
     id: "ruang-lingkup"
     heading: "Ruang lingkup penelaahan awal"
     content:
+      - type: "p"
+        text: "Pendampingan pengkajian teknis bangunan merupakan layanan konsultasi untuk merumuskan tujuan evaluasi, menelaah data dan kondisi bangunan yang tersedia, serta memetakan kebutuhan inspeksi, analisis, atau pengujian teknis sesuai permasalahan dan ruang lingkup yang disepakati."
       - type: "p"
         text: "Pengkajian teknis memerlukan tujuan evaluasi yang jelas, informasi bangunan yang memadai, dan penentuan aspek yang perlu ditelaah. Penelaahan awal membantu mengidentifikasi dokumen yang tersedia, informasi kondisi aktual, serta kebutuhan tenaga atau pengujian teknis sesuai kasus."
       - type: "list"
