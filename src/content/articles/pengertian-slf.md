@@ -5,7 +5,7 @@ slug: "pengertian-slf"
 title: "Apa Itu SLF (Sertifikat Laik Fungsi)?"
 description: "Penjelasan awal tentang SLF, persiapan dokumen, dan hal yang perlu diperiksa sebelum memulai proses."
 pubDate: "2026-01-15T09:00:00Z"
-updatedDate: "2026-10-24T11:02:25Z"
+updatedDate: "2026-10-24T08:30:00Z"
 image: "/images/illustrations/pengertian-slf.svg"
 socialImage: "/images/social/pengertian-slf.webp"
 type: "article"
@@ -60,6 +60,31 @@ blocks:
     variant: info
     title: "Catatan penting"
     text: "Persyaratan dan alur dapat berbeda sesuai fungsi, kondisi, lokasi bangunan, serta ketentuan yang berlaku. Verifikasi kebutuhan untuk kasus bangunan Anda."
+  - component: section
+    id: "perbedaan-slf-pbg-asbuilt"
+    heading: "Apa Perbedaan SLF, PBG, dan Gambar As-Built?"
+    content:
+      - type: p
+        text: "Ketiga istilah ini saling berkaitan tetapi memiliki fungsi berbeda. PBG berkaitan dengan persetujuan rencana sesuai ketentuan; SLF berkaitan dengan kelaikan fungsi bangunan; sedangkan as-built drawing mendokumentasikan kondisi bangunan yang terbangun. Salah satu dokumen tidak otomatis menggantikan yang lain."
+      - type: list
+        ordered: false
+        items:
+          - "PBG: telaah dokumen persetujuan dan ruang lingkupnya sesuai pembangunan atau perubahan."
+          - "SLF: telaah status dan pemenuhan persyaratan kelaikan fungsi untuk bangunan terkait."
+          - "As-built drawing: periksa apakah gambar mencerminkan kondisi aktual berdasarkan pengukuran dan verifikasi yang dilakukan."
+          - "Jika terdapat perbedaan antar dokumen, catat dan klarifikasi sebelum menentukan langkah berikutnya."
+  - component: process-timeline
+    id: "alur-penelaahan-slf"
+    title: "Alur Penelaahan Awal Kebutuhan SLF"
+    steps:
+      - title: "Kumpulkan informasi dasar"
+        description: "Catat lokasi, fungsi, kondisi penggunaan, serta dokumen yang tersedia."
+      - title: "Tinjau riwayat dan kondisi bangunan"
+        description: "Identifikasi perubahan, renovasi, atau informasi yang belum sesuai."
+      - title: "Petakan kesenjangan informasi"
+        description: "Tandai dokumen yang belum ditemukan dan aspek yang perlu dikonfirmasi."
+      - title: "Tentukan tindak lanjut"
+        description: "Sepakati kebutuhan penelaahan teknis atau administratif berdasarkan kasus dan ketentuan yang berlaku."
   - component: faq
     heading: "Pertanyaan umum"
     items:
