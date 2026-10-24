@@ -20,4 +20,6 @@
   <rect x="248" y="348" width="150" height="56" rx="6" fill="#EFF6FF" stroke="#93C5FD" stroke-width="4"/>
   <path d="M258 376h130" stroke="#60A5FA" stroke-width="4" stroke-linecap="round"/>
   <rect x="108" y="418" width="290" height="4" rx="2" fill="#BFDBFE"/>
+  <path d="M108 444v12M398 444v12M108 450h290" stroke="#0F766E" stroke-width="3" stroke-linecap="round"/>
+  <path d="m118 445-10 5 10 5M388 445l10 5-10 5" stroke="#0F766E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
