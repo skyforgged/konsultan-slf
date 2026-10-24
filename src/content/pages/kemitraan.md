@@ -50,10 +50,10 @@ blocks:
       - "Cocok untuk"
       - "Batasan"
     rows:
-      - ["Referral", "Memperkenalkan calon klien", "Perorangan atau komunitas dengan jaringan", "Tidak otomatis menggunakan merek atau mengaku cabang"]
-      - ["Mitra kolaboratif", "Mendukung proyek sesuai kesepakatan", "Konsultan, arsitek, engineer lokal", "Ruang lingkup ditetapkan per proyek"]
-      - ["Perwakilan daerah", "Mengembangkan pasar dan koordinasi lokal", "Profesional dengan jaringan lokal", "Memerlukan persetujuan penggunaan merek dan SOP"]
-      - ["Cabang resmi", "Menjalankan operasi wilayah sesuai tata kelola", "Tim lokal dengan kapasitas bisnis & teknis", "Perlu perjanjian, SOP, pengawasan mutu, aspek hukum"]
+      - ["<a href=\"/kemitraan/referral/\" class=\"font-bold text-blue-700 hover:underline\">Referral &rarr;</a>", "Memperkenalkan calon klien", "Perorangan atau komunitas dengan jaringan", "Tidak otomatis menggunakan merek atau mengaku cabang"]
+      - ["<a href=\"/kemitraan/mitra-kolaboratif/\" class=\"font-bold text-blue-700 hover:underline\">Mitra kolaboratif &rarr;</a>", "Mendukung proyek sesuai kesepakatan", "Konsultan, arsitek, engineer lokal", "Ruang lingkup ditetapkan per proyek"]
+      - ["<a href=\"/kemitraan/perwakilan-daerah/\" class=\"font-bold text-blue-700 hover:underline\">Perwakilan daerah &rarr;</a>", "Mengembangkan pasar dan koordinasi lokal", "Profesional dengan jaringan lokal", "Memerlukan persetujuan penggunaan merek dan SOP"]
+      - ["<a href=\"/kemitraan/cabang-resmi/\" class=\"font-bold text-blue-700 hover:underline\">Cabang resmi &rarr;</a>", "Menjalankan operasi wilayah sesuai tata kelola", "Tim lokal dengan kapasitas bisnis & teknis", "Perlu perjanjian, SOP, pengawasan mutu, aspek hukum"]
   - component: "section"
     id: "peran-mitra"
     heading: "Peran mitra dan perusahaan"

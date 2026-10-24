@@ -26,7 +26,7 @@ const { id, title, intro, headers, rows, note } = Astro.props as { id: string; t
       <tbody>
         {rows.map((row: string[], index: number) => (
           <tr class={index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-            {row.map((cell: string) => <td class="border-t border-slate-200 px-5 py-4 align-top leading-6 text-slate-700">{cell}</td>)}
+            {row.map((cell: string) => <td class="border-t border-slate-200 px-5 py-4 align-top leading-6 text-slate-700" set:html={cell} />)}
           </tr>
         ))}
       </tbody>
