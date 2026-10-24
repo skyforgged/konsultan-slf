@@ -5,13 +5,23 @@ slug: "slf-bangunan-eksisting-pengantar"
 title: "Pendampingan SLF Bangunan Eksisting"
 description: "Panduan lengkap tentang proses pendampingan Sertifikat Laik Fungsi (SLF) untuk bangunan yang sudah berdiri, mencakup penelaahan dokumen, kondisi aktual, dan langkah-langkah evaluasi terbaru."
 pubDate: "2026-10-20T08:00:00Z"
-updatedDate: "2026-10-24T03:44:13Z"
+updatedDate: "2026-10-24T10:41:22Z"
 image: "/images/illustrations/article-guide.svg"
 socialImage: "/images/social/article-guide.webp"
 type: "article"
 category: "SLF Bangunan Eksisting"
 relatedType: "service"
 relatedId: 103
+postCtaTable:
+  heading: "Contoh Tabel Setelah CTA"
+  id: "tabel-cta"
+  head:
+    - "Kolom 1"
+    - "Kolom 2"
+    - "Kolom 3"
+  rows:
+    - ["A1", "B1", "C1"]
+    - ["A2", "B2", "C2"]
 blocks:
   - component: "section"
     id: "intro"

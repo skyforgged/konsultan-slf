@@ -44,6 +44,8 @@ const contentBlocks = z.discriminatedUnion('component', [
     icon: z.string().optional(),
     message: z.string().min(1),
     button: z.string().min(1).optional(),
+    serviceHref: z.string().optional(),
+    serviceLabel: z.string().optional(),
     class: z.record(z.string(), z.string()).optional(),
   }),
   z.object({

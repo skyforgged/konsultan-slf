@@ -5,6 +5,7 @@ import { howToJsonLd } from '../utils/howto.ts';
 import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import SiteFooter from '../components/shared/SiteFooter.astro';
+import { site } from '../config/site.ts';
 import ArticlePreviousArticles from '../components/shared/ArticlePreviousArticles.astro';
 import { ui } from '../config/ui.ts';
 import '../styles/global.css';
@@ -188,11 +189,14 @@ const articleJsonLd = JSON.stringify({
   </main>
   <section id="article-cta" class="border-t border-slate-200 bg-blue-50/60">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
-      <div class="max-w-2xl">
+      <div class="article-cta-text max-w-2xl">
         <h2 class="text-xl font-extrabold tracking-tight text-slate-950">{ui.article.ctaHeading}</h2>
         <p class="mt-2 leading-7 text-slate-600">{articleCtaText}</p>
       </div>
-      <a href={relatedServiceHref} class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{articleCtaButton}</a>
+      <div class="article-cta-actions flex flex-col gap-2">
+          <a href={relatedServiceHref} class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">{articleCtaButton}</a>
+          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-green-600 px-5 py-3 text-sm font-bold text-white no-underline transition hover:bg-green-700">{ui.ctaBlock.defaultButton}</a>
+        </div>
     </div>
   </section>
     <SiteFooter serviceTitle={footerServiceTitle} group={footerServiceTitle ? undefined : (article.data.category === 'SLF' || article.data.category?.includes('SLF') ? 'slf' : article.data.category === 'PBG' ? 'pbg' : undefined)} />
