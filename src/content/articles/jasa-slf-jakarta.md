@@ -11,7 +11,7 @@ description: >-
   pengurusan Sertifikat Laik Fungsi bangunan Anda. Hubungi 0859-4746-8548 
   untuk konsultasi awal.
 pubDate: '2026-10-17T13:00:00Z'
-updatedDate: "2026-10-24T11:02:22Z"
+updatedDate: "2026-10-24T08:30:00Z"
 author:
   name: admin
   url: "https://konsultan-slf.com"
@@ -128,6 +128,33 @@ blocks:
           Biaya jasa SLF Jakarta dapat dipengaruhi oleh luas dan fungsi bangunan,
           jumlah lantai, kompleksitas sistem bangunan, kelengkapan dokumen,
           kebutuhan pemeriksaan teknis, serta lingkup pendampingan yang disepakati.
+  - component: section
+    id: "memilih-konsultan-slf-jakarta"
+    heading: "Bagaimana Memilih Konsultan SLF untuk Bangunan di Jakarta?"
+    content:
+      - type: p
+        text: "Pemilik atau pengelola sebaiknya menilai konsultan dari kejelasan metode kerja, kompetensi pihak yang terlibat, transparansi biaya, serta kesediaan menjelaskan risiko dan batas layanan. Hindari keputusan yang hanya didasarkan pada janji cepat terbit, karena keputusan penerbitan tetap berada pada pihak berwenang."
+      - type: list
+        ordered: false
+        items:
+          - "Minta penjelasan tertulis mengenai ruang lingkup, tahapan, keluaran, dan asumsi penawaran."
+          - "Tanyakan siapa yang menangani kajian atau pemeriksaan pada setiap bidang teknis."
+          - "Pastikan biaya tambahan, kebutuhan pengujian, dan tindak lanjut temuan dibahas secara terbuka."
+          - "Periksa apakah komunikasi dan dokumen yang diserahkan dapat ditelusuri."
+          - "Waspadai jaminan penerbitan atau jadwal yang diberikan tanpa meninjau kondisi bangunan."
+  - component: comparison-table
+    id: "lingkup-layanan-slf-jakarta"
+    title: "Membedakan Konsultasi Awal, Evaluasi Teknis, dan Pendampingan Proses"
+    intro: "Nama layanan dapat berbeda antarpenyedia; pastikan cakupan dan hasil kerja tertulis dalam penawaran."
+    headers:
+      - "Ruang lingkup"
+      - "Fokus"
+      - "Hal yang perlu disepakati"
+    rows:
+      - ["Konsultasi awal", "Memahami situasi dan memetakan informasi yang tersedia", "Batas telaah dan rekomendasi tindak lanjut"]
+      - ["Evaluasi atau pemeriksaan teknis", "Menilai aspek teknis sesuai bidang dan penugasan", "Metode, tenaga kompeten, akses, dan keluaran laporan"]
+      - ["Pendampingan proses", "Membantu koordinasi dan penyiapan berkas sesuai kesepakatan", "Tanggung jawab, jadwal, komunikasi, dan biaya di luar lingkup"]
+      - ["Tindak lanjut temuan", "Mengelola kebutuhan klarifikasi atau perbaikan", "Pihak pelaksana dan verifikasi penyelesaian"]
   - component: faq
     id: faq-jasa-slf-jakarta
     heading: Pertanyaan Umum tentang Jasa SLF Jakarta
