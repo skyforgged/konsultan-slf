@@ -24,7 +24,7 @@ async function extractFrontmatterValue(filePath, key) {
   const match = frontmatter[1].match(
     new RegExp('^' + escapedKey + ':\\s*"([^"]*)"\\s*$', 'm')
   );
-  return match ? (match[1] ?? match[2] ?? match[3]).trim() : null;
+  return match ? (match[1] ?? '').trim() : null;
 }
 
 async function processContent(dir, collection) {
@@ -73,6 +73,12 @@ async function processContent(dir, collection) {
     try {
       const sourceStat = await stat(sourcePath);
       if (!sourceStat.isFile()) throw new Error('source is not a file');
+      
+      const outStat = await stat(outputPath).catch(() => null);
+      if (outStat && outStat.mtimeMs >= sourceStat.mtimeMs) {
+        continue;
+      }
+      
       const result = await sharp(sourcePath)
         .resize(1200, 630, { fit: 'contain', background: '#f8fafc' })
         .webp({ quality: 80 })
