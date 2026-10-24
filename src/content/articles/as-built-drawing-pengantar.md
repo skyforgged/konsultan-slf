@@ -5,7 +5,7 @@ slug: "as-built-drawing-pengantar"
 title: "Pendampingan As‑Built Drawing"
 description: "Panduan lengkap tentang pembuatan dan penggunaan as‑built drawing dalam proses perizinan bangunan, termasuk integrasinya dengan Sertifikat Laik Fungsi (SLF) dan Persetujuan Bangunan Gedung (PBG)."
 pubDate: "2026-10-20T08:30:00Z"
-updatedDate: "2026-10-24T11:02:16Z"
+updatedDate: "2026-10-24T08:30:00Z"
 image: "/images/illustrations/checklist-dokumen-pbg.svg"
 socialImage: "/images/social/checklist-dokumen-pbg.webp"
 type: "article"
@@ -39,6 +39,34 @@ blocks:
       - label: "Detail struktur (balok, kolom, pondasi)."
       - label: "Instalasi listrik, pipa, dan sistem mekanikal."
       - label: "Catatan perubahan yang terjadi selama konstruksi."
+  - component: section
+    id: "verifikasi-asbuilt-aktual"
+    heading: "Bagaimana Memverifikasi Gambar dengan Kondisi Bangunan Aktual?"
+    content:
+      - type: p
+        text: "As-built drawing sebaiknya disusun berdasarkan pengukuran dan verifikasi kondisi terbangun, bukan sekadar menyalin gambar rencana. Perubahan selama konstruksi, renovasi, atau penyesuaian instalasi perlu dicatat agar gambar dapat dipakai sebagai referensi yang dapat ditelusuri."
+      - type: list
+        ordered: false
+        items:
+          - "Bandingkan gambar lama dengan kondisi lapangan dan catat bagian yang berbeda."
+          - "Verifikasi dimensi, tata ruang, elemen struktur yang dapat diperiksa, serta jalur utilitas sesuai lingkup pekerjaan."
+          - "Tandai bagian yang belum dapat dipastikan dan perlukan pemeriksaan tenaga kompeten sebelum menyimpulkan."
+          - "Cantumkan tanggal survei, versi gambar, dan informasi perubahan agar riwayat dokumen jelas."
+  - component: checklist-card
+    id: "quality-check-asbuilt"
+    title: "Pemeriksaan Mutu As-Built Drawing Sebelum Digunakan"
+    description: "Gunakan pemeriksaan ini sebagai kontrol awal; lingkup akhir menyesuaikan kebutuhan proyek."
+    items:
+      - label: "Identitas bangunan dan versi gambar jelas"
+        detail: "Cantumkan alamat atau identitas objek, tanggal, dan status revisi."
+      - label: "Denah dan dimensi telah diverifikasi"
+        detail: "Periksa kesesuaian ukuran dan tata ruang yang dapat diukur."
+      - label: "Perubahan penting terdokumentasi"
+        detail: "Catat perubahan dari gambar rencana dan sumber informasinya."
+      - label: "Gambar antar-disiplin konsisten"
+        detail: "Koordinasikan arsitektur, struktur, dan utilitas sesuai lingkup yang tersedia."
+      - label: "Batas verifikasi dinyatakan"
+        detail: "Jangan menyatakan elemen tertutup atau tidak terinspeksi sebagai sudah terverifikasi."
   - component: "faq"
     id: "faq"
     heading: "Pertanyaan Umum"
