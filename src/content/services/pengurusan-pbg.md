@@ -6,7 +6,7 @@ slug: "pengurusan-pbg"
 title: "Pendampingan Persetujuan Bangunan Gedung (PBG)"
 pubDate: "2026-10-16T09:00:00Z"
 updatedDate: "2026-10-24T08:04:00Z"
-description: "Penelaahan awal kebutuhan PBG berdasarkan fungsi, kondisi rencana bangunan, dan dokumen yang tersedia."
+description: "Pendampingan Persetujuan Bangunan Gedung (PBG) adalah layanan asistensi teknis dan administratif yang memfasilitasi pemilik bangunan dalam memproses legalitas pendirian gedung, mencakup pemenuhan seluruh dokumen arsitektur serta perencanaan struktur hingga dokumen izin resmi diterbitkan oleh instansi pemerintah terkait."
 serviceGroup: "pbg"
 order: 20
 draft: false
@@ -14,25 +14,23 @@ status: active
 eyebrow: "Layanan PBG"
 image: "/images/illustrations/pengurusan-pbg.svg"
 socialImage: "/images/social/pengurusan-pbg.webp"
-imageAlt: "Ilustrasi bangunan dan pemeriksaan kesesuaian dokumen"
+imageAlt: "Pendampingan Persetujuan Bangunan Gedung (PBG) adalah jasa profesional yang membantu dan mewakili pemilik bangunan dalam mengurus perizinan PBG secara legal, mulai dari tahap persiapan dokumen teknis hingga izin tersebut resmi diterbitkan oleh pemerintah."
 howTo:
   blockId: "tahapan"
 blocks:
-  - component: "section"
-    id: "ruang-lingkup"
-    heading: "Ruang lingkup pendampingan awal"
-    content:
-      - type: "p"
-        text: "Pendampingan Persetujuan Bangunan Gedung (PBG) merupakan layanan konsultasi untuk membantu pemilik atau penanggung jawab proyek memetakan kebutuhan dokumen teknis dan administratif berdasarkan fungsi, lokasi, karakteristik, serta tahap pembangunan sebelum menentukan langkah pengajuan yang relevan."
-      - type: "p"
-        text: "Pendampingan PBG diawali dengan memetakan fungsi bangunan, status rencana atau kondisi bangunan, serta dokumen teknis dan administratif yang tersedia. Dari penelaahan awal ini, kebutuhan data dan langkah berikutnya dapat dibahas sebelum ruang lingkup pekerjaan disepakati."
-      - type: "list"
-        ordered: false
-        items:
-          - "Mengumpulkan informasi dasar mengenai lokasi, fungsi, dan karakteristik bangunan."
-          - "Menelaah dokumen yang tersedia untuk mengidentifikasi informasi yang perlu dilengkapi atau dikonfirmasi."
-          - "Memetakan kebutuhan dokumen teknis dan administratif sesuai kondisi kasus."
-          - "Membahas urutan tindak lanjut dan pembagian tanggung jawab berdasarkan ruang lingkup yang disepakati."
+  - component: "checklist-card"
+    id: "lingkup-pekerjaan-pbg"
+    title: "Lingkup Kerja Pendampingan PBG"
+    description: "Kegiatan yang dapat dilaksanakan dalam pendampingan, disesuaikan dengan kebutuhan proyek dan kesepakatan kerja."
+    items:
+      - label: "Mengumpulkan informasi dasar mengenai lokasi, fungsi, dan karakteristik bangunan."
+      - label: "Menelaah dokumen yang tersedia untuk mengidentifikasi informasi yang perlu dilengkapi atau dikonfirmasi."
+      - label: "Memetakan kebutuhan dokumen teknis dan administratif sesuai kondisi kasus."
+      - label: "Membahas urutan tindak lanjut dan pembagian tanggung jawab berdasarkan ruang lingkup yang disepakati."
+      - label: "Penyediaan tenaga ahli bersertifikat: Menyediakan Pengkaji Teknis atau Penyedia Jasa Perencana yang memiliki Sertifikat Keahlian (SKA/SKK) resmi sebagai penanggung jawab teknis sesuai kebutuhan."
+      - label: "Pembuatan dokumen teknis siap upload: Mengonversi sketsa atau rencana menjadi dokumen teknis formal sesuai standar SIMBG (gambar arsitektur, struktur, MEP, kalkulasi kekuatan gempa, serta laporan penyelidikan tanah/sondir bila diperlukan)."
+      - label: "Manajemen akun dan proses aplikasi: Membantu mengunggah dokumen ke sistem SIMBG, memantau berkas secara berkala, serta menindaklanjuti masukan atau perbaikan yang diminta instansi terkait."
+      - label: "Pendampingan sidang pleno/konsultasi teknis: Mendampingi dan memberikan argumentasi teknis di hadapan Tim Profesi Ahli (TPA) atau Tim Teknis daerah saat dilakukan evaluasi desain bangunan."
   - component: "checklist-card"
     id: "persiapan-konsultasi"
     title: "Informasi untuk konsultasi awal"
