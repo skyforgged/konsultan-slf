@@ -2,7 +2,7 @@
 
 ## 1. Tujuan dan prinsip pelaksanaan
 
-Roadmap ini bertujuan membangun saluran akuisisi mitra yang terukur untuk layanan SLF/PBG, mulai dari referral hingga pengembangan Perwakilan Daerah dan Cabang Resmi.
+Roadmap ini bertujuan membangun saluran akuisisi mitra yang terukur untuk layanan SLF/PBG, mulai dari referral hingga pengembangan Perwakilan Daerah dan Cabang Resmi. Roadmap juga mendukung strategi **dominasi SERP**: memperbesar peluang agar beberapa entitas bisnis yang benar-benar berbeda—termasuk sister company dan kanal afiliasi yang sah—muncul untuk kumpulan kueri strategis yang relevan. Keberhasilan tidak diukur dari jumlah domain semata, tetapi dari cakupan kueri, posisi yang benar-benar diperoleh, klik non-merek, prospek berkualitas, dan ketahanan jangka panjang.
 
 Prinsip utama:
 
@@ -10,7 +10,7 @@ Prinsip utama:
 - **Satu sumber kebenaran.** Informasi perusahaan, layanan, kontak, persyaratan, dan klaim kompetensi harus konsisten di seluruh kanal.
 - **Pisahkan trafik dari hasil bisnis.** Tayangan dan kunjungan adalah indikator awal; prospek berkualitas, pertemuan, perjanjian, dan mitra aktif adalah hasil yang lebih penting.
 - **Utamakan kepercayaan.** Jelaskan ruang lingkup, pembagian tanggung jawab, dukungan, biaya bila ada, dan batas kewenangan setiap jenis kemitraan.
-- **Jangan membuat situs hanya untuk memperbanyak domain.** Setiap situs tambahan harus punya alasan bisnis, audiens, konten orisinal, entitas yang jelas, serta kemampuan pengelolaan sendiri.
+- **Bangun portofolio situs dengan alasan bisnis nyata.** Sister company dapat menjadi kanal akuisisi terpisah jika identitas, penawaran, bukti, audiens atau cara melayaninya memang berbeda dan dijelaskan secara transparan. Jangan membuat entitas fiktif atau situs tipis yang hanya mengganti nama untuk menguasai kueri serupa.
 - **Tidak menjanjikan hasil yang belum terbukti.** Target di bawah adalah hipotesis kerja awal, bukan proyeksi yang sudah tervalidasi.
 
 ## 2. Empat skema kemitraan
@@ -82,29 +82,72 @@ Profil sekoci bukan jaminan peningkatan peringkat atau backlink yang bernilai. B
 
 **Gerbang lanjut:** kanal inti tetap terkelola, prospek dapat ditindaklanjuti, dan kanal pendukung menunjukkan kontribusi yang bisa diamati—bukan sekadar jumlah profil atau follower.
 
-### Tahap 3 — Replikasi terukur (bulan 5–6)
+### Tahap 3 — Replikasi portofolio dan uji dominasi SERP (bulan 5–6)
 
 **Pekerjaan**
 - Perluas wilayah outreach berdasarkan data permintaan dan kapasitas operasional.
 - Susun paket onboarding mitra, SOP koordinasi, pelaporan, standar komunikasi, mekanisme eskalasi, dan evaluasi berkala.
-- Pertimbangkan situs tambahan hanya jika ada entitas atau penawaran yang benar-benar berbeda dan sah, dengan kebutuhan pengguna serta konten orisinal yang memadai.
+- Pilih satu sister company atau entitas bisnis yang nyata sebagai pilot berikutnya. Sebelum membangun situs, dokumentasikan proposisi nilai, audiens, layanan, bukti kompetensi, konten inti, kepemilikan, kontak, dan hubungan dengan perusahaan utama.
+- Tentukan kelompok kueri untuk tiap situs berdasarkan maksud pencarian dan penawaran yang benar-benar dapat dilayani; hindari membuat beberapa situs yang hanya menargetkan variasi kata kunci sama dengan isi dan tujuan identik.
+- Ukur apakah portofolio memperluas jangkauan organik secara inkremental: kueri baru, tayangan non-merek, klik, posisi, prospek berkualitas, dan kontribusi masing-masing situs. Catat juga tumpang tindih kueri dan kanibalisasi.
 - Pertimbangkan Cabang Resmi hanya setelah model kemitraan, kontrol mutu, tanggung jawab, kebutuhan sumber daya, dan tata kelola terbukti berjalan.
 
-**Gerbang lanjut:** keputusan ekspansi didukung data kualitas prospek, kapasitas layanan, hasil mitra, biaya akuisisi, serta risiko operasional. Jika belum, optimalkan model yang sudah ada.
+**Gerbang lanjut:** replikasi hanya diteruskan jika entitas kedua memiliki manfaat yang jelas bagi pengguna, tidak sekadar menduplikasi situs utama, mampu dikelola, dan memberi kontribusi tambahan yang terukur. Hasil SERP dinilai sebagai eksperimen—bukan jaminan semua situs akan tampil bersamaan di halaman 1–2.
 
-## 5. Kebijakan multi-situs dan SEO
+## 5. Strategi sister company dan dominasi SERP
 
-Jumlah domain bukan sasaran tersendiri. Sebelum membangun situs baru, jawab semua pertanyaan berikut:
+### Tujuan strategi
 
-- Apakah ada entitas, merek, layanan, atau kebutuhan audiens yang benar-benar berbeda?
-- Apakah situs akan memiliki informasi, bukti, dan konten orisinal yang bermanfaat?
-- Apakah pemilik, kontak, hubungan antarbisnis, dan tanggung jawabnya transparan?
-- Apakah tersedia sumber daya untuk pemeliharaan, keamanan, konten, dan layanan prospek?
-- Apakah situs tersebut tetap berguna bagi pengunjung tanpa bergantung pada halaman kota/niche yang hampir sama?
+Tujuannya adalah meningkatkan **pangsa kehadiran di hasil pencarian** untuk kueri strategis SLF/PBG, sehingga pengguna dapat menemukan lebih dari satu bisnis dalam ekosistem perusahaan pada hasil yang sama ketika masing-masing hasil memang relevan. Portofolio ini dapat mencakup situs perusahaan utama, situs sister company, dan profil resmi afiliasi/kanal pendukung.
 
-Jangan membuat beberapa situs dengan konten yang hampir identik, identitas bisnis yang membingungkan, atau halaman yang dibuat semata-mata untuk menangkap variasi kata kunci dan mengarahkan pengguna ke tujuan yang sama. Pola seperti itu berisiko menjadi doorway atau konten berskala rendah dan dapat mengurangi kepercayaan.
+Asumsinya bukan bahwa satu perusahaan harus terus menambah halaman di satu domain. Sebaliknya, entitas bisnis yang berbeda dapat mengembangkan reputasi, penawaran, bukti, dan cakupan audiens masing-masing. Keberhasilan SEO on-site dan off-site pada situs yang sudah ada adalah modal awal untuk menguji strategi portofolio, tetapi **tidak membuktikan bahwa beberapa situs akan otomatis menempati halaman 1–2 secara bersamaan**.
 
-Jika memang ada beberapa entitas bisnis yang nyata, setiap situs harus menggambarkan entitas tersebut secara akurat dan menjelaskan hubungan antarpihak. Untuk tahap awal, satu situs utama yang kuat umumnya lebih mudah diukur dan dikelola daripada langsung menjalankan 3–4 situs.
+### Kriteria kelayakan sister company
+
+Sebelum investasi pada domain dan situs baru, buat dokumen singkat untuk menjawab:
+
+- **Entitas nyata:** badan usaha, merek, atau unit bisnis memang ada dan memiliki identitas serta penanggung jawab yang dapat diverifikasi.
+- **Proposisi nilai berbeda:** ada perbedaan nyata pada layanan, spesialisasi, segmen pelanggan, wilayah operasi yang benar-benar dilayani, metode layanan, atau bukti pengalaman—bukan hanya pergantian nama.
+- **Kegunaan mandiri:** situs memberi informasi dan jalur layanan yang lengkap bagi pengunjung tanpa mengharuskan mereka dialihkan ke situs utama untuk mendapatkan nilai yang dijanjikan.
+- **Konten orisinal:** halaman inti, studi kasus, profil tim/kompetensi, proses, FAQ, dan materi pendukung dibuat berdasarkan fakta serta kebutuhan entitas tersebut. Konten boleh membahas topik sejenis, tetapi tidak sekadar salinan yang disamarkan.
+- **Transparansi hubungan:** kepemilikan atau afiliasi dijelaskan secara wajar; identitas, alamat, kontak, dan klaim kompetensi tidak dibuat menyesatkan.
+- **Kesiapan operasional:** ada kapasitas untuk pemeliharaan, keamanan, analitik, penanganan prospek, dan pembaruan konten.
+- **Tujuan pencarian yang terpetakan:** setiap situs punya kelompok kueri dan maksud pencarian yang masuk akal untuk dilayani, sambil tetap mengakui bahwa sebagian kueri akan tumpang tindih.
+
+Jika tidak ada alasan kuat yang memenuhi kriteria tersebut, lebih baik memperkuat halaman dan kelompok topik pada situs yang ada daripada membuat domain baru.
+
+### Batas risiko SEO
+
+Google menyebut pembuatan beberapa situs dengan variasi kecil untuk menjangkau kueri serupa, halaman wilayah yang hampir sama, dan halaman yang mengarahkan pengguna ke satu tujuan sebagai contoh *doorway abuse*. Kebijakan juga melarang konten berskala besar yang tidak orisinal dan dibuat terutama untuk memanipulasi peringkat. Karena itu:
+
+- Jangan membangun perusahaan fiktif, situs cermin, atau identitas yang sengaja dibuat agar terlihat tidak berkaitan.
+- Jangan menyalin struktur dan isi situs utama lalu hanya mengganti nama perusahaan, kota, nomor kontak, atau variasi kata kunci.
+- Jangan menjadikan tautan silang antar-situs sebagai skema manipulasi peringkat. Tautan antarsitus hanya ditempatkan jika membantu pengguna memahami hubungan bisnis atau menemukan layanan yang relevan.
+- Jangan membuat banyak halaman kota yang tidak mewakili operasi atau layanan nyata di lokasi tersebut.
+- Jangan menjanjikan bahwa jumlah domain tertentu pasti akan menguasai halaman 1–2.
+
+Lihat pedoman resmi Google: [Spam policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies) dan [A guide to Google Search ranking systems](https://developers.google.com/search/docs/appearance/ranking-systems-guide). Sistem *site diversity* umumnya membatasi jumlah listing dari satu situs, tetapi hasil untuk situs berbeda tetap bergantung pada relevansi dan sistem peringkat; kepemilikan berbeda atau domain berbeda bukan jaminan tampil.
+
+### Eksperimen bertahap
+
+1. **Baseline:** dokumentasikan kueri prioritas, posisi, tayangan, klik, halaman yang mendapat impresi, dan prospek dari situs utama.
+2. **Pilih satu pilot:** gunakan satu sister company yang memiliki perbedaan bisnis dan bukti yang nyata; jangan langsung meluncurkan banyak situs sekaligus.
+3. **Bangun kualitas sebelum skala:** pastikan identitas, penawaran, konten inti, bukti, kontak, tracking, dan proses layanan siap sebelum promosi SEO diperluas.
+4. **Ukur kontribusi inkremental:** bandingkan total klik dan prospek portofolio dengan baseline situs utama, bukan hanya menghitung peringkat setiap domain secara terpisah.
+5. **Evaluasi kanibalisasi:** catat apakah situs baru membuka kueri/audiens baru atau justru mengambil impresi dari situs utama tanpa menambah hasil bisnis.
+6. **Putuskan berdasarkan bukti:** lanjutkan, revisi positioning, atau hentikan pilot sebelum menambah entitas berikutnya.
+
+### KPI dominasi SERP
+
+- Jumlah dan persentase kueri prioritas yang memiliki setidaknya satu listing portofolio pada halaman 1.
+- Jumlah kueri yang memiliki listing relevan pada halaman 2.
+- Jumlah kueri dengan dua atau lebih domain portofolio yang benar-benar tampil bersamaan.
+- Pangsa tayangan dan klik organik portofolio pada kelompok kueri prioritas.
+- Klik dan prospek berkualitas tambahan yang diperoleh setelah situs pilot diluncurkan.
+- Tingkat tumpang tindih kueri dan indikasi kanibalisasi antar-situs.
+- Biaya dan jam kerja per prospek berkualitas dari setiap entitas.
+
+Gunakan Google Search Console untuk data per situs dan kueri, lalu satukan dalam dashboard portofolio dengan periode, negara, perangkat, dan definisi metrik yang konsisten. Catat hasil berdasarkan observasi data, bukan satu kali pengecekan SERP manual yang dapat berbeda menurut lokasi, waktu, dan konteks pengguna.
 
 ## 6. KPI dan cara mengukurnya
 
