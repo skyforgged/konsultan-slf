@@ -40,8 +40,9 @@ Ringkasan peringkat (inheren = tanpa dokumen; residual = target setelah dokumen 
 | R-10 | Portofolio situs sister company dan profil sekoci menyesatkan atau melanggar kebijakan platform | Reputasi / Platform | 3 x 3 = 9 | YELLOW | 3 x 2 = 6 | YELLOW | UM-08, UM-01 |
 | R-11 | Mitra menawarkan jalur cepat atau memberi imbalan kepada pihak instansi | Regulatory / Antikorupsi | 5 x 2 = 10 | ORANGE | 5 x 1 = 5 | YELLOW | UM-07, UM-11, UM-12 |
 | R-12 | Hubungan hukum mitra salah dikualifikasikan (keagenan, kemitraan, atau hubungan kerja) | Contract / Employment | 3 x 2 = 6 | YELLOW | 3 x 1 = 3 | GREEN | UM-12, WD-01, KL-01 |
+| R-13 | Formulir pendaftaran di situs tidak mengirim data, menjanjikan tindak lanjut, dan merujuk kebijakan privasi yang tidak ada | Data Privacy / Konsumen | 3 x 4 = 12 | ORANGE | 2 x 1 = 2 | GREEN | UM-04, UM-09; perbaikan halaman |
 
-Distribusi inheren: 1 RED, 7 ORANGE, 4 YELLOW. Distribusi residual target: 0 RED, 0 ORANGE, 8 YELLOW, 4 GREEN.
+Distribusi inheren (13 risiko): 1 RED, 8 ORANGE, 4 YELLOW. Distribusi residual target: 0 RED, 0 ORANGE, 8 YELLOW, 5 GREEN.
 
 #### Dasar penilaian per risiko
 
@@ -56,6 +57,7 @@ Distribusi inheren: 1 RED, 7 ORANGE, 4 YELLOW. Distribusi residual target: 0 RED
 - **R-09 (3, 4)**: terbukti ada: halaman publik menyebut dukungan yang dokumennya belum ada dan perkiraan waktu seleksi tanpa dasar keputusan internal. Mudah diperbaiki.
 - **R-10 (3, 3)**: strategi portofolio situs bergantung pada transparansi afiliasi dan kebijakan platform pencari; kebijakan terbaru belum diverifikasi dalam penilaian ini.
 - **R-11 (5, 2)**: dampak sangat berat bila ada pihak mengaku punya akses ke instansi atau memberi imbalan kepada pejabat; kemungkinan tidak besar tetapi insentif kecepatan nyata. Perlu larangan tegas dan sanksi.
+- **R-13 (3, 4)**: temuan 2026-10-26. Formulir `/kemitraan/form-proposal/` adalah simulasi yang tidak mengirim data, sedangkan `/kemitraan/pendaftaran/` menyatakan tim akan menghubungi pengisi dan merujuk kebijakan privasi yang tidak ada di repo. Pengisi dapat mengira sudah mendaftar dan menyetujui kebijakan yang tidak dapat dibaca. Kemungkinan tinggi karena halaman sudah terbit. Perbaikannya cepat: tarik halaman atau pasang mekanisme penerimaan data dan kebijakan privasi.
 - **R-12 (3, 2)**: kemitraan yang diatur ketat bisa terlihat seperti hubungan kerja atau agen; perlu perumusan perjanjian yang tepat.
 
 ### 4. Contributing Factors
@@ -89,7 +91,7 @@ Urut menurut matriks: inventarisasi, P0, lalu paket Referral. Terima hanya mitra
 
 ### 8. Residual Risk
 
-Bila rekomendasi dijalankan dan dipatuhi: tidak ada RED atau ORANGE; delapan YELLOW dan empat GREEN (lihat tabel). Risiko R-03 dan R-11 tetap bernilai dampak 5; hanya kemungkinannya yang ditekan, sehingga tetap dipantau.
+Bila rekomendasi dijalankan dan dipatuhi: tidak ada RED atau ORANGE; delapan YELLOW dan lima GREEN (lihat tabel). Risiko R-03 dan R-11 tetap bernilai dampak 5; hanya kemungkinannya yang ditekan, sehingga tetap dipantau.
 
 ### 9. Monitoring Plan
 
@@ -100,7 +102,7 @@ Bila rekomendasi dijalankan dan dipatuhi: tidak ada RED atau ORANGE; delapan YEL
 
 1. Tetapkan penanggung jawab program dan pejabat penyetuju. Pemilik: pimpinan. Tenggat: [ditetapkan pemilik].
 2. Selesaikan dokumen P0. Pemilik: pemilik program. Tenggat: [ditetapkan pemilik].
-3. Koreksi halaman publik (R-09). Pemilik: pemilik program. Tenggat: sebelum promosi berikutnya.
+3. Koreksi halaman publik (R-09) dan tangani R-13: tarik atau perbaiki `/kemitraan/pendaftaran/` dan `/kemitraan/form-proposal/` sampai penerimaan data dan kebijakan privasi siap. Pemilik: pemilik program. Tenggat: sebelum promosi berikutnya.
 4. Engage konsultan hukum untuk R-03, R-04, R-05, R-11 (kategori "strongly recommended": keahlian khusus dan kompleksitas yurisdiksi). Pemilik: pimpinan.
 5. Verifikasi kebijakan platform pencari terbaru sebelum pilot sister company (R-10).
 
@@ -108,7 +110,7 @@ Bila rekomendasi dijalankan dan dipatuhi: tidak ada RED atau ORANGE; delapan YEL
 
 | Field | Catatan |
 |---|---|
-| Risk ID | R-01 sampai R-12 pada tabel di atas |
+| Risk ID | R-01 sampai R-13 pada tabel di atas |
 | Date Identified | 2026-10-25 untuk seluruhnya |
 | Owner | Belum ditetapkan |
 | Status | Open untuk seluruhnya |

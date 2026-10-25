@@ -3,7 +3,7 @@
 | Atribut | Isi |
 |---|---|
 | ID matriks | UM-04 (UMUM, P0) |
-| Versi | 0.1 (draf) |
+| Versi | 0.2 (draf) |
 | Tanggal draf | 2026-10-25 |
 | Pemilik | Belum ditetapkan (usulan: administrasi program) |
 | Status | Perlu tinjauan hukum |
@@ -58,3 +58,29 @@ Aturan: balasan pertama tim mengingatkan bahwa data dipakai hanya untuk tindak l
 | Tautan kebijakan data aktif | [DIUJI PEMILIK] |
 | Hanya orang berwenang yang dapat melihat data | [DIUJI PEMILIK] |
 | Sumber prospek tercatat | [DIUJI PEMILIK] |
+
+## 7. Pembaruan 0.2: perbandingan dengan formulir yang sudah ada di situs
+
+Per 2026-10-26 situs memuat formulir multi-langkah (`/kemitraan/form-proposal/`) dan halaman pengantar `/kemitraan/pendaftaran/`. Rancangan field-nya ada di `docs/form-pendaftaran-mitra.md`. Perbandingan dengan dokumen ini:
+
+| Field di situs | Penilaian terhadap UM-04 | Saran |
+|---|---|---|
+| Nama, email, WhatsApp, domisili | Sesuai prinsip minimal. Email dan WhatsApp keduanya wajib, lebih ketat dari usulan "salah satu". | Diterima; pertimbangkan hanya satu yang wajib |
+| Profesi, perusahaan | Sesuai, opsional | Diterima |
+| Skema, wilayah | Sesuai | Diterima |
+| Pengalaman, target mulai, alasan, jaringan | Sesuai untuk kualifikasi awal | Diterima; beri batas panjang teks |
+| Bersedia mengikuti SOP dan pelatihan | Menyiratkan SOP dan pelatihan ada; keduanya belum ada (UM-02 bagian 3) | Ubah menjadi "bersedia mengikuti pedoman perusahaan" |
+| Bersedia menanggung biaya awal (lisensi atau operasional) | Tidak ada keputusan biaya (UM-11 bagian 7) dan istilah lisensi menyentuh risiko waralaba (R-05) | Tunda atau hapus sampai keputusan biaya dan CB-01 selesai |
+| Persetujuan data | Merujuk kebijakan privasi yang tidak ditemukan di repo | Jangan aktifkan sebelum UM-09 dipublikasikan sebagai halaman |
+| Persetujuan kontak dan info program | Dua tujuan berbeda, sudah dipisah | Pastikan tidak tercentang otomatis |
+
+### Hal yang menghalangi penggunaan formulir sebagai kanal pendaftaran
+
+1. **Data tidak dikirim.** Formulir di situs adalah simulasi: data hanya ditampilkan kembali dan tidak sampai ke tim. Sementara halaman pengantar menyatakan tim akan menghubungi pengisi lewat WhatsApp atau email. Pengisi bisa mengira sudah mendaftar.
+2. **Kebijakan privasi tidak ada.** Halaman pengantar meminta pengunjung membaca kebijakan privasi sebelum menyetujui; tidak ditemukan halaman tersebut di repo.
+3. **Pernyataan "tidak membagikan data kepada pihak ketiga"** perlu disesuaikan bila nanti memakai layanan penerima formulir pihak ketiga, karena layanan itu ikut memproses data.
+4. **Rancangan awal menyebut Tally**, sedangkan referensi Tally sudah dihapus dari situs; tentukan satu mekanisme dan perbarui dokumen rancangan.
+
+### Keputusan yang dibutuhkan
+
+[KEPUTUSAN] mekanisme penerimaan data (layanan formulir atau surel khusus), pemilik data, kontak penghapusan, dan apakah halaman pendaftaran tetap terbit sampai mekanisme siap.

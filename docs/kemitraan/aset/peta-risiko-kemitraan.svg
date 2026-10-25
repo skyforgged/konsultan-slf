@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 585" width="1000" height="585" role="img" aria-labelledby="t d">
 <title id="t">Peta risiko hukum program kemitraan SLF/PBG</title>
-<desc id="d">Dua matriks 5 kali 5 yang menempatkan risiko R-01 sampai R-12 sebelum dan sesudah mitigasi dokumen kemitraan.</desc>
+<desc id="d">Dua matriks 5 kali 5 yang menempatkan risiko R-01 sampai R-13 sebelum dan sesudah mitigasi dokumen kemitraan.</desc>
 <rect width="1000" height="585" fill="#ffffff"/>
 <text x="280.0" y="48" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Risiko inheren (sebelum dokumen disetujui)</text>
 <rect x="70" y="70" width="84" height="84" fill="#fff0b3" stroke="#ffffff" stroke-width="2"/>
@@ -152,5 +152,7 @@
 <text x="550" y="452.0" text-anchor="end" font-size="11" fill="#334155">1</text>
 <text x="770.0" y="530" text-anchor="middle" font-size="12" fill="#334155">Kemungkinan (1 Remote sampai 5 Almost Certain)</text>
 <text x="522" y="280.0" text-anchor="middle" font-size="12" fill="#334155" transform="rotate(-90 522 280.0)">Dampak (1 Negligible sampai 5 Critical)</text>
+<rect x="328" y="282" width="36" height="17" rx="8" fill="#0f172a"/><text x="346" y="294" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">R-13</text>
+<rect x="566" y="346" width="36" height="17" rx="8" fill="#0f172a"/><text x="584" y="358" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">R-13</text>
 <g font-size="11" fill="#334155"><rect x="70" y="552" width="14" height="14" fill="#cfe9d4"/><text x="90" y="564">Low 1-4</text><rect x="160" y="552" width="14" height="14" fill="#fff0b3"/><text x="180" y="564">Medium 5-9</text><rect x="270" y="552" width="14" height="14" fill="#ffd0a6"/><text x="290" y="564">High 10-15</text><rect x="385" y="552" width="14" height="14" fill="#f4a6a6"/><text x="405" y="564">Critical 16-25</text></g>
 </svg>
