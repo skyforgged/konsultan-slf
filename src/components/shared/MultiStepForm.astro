@@ -291,6 +291,7 @@ const stepCount = steps.length;
           item.className = 'msf-summary-item';
           const term = document.createElement('dt');
           term.textContent = label;
+          term.style.fontWeight = '700';
           const description = document.createElement('dd');
           description.textContent = String(value || '—');
           item.append(term, description);
