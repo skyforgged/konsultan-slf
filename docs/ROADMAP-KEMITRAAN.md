@@ -44,7 +44,29 @@ Setiap skema perlu memiliki halaman penjelasan atau bagian khusus yang menjawab:
 
 Profil sekoci bukan jaminan peningkatan peringkat atau backlink yang bernilai. Buat profil hanya jika ada pemilik kanal, tujuan, informasi yang benar, dan rencana pemeliharaan.
 
-## 4. Tahapan roadmap dan gerbang keputusan
+
+### Tiga jalur strategi ekspansi
+
+Ketiga jalur ini adalah **pilihan strategi dengan skala berbeda**, bukan tahapan wajib yang menggantikan satu sama lain. Tahapan operasional setelah bagian ini menjadi gerbang kesiapan yang dapat diterapkan pada jalur mana pun.
+
+| Jalur | Arsitektur | Tujuan utama | Indikator awal untuk diuji | Kapan dipilih |
+|---|---|---|---|---|
+| **Jalur Lambat — satu situs** | Fokus pada situs utama; optimalkan SEO on-site, off-site, konten, konversi, dan kanal inti | Memaksimalkan kekuatan satu domain sebelum menambah kompleksitas | Hipotesis awal: sekitar 1.000 tayangan organik/bulan; ukur prospek dan mitra dari baseline aktual | Sumber daya terbatas, situs utama masih punya ruang pertumbuhan, atau proses konversi belum stabil |
+| **Jalur Menengah — 3–4 situs** | Situs utama ditambah 2–3 situs sister company/entitas bisnis yang nyata dan mempunyai positioning masing-masing | Memperluas cakupan kueri dan menguji apakah beberapa domain dapat muncul bersamaan pada SERP strategis | Hipotesis awal: sekitar 5.000 tayangan organik/bulan untuk portofolio; ukur jumlah kueri dengan lebih dari satu domain tampil dan kontribusi prospek inkremental | Ada entitas yang sah, proposisi nilai berbeda, kapasitas konten/operasional, serta bukti bahwa ekspansi domain layak |
+| **Jalur Ekstensi — portofolio situs + profil pendukung** | Jalur Menengah ditambah profil dan kanal pendukung yang relevan, misalnya LinkedIn, YouTube, media artikel, direktori industri, serta Google Business Profile hanya untuk lokasi yang memenuhi syarat | Memperluas titik penemuan merek, reputasi, rujukan, dan peluang kehadiran di SERP di luar situs mandiri | Hipotesis awal: sekitar 10.000 tayangan organik/bulan untuk portofolio; ukur kontribusi tiap kanal, bukan jumlah profil | Portofolio situs sudah terkelola dan ada sumber daya untuk menjaga kualitas serta konsistensi seluruh kanal |
+
+**Catatan target:** angka tayangan di atas merupakan hipotesis kerja awal, bukan benchmark industri atau jaminan hasil. Target jumlah mitra—misalnya 3, 15, atau 30—jangan dianggap setara dengan target trafik dan jangan dijadikan komitmen sebelum baseline prospek, rasio kualifikasi, kapasitas tindak lanjut, serta konversi tersedia. Tetapkan sasaran kemitraan setelah data awal terkumpul.
+
+#### Cara memilih jalur
+
+- Tidak wajib menjalankan Jalur Lambat sebelum Jalur Menengah jika bukti kesiapan sudah tersedia; namun keputusan harus didukung data dan kapasitas.
+- Jalur Menengah berarti mengembangkan **entitas dan situs yang memang berbeda**, bukan membuat 3–4 salinan situs utama. Setiap situs harus lulus kriteria kelayakan sister company pada bagian berikut.
+- Jalur Ekstensi menambah kanal distribusi dan reputasi, bukan sekadar membuat profil kosong demi backlink.
+- Ketiga jalur dinilai dengan tujuan yang sama: cakupan SERP yang relevan, klik organik tambahan, prospek berkualitas, konversi, biaya pengelolaan, dan risiko.
+- Jalur dapat dihentikan, digabung, atau diturunkan skalanya jika tidak menghasilkan kontribusi tambahan atau membebani operasi.
+
+
+## 4. Tahapan operasional dan gerbang keputusan lintas jalur
 
 ### Tahap 0 — Fondasi dan kesiapan penawaran (minggu 1–2)
 
