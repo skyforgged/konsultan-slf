@@ -119,7 +119,7 @@ blocks:
     id: "cta-referral"
     heading: "Tertarik menjadi mitra referral?"
     message: "Sampaikan nama, kota, dan jaringan calon klien yang Anda miliki. Kami akan meninjau kesesuaian awal sebelum membahas kesepakatan referral."
-    serviceHref: "/kemitraan/"
-    serviceLabel: "Lihat semua skema kemitraan"
+    serviceHref: "/kemitraan/form-proposal/"
+    serviceLabel: "Isi form proposal"
     button: "Hubungi via WhatsApp"
 ---

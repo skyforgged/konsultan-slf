@@ -147,7 +147,7 @@ blocks:
     id: "cta-kemitraan"
     heading: "Tertarik menjadi cabang atau perwakilan?"
     message: "Sampaikan profil dan kota yang Anda ajukan. Kami akan meninjau kesesuaian awal sebelum membahas skema kerja sama."
-    serviceHref: "/services/"
-    serviceLabel: "Pelajari layanan kami"
+    serviceHref: "/kemitraan/pendaftaran/"
+    serviceLabel: "Daftar sebagai mitra"
     button: "Hubungi via WhatsApp"
 ---

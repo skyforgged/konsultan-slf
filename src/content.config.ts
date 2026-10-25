@@ -259,6 +259,26 @@ const contentBlocks = z.discriminatedUnion('component', [
     articlesCta: z.string().min(1),
   }),
   z.object({
+    component: z.literal('multi-step-form'),
+    id: z.string().min(1).optional(),
+    heading: z.string().min(1),
+    intro: z.string().min(1).optional(),
+    submitLabel: z.string().min(1).default('Kirim'),
+    successMessage: z.string().min(1),
+    steps: z.array(z.object({
+      title: z.string().min(1),
+      fields: z.array(z.object({
+        name: z.string().min(1),
+        label: z.string().min(1),
+        type: z.enum(['text', 'email', 'tel', 'textarea', 'select', 'checkbox', 'radio']),
+        required: z.boolean().default(false),
+        hint: z.string().optional(),
+        options: z.array(z.string().min(1)).optional(),
+      })).min(1),
+    })).min(1),
+  }),
+
+  z.object({
     component: z.literal('contact-panel'),
     id: z.string().min(1),
     title: z.string().min(1),

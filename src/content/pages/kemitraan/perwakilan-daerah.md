@@ -153,7 +153,7 @@ blocks:
     id: "cta-perwakilan"
     heading: "Tertarik menjadi perwakilan daerah di kota Anda?"
     message: "Sampaikan profil, kota yang Anda ajukan, dan jaringan calon klien yang Anda jangkau. Kami akan meninjau kesesuaian awal sebelum membahas skema kerja sama."
-    serviceHref: "/kemitraan/"
-    serviceLabel: "Lihat semua skema kemitraan"
+    serviceHref: "/kemitraan/form-proposal/"
+    serviceLabel: "Isi form proposal"
     button: "Hubungi via WhatsApp"
 ---

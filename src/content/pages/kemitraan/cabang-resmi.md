@@ -122,7 +122,7 @@ blocks:
     id: "cta-cabang"
     heading: "Tertarik menjajaki cabang resmi?"
     message: "Sampaikan profil usaha atau tim, kota yang diajukan, dan kesiapan operasional Anda. Kami akan meninjau kesesuaian awal sebelum membahas evaluasi lebih lanjut."
-    serviceHref: "/kemitraan/"
-    serviceLabel: "Lihat semua skema kemitraan"
+    serviceHref: "/kemitraan/form-proposal/"
+    serviceLabel: "Isi form proposal"
     button: "Hubungi via WhatsApp"
 ---

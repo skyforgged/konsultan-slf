@@ -1,0 +1,163 @@
+---
+const { id = 'msf', heading, intro, submitLabel = 'Kirim', successMessage, steps = [] } = Astro.props;
+const formId = `msf-${id}`;
+---
+
+<section id={id} class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+  <h2 class="text-2xl font-bold text-slate-950">{heading}</h2>
+  {intro && <p class="mt-2 text-slate-600">{intro}</p>}
+
+  <ol class="mt-6 flex flex-wrap items-center gap-2" id={`${formId}-stepper`}>
+    {steps.map((step, i) => (
+      <li class="flex items-center gap-2">
+        <span class={`msf-step-badge inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${i === 0 ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-600'}`} data-step={i}>{i + 1}</span>
+        <span class={`msf-step-title text-sm ${i === 0 ? 'font-semibold text-slate-900' : 'text-slate-500'}`}>{step.title}</span>
+        {i < steps.length - 1 && <span class="mx-1 h-px w-6 bg-slate-300"></span>}
+      </li>
+    ))}
+  </ol>
+
+  <form id={formId} class="mt-6 space-y-6" novalidate>
+    {steps.map((step, si) => (
+      <div class={`msf-step ${si === 0 ? '' : 'hidden'}`} data-step={si}>
+        <h3 class="mb-4 text-lg font-semibold text-slate-900">{step.title}</h3>
+        <div class="space-y-4">
+          {step.fields.map((f) => (
+            <div>
+              {f.type !== 'checkbox' && (
+                <label class="mb-1 block text-sm font-medium text-slate-700" for={`${formId}-${f.name}`}>
+                  {f.label}{f.required && <span class="text-red-600"> *</span>}
+                </label>
+              )}
+              {f.type === 'textarea' ? (
+                <textarea id={`${formId}-${f.name}`} name={f.name} required={f.required} placeholder={f.hint} rows="4" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+              ) : f.type === 'select' ? (
+                <select id={`${formId}-${f.name}`} name={f.name} required={f.required} class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                  <option value="">-- pilih --</option>
+                  {f.options?.map((o) => <option value={o}>{o}</option>)}
+                </select>
+              ) : f.type === 'checkbox' ? (
+                <div class="flex items-center gap-2">
+                  <input id={`${formId}-${f.name}`} name={f.name} type="checkbox" value="Ya" required={f.required} class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-500" />
+                  <label for={`${formId}-${f.name}`} class="text-sm font-medium text-slate-700">{f.label}{f.required && <span class="text-red-600"> *</span>}</label>
+                  {f.hint && <span class="text-xs text-slate-500">({f.hint})</span>}
+                </div>
+              ) : f.type === 'radio' ? (
+                <div class="space-y-2">
+                  {f.options?.map((o) => (
+                    <label class="flex items-center gap-2 text-sm text-slate-700">
+                      <input type="radio" name={f.name} value={o} required={f.required} class="h-4 w-4 border-slate-300 text-blue-700 focus:ring-blue-500" />
+                      {o}
+                    </label>
+                  ))}
+                </div>
+              ) : (
+                <input id={`${formId}-${f.name}`} name={f.name} type={f.type} required={f.required} placeholder={f.hint} class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              )}
+              {f.hint && f.type !== 'checkbox' && <p class="mt-1 text-xs text-slate-500">{f.hint}</p>}
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 flex items-center justify-between gap-3">
+          {si > 0 && <button type="button" class="msf-prev rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" data-form={formId}>Sebelumnya</button>}
+          {si < steps.length - 1 ? (
+            <button type="button" class="msf-next ml-auto rounded-lg bg-blue-700 px-5 py-2 text-sm font-bold text-white hover:bg-blue-800" data-form={formId}>Selanjutnya</button>
+          ) : (
+            <button type="submit" class="ml-auto rounded-lg bg-green-600 px-5 py-2 text-sm font-bold text-white hover:bg-green-700">{submitLabel}</button>
+          )}
+        </div>
+      </div>
+    ))}
+  </form>
+
+  <div id={`${formId}-result`} class="mt-6 hidden rounded-2xl border border-green-200 bg-green-50 p-6">
+    <p class="mb-3 text-lg font-bold text-green-800">{successMessage}</p>
+    <p class="mb-4 text-sm text-green-700">Ringkasan data yang Anda kirim (tidak disimpan ke server):</p>
+    <dl id={`${formId}-summary`} class="grid grid-cols-1 gap-2 text-sm md:grid-cols-2"></dl>
+    <button type="button" class="mt-4 rounded-lg border border-green-300 px-4 py-2 text-sm font-medium text-green-800 hover:bg-green-100" id={`${formId}-reset`}>Isi ulang</button>
+  </div>
+</section>
+<script>
+  function initMultiStepForm(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const steps = Array.from(form.querySelectorAll('.msf-step'));
+    const badges = document.querySelectorAll(`#${formId}-stepper .msf-step-badge`);
+    const titles = document.querySelectorAll(`#${formId}-stepper .msf-step-title`);
+    const result = document.getElementById(`${formId}-result`);
+    const summary = document.getElementById(`${formId}-summary`);
+    const resetBtn = document.getElementById(`${formId}-reset`);
+    let current = 0;
+
+    function showStep(i) {
+      steps.forEach((s, idx) => s.classList.toggle('hidden', idx !== i));
+      badges.forEach((b, idx) => {
+        b.classList.toggle('bg-blue-700', idx === i);
+        b.classList.toggle('text-white', idx === i);
+        b.classList.toggle('bg-slate-200', idx !== i);
+        b.classList.toggle('text-slate-600', idx !== i);
+      });
+      titles.forEach((t, idx) => {
+        t.classList.toggle('font-semibold', idx === i);
+        t.classList.toggle('text-slate-900', idx === i);
+        t.classList.toggle('text-slate-500', idx !== i);
+      });
+      current = i;
+    }
+
+    function validateStep(i) {
+      const inputs = steps[i].querySelectorAll('input, select, textarea');
+      for (const el of inputs) {
+        if (el.hasAttribute('required')) {
+          if (el.type === 'checkbox' && !el.checked) { el.focus(); return false; }
+          if (el.type === 'radio') {
+            const group = form.querySelectorAll(`input[name="${el.name}"]:checked`);
+            if (group.length === 0) { el.focus(); return false; }
+          } else if (!String(el.value).trim()) { el.focus(); return false; }
+        }
+      }
+      return true;
+    }
+
+    form.querySelectorAll('.msf-next').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!validateStep(current)) return;
+        if (current < steps.length - 1) showStep(current + 1);
+      });
+    });
+    form.querySelectorAll('.msf-prev').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (current > 0) showStep(current - 1);
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validateStep(current)) return;
+      const data = new FormData(form);
+      const entries = [];
+      for (const [k, v] of data.entries()) entries.push({ name: k, value: v });
+      if (summary) {
+        summary.innerHTML = entries.map(({ name, value }) =>
+          `<div class="rounded-lg border border-green-100 bg-white px-3 py-2"><dt class="font-semibold text-slate-900">${name}</dt><dd class="text-slate-700">${value || '-'}</dd></div>`
+        ).join('');
+      }
+      form.classList.add('hidden');
+      result?.classList.remove('hidden');
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.classList.remove('hidden');
+      result?.classList.add('hidden');
+      showStep(0);
+    });
+  }
+
+  document.querySelectorAll('form[id^="msf-"]').forEach((f) => initMultiStepForm(f.id));
+</script>
+
+<style>
+  .hidden { display: none; }
+</style>
+

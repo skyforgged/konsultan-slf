@@ -1,0 +1,46 @@
+---
+id: 205
+ulid: "01M5773Q4Z1X2C3V4B5N6M7Q9A"
+title: "Pendaftaran Mitra Kemitraan SLF/PBG"
+description: "Formulir pendaftaran awal bagi calon mitra yang tertarik menjadi referral, mitra kolaboratif, perwakilan daerah, atau cabang resmi layanan SLF/PBG."
+pubDate: "2026-10-26T10:00:00Z"
+updatedDate: "2026-10-26T10:02:00Z"
+image: "/images/illustrations/service-directory.svg"
+socialImage: "/images/social/kemitraan.webp"
+type: "page"
+draft: false
+navLabel: "Pendaftaran Mitra"
+canonical: "/kemitraan/pendaftaran/"
+slug: "kemitraan/pendaftaran"
+blocks:
+  - component: "page-header"
+    eyebrow: "Pendaftaran mitra"
+    heading: "Formulir pendaftaran awal mitra"
+    intro: "Sampaikan profil, kota, dan skema kemitraan yang Anda minati. Data ini digunakan untuk menilai kesesuaian awal sebelum diskusi lebih lanjut."
+    image: "/images/illustrations/service-directory.svg"
+    imageAlt: "Ilustrasi formulir pendaftaran mitra kemitraan SLF dan PBG"
+  - component: "section"
+    id: "petunjuk"
+    heading: "Sebelum mengisi formulir"
+    content:
+      - type: "p"
+        text: "Formulir ini adalah tahap awal untuk mengumpulkan minat dan informasi dasar calon mitra. Pengisian tidak menjamin diterimanya kemitraan; perusahaan akan meninjau kesesuaian lokasi, kapasitas, dan profil kandidat."
+      - type: "list"
+        ordered: false
+        items:
+          - "Siapkan informasi dasar: nama, kontak, kota/provinsi, profesi, dan perusahaan (jika ada)."
+          - "Pilih skema kemitraan yang diminati: Referral, Mitra Kolaboratif, Perwakilan Daerah, atau Cabang Resmi."
+          - "Jelaskan jaringan, pengalaman, dan wilayah yang ingin Anda kembangkan secara ringkas dan jujur."
+          - "Baca kebijakan privasi sebelum menyetujui pengumpulan data."
+  - component: "cta"
+    id: "cta-formulir"
+    heading: "Isi formulir pendaftaran"
+    message: "Formulir proposal dibuka di halaman internal. Setelah mengirim, tim akan meninjau dan menghubungi Anda melalui WhatsApp atau email."
+    serviceHref: "/kemitraan/form-proposal/"
+    serviceLabel: "Buka form proposal"
+  - component: "note"
+    id: "catatan-privasi"
+    variant: "info"
+    title: "Privasi data"
+    text: "Data yang Anda kirim digunakan hanya untuk keperluan seleksi dan komunikasi program kemitraan. Kami tidak membagikan data pribadi kepada pihak ketiga tanpa persetujuan, kecuali diwajibkan oleh ketentuan yang berlaku."
+---

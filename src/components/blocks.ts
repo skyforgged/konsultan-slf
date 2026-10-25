@@ -17,6 +17,7 @@ import FeatureCardGrid from './shared/FeatureCardGrid.astro';
 import StatsGrid from './shared/StatsGrid.astro';
 import SourceLinks from './shared/SourceLinks.astro';
 import ContactPanel from './shared/ContactPanel.astro';
+import MultiStepForm from './shared/MultiStepForm.astro';
 import PageHeaderBlock from './shared/PageHeaderBlock.astro';
 import HomeHeroBlock from './shared/HomeHeroBlock.astro';
 import ServiceListBlock from './shared/ServiceListBlock.astro';
@@ -45,6 +46,7 @@ const blocks: Record<string, any> = {
   'stats-grid': StatsGrid,
   'source-links': SourceLinks,
   'contact-panel': ContactPanel,
+  'multi-step-form': MultiStepForm,
   'page-header': PageHeaderBlock,
   'home-hero': HomeHeroBlock,
   'service-list': ServiceListBlock,

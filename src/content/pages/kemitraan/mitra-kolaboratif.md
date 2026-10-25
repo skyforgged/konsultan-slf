@@ -117,7 +117,7 @@ blocks:
     id: "cta-kolaboratif"
     heading: "Punya proyek yang ingin dikerjakan bersama?"
     message: "Ceritakan profil Anda, kota, dan jenis proyek atau klien yang ingin dikerjakan bersama. Kami akan meninjau kesesuaian awal sebelum membahas pembagian peran."
-    serviceHref: "/kemitraan/"
-    serviceLabel: "Lihat semua skema kemitraan"
+    serviceHref: "/kemitraan/form-proposal/"
+    serviceLabel: "Isi form proposal"
     button: "Hubungi via WhatsApp"
 ---
