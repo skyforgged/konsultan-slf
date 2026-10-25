@@ -91,8 +91,6 @@ Ketiga jalur ini adalah **pilihan strategi dengan skala berbeda**, bukan tahapan
 - Catat pertanyaan, keberatan, dan alasan prospek tidak melanjutkan untuk memperbaiki penawaran.
 - Evaluasi data setiap minggu dan lakukan tinjauan bulanan.
 
-**Gerbang lanjut:** terdapat bukti prospek berkualitas dan pola kebutuhan yang berulang, proses tindak lanjut berjalan, dan tim dapat menjelaskan kanal mana yang menghasilkan percakapan bermutu. Jika belum, lanjutkan eksperimen pada penawaran dan kanal; jangan buru-buru menambah situs.
-
 ### Tahap 2 — Penguatan konversi dan kanal pendukung (bulan 3–4)
 
 **Pekerjaan**
