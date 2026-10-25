@@ -1,163 +1,478 @@
 ---
 const { id = 'msf', heading, intro, submitLabel = 'Kirim', successMessage, steps = [] } = Astro.props;
 const formId = `msf-${id}`;
+const stepCount = steps.length;
 ---
 
-<section id={id} class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
-  <h2 class="text-2xl font-bold text-slate-950">{heading}</h2>
-  {intro && <p class="mt-2 text-slate-600">{intro}</p>}
+<section id={id} class="msf-shell" aria-labelledby={`${formId}-heading`}>
+  <div class="msf-heading">
+    <span class="msf-eyebrow"><span class="msf-eyebrow-dot"></span> PENDAFTARAN MITRA</span>
+    <h2 id={`${formId}-heading`}>{heading}</h2>
+    {intro && <p class="msf-intro">{intro}</p>}
+    <div class="msf-trust-row">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg> Data belum dikirim atau disimpan</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Isi sesuai waktu Anda</span>
+    </div>
+  </div>
 
-  <ol class="mt-6 flex flex-wrap items-center gap-2" id={`${formId}-stepper`}>
-    {steps.map((step, i) => (
-      <li class="flex items-center gap-2">
-        <span class={`msf-step-badge inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${i === 0 ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-600'}`} data-step={i}>{i + 1}</span>
-        <span class={`msf-step-title text-sm ${i === 0 ? 'font-semibold text-slate-900' : 'text-slate-500'}`}>{step.title}</span>
-        {i < steps.length - 1 && <span class="mx-1 h-px w-6 bg-slate-300"></span>}
-      </li>
-    ))}
-  </ol>
-
-  <form id={formId} class="mt-6 space-y-6" novalidate>
-    {steps.map((step, si) => (
-      <div class={`msf-step ${si === 0 ? '' : 'hidden'}`} data-step={si}>
-        <h3 class="mb-4 text-lg font-semibold text-slate-900">{step.title}</h3>
-        <div class="space-y-4">
-          {step.fields.map((f) => (
-            <div>
-              {f.type !== 'checkbox' && (
-                <label class="mb-1 block text-sm font-medium text-slate-700" for={`${formId}-${f.name}`}>
-                  {f.label}{f.required && <span class="text-red-600"> *</span>}
-                </label>
-              )}
-              {f.type === 'textarea' ? (
-                <textarea id={`${formId}-${f.name}`} name={f.name} required={f.required} placeholder={f.hint} rows="4" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
-              ) : f.type === 'select' ? (
-                <select id={`${formId}-${f.name}`} name={f.name} required={f.required} class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
-                  <option value="">-- pilih --</option>
-                  {f.options?.map((o) => <option value={o}>{o}</option>)}
-                </select>
-              ) : f.type === 'checkbox' ? (
-                <div class="flex items-center gap-2">
-                  <input id={`${formId}-${f.name}`} name={f.name} type="checkbox" value="Ya" required={f.required} class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-500" />
-                  <label for={`${formId}-${f.name}`} class="text-sm font-medium text-slate-700">{f.label}{f.required && <span class="text-red-600"> *</span>}</label>
-                  {f.hint && <span class="text-xs text-slate-500">({f.hint})</span>}
-                </div>
-              ) : f.type === 'radio' ? (
-                <div class="space-y-2">
-                  {f.options?.map((o) => (
-                    <label class="flex items-center gap-2 text-sm text-slate-700">
-                      <input type="radio" name={f.name} value={o} required={f.required} class="h-4 w-4 border-slate-300 text-blue-700 focus:ring-blue-500" />
-                      {o}
-                    </label>
-                  ))}
-                </div>
-              ) : (
-                <input id={`${formId}-${f.name}`} name={f.name} type={f.type} required={f.required} placeholder={f.hint} class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-              )}
-              {f.hint && f.type !== 'checkbox' && <p class="mt-1 text-xs text-slate-500">{f.hint}</p>}
-            </div>
-          ))}
-        </div>
-        <div class="mt-6 flex items-center justify-between gap-3">
-          {si > 0 && <button type="button" class="msf-prev rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" data-form={formId}>Sebelumnya</button>}
-          {si < steps.length - 1 ? (
-            <button type="button" class="msf-next ml-auto rounded-lg bg-blue-700 px-5 py-2 text-sm font-bold text-white hover:bg-blue-800" data-form={formId}>Selanjutnya</button>
-          ) : (
-            <button type="submit" class="ml-auto rounded-lg bg-green-600 px-5 py-2 text-sm font-bold text-white hover:bg-green-700">{submitLabel}</button>
-          )}
-        </div>
+  <div class="msf-card">
+    <aside class="msf-aside" aria-label="Informasi formulir">
+      <div class="msf-aside-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M10 39V14l14-7 14 7v25"/><path d="M6 39h36M17 18h4m6 0h4M17 25h4m6 0h4M20 39V31h8v8"/></svg>
       </div>
-    ))}
-  </form>
+      <p class="msf-aside-kicker">LANGKAH AWAL</p>
+      <h3>Bangun peluang kemitraan bersama kami.</h3>
+      <p class="msf-aside-copy">Ceritakan profil dan rencana Anda. Informasi ini membantu menyiapkan diskusi yang lebih relevan dengan kebutuhan dan wilayah Anda.</p>
+      <div class="msf-aside-divider"></div>
+      <p class="msf-aside-list-title">Yang perlu Anda ketahui</p>
+      <ul class="msf-aside-list">
+        <li><span class="msf-check">✓</span><span>Isi beberapa langkah singkat</span></li>
+        <li><span class="msf-check">✓</span><span>Pilih skema yang paling sesuai</span></li>
+        <li><span class="msf-check">✓</span><span>Tinjau kembali ringkasan sebelum selesai</span></li>
+      </ul>
+      <div class="msf-aside-note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
+        <p><strong>Masih menjajaki peluang?</strong><br />Anda dapat memilih “Belum yakin” pada skema kemitraan.</p>
+      </div>
+    </aside>
 
-  <div id={`${formId}-result`} class="mt-6 hidden rounded-2xl border border-green-200 bg-green-50 p-6">
-    <p class="mb-3 text-lg font-bold text-green-800">{successMessage}</p>
-    <p class="mb-4 text-sm text-green-700">Ringkasan data yang Anda kirim (tidak disimpan ke server):</p>
-    <dl id={`${formId}-summary`} class="grid grid-cols-1 gap-2 text-sm md:grid-cols-2"></dl>
-    <button type="button" class="mt-4 rounded-lg border border-green-300 px-4 py-2 text-sm font-medium text-green-800 hover:bg-green-100" id={`${formId}-reset`}>Isi ulang</button>
+    <div class="msf-main">
+      <div class="msf-progress-head">
+        <div>
+          <p class="msf-progress-label">PROGRES PENGISIAN</p>
+          <p class="msf-progress-count"><span id={`${formId}-current`}>01</span><span class="msf-progress-separator">/</span><span>{String(stepCount).padStart(2, '0')}</span><span class="msf-progress-caption">tahap</span></p>
+        </div>
+        <span class="msf-progress-percent" id={`${formId}-percent`}>0% selesai</span>
+      </div>
+      <div class="msf-progress-track" role="progressbar" aria-label="Progres pengisian formulir" aria-valuemin="1" aria-valuemax={stepCount} aria-valuenow="1" id={`${formId}-progress`}>
+        <span id={`${formId}-progress-bar`}></span>
+      </div>
+
+      <ol class="msf-stepper" id={`${formId}-stepper`} aria-label="Tahapan formulir">
+        {steps.map((step, i) => (
+          <li class:list={['msf-stepper-item', i === 0 && 'is-active']} data-step-item={i}>
+            <span class="msf-step-badge" aria-hidden="true">{i + 1}</span>
+            <span class="msf-step-title">{step.title}</span>
+          </li>
+        ))}
+      </ol>
+
+      <form id={formId} class="msf-form" novalidate>
+        {steps.map((step, si) => (
+          <fieldset class="msf-step-panel" data-step={si} hidden={si !== 0}>
+            <legend class="msf-step-legend">{step.title}</legend>
+            <p class="msf-step-description">{si === 0 ? 'Mulai dengan informasi kontak agar kami memahami siapa Anda.' : si === 1 ? 'Pilih arah kemitraan dan wilayah yang ingin Anda kembangkan.' : si === steps.length - 1 ? 'Pastikan Anda memahami persetujuan berikut sebelum menyelesaikan simulasi.' : 'Ceritakan pengalaman dan kesiapan Anda secara ringkas.'}</p>
+            <div class="msf-fields">
+              {step.fields.map((f) => (
+                <div class:list={['msf-field', f.type === 'textarea' && 'msf-field-wide', f.type === 'checkbox' && 'msf-field-wide msf-field-checkbox', f.type === 'radio' && 'msf-field-wide']}>
+                  {f.type !== 'checkbox' && (
+                    <label class="msf-label" for={`${formId}-${f.name}`}>
+                      {f.label}{f.required && <span class="msf-required" aria-label="wajib diisi"> *</span>}
+                    </label>
+                  )}
+                  {f.type === 'textarea' ? (
+                    <textarea id={`${formId}-${f.name}`} name={f.name} required={f.required} placeholder={f.hint} rows="4" data-label={f.label} aria-describedby={`${formId}-${f.name}-hint ${formId}-${f.name}-error`}></textarea>
+                  ) : f.type === 'select' ? (
+                    <select id={`${formId}-${f.name}`} name={f.name} required={f.required} data-label={f.label} aria-describedby={`${formId}-${f.name}-hint ${formId}-${f.name}-error`}>
+                      <option value="">Pilih salah satu</option>
+                      {f.options?.map((o) => <option value={o}>{o}</option>)}
+                    </select>
+                  ) : f.type === 'checkbox' ? (
+                    <label class="msf-consent-card" for={`${formId}-${f.name}`}>
+                      <input id={`${formId}-${f.name}`} name={f.name} type="checkbox" value="Ya" required={f.required} data-label={f.label} aria-describedby={`${formId}-${f.name}-hint ${formId}-${f.name}-error`} />
+                      <span class="msf-consent-text"><span class="msf-consent-label">{f.label}{f.required && <span class="msf-required"> *</span>}</span>{f.hint && <span class="msf-hint" id={`${formId}-${f.name}-hint`}>{f.hint}</span>}</span>
+                    </label>
+                  ) : f.type === 'radio' ? (
+                    <div class="msf-radio-list" role="group" aria-label={f.label} data-radio-group={f.name}>
+                      {f.options?.map((o, oi) => (
+                        <label class="msf-radio-option" for={`${formId}-${f.name}-${oi}`}>
+                          <input id={`${formId}-${f.name}-${oi}`} type="radio" name={f.name} value={o} required={f.required} data-label={f.label} />
+                          <span>{o}</span>
+                        </label>
+                      ))}
+                    </div>
+                  ) : (
+                    <input id={`${formId}-${f.name}`} name={f.name} type={f.type} required={f.required} placeholder={f.hint} data-label={f.label} autocomplete={f.type === 'email' ? 'email' : f.type === 'tel' ? 'tel' : f.name === 'nama' ? 'name' : 'off'} aria-describedby={`${formId}-${f.name}-hint ${formId}-${f.name}-error`} />
+                  )}
+                  {f.hint && f.type !== 'checkbox' && <p class="msf-hint" id={`${formId}-${f.name}-hint`}>{f.hint}</p>}
+                  <p class="msf-error" id={`${formId}-${f.name}-error`} role="alert" hidden></p>
+                </div>
+              ))}
+            </div>
+            <div class="msf-navigation">
+              {si > 0 ? <button type="button" class="msf-button msf-button-back msf-prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Sebelumnya</button> : <span class="msf-step-footnote"><span class="msf-required">*</span> Wajib diisi</span>}
+              {si < steps.length - 1 ? (
+                <button type="button" class="msf-button msf-button-next msf-next">Lanjutkan <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+              ) : (
+                <button type="submit" class="msf-button msf-button-submit">{submitLabel} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></button>
+              )}
+            </div>
+          </fieldset>
+        ))}
+      </form>
+
+      <section id={`${formId}-result`} class="msf-result" aria-live="polite" hidden>
+        <div class="msf-result-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></div>
+        <p class="msf-result-eyebrow">SIMULASI SELESAI</p>
+        <h3>{successMessage || 'Ringkasan formulir siap ditinjau.'}</h3>
+        <p class="msf-result-copy">Ini hanya pratinjau untuk meninjau field dan alur formulir. <strong>Data belum dikirim ke server dan tidak disimpan.</strong></p>
+        <div class="msf-summary-heading"><h4>Ringkasan jawaban Anda</h4><span>Pratinjau lokal</span></div>
+        <dl id={`${formId}-summary`} class="msf-summary"></dl>
+        <div class="msf-result-actions">
+          <button type="button" class="msf-button msf-button-back" id={`${formId}-edit`}>Kembali mengedit</button>
+          <button type="button" class="msf-button msf-button-next" id={`${formId}-reset`}>Mulai lagi <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9a7 7 0 0 1 11.7-2L20 12M4 12l2.8 5a7 7 0 0 0 11.7-2"/></svg></button>
+        </div>
+      </section>
+      <p class="msf-privacy-foot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Jangan masukkan informasi rahasia atau dokumen sensitif pada tahap proposal ini.</p>
+    </div>
   </div>
 </section>
+
 <script>
   function initMultiStepForm(formId) {
     const form = document.getElementById(formId);
-    if (!form) return;
-    const steps = Array.from(form.querySelectorAll('.msf-step'));
-    const badges = document.querySelectorAll(`#${formId}-stepper .msf-step-badge`);
-    const titles = document.querySelectorAll(`#${formId}-stepper .msf-step-title`);
+    if (!form || form.dataset.initialized === 'true') return;
+    form.dataset.initialized = 'true';
+
+    const root = document.getElementById(formId.replace(/^msf-/, ''));
+    const panels = Array.from(form.querySelectorAll('.msf-step-panel'));
+    const stepItems = Array.from(document.querySelectorAll(`#${formId}-stepper [data-step-item]`));
+    const currentText = document.getElementById(`${formId}-current`);
+    const percentText = document.getElementById(`${formId}-percent`);
+    const progress = document.getElementById(`${formId}-progress`);
+    const progressBar = document.getElementById(`${formId}-progress-bar`);
     const result = document.getElementById(`${formId}-result`);
     const summary = document.getElementById(`${formId}-summary`);
-    const resetBtn = document.getElementById(`${formId}-reset`);
+    const resetButton = document.getElementById(`${formId}-reset`);
+    const editButton = document.getElementById(`${formId}-edit`);
     let current = 0;
 
-    function showStep(i) {
-      steps.forEach((s, idx) => s.classList.toggle('hidden', idx !== i));
-      badges.forEach((b, idx) => {
-        b.classList.toggle('bg-blue-700', idx === i);
-        b.classList.toggle('text-white', idx === i);
-        b.classList.toggle('bg-slate-200', idx !== i);
-        b.classList.toggle('text-slate-600', idx !== i);
-      });
-      titles.forEach((t, idx) => {
-        t.classList.toggle('font-semibold', idx === i);
-        t.classList.toggle('text-slate-900', idx === i);
-        t.classList.toggle('text-slate-500', idx !== i);
-      });
-      current = i;
+    function clearError(field) {
+      const fieldWrap = field.closest('.msf-field');
+      if (!fieldWrap) return;
+      fieldWrap.classList.remove('has-error');
+      const error = fieldWrap.querySelector('.msf-error');
+      if (error) {
+        error.hidden = true;
+        error.textContent = '';
+      }
+      field.removeAttribute('aria-invalid');
     }
 
-    function validateStep(i) {
-      const inputs = steps[i].querySelectorAll('input, select, textarea');
-      for (const el of inputs) {
-        if (el.hasAttribute('required')) {
-          if (el.type === 'checkbox' && !el.checked) { el.focus(); return false; }
-          if (el.type === 'radio') {
-            const group = form.querySelectorAll(`input[name="${el.name}"]:checked`);
-            if (group.length === 0) { el.focus(); return false; }
-          } else if (!String(el.value).trim()) { el.focus(); return false; }
+    function setError(field, message) {
+      const fieldWrap = field.closest('.msf-field');
+      if (!fieldWrap) return;
+      fieldWrap.classList.add('has-error');
+      const error = fieldWrap.querySelector('.msf-error');
+      if (error) {
+        error.textContent = message;
+        error.hidden = false;
+      }
+      field.setAttribute('aria-invalid', 'true');
+    }
+
+    function updateProgress(index) {
+      const total = Math.max(panels.length, 1);
+      const percent = Math.round(((index + 1) / total) * 100);
+      if (currentText) currentText.textContent = String(index + 1).padStart(2, '0');
+      if (percentText) percentText.textContent = `${percent}% selesai`;
+      if (progressBar) progressBar.style.width = `${percent}%`;
+      if (progress) progress.setAttribute('aria-valuenow', String(index + 1));
+      stepItems.forEach((item, i) => {
+        item.classList.toggle('is-active', i === index);
+        item.classList.toggle('is-complete', i < index);
+        const badge = item.querySelector('.msf-step-badge');
+        if (badge) badge.textContent = i < index ? '✓' : String(i + 1);
+        if (i === index) item.setAttribute('aria-current', 'step');
+        else item.removeAttribute('aria-current');
+      });
+    }
+
+    function showStep(index, focusHeading = true) {
+      panels.forEach((panel, i) => { panel.hidden = i !== index; });
+      current = index;
+      updateProgress(index);
+      if (focusHeading) {
+        const legend = panels[index]?.querySelector('legend');
+        legend?.setAttribute('tabindex', '-1');
+        legend?.focus({ preventScroll: true });
+        panels[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function validateStep(index) {
+      const panel = panels[index];
+      if (!panel) return false;
+      let firstInvalid = null;
+      const fields = Array.from(panel.querySelectorAll('input, select, textarea'));
+      const radioNames = new Set();
+
+      fields.forEach((field) => {
+        clearError(field);
+        if (field.type === 'radio') {
+          if (radioNames.has(field.name)) return;
+          radioNames.add(field.name);
+          const group = fields.filter((candidate) => candidate.type === 'radio' && candidate.name === field.name);
+          const required = group.some((candidate) => candidate.required);
+          const checked = group.some((candidate) => candidate.checked);
+          if (required && !checked) {
+            const first = group[0];
+            setError(first, 'Pilih salah satu jawaban untuk melanjutkan.');
+            if (!firstInvalid) firstInvalid = first;
+          }
+          return;
         }
+        if (!field.required) return;
+        let message = '';
+        if (field.type === 'checkbox' && !field.checked) message = 'Persetujuan ini wajib dicentang untuk melanjutkan.';
+        else if (field.type !== 'checkbox' && !String(field.value).trim()) message = 'Kolom ini wajib diisi.';
+        else if (field.type === 'email' && !field.validity.valid) message = 'Masukkan alamat email dengan format yang benar.';
+        else if (field.type === 'tel' && !field.validity.valid) message = 'Periksa kembali nomor yang Anda masukkan.';
+        if (message) {
+          setError(field, message);
+          if (!firstInvalid) firstInvalid = field;
+        }
+      });
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.closest('.msf-field')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return false;
       }
       return true;
     }
 
-    form.querySelectorAll('.msf-next').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        if (!validateStep(current)) return;
-        if (current < steps.length - 1) showStep(current + 1);
+    form.querySelectorAll('.msf-next').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (validateStep(current) && current < panels.length - 1) showStep(current + 1);
       });
     });
-    form.querySelectorAll('.msf-prev').forEach((btn) => {
-      btn.addEventListener('click', () => {
+    form.querySelectorAll('.msf-prev').forEach((button) => {
+      button.addEventListener('click', () => {
         if (current > 0) showStep(current - 1);
       });
     });
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!validateStep(current)) return;
-      const data = new FormData(form);
-      const entries = [];
-      for (const [k, v] of data.entries()) entries.push({ name: k, value: v });
-      if (summary) {
-        summary.innerHTML = entries.map(({ name, value }) =>
-          `<div class="rounded-lg border border-green-100 bg-white px-3 py-2"><dt class="font-semibold text-slate-900">${name}</dt><dd class="text-slate-700">${value || '-'}</dd></div>`
-        ).join('');
+    form.addEventListener('input', (event) => {
+      const field = event.target;
+      if (field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement) {
+        if (field.type === 'radio') {
+          form.querySelectorAll(`input[type="radio"][name="${CSS.escape(field.name)}"]`).forEach(clearError);
+        } else clearError(field);
       }
-      form.classList.add('hidden');
-      result?.classList.remove('hidden');
+    });
+    form.addEventListener('change', (event) => {
+      const field = event.target;
+      if (field instanceof HTMLInputElement || field instanceof HTMLSelectElement) {
+        if (field.type === 'radio') {
+          form.querySelectorAll(`input[type="radio"][name="${CSS.escape(field.name)}"]`).forEach(clearError);
+        } else clearError(field);
+      }
     });
 
-    resetBtn?.addEventListener('click', () => {
-      form.reset();
-      form.classList.remove('hidden');
-      result?.classList.add('hidden');
-      showStep(0);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!validateStep(current)) return;
+      const allValid = panels.every((_, index) => validateStep(index));
+      if (!allValid) {
+        const firstInvalidPanel = panels.findIndex((panel) => panel.querySelector('.msf-field.has-error'));
+        if (firstInvalidPanel >= 0) showStep(firstInvalidPanel);
+        return;
+      }
+
+      if (summary) {
+        summary.replaceChildren();
+        const seen = new Set();
+        Array.from(new FormData(form).entries()).forEach(([name, value]) => {
+          if (seen.has(name)) return;
+          seen.add(name);
+          const field = form.querySelector(`[name="${CSS.escape(name)}"]`);
+          const label = field?.dataset.label || name;
+          const item = document.createElement('div');
+          item.className = 'msf-summary-item';
+          const term = document.createElement('dt');
+          term.textContent = label;
+          const description = document.createElement('dd');
+          description.textContent = String(value || '—');
+          item.append(term, description);
+          summary.append(item);
+        });
+      }
+      form.hidden = true;
+      const stepper = document.getElementById(`${formId}-stepper`);
+      if (stepper) stepper.hidden = true;
+      const progressWrap = document.getElementById(`${formId}-progress`)?.parentElement;
+      const progressHead = document.getElementById(`${formId}-current`)?.closest('.msf-progress-head');
+      if (progressWrap) progressWrap.hidden = true;
+      if (progressHead) progressHead.hidden = true;
+      result.hidden = false;
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      result.querySelector('h3')?.focus({ preventScroll: true });
     });
+
+    function resetForm() {
+      form.reset();
+      form.hidden = false;
+      result.hidden = true;
+      const stepper = document.getElementById(`${formId}-stepper`);
+      if (stepper) stepper.hidden = false;
+      const progressWrap = document.getElementById(`${formId}-progress`)?.parentElement;
+      const progressHead = document.getElementById(`${formId}-current`)?.closest('.msf-progress-head');
+      if (progressWrap) progressWrap.hidden = false;
+      if (progressHead) progressHead.hidden = false;
+      form.querySelectorAll('.msf-field').forEach((field) => field.classList.remove('has-error'));
+      form.querySelectorAll('.msf-error').forEach((error) => { error.hidden = true; error.textContent = ''; });
+      form.querySelectorAll('[aria-invalid="true"]').forEach((field) => field.removeAttribute('aria-invalid'));
+      if (summary) summary.replaceChildren();
+      showStep(0, false);
+    }
+
+    resetButton?.addEventListener('click', resetForm);
+    editButton?.addEventListener('click', () => {
+      result.hidden = true;
+      form.hidden = false;
+      const stepper = document.getElementById(`${formId}-stepper`);
+      if (stepper) stepper.hidden = false;
+      const progressWrap = document.getElementById(`${formId}-progress`)?.parentElement;
+      const progressHead = document.getElementById(`${formId}-current`)?.closest('.msf-progress-head');
+      if (progressWrap) progressWrap.hidden = false;
+      if (progressHead) progressHead.hidden = false;
+      showStep(panels.length - 1);
+    });
+
+    updateProgress(0);
   }
 
-  document.querySelectorAll('form[id^="msf-"]').forEach((f) => initMultiStepForm(f.id));
+  document.querySelectorAll('form[id^="msf-"]').forEach((form) => initMultiStepForm(form.id));
 </script>
 
 <style>
-  .hidden { display: none; }
+  .msf-shell { --msf-ink: #10233f; --msf-muted: #65748b; --msf-line: #dce4ee; --msf-blue: #174b87; --msf-blue-dark: #103967; --msf-soft: #f3f7fb; margin: 2rem 0; color: var(--msf-ink); }
+  .msf-heading { max-width: 760px; margin: 0 auto 2rem; text-align: center; }
+  .msf-eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: var(--msf-blue); font-size: .72rem; font-weight: 800; letter-spacing: .13em; }
+  .msf-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #37a184; box-shadow: 0 0 0 4px #37a1841c; }
+  .msf-heading h2 { margin: .8rem 0 .65rem; color: var(--msf-ink); font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.16; letter-spacing: -.035em; font-weight: 800; }
+  .msf-intro { max-width: 650px; margin: 0 auto; color: var(--msf-muted); font-size: 1rem; line-height: 1.75; }
+  .msf-trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem 1.3rem; margin-top: 1.1rem; color: #50637c; font-size: .78rem; }
+  .msf-trust-row span { display: inline-flex; align-items: center; gap: .4rem; }
+  .msf-trust-row svg, .msf-privacy-foot svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .msf-card { display: grid; grid-template-columns: minmax(235px, .78fr) minmax(0, 1.65fr); overflow: hidden; border: 1px solid #dce4ee; border-radius: 22px; background: #fff; box-shadow: 0 24px 70px #17365b12, 0 3px 10px #17365b08; }
+  .msf-aside { position: relative; display: flex; flex-direction: column; padding: clamp(1.5rem, 3vw, 2.35rem); background: linear-gradient(150deg, #102b4c 0%, #123d69 58%, #175084 100%); color: #fff; }
+  .msf-aside::after { position: absolute; right: -70px; bottom: 90px; width: 210px; height: 210px; border: 1px solid #ffffff12; border-radius: 50%; box-shadow: 0 0 0 28px #ffffff08, 0 0 0 56px #ffffff05; content: ""; pointer-events: none; }
+  .msf-aside-mark { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid #ffffff25; border-radius: 15px; background: #ffffff12; }
+  .msf-aside-mark svg { width: 32px; height: 32px; fill: none; stroke: #d8e9ff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .msf-aside-kicker { margin: 2rem 0 .65rem; color: #9fc8f3; font-size: .7rem; font-weight: 800; letter-spacing: .15em; }
+  .msf-aside h3 { position: relative; z-index: 1; margin: 0; color: #fff; font-size: clamp(1.4rem, 2.2vw, 1.85rem); font-weight: 750; line-height: 1.28; letter-spacing: -.025em; }
+  .msf-aside-copy { position: relative; z-index: 1; margin: 1rem 0 0; color: #d1dfef; font-size: .88rem; line-height: 1.8; }
+  .msf-aside-divider { height: 1px; margin: 1.7rem 0 1.25rem; background: #ffffff25; }
+  .msf-aside-list-title { margin: 0 0 .8rem; color: #fff; font-size: .8rem; font-weight: 750; }
+  .msf-aside-list { position: relative; z-index: 1; display: grid; gap: .8rem; margin: 0; padding: 0; list-style: none; }
+  .msf-aside-list li { display: flex; align-items: flex-start; gap: .65rem; color: #d5e2f1; font-size: .8rem; line-height: 1.55; }
+  .msf-check { display: grid; flex: 0 0 19px; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #ffffff18; color: #9ee4cc; font-size: .7rem; font-weight: 800; }
+  .msf-aside-note { position: relative; z-index: 1; display: flex; gap: .65rem; margin-top: auto; padding: .9rem; border: 1px solid #ffffff20; border-radius: 12px; background: #ffffff0c; }
+  .msf-aside-note svg { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #a9d1fb; stroke-width: 1.7; stroke-linecap: round; }
+  .msf-aside-note p { margin: 0; color: #d5e2f1; font-size: .76rem; line-height: 1.65; }
+  .msf-aside-note strong { color: #fff; }
+  .msf-main { min-width: 0; padding: clamp(1.25rem, 3.2vw, 2.6rem); }
+  .msf-progress-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+  .msf-progress-label { margin: 0 0 .25rem; color: #7b899c; font-size: .65rem; font-weight: 800; letter-spacing: .12em; }
+  .msf-progress-count { display: flex; align-items: baseline; gap: .38rem; margin: 0; color: var(--msf-ink); font-size: 1.4rem; font-weight: 800; letter-spacing: -.04em; }
+  .msf-progress-count > span:first-child { color: var(--msf-blue); }
+  .msf-progress-separator, .msf-progress-count > span:nth-child(2) { color: #9ba8b8; font-size: 1rem; font-weight: 500; }
+  .msf-progress-caption { color: #748298; font-size: .75rem; font-weight: 500; letter-spacing: 0; }
+  .msf-progress-percent { color: var(--msf-blue); font-size: .75rem; font-weight: 750; }
+  .msf-progress-track { height: 5px; overflow: hidden; margin-top: .8rem; border-radius: 99px; background: #e9eef5; }
+  .msf-progress-track > span { display: block; width: 25%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #1b548f, #4c91c8); transition: width .3s ease; }
+  .msf-stepper { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; margin: 1.35rem 0 2rem; padding: 0; list-style: none; }
+  .msf-stepper-item { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: .45rem; color: #8491a3; text-align: center; }
+  .msf-step-badge { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid #dce4ee; border-radius: 50%; background: #f7f9fc; color: #7f8da1; font-size: .75rem; font-weight: 750; transition: all .2s ease; }
+  .msf-step-title { max-width: 100%; color: #8793a4; font-size: .69rem; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+  .msf-stepper-item.is-active .msf-step-badge { border-color: var(--msf-blue); background: var(--msf-blue); color: #fff; box-shadow: 0 0 0 4px #174b8715; }
+  .msf-stepper-item.is-active .msf-step-title { color: var(--msf-blue); font-weight: 800; }
+  .msf-stepper-item.is-complete .msf-step-badge { border-color: #c6e9dc; background: #e9f7f1; color: #187454; }
+  .msf-stepper-item.is-complete .msf-step-title { color: #527a6c; }
+  .msf-step-panel { min-width: 0; margin: 0; padding: 0; border: 0; }
+  .msf-step-legend { display: block; width: 100%; margin: 0; padding: 0; color: var(--msf-ink); font-size: 1.35rem; font-weight: 800; letter-spacing: -.025em; }
+  .msf-step-description { margin: .45rem 0 1.5rem; color: var(--msf-muted); font-size: .85rem; line-height: 1.65; }
+  .msf-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1rem; }
+  .msf-field { min-width: 0; }
+  .msf-field-wide { grid-column: 1 / -1; }
+  .msf-label { display: block; margin-bottom: .45rem; color: #293c55; font-size: .79rem; font-weight: 750; line-height: 1.5; }
+  .msf-required { color: #d44c4c; }
+  .msf-field input:not([type="checkbox"]):not([type="radio"]), .msf-field select, .msf-field textarea { display: block; width: 100%; min-height: 47px; box-sizing: border-box; border: 1px solid #d7e0eb; border-radius: 10px; outline: none; background-color: #fff; padding: .75rem .85rem; color: #1b2d45; font: inherit; font-size: .85rem; line-height: 1.5; box-shadow: 0 1px 2px #17365b05; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+  .msf-field textarea { min-height: 118px; resize: vertical; }
+  .msf-field input::placeholder, .msf-field textarea::placeholder { color: #a1adbc; }
+  .msf-field input:focus, .msf-field select:focus, .msf-field textarea:focus { border-color: #4e83b8; box-shadow: 0 0 0 4px #4e83b81a; }
+  .msf-hint { margin: .4rem 0 0; color: #8793a3; font-size: .72rem; line-height: 1.55; }
+  .msf-field-checkbox { padding-top: .1rem; }
+  .msf-consent-card { display: flex; align-items: flex-start; gap: .8rem; padding: .95rem; border: 1px solid #dce4ee; border-radius: 12px; background: #f8fafc; cursor: pointer; transition: border-color .18s ease, background .18s ease; }
+  .msf-consent-card:has(input:checked) { border-color: #8fc6b4; background: #f1faf6; }
+  .msf-consent-card input, .msf-radio-option input { flex: 0 0 auto; width: 17px; height: 17px; margin: .15rem 0 0; accent-color: var(--msf-blue); }
+  .msf-consent-text { display: grid; gap: .25rem; }
+  .msf-consent-label { color: #2a3b51; font-size: .82rem; font-weight: 650; line-height: 1.55; }
+  .msf-radio-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .msf-radio-option { display: flex; align-items: center; gap: .65rem; min-height: 45px; padding: .7rem .8rem; border: 1px solid #dce4ee; border-radius: 10px; color: #3a4b62; font-size: .82rem; cursor: pointer; }
+  .msf-radio-option:has(input:checked) { border-color: #7ba5d0; background: #f1f7fd; color: var(--msf-blue-dark); }
+  .msf-error { margin: .4rem 0 0; color: #bd3333; font-size: .74rem; line-height: 1.45; }
+  .msf-field.has-error input:not([type="checkbox"]):not([type="radio"]), .msf-field.has-error select, .msf-field.has-error textarea, .msf-field.has-error .msf-consent-card, .msf-field.has-error .msf-radio-option { border-color: #d45a5a; }
+  .msf-navigation { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid #edf1f6; }
+  .msf-step-footnote { color: #8290a2; font-size: .75rem; }
+  .msf-button { display: inline-flex; min-height: 45px; align-items: center; justify-content: center; gap: .55rem; border: 1px solid transparent; border-radius: 10px; padding: .7rem 1rem; font: inherit; font-size: .82rem; font-weight: 750; line-height: 1.2; text-align: center; cursor: pointer; transition: transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .msf-button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .msf-button:focus-visible { outline: 3px solid #77a8d8; outline-offset: 3px; }
+  .msf-button-next, .msf-button-submit { background: var(--msf-blue); color: #fff; box-shadow: 0 5px 14px #174b8724; }
+  .msf-button-next:hover, .msf-button-submit:hover { transform: translateY(-1px); background: var(--msf-blue-dark); box-shadow: 0 8px 18px #174b8730; }
+  .msf-button-back { border-color: #d8e1ec; background: #fff; color: #43546b; }
+  .msf-button-back:hover { border-color: #aebfd2; background: #f7f9fc; }
+  .msf-result { padding: 1.25rem 0 0; }
+  .msf-result-icon { display: grid; place-items: center; width: 54px; height: 54px; border: 1px solid #b9e2d2; border-radius: 16px; background: #effaf5; color: #187454; }
+  .msf-result-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .msf-result-eyebrow { margin: 1rem 0 .4rem; color: #258263; font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+  .msf-result h3 { margin: 0; color: var(--msf-ink); font-size: 1.55rem; font-weight: 800; line-height: 1.25; }
+  .msf-result-copy { margin: .7rem 0 1.5rem; color: var(--msf-muted); font-size: .87rem; line-height: 1.7; }
+  .msf-result-copy strong { color: #8a4d14; }
+  .msf-summary-heading { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-bottom: .75rem; }
+  .msf-summary-heading h4 { margin: 0; color: var(--msf-ink); font-size: .95rem; font-weight: 800; }
+  .msf-summary-heading span { border-radius: 99px; background: #edf4fb; padding: .35rem .6rem; color: #315f8c; font-size: .68rem; font-weight: 750; }
+  .msf-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin: 0; }
+  .msf-summary-item { min-width: 0; padding: .8rem .9rem; border: 1px solid #e0e7ef; border-radius: 10px; background: #fbfcfe; }
+  .msf-summary-item dt { margin-bottom: .3rem; color: #7a8799; font-size: .7rem; font-weight: 700; }
+  .msf-summary-item dd { margin: 0; color: #253951; font-size: .83rem; line-height: 1.55; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .msf-result-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-top: 1.25rem; }
+  .msf-privacy-foot { display: flex; align-items: flex-start; justify-content: center; gap: .45rem; margin: 1.2rem 0 0; color: #8793a3; font-size: .7rem; line-height: 1.6; text-align: center; }
+  .msf-privacy-foot svg { flex: 0 0 16px; margin-top: 1px; }
+  .msf-shell [hidden] { display: none !important; }
+  @media (max-width: 760px) {
+    .msf-card { grid-template-columns: 1fr; border-radius: 17px; }
+    .msf-aside { padding: 1.35rem; }
+    .msf-aside-mark { width: 43px; height: 43px; border-radius: 12px; }
+    .msf-aside-mark svg { width: 27px; height: 27px; }
+    .msf-aside-kicker { margin-top: 1.15rem; }
+    .msf-aside h3 { max-width: 500px; font-size: 1.4rem; }
+    .msf-aside-copy { margin-top: .65rem; }
+    .msf-aside-divider, .msf-aside-list-title, .msf-aside-list { display: none; }
+    .msf-aside-note { margin-top: 1rem; }
+    .msf-main { padding: 1.25rem; }
+    .msf-stepper { margin-bottom: 1.6rem; }
+    .msf-step-title { font-size: .63rem; }
+  }
+  @media (max-width: 480px) {
+    .msf-shell { margin: 1.5rem 0; }
+    .msf-heading { margin-bottom: 1.35rem; }
+    .msf-trust-row { gap: .45rem .8rem; font-size: .7rem; }
+    .msf-main { padding: 1rem; }
+    .msf-fields, .msf-summary { grid-template-columns: 1fr; }
+    .msf-radio-list { grid-template-columns: 1fr; }
+    .msf-stepper { gap: .15rem; }
+    .msf-step-badge { width: 28px; height: 28px; }
+    .msf-step-title { font-size: .59rem; }
+    .msf-navigation { margin-top: 1.5rem; }
+    .msf-button { min-height: 43px; padding: .65rem .75rem; font-size: .77rem; }
+    .msf-progress-percent { font-size: .68rem; }
+    .msf-result-actions { flex-direction: column-reverse; }
+    .msf-result-actions .msf-button { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .msf-shell *, .msf-shell *::before, .msf-shell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
 </style>
-
