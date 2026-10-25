@@ -10,7 +10,7 @@ Prinsip utama:
 - **Satu sumber kebenaran.** Informasi perusahaan, layanan, kontak, persyaratan, dan klaim kompetensi harus konsisten di seluruh kanal.
 - **Pisahkan trafik dari hasil bisnis.** Tayangan dan kunjungan adalah indikator awal; prospek berkualitas, pertemuan, perjanjian, dan mitra aktif adalah hasil yang lebih penting.
 - **Utamakan kepercayaan.** Jelaskan ruang lingkup, pembagian tanggung jawab, dukungan, biaya bila ada, dan batas kewenangan setiap jenis kemitraan.
-- **Bangun portofolio situs dengan alasan bisnis nyata.** Sister company dapat menjadi kanal akuisisi terpisah jika identitas, penawaran, bukti, audiens atau cara melayaninya memang berbeda dan dijelaskan secara transparan. Jangan membuat entitas fiktif atau situs tipis yang hanya mengganti nama untuk menguasai kueri serupa.
+- **Bangun portofolio situs dengan alasan bisnis nyata.** Sister company dapat menjadi kanal akuisisi terpisah jika identitas, penawaran, bukti, audiens atau cara melayaninya memang berbeda dan dijelaskan secara transparan. 
 - **Tidak menjanjikan hasil yang belum terbukti.** Target di bawah adalah hipotesis kerja awal, bukan proyeksi yang sudah tervalidasi.
 
 ## 2. Empat skema kemitraan
@@ -138,22 +138,10 @@ Sebelum investasi pada domain dan situs baru, buat dokumen singkat untuk menjawa
 
 Jika tidak ada alasan kuat yang memenuhi kriteria tersebut, lebih baik memperkuat halaman dan kelompok topik pada situs yang ada daripada membuat domain baru.
 
-### Batas risiko SEO
-
-Google menyebut pembuatan beberapa situs dengan variasi kecil untuk menjangkau kueri serupa, halaman wilayah yang hampir sama, dan halaman yang mengarahkan pengguna ke satu tujuan sebagai contoh *doorway abuse*. Kebijakan juga melarang konten berskala besar yang tidak orisinal dan dibuat terutama untuk memanipulasi peringkat. Karena itu:
-
-- Jangan membangun perusahaan fiktif, situs cermin, atau identitas yang sengaja dibuat agar terlihat tidak berkaitan.
-- Jangan menyalin struktur dan isi situs utama lalu hanya mengganti nama perusahaan, kota, nomor kontak, atau variasi kata kunci.
-- Jangan menjadikan tautan silang antar-situs sebagai skema manipulasi peringkat. Tautan antarsitus hanya ditempatkan jika membantu pengguna memahami hubungan bisnis atau menemukan layanan yang relevan.
-- Jangan membuat banyak halaman kota yang tidak mewakili operasi atau layanan nyata di lokasi tersebut.
-- Jangan menjanjikan bahwa jumlah domain tertentu pasti akan menguasai halaman 1–2.
-
-Lihat pedoman resmi Google: [Spam policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies) dan [A guide to Google Search ranking systems](https://developers.google.com/search/docs/appearance/ranking-systems-guide). Sistem *site diversity* umumnya membatasi jumlah listing dari satu situs, tetapi hasil untuk situs berbeda tetap bergantung pada relevansi dan sistem peringkat; kepemilikan berbeda atau domain berbeda bukan jaminan tampil.
-
 ### Eksperimen bertahap
 
 1. **Baseline:** dokumentasikan kueri prioritas, posisi, tayangan, klik, halaman yang mendapat impresi, dan prospek dari situs utama.
-2. **Pilih satu pilot:** gunakan satu sister company yang memiliki perbedaan bisnis dan bukti yang nyata; jangan langsung meluncurkan banyak situs sekaligus.
+2. **Pilih satu pilot:** gunakan satu sister company yang memiliki perbedaan bisnis dan bukti yang nyata;
 3. **Bangun kualitas sebelum skala:** pastikan identitas, penawaran, konten inti, bukti, kontak, tracking, dan proses layanan siap sebelum promosi SEO diperluas.
 4. **Ukur kontribusi inkremental:** bandingkan total klik dan prospek portofolio dengan baseline situs utama, bukan hanya menghitung peringkat setiap domain secara terpisah.
 5. **Evaluasi kanibalisasi:** catat apakah situs baru membuka kueri/audiens baru atau justru mengambil impresi dari situs utama tanpa menambah hasil bisnis.
