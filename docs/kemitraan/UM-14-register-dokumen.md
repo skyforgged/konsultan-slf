@@ -126,3 +126,5 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
 | UM-11 (rev) | Kebijakan imbalan komisi dan biaya | `docs/kemitraan/UM-11-kebijakan-imbalan-komisi-dan-biaya.md` | 0.2 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pimpinan/keuangan | Tambah arus lisensi cabang (10 persen, setup mulai Rp50 juta) |
 | UM-11 (rev) | Kebijakan imbalan komisi dan biaya | `docs/kemitraan/UM-11-kebijakan-imbalan-komisi-dan-biaya.md` | 0.2 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pimpinan/keuangan | Tambah arus lisensi cabang (10 persen, setup mulai Rp50 juta) |
 | UM-01 (rev) | Profil perusahaan dan portofolio | `docs/kemitraan/UM-01-profil-perusahaan-dan-portofolio.md` | 0.2 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) pimpinan/pemasaran | Catat merek terdaftar atas nama Zof Engineering; perlu verifikasi |
+
+| 00-A (rev) | Brief topik kesiapan dokumen | `docs/kemitraan/00-brief-topik-dokumen-kemitraan.md` | 0.2 (draf) | 2026-10-26 | Perlu persetujuan internal | Belum ditetapkan | Koreksi rujukan: PP 35/2024 mencabut PP 42/2007 |
