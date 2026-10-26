@@ -67,7 +67,6 @@ Peran di bawah ini adalah usulan fungsi, bukan penunjukan orang tertentu. Tetapk
 | WD-07 | Format laporan aktivitas, pipeline, dan evaluasi wilayah | WIL | P2 | Perwakilan / admin kemitraan | Tidak rutin; batasi data yang dikumpulkan | Belum disusun |
 | CB-01 | Kajian struktur hukum, administrasi, perizinan, dan pajak untuk model cabang yang dipilih | CAB | P3 | Direksi / legal / pajak | Ya, wajib sebelum implementasi | Belum disusun |
 
-> **Catatan keputusan untuk CB-01:** Kirim dokumen/ruang lingkup kajian ini kepada konsultan hukum dan konsultan pajak sebelum menyusun CB-02 sampai CB-09. Minta penilaian tertulis mengenai struktur yang paling tepat, termasuk apakah model yang direncanakan memenuhi atau berpotensi masuk kriteria waralaba berdasarkan peraturan yang berlaku. **Hasil kajian menjadi gerbang keputusan**: jika dikategorikan atau direkomendasikan sebagai waralaba, susun CB-02–CB-09 sebagai paket dokumen waralaba yang sesuai; jika tidak, susun berdasarkan model cabang yang telah dikonfirmasi. Jangan menganggap model ini waralaba atau bukan waralaba sebelum memperoleh kajian profesional.
 | CB-02 | Dokumen pendirian/pembukaan atau penetapan cabang sesuai struktur yang disetujui | CAB | P3 | Direksi / legal / admin | Ya, wajib | Belum disusun |
 | CB-03 | Keputusan penunjukan kepala cabang dan uraian kewenangan | CAB | P3 | Direksi / HR | Ya | Belum disusun |
 | CB-04 | Struktur organisasi, uraian jabatan, kebutuhan personel, dan rencana kompetensi | CAB | P3 | HR / operasional teknis | Tinjauan hukum sesuai status personel dan persyaratan profesi | Belum disusun |
@@ -76,6 +75,8 @@ Peran di bawah ini adalah usulan fungsi, bukan penunjukan orang tertentu. Tetapk
 | CB-07 | Matriks kewenangan kontrak, harga, rekening, pembayaran, pengeluaran, dan aset | CAB | P3 | Direksi / keuangan | Ya | Belum disusun |
 | CB-08 | Kebijakan keamanan informasi, akses sistem, penyimpanan, dan pemusnahan dokumen | CAB | P3 | IT / operasional / admin data | Ya untuk privasi dan kewajiban kontraktual | Belum disusun |
 | CB-09 | Mekanisme pelaporan, audit internal, eskalasi, tindakan korektif, dan penutupan cabang | CAB | P3 | Direksi / audit / operasional | Ya untuk aspek kontrak dan ketenagakerjaan bila relevan | Belum disusun |
+
+> **Catatan keputusan untuk CB-01:** Kirim dokumen/ruang lingkup kajian ini kepada konsultan hukum dan konsultan pajak sebelum menyusun CB-02 sampai CB-09. Minta penilaian tertulis mengenai struktur yang paling tepat, termasuk apakah model yang direncanakan memenuhi atau berpotensi masuk kriteria waralaba berdasarkan peraturan yang berlaku. **Hasil kajian menjadi gerbang keputusan**: jika dikategorikan atau direkomendasikan sebagai waralaba, susun CB-02–CB-09 sebagai paket dokumen waralaba yang sesuai; jika tidak, susun berdasarkan model cabang yang telah dikonfirmasi. Jangan menganggap model ini waralaba atau bukan waralaba sebelum memperoleh kajian profesional.
 | OP-01 | Checklist onboarding mitra dan orientasi kebijakan | UMUM | P1 | Admin kemitraan | Tidak rutin | Belum disusun |
 | OP-02 | Daftar kontak, jalur eskalasi, dan SLA tindak lanjut | UMUM | P1 | Pemilik program / admin | Tidak | Belum disusun |
 | OP-03 | Register perjanjian aktif, tanggal berakhir, dan kewajiban yang harus ditinjau | UMUM | P1 | Admin dokumen / legal | Tidak | Belum disusun |
