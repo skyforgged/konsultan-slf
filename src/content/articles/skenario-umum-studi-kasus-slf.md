@@ -3,7 +3,7 @@ id: 7
 ulid: "01M5773Q4HDM34SNWTK7NSGB0W"
 slug: "skenario-umum-studi-kasus-slf"
 title: "Skenario Umum SLF: Dari Bangunan Baru hingga Eksisting"
-description: "Pelajari berbagai skenario pengajuan SLF untuk bangunan baru, eksisting, dan bangunan dengan riwayat perubahan fungsi."
+description: "Skenario Umum SLF: Dari Bangunan Baru hingga Eksisting adalah gambaran perbedaan kebutuhan persiapan berdasarkan status bangunan, kelengkapan dokumen, dan riwayat perubahan fungsi atau renovasi."
 pubDate: "2026-10-15T17:00:00Z"
 updatedDate: "2026-10-24T11:40:41Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/skenario-umum-studi-kasus-slf.svg"
+imageAlt: "Skenario Umum SLF: Dari Bangunan Baru hingga Eksisting adalah perbandingan konteks persiapan SLF untuk bangunan baru, bangunan eksisting, dan bangunan yang mengalami perubahan."
 socialImage: "/images/social/skenario-umum-studi-kasus-slf.webp"
 relatedType: "service"
 relatedId: 101
