@@ -3,7 +3,7 @@
 | Atribut | Isi |
 |---|---|
 | ID matriks | CB-01 (CAB, P3) |
-| Versi | 0.1 (draf) |
+| Versi | 0.2 (draf) |
 | Tanggal draf | 2026-10-26 |
 | Pemilik | Belum ditetapkan (usulan: direksi dan legal) |
 | Status | Perlu tinjauan hukum |
@@ -24,11 +24,11 @@
 
 1. **Ini bukan "cabang" dalam arti unit dari satu badan usaha.** Cabang yang sebenarnya memakai aset, pegawai, dan pembukuan badan usaha yang sama. Pada model ini, pihak lokal adalah pihak mandiri yang melisensikan nama dan cara kerja pusat. Istilah "Cabang Resmi" di situs dapat menimbulkan kesan klien berhadapan dengan PT Zof Engineering Indonesia, padahal tanggung jawab ada pada pihak lokal. Perlu keputusan penamaan dan pengungkapan (bagian 5).
 2. **Karakternya mendekati lisensi atau waralaba.** Rujukan yang diverifikasi: Permendag 71/2019 menetapkan kriteria waralaba antara lain ciri khas usaha, dukungan yang berkesinambungan dari pemberi waralaba, dan HKI yang telah terdaftar. Pemberi waralaba menyampaikan prospektus kepada calon penerima paling lambat dua minggu sebelum perjanjian, perjanjian berbentuk tertulis dan berdasarkan hukum Indonesia, dan pendaftaran dilakukan melalui STPW. Peringatan dan pencabutan STPW dapat dikenakan. Isi pasal dan perubahan terbaru (PP 35/2024) perlu dikonfirmasi konsultan.
-3. **Kriteria HKI belum terpenuhi sepanjang diketahui.** Status pendaftaran merek belum diisi pada UM-01. Jika merek belum terdaftar atas nama yang tepat, rezim waralaba dan keabsahan lisensi bermasalah.
+3. **Kriteria HKI.** Pemilik program menyatakan merek terdaftar atas nama "Zof Engineering" (bagian 10). Nama itu belum tentu sama dengan pemberi lisensi PT Zof Engineering Indonesia; kesesuaian nama pemilik, kelas, dan masa berlaku harus diverifikasi pada sertifikat, karena pemberi lisensi harus pemegang hak yang sah.
 4. **Kewajiban dukungan.** Bila pusat memberi SOP, pelatihan, pengawasan mutu, dan materi secara berkelanjutan (seperti yang dijanjikan dalam rancangan skema), unsur "dukungan yang berkesinambungan" patut dinilai terpenuhi.
 5. **Risiko kompetensi (R-03) beralih ke pihak lokal, tetapi nama pusat tetap terpapar.** Tenaga ahli milik cabang memerlukan verifikasi KL-05 dan hak pusat menghentikan pemakaian merek bila mutu atau kepatuhan gagal.
 
-Kesimpulan sementara: pertanyaan struktur kini terjawab sebagian. Struktur yang dimaksud adalah **pihak lokal mandiri berlisensi**; yang belum terjawab adalah klasifikasi hukumnya dan kewajiban yang menyertainya.
+Kesimpulan sementara: struktur yang dimaksud adalah **pihak lokal mandiri berlisensi**. Setelah jawaban pada bagian 10 (imbalan 10 persen, biaya setup, merek terdaftar, SOP, pelatihan, materi, dan pengawasan mutu dari pusat), hampir seluruh unsur waralaba tampak terpenuhi; klasifikasi akhir tetap harus ditetapkan konsultan hukum.
 
 ## 3. Opsi struktur untuk dinilai konsultan
 
@@ -89,3 +89,41 @@ Menandatangani perjanjian dengan calon cabang, menerima biaya lisensi atau biaya
 ## 9. Bahan yang diberikan kepada konsultan
 
 Dokumen ini, UM-01, UM-03, UM-08, UM-11, `00-penilaian-risiko-hukum-program-kemitraan.md`, halaman publik cabang resmi, dan draf perjanjian turunan yang tersedia (UM-12, WD-01 sebagai pembanding).
+
+## 10. Pembaruan 0.2: jawaban pemilik program (2026-10-26)
+
+| Pertanyaan | Jawaban | Catatan analisis |
+|---|---|---|
+| Bentuk badan usaha pihak lokal | PT dan CV diperbolehkan | Tanggung jawab pemilik berbeda antara PT dan CV; konsultan menilai kesesuaian untuk jasa teknis dan syarat perizinannya. Perorangan tidak diperbolehkan. |
+| Pemilik merek | Terdaftar atas nama Zof Engineering | Verifikasi: nomor pendaftaran, kelas barang atau jasa yang dicakup, masa berlaku, dan kesesuaian nama dengan PT Zof Engineering Indonesia. Merek yang dipakai situs harus sama dengan yang terdaftar. |
+| Imbalan lisensi | 10 persen; biaya setup mulai dari Rp50 juta | Dasar 10 persen belum ditetapkan (omzet kotor, pembayaran klien yang diterima, atau laba). Cakupan biaya setup dan apakah dapat dikembalikan belum jelas. Keduanya wajib tercantum pada prospektus bila masuk rezim waralaba. |
+| Yang diberikan pusat | SOP, pelatihan, materi, pengawasan mutu: ya | Memenuhi unsur dukungan berkesinambungan; jadi Opsi B (lisensi merek terbatas) menjadi kurang realistis. |
+| Kontrak klien dan tanggung jawab | Seluruh operasional cabang menjadi tanggung jawab cabang sampai aspek hukum | Klien berkontrak dengan pihak lokal. Pengawasan mutu pusat tidak boleh dirumuskan sehingga mengaburkan tanggung jawab cabang (pertanyaan baru no. 11). |
+
+### Opsi kerja
+
+**Opsi A (waralaba formal)** menjadi asumsi kerja untuk penyusunan CB-02 sampai CB-09, sampai konsultan menyatakan lain. Konsekuensi yang perlu dipersiapkan: prospektus penawaran yang diberikan paling lambat dua minggu sebelum perjanjian, perjanjian tertulis berdasarkan hukum Indonesia, pendaftaran STPW, dan HKI terdaftar. Kriteria lain dalam peraturan (misalnya standar yang mudah diajarkan dan diaplikasikan) perlu dikonfirmasi konsultan terhadap kondisi usaha.
+
+### Pertanyaan tambahan untuk konsultan
+
+11. Bagaimana merumuskan pengawasan mutu pusat agar tidak menggeser tanggung jawab operasional dan hukum dari cabang, tetapi tetap melindungi merek?
+12. Apakah biaya setup Rp50 juta dan imbalan 10 persen perlu dipisah dalam prospektus, dan apakah setup dapat dikembalikan bila perjanjian batal?
+13. Apakah pihak lokal berbentuk CV menimbulkan persyaratan atau risiko khusus bagi pemberi lisensi, termasuk tanggung jawab pengurus?
+14. Apakah nama pemilik merek yang berbeda dari badan usaha pemberi lisensi memerlukan pengalihan atau lisensi internal?
+
+### Keputusan yang masih terbuka
+
+| Keputusan | Status |
+|---|---|
+| Badan usaha pihak lokal | **Terjawab**: PT atau CV |
+| Pemilik dan status merek | **Terjawab, perlu verifikasi sertifikat** |
+| Bentuk imbalan | **Sebagian**: 10 persen dan setup mulai Rp50 juta; basis, tenggat bayar, dan cakupan setup terbuka |
+| Dukungan pusat | **Terjawab**: SOP, pelatihan, materi, pengawasan mutu; rincian dan frekuensi terbuka |
+| Kontrak klien dan tanggung jawab | **Terjawab**: cabang |
+| Nama skema untuk publik | Terbuka |
+| Wilayah, eksklusivitas, jangka waktu, pengakhiran | Terbuka |
+| Anggaran kajian | Terbuka |
+
+### Larangan publikasi angka
+
+Angka 10 persen dan Rp50 juta bersifat internal sampai konsultan hukum dan pajak menyetujui pengungkapan; jangan dicantumkan pada halaman publik, materi pemasaran, atau percakapan dengan calon sebelum prospektus tersedia.

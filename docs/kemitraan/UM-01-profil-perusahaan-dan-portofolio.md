@@ -3,7 +3,7 @@
 | Atribut | Isi |
 |---|---|
 | ID matriks | UM-01 (UMUM, P0) |
-| Versi | 0.1 (draf) |
+| Versi | 0.2 (draf) |
 | Tanggal draf | 2026-10-25 |
 | Pemilik | Belum ditetapkan (usulan: pimpinan atau pemasaran) |
 | Status | Perlu persetujuan internal |
@@ -25,7 +25,7 @@ Sumber tunggal identitas dan klaim kompetensi perusahaan untuk calon mitra. Seti
 | Kontak resmi | WhatsApp dan telepon 0859-4746-8548 | `site.ts` |
 | Wilayah layanan | Indonesia | `site.ts` |
 | Bentuk dan akta pendirian, NIB, NPWP, pengurus | [DIISI PEMILIK; sertakan nomor dokumen internal, bukan salinan di dokumen ini] | Dokumen legal |
-| Kepemilikan dan pendaftaran merek | [DIISI PEMILIK: terdaftar atau belum, atas nama siapa] | Dokumen HKI |
+| Kepemilikan dan pendaftaran merek | Terdaftar atas nama "Zof Engineering" (pernyataan pemilik program 2026-10-26). [DIVERIFIKASI: nomor pendaftaran, kelas, masa berlaku, dan kesesuaian nama dengan PT Zof Engineering Indonesia sebelum dipakai sebagai dasar lisensi] | Sertifikat atau catatan resmi pendaftaran merek |
 
 ## 3. Layanan yang dijelaskan di situs
 

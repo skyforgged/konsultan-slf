@@ -3,7 +3,7 @@
 | Atribut | Isi |
 |---|---|
 | ID matriks | UM-11 (UMUM, P0) |
-| Versi | 0.1 (draf) |
+| Versi | 0.2 (draf) |
 | Tanggal draf | 2026-10-25 |
 | Pemilik | Belum ditetapkan (usulan: pimpinan dan keuangan) |
 | Status | Perlu tinjauan hukum |
@@ -25,7 +25,7 @@
 | Referral | Komisi atas pembayaran klien dari pengenalan yang sah | [KEPUTUSAN: persentase atau nilai tetap] |
 | Mitra Kolaboratif | Pembagian hasil atau bayaran atas pekerjaan masing-masing | [KEPUTUSAN: per proyek] |
 | Perwakilan Daerah | Komisi atau insentif operasional, dapat disertai penggantian biaya yang disetujui | [KEPUTUSAN] |
-| Cabang Resmi | Model ditetapkan setelah kajian hukum dan keuangan (CB-01, CB-02) | [KEPUTUSAN] |
+| Cabang Resmi | **Arus terbalik**: pihak lokal membayar pusat. Imbalan lisensi 10 persen dan biaya setup mulai Rp50 juta (keputusan pemilik program 2026-10-26; angka internal). Pihak lokal menanggung pajak, karyawan, tenaga ahli, dan aset sendiri. Rincian mengikuti CB-01 dan CB-02 | Basis 10 persen dan cakupan setup: [KEPUTUSAN] |
 
 ## 3. Pemicu hak imbalan
 
@@ -56,10 +56,10 @@ Kewajiban pajak atas imbalan (pemotongan, bukti potong, status penerima perorang
 
 | Jenis biaya | Aturan |
 |---|---|
-| Biaya pendaftaran program | Tidak ada, kecuali diputuskan dan dijelaskan di awal [KEPUTUSAN] |
+| Biaya pendaftaran program | Tidak ada untuk Referral, Mitra Kolaboratif, dan Perwakilan Daerah. Untuk Cabang Resmi, biaya setup mulai Rp50 juta sesuai CB-01 |
 | Biaya operasional mitra | Ditanggung mitra, kecuali disetujui tertulis |
 | Biaya survei, perjalanan, tenaga ahli | Dibagi sesuai perjanjian skema |
-| Biaya penggunaan merek | Tidak ada, kecuali diatur dalam perjanjian dan telah ditinjau hukum (lihat risiko R-05) |
+| Biaya penggunaan merek | Tidak ada untuk skema selain Cabang Resmi. Untuk Cabang Resmi, imbalan lisensi 10 persen; wajib ditinjau hukum dan pajak sebelum diumumkan (R-05, CB-01) |
 
 ## 8. Persetujuan dan batas kewenangan
 
@@ -72,3 +72,9 @@ Kewajiban pajak atas imbalan (pemotongan, bukti potong, status penerima perorang
 ## 9. Pernyataan yang boleh dan tidak boleh dikomunikasikan
 
 Boleh: "Bentuk dan besar imbalan disepakati tertulis." Tidak boleh: angka pasti sebelum disetujui, "penghasilan pasti", "bagi hasil tanpa risiko", atau janji jumlah klien.
+
+## 10. Catatan pembaruan 0.2
+
+- Bagian cabang berbeda dari skema lain karena uang mengalir dari pihak lokal ke pusat. Prinsip nomor 1 sampai 5 (imbalan hanya untuk kontribusi nyata) berlaku untuk komisi kepada mitra, bukan untuk biaya lisensi; biaya lisensi diatur perjanjian lisensi atau waralaba dan prospektus.
+- Angka cabang bersifat internal dan tidak ditampilkan pada halaman publik atau materi sebelum konsultan menyetujui pengungkapan.
+- Basis 10 persen (omzet kotor, pembayaran klien yang diterima, atau laba), jadwal pembayaran, cakupan setup, dan kemungkinan pengembalian: [KEPUTUSAN].
