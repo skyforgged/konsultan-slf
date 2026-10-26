@@ -3,7 +3,7 @@ id: 8
 ulid: "01JAX2PBG00000000000000008"
 slug: "pengertian-pbg-perbedaan-imb"
 title: "Apa Itu PBG? Pengertian dan Perbedaannya dengan IMB"
-description: "Memahami Persetujuan Bangunan Gedung (PBG), dasar hukumnya, dan perbedaan mendasar dengan IMB yang lama."
+description: "Apa Itu PBG? Pengertian dan Perbedaannya dengan IMB adalah penjelasan mengenai Persetujuan Bangunan Gedung, fungsi dokumennya, serta perbedaan pokok dengan Izin Mendirikan Bangunan dalam konteks perizinan bangunan."
 pubDate: "2026-10-16T14:18:00Z"
 updatedDate: "2026-10-24T11:40:35Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/pengertian-pbg-perbedaan-imb.svg"
+imageAlt: "Apa Itu PBG? Pengertian dan Perbedaannya dengan IMB adalah penjelasan tentang fungsi Persetujuan Bangunan Gedung dan perbedaannya dengan IMB sebagai dokumen perizinan bangunan."
 socialImage: "/images/social/pengertian-pbg-perbedaan-imb.webp"
 relatedType: "service"
 relatedId: 102

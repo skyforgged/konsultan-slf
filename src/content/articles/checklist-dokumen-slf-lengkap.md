@@ -3,7 +3,7 @@ id: 4
 ulid: "01M5773Q4EG7Q3TS4XZN2A68TY"
 slug: "checklist-dokumen-slf-lengkap"
 title: "Checklist Dokumen SLF Lengkap: Apa Saja yang Harus Disiapkan?"
-description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan SLF, termasuk dokumen teknis, administratif, dan persyaratan khusus."
+description: "Checklist Dokumen SLF Lengkap: Apa Saja yang Harus Disiapkan? adalah panduan memeriksa dokumen administratif dan teknis yang tersedia serta mengenali kebutuhan tambahan sebelum proses Sertifikat Laik Fungsi."
 pubDate: "2026-10-15T14:00:00Z"
 updatedDate: "2026-10-24T11:40:29Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/checklist-dokumen-slf-lengkap.svg"
+imageAlt: "Checklist Dokumen SLF Lengkap: Apa Saja yang Harus Disiapkan? adalah inventarisasi dokumen bangunan, persyaratan administratif, dan data teknis untuk persiapan pengajuan Sertifikat Laik Fungsi."
 socialImage: "/images/social/checklist-dokumen-slf-lengkap.webp"
 relatedType: "service"
 relatedId: 101

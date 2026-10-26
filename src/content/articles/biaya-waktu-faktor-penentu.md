@@ -3,7 +3,7 @@ id: 6
 ulid: "01M5773Q3J6KC2M3EKM9W2EQ3Y"
 slug: "biaya-waktu-faktor-penentu-slf"
 title: "Biaya, Waktu, dan Faktor Penentu Proses SLF"
-description: "Pahami komponen biaya pengajuan SLF, estimasi waktu yang realistis, dan faktor-faktor yang memengaruhi kelancaran proses."
+description: "Biaya, Waktu, dan Faktor Penentu Proses SLF adalah panduan memahami komponen anggaran, perkiraan durasi, dan kondisi yang dapat memengaruhi tahapan pengurusan Sertifikat Laik Fungsi."
 pubDate: "2026-10-15T16:00:00Z"
 updatedDate: "2026-10-24T11:40:27Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/biaya-waktu-faktor-penentu.svg"
+imageAlt: "Biaya, Waktu, dan Faktor Penentu Proses SLF adalah pemetaan biaya, durasi, dan faktor kesiapan dokumen serta kondisi bangunan yang memengaruhi proses pengajuan Sertifikat Laik Fungsi."
 socialImage: "/images/social/biaya-waktu-faktor-penentu.webp"
 relatedType: "service"
 relatedId: 101

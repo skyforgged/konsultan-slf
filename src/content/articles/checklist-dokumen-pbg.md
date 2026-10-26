@@ -3,7 +3,7 @@ id: 9
 ulid: "01JAX2PBG00000000000000009"
 slug: "checklist-dokumen-pbg"
 title: "Checklist Dokumen PBG: Persyaratan Lengkap Pengajuan"
-description: "Daftar lengkap dokumen yang perlu disiapkan untuk pengajuan PBG, dari dokumen administratif hingga gambar teknis."
+description: "Checklist Dokumen PBG: Persyaratan Lengkap Pengajuan adalah panduan menginventarisasi dokumen administratif dan teknis yang perlu ditinjau sebelum mengajukan Persetujuan Bangunan Gedung sesuai karakteristik bangunan."
 pubDate: "2026-10-16T15:10:00Z"
 updatedDate: "2026-10-24T11:40:28Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/checklist-dokumen-pbg.svg"
+imageAlt: "Checklist Dokumen PBG: Persyaratan Lengkap Pengajuan adalah daftar dokumen administratif, gambar, dan informasi teknis yang perlu disiapkan untuk proses Persetujuan Bangunan Gedung."
 socialImage: "/images/social/checklist-dokumen-pbg.webp"
 relatedType: "service"
 relatedId: 102
