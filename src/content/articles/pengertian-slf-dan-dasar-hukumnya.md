@@ -3,7 +3,7 @@ id: 3
 ulid: "01M5773Q4FRJS3124836WSTAV4"
 slug: "pengertian-slf-dasar-hukum"
 title: "Pengertian SLF dan Dasar Hukum: Panduan Lengkap Pemilik Bangunan"
-description: "Memahami apa itu Sertifikat Laik Fungsi (SLF), dasar hukumnya, dan mengapa dokumen ini penting bagi pemilik dan pengelola bangunan gedung."
+description: "Pengertian SLF dan Dasar Hukum: Panduan Lengkap Pemilik Bangunan adalah penjelasan tentang Sertifikat Laik Fungsi, landasan ketentuan yang relevan, dan pentingnya memahami persyaratan kelaikan fungsi bangunan."
 pubDate: "2026-10-15T11:00:00Z"
 updatedDate: "2026-10-24T11:40:36Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/pengertian-slf-dasar-hukum.svg"
+imageAlt: "Pengertian SLF dan Dasar Hukum: Panduan Lengkap Pemilik Bangunan adalah informasi mengenai Sertifikat Laik Fungsi, dasar hukum, dan persyaratan kelaikan fungsi bangunan gedung."
 socialImage: "/images/social/pengertian-slf-dasar-hukum.webp"
 relatedType: "service"
 relatedId: 101
