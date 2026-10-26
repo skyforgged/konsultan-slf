@@ -1,0 +1,1178 @@
+From 31e425b8f3c842ffe6e6bc6a15803c82f9abc950 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:31:16 +0000
+Subject: [PATCH 01/13] UM-14: hapus 5 baris register duplikat (UM-01, 03, 05,
+ 07, 09)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index b3297a9..3f7418e 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -66,11 +66,6 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | UM-08 | Pedoman merek dan materi pemasaran | `docs/kemitraan/UM-08-pedoman-merek-dan-materi-pemasaran.md` | 0.1 (draf) | 2026-10-25 | Perlu tinjauan hukum | (usulan) pemasaran | Status merek belum diketahui; kebijakan platform perlu diverifikasi |
+ | UM-09 | Kebijakan data prospek dan klien | `docs/kemitraan/UM-09-kebijakan-data-prospek-dan-klien.md` | 0.1 (draf) | 2026-10-25 | Perlu tinjauan hukum | (usulan) administrasi/pimpinan | Mengacu UU 27/2022; retensi dan peran pengendali menunggu hukum |
+ | UM-11 | Kebijakan imbalan komisi dan biaya | `docs/kemitraan/UM-11-kebijakan-imbalan-komisi-dan-biaya.md` | 0.1 (draf) | 2026-10-25 | Perlu tinjauan hukum | (usulan) pimpinan/keuangan | Angka dan pajak sengaja kosong; perlu keputusan dan konsultan pajak |
+-| UM-01 | Profil perusahaan dan portofolio | `docs/kemitraan/UM-01-profil-perusahaan-dan-portofolio.md` | 0.1 (draf) | 2026-10-25 | Perlu persetujuan internal | (usulan) pimpinan/pemasaran | Hanya data site.ts terisi; bukti kompetensi dan portofolio menunggu pemilik |
+-| UM-03 | Panduan perbandingan empat skema | `docs/kemitraan/UM-03-panduan-perbandingan-empat-skema.md` | 0.1 (draf) | 2026-10-25 | Perlu persetujuan internal | (usulan) pemilik program | Selaras dengan halaman publik; ada diagram pemilihan skema |
+-| UM-05 | Kriteria seleksi dan verifikasi mitra | `docs/kemitraan/UM-05-kriteria-seleksi-dan-verifikasi-mitra.md` | 0.1 (draf) | 2026-10-25 | Perlu persetujuan internal | (usulan) pemilik program | Waktu evaluasi menunggu keputusan; tanpa skor angka |
+-| UM-07 | Standar perilaku dan etika mitra | `docs/kemitraan/UM-07-standar-perilaku-dan-etika-mitra.md` | 0.1 (draf) | 2026-10-25 | Perlu tinjauan hukum | (usulan) pemilik program | Larangan jalur cepat dan suap; sanksi usulan menunggu tinjauan hukum |
+-| UM-09 | Kebijakan data prospek dan klien | `docs/kemitraan/UM-09-kebijakan-data-prospek-dan-klien.md` | 0.1 (draf) | 2026-10-25 | Perlu tinjauan hukum | (usulan) administrasi/pimpinan | Mengacu UU 27/2022; retensi dan peran pengendali menunggu hukum |
+ | UM-04 (rev) | Formulir pendaftaran minat mitra | `docs/kemitraan/UM-04-formulir-pendaftaran-minat-mitra.md` | 0.2 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) administrasi program | Selaras dengan formulir situs; 4 penghalang dicatat |
+ | 00-B (rev) | Penilaian risiko hukum program | `docs/kemitraan/00-penilaian-risiko-hukum-program-kemitraan.md` | 0.2 (draf) | 2026-10-26 | Perlu tinjauan hukum | Belum ditetapkan | Tambah R-13 (formulir situs) |
+ | UM-10 | Templat NDA dan perjanjian kerahasiaan | `docs/kemitraan/UM-10-templat-nda-perjanjian-kerahasiaan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) operasional/legal | Kerangka pasal; kapan NDA diperlukan per skema |
+-- 
+2.43.0
+
+
+From d47d602c35b8c87f33d91205dbf052fce3e3e143 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:31:16 +0000
+Subject: [PATCH 02/13] KL-01 Kerangka PKS mitra kolaboratif (draf)
+
+---
+ ...perjanjian-kerja-sama-mitra-kolaboratif.md | 71 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 72 insertions(+)
+ create mode 100644 docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md
+
+diff --git a/docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md b/docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md
+new file mode 100644
+index 0000000..15fe442
+--- /dev/null
++++ b/docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md
+@@ -0,0 +1,71 @@
++# KL-01 Kerangka Perjanjian Kerja Sama (PKS) Mitra Kolaboratif
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-01 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: pemilik proyek dan legal) |
++| Status | Perlu tinjauan hukum |
++
++> Kerangka isi, bukan perjanjian siap tanda tangan, dan bukan nasihat hukum. Redaksi, hukum yang berlaku, tanggung gugat, kepemilikan dokumen kerja, dan pajak wajib dirumuskan advokat. PKS ini bersifat payung; rincian setiap proyek ada pada SOW (KL-02). Jangan menandatangani sebelum UM-07, UM-09, UM-10, KL-03, dan KL-05 disetujui.
++
++## 1. Titik awal yang harus jelas
++
++Setiap proyek harus menjawab tiga pertanyaan sebelum pekerjaan dimulai (rujukan catatan persiapan):
++
++1. **Siapa yang berkontrak dengan klien?**
++2. **Siapa yang bertanggung jawab atas tiap deliverable?**
++3. **Siapa yang berwenang melakukan pekerjaan teknis sesuai kompetensinya?**
++
++## 2. Model hubungan kontrak dengan klien (pilih per proyek)
++
++| Model | Pihak berkontrak dengan klien | Peran pihak lain | Catatan |
++|---|---|---|---|
++| A | Perusahaan | Mitra mendukung sebagai pelaksana atau pendukung berdasarkan SOW | Perusahaan bertanggung jawab kepada klien; mitra bertanggung jawab kepada perusahaan |
++| B | Mitra | Perusahaan mendukung bagian teknis atau dokumen berdasarkan SOW | Mitra bertanggung jawab kepada klien; periksa kebutuhan pernyataan kepada klien tentang peran perusahaan |
++| C | Keduanya (kontrak tiga pihak atau dua kontrak) | Pembagian tertulis | Paling kompleks; wajib ditinjau hukum |
++
++Model dicatat pada SOW dan tidak berubah di tengah proyek tanpa perubahan tertulis (KL-08).
++
++## 3. Pasal-pasal
++
++| Pasal | Isi pokok |
++|---|---|
++| 1 Definisi | Proyek, SOW, Deliverable, Klien, Personel Kunci, Informasi Rahasia |
++| 2 Tujuan dan sifat | PKS payung; setiap proyek memerlukan SOW yang ditandatangani. Tidak ada kewajiban memberi atau menerima proyek. |
++| 3 Hubungan para pihak | Mandiri; bukan hubungan kerja, bukan keagenan yang mengikat pihak lain; tidak ada kewenangan mewakili tanpa surat kuasa tertulis. [Tinjau hukum: kualifikasi] |
++| 4 Ruang lingkup per proyek | Ditentukan SOW (KL-02) dan matriks tanggung jawab (KL-03). |
++| 5 Kompetensi dan kewenangan | Pekerjaan teknis hanya oleh personel yang memenuhi syarat dan terverifikasi (KL-05). Pihak tidak boleh mengerjakan atau menandatangani di luar kewenangan. |
++| 6 Mutu | Mengikuti SOP pengendalian mutu (KL-06); pihak berhak meminta pemeriksaan. |
++| 7 Harga, pembagian, dan pembayaran | Sesuai penawaran dan SOW (KL-04); dasar pembagian imbalan dan waktu pembayaran per proyek. [Tinjau pajak] |
++| 8 Perubahan, keterlambatan, keluhan | Mengikuti KL-08. |
++| 9 Subkontrak dan pengganti personel | Tidak boleh tanpa persetujuan tertulis; pengganti harus memenuhi KL-05. |
++| 10 Kekayaan intelektual dan dokumen kerja | Kepemilikan dan hak pakai dokumen kerja dan hasil [dirumuskan advokat]. |
++| 11 Kerahasiaan dan data pribadi | Mengikuti UM-10 dan UM-09. |
++| 12 Merek | Terbatas sesuai izin tertulis per proyek (UM-08). |
++| 13 Eksklusivitas dan non-persaingan | Tidak otomatis; hanya bila ditulis dan ditinjau hukum. |
++| 14 Etika dan antisuap | Mengikuti UM-07; tidak ada imbalan kepada pejabat atau petugas instansi; tidak menawarkan jalur cepat. |
++| 15 Tanggung jawab | Pembagian tanggung jawab dan pembatasan [dirumuskan advokat; pertimbangkan asuransi tanggung gugat profesi]. |
++| 16 Jangka waktu dan pengakhiran | [KEPUTUSAN]; akibat pada proyek berjalan. |
++| 17 Keadaan memaksa | [Dirumuskan advokat] |
++| 18 Sengketa dan hukum | [Dirumuskan advokat] |
++
++## 4. Lampiran
++
++1. SOW per proyek (KL-02)
++2. Matriks tanggung jawab (KL-03)
++3. Checklist kompetensi dan kewenangan (KL-05)
++4. SOP mutu (KL-06)
++5. Standar perilaku (UM-07), NDA (UM-10), kebijakan data (UM-09)
++6. Pedoman merek (UM-08)
++
++## 5. Daftar periksa sebelum penandatanganan
++
++| Pemeriksaan | Hasil |
++|---|---|
++| Mitra lolos seleksi (UM-05) dan keputusan tercatat | [DIPERIKSA] |
++| Model hubungan kontrak dengan klien jelas untuk proyek pertama | [DIPERIKSA] |
++| Personel kunci diverifikasi (KL-05) | [DIPERIKSA] |
++| Pejabat berwenang kedua pihak menandatangani | [DIPERIKSA] |
++| Salinan dicatat pada UM-14 | [DIPERIKSA] |
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 3f7418e..1b272b3 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -74,3 +74,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | RF-03 | Aturan atribusi lead | `docs/kemitraan/RF-03-aturan-atribusi-lead.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik program/CRM | Periode dan batas waktu menunggu keputusan; ada contoh kasus |
+ | RF-04 | Ketentuan komisi referral | `docs/kemitraan/RF-04-ketentuan-komisi-referral.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) keuangan/pemilik program | Tanpa angka; contoh memakai simbol; pajak menunggu konsultan |
+ | RF-05 | Panduan komunikasi referral | `docs/kemitraan/RF-05-panduan-komunikasi-referral.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penjualan/operasional teknis | Tabel boleh dan tidak boleh; skrip menjawab pertanyaan sulit |
++| KL-01 | Kerangka PKS mitra kolaboratif | `docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik proyek/legal | Tiga model kontrak dengan klien; 18 pasal |
+-- 
+2.43.0
+
+
+From 37ede67c4bb43d2320e015cf89c3efdcc9864167 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:31:16 +0000
+Subject: [PATCH 03/13] KL-02 Templat SOW per proyek (draf)
+
+---
+ .../KL-02-templat-sow-kak-per-proyek.md       | 78 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 79 insertions(+)
+ create mode 100644 docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md
+
+diff --git a/docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md b/docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md
+new file mode 100644
+index 0000000..9ea31dc
+--- /dev/null
++++ b/docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md
+@@ -0,0 +1,78 @@
++# KL-02 Templat Ruang Lingkup Kerja per Proyek (SOW/KAK)
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-02 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: manajer proyek dan teknis) |
++| Status | Perlu tinjauan hukum |
++
++> Templat. Bagian kewajiban, kriteria penerimaan, dan tanggung jawab perlu ditinjau hukum. Diisi per proyek dan ditandatangani sebagai lampiran PKS (KL-01). Satu SOW tidak boleh dipakai ulang untuk proyek lain.
++
++## 1. Identitas proyek
++
++| Item | Isi |
++|---|---|
++| Nomor SOW dan versi | [DIISI] |
++| Nama proyek dan lokasi bangunan | [DIISI] |
++| Pemilik atau klien | [DIISI] |
++| Model hubungan kontrak dengan klien | A / B / C (KL-01 bagian 2) |
++| Jenis layanan | SLF / SLF bangunan eksisting / perpanjangan SLF / PBG / pengkajian teknis / as-built drawing |
++| Tanggal mulai dan target selesai | [DIISI; target, bukan janji hasil instansi] |
++| Para pihak dan penanggung jawab proyek | [DIISI] |
++
++## 2. Latar dan tujuan
++
++Ringkasan kondisi bangunan dan tujuan layanan. Tuliskan hanya fakta yang diketahui dan sumbernya.
++
++## 3. Ruang lingkup
++
++| Pekerjaan | Termasuk | Tidak termasuk | Pelaksana |
++|---|---|---|---|
++| [mis. pengumpulan data dan dokumen] | | | Perusahaan / Mitra |
++| [mis. survei lapangan] | | | |
++| [mis. kajian teknis] | | | Hanya tenaga yang memenuhi syarat (KL-05) |
++| [mis. penyusunan dokumen] | | | |
++| [mis. pengajuan dan pendampingan proses] | | | |
++
++Pengecualian umum yang harus ditulis tegas: keputusan penerbitan oleh pihak berwenang, biaya resmi instansi, perbaikan fisik bangunan, dan pekerjaan di luar daftar.
++
++## 4. Deliverable dan kriteria penerimaan
++
++| Deliverable | Format | Penanggung jawab | Kriteria penerimaan | Tanggal target |
++|---|---|---|---|---|
++| [DIISI] | | | Terukur dan dapat diperiksa; hasil lolos KL-06 | |
++
++Kriteria penerimaan **tidak** boleh berbunyi "SLF terbit" atau "PBG disetujui"; keputusan itu ada pada pihak berwenang.
++
++## 5. Tanggung jawab
++
++Rujuk matriks KL-03 sebagai lampiran. Catat Personel Kunci: nama, peran, dan status verifikasi (KL-05).
++
++## 6. Ketergantungan, asumsi, dan risiko
++
++| Item | Pemilik tindak lanjut |
++|---|---|
++| Data dan dokumen dari klien diserahkan paling lambat [tanggal] | Klien |
++| Akses ke lokasi dan pihak terkait | Klien |
++| Tenggat dan proses instansi di luar kendali para pihak | Tidak dijamin |
++| Perubahan peraturan atau persyaratan selama proyek | Dikelola melalui KL-08 |
++
++## 7. Biaya dan termin
++
++Rujuk penawaran (KL-04). Tuliskan total, termin, dan syarat pemicu pembayaran.
++
++## 8. Mutu, perubahan, dan penutupan
++
++- Pemeriksaan mutu mengikuti KL-06.
++- Perubahan lingkup, keterlambatan, dan keluhan mengikuti KL-08.
++- Penutupan dengan berita acara serah terima (KL-07).
++
++## 9. Persetujuan
++
++| Pihak | Nama dan jabatan | Tanggal | Tanda tangan |
++|---|---|---|---|
++| Perusahaan | | | |
++| Mitra | | | |
++| Klien (bila SOW mengikat klien) | | | |
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 1b272b3..a67d361 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -75,3 +75,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | RF-04 | Ketentuan komisi referral | `docs/kemitraan/RF-04-ketentuan-komisi-referral.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) keuangan/pemilik program | Tanpa angka; contoh memakai simbol; pajak menunggu konsultan |
+ | RF-05 | Panduan komunikasi referral | `docs/kemitraan/RF-05-panduan-komunikasi-referral.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penjualan/operasional teknis | Tabel boleh dan tidak boleh; skrip menjawab pertanyaan sulit |
+ | KL-01 | Kerangka PKS mitra kolaboratif | `docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik proyek/legal | Tiga model kontrak dengan klien; 18 pasal |
++| KL-02 | Templat SOW/KAK per proyek | `docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) manajer proyek/teknis | Kriteria penerimaan tidak boleh berupa terbitnya SLF/PBG |
+-- 
+2.43.0
+
+
+From 0dcd40bdc411c1aef080f7a73662428a3dcb9f67 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:31:37 +0000
+Subject: [PATCH 04/13] KL-03 Matriks pembagian tanggung jawab (RACI) (draf)
+
+---
+ ...3-matriks-pembagian-tanggung-jawab-raci.md | 55 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 56 insertions(+)
+ create mode 100644 docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md
+
+diff --git a/docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md b/docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md
+new file mode 100644
+index 0000000..d2eab66
+--- /dev/null
++++ b/docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md
+@@ -0,0 +1,55 @@
++# KL-03 Matriks Pembagian Tanggung Jawab, Kewenangan, dan Persetujuan (RACI)
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-03 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: manajer proyek dan teknis) |
++| Status | Perlu persetujuan internal |
++
++> Draf kerja. Nilai pada tabel adalah **usulan baku** yang diubah per proyek dan dilampirkan pada SOW (KL-02). Bila dilampirkan pada perjanjian, perlu ditinjau hukum (matriks induk).
++
++## 1. Cara membaca
++
++- **R** (Responsible): mengerjakan.
++- **A** (Accountable): bertanggung jawab akhir dan memberi persetujuan. **Hanya satu A per baris.**
++- **C** (Consulted): dimintai masukan sebelum keputusan.
++- **I** (Informed): diberi tahu setelah keputusan.
++
++Kolom: **PRS** Perusahaan, **MIT** Mitra, **TEK** Tenaga ahli yang memenuhi syarat (KL-05), **KLN** Klien, **INS** Instansi berwenang.
++
++## 2. Usulan baku (Model A: perusahaan berkontrak dengan klien)
++
++| Aktivitas | PRS | MIT | TEK | KLN | INS |
++|---|---|---|---|---|---|
++| Penawaran dan kontrak dengan klien | A/R | C | C | I | |
++| Komunikasi harian dengan klien | A | R | C | I | |
++| Pengumpulan dokumen dari klien | A | R | I | R | |
++| Pengecekan awal kelengkapan data | A | R | C | I | |
++| Survei lapangan | A | R | R | C | |
++| Kajian teknis dan kesimpulan teknis | C | I | A/R | I | |
++| Penyusunan dokumen teknis | A | R | R | C | |
++| Penandatanganan dokumen teknis | I | I | A/R | I | |
++| Pemeriksaan mutu (KL-06) | A/R | C | R | I | |
++| Pengajuan dan komunikasi dengan instansi | A | R | C | C | I |
++| Menanggapi revisi atau catatan instansi | A | R | R | C | I |
++| Penagihan dan penerimaan pembayaran | A/R | I | | R | |
++| Serah terima hasil (KL-07) | A | R | C | R | |
++| Penanganan keluhan dan eskalasi (KL-08) | A | R | C | C | |
++
++Catatan model B dan C: ganti PRS dan MIT pada baris "Penawaran dan kontrak" dan "Penagihan" sesuai pihak yang berkontrak dengan klien. Baris kajian teknis, tanda tangan dokumen teknis, dan pemeriksaan mutu **tidak berubah**: pihak yang memenuhi syarat tetap A/R.
++
++## 3. Aturan kewenangan
++
++1. Penandatanganan dokumen teknis hanya oleh tenaga ahli yang memenuhi syarat dan terverifikasi (KL-05); tidak boleh didelegasikan kepada pihak yang tidak memenuhi syarat.
++2. Mitra tidak menyepakati perubahan harga, lingkup, atau jadwal dengan klien tanpa persetujuan pemilik A pada baris tersebut.
++3. Mitra tidak menyampaikan kesimpulan teknis kepada klien sebelum dikonfirmasi tenaga ahli.
++4. Tidak ada komunikasi dengan instansi atas nama pihak lain tanpa surat kuasa tertulis.
++5. Setiap baris dengan lebih dari satu A dianggap tidak sah; pemilik proyek memutuskan.
++
++## 4. Penyesuaian per proyek
++
++| Proyek | Model | Baris yang diubah | Alasan | Disetujui oleh |
++|---|---|---|---|---|
++| [DIISI] | A / B / C | | | |
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index a67d361..0c4c870 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -76,3 +76,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | RF-05 | Panduan komunikasi referral | `docs/kemitraan/RF-05-panduan-komunikasi-referral.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penjualan/operasional teknis | Tabel boleh dan tidak boleh; skrip menjawab pertanyaan sulit |
+ | KL-01 | Kerangka PKS mitra kolaboratif | `docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik proyek/legal | Tiga model kontrak dengan klien; 18 pasal |
+ | KL-02 | Templat SOW/KAK per proyek | `docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) manajer proyek/teknis | Kriteria penerimaan tidak boleh berupa terbitnya SLF/PBG |
++| KL-03 | Matriks tanggung jawab (RACI) | `docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) manajer proyek/teknis | Usulan baku untuk model A; satu A per baris |
+-- 
+2.43.0
+
+
+From 47f6082b01035b468c998bb17aded9b04e7a5b47 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:31:37 +0000
+Subject: [PATCH 05/13] KL-04 Templat penawaran, anggaran, dan termin (draf)
+
+---
+ ...KL-04-templat-penawaran-anggaran-termin.md | 64 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 65 insertions(+)
+ create mode 100644 docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md
+
+diff --git a/docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md b/docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md
+new file mode 100644
+index 0000000..99f1b02
+--- /dev/null
++++ b/docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md
+@@ -0,0 +1,64 @@
++# KL-04 Templat Penawaran, Anggaran, Termin, dan Mekanisme Pembayaran Proyek
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-04 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: penjualan dan keuangan) |
++| Status | Perlu tinjauan hukum |
++
++> Templat. Semua nilai dikosongkan karena belum diputuskan. Bagian 1 untuk klien; bagian 2 internal dan tidak diberikan kepada klien. Perlakuan pajak ditinjau konsultan pajak.
++
++## 1. Penawaran untuk klien
++
++| Bagian | Isi |
++|---|---|
++| Identitas | Nomor, tanggal, masa berlaku penawaran [KEPUTUSAN], pihak yang menawarkan (sesuai model kontrak, KL-01) |
++| Ringkasan lingkup | Dari SOW (KL-02): layanan, deliverable, pengecualian |
++| Rincian biaya jasa | Tabel di bawah |
++| Biaya resmi instansi | Ditulis **terpisah**, mengikuti tagihan resmi, tanpa margin tersembunyi |
++| Pajak | Dicantumkan sesuai ketentuan [tinjau pajak] |
++| Termin dan pemicu pembayaran | Tabel di bawah |
++| Asumsi dan pengecualian | Data dari klien, proses instansi di luar kendali, perubahan lingkup (KL-08) |
++| Pernyataan hasil | "Penawaran ini untuk jasa pendampingan. Keputusan penerbitan ada pada pihak berwenang dan tidak dijamin." |
++| Persetujuan | Tanda tangan klien dan pihak penawar |
++
++### Rincian biaya jasa
++
++| No | Komponen | Satuan | Jumlah | Harga | Subtotal |
++|---|---|---|---|---|---|
++| 1 | [DIISI] | | | | |
++
++### Termin pembayaran
++
++| Termin | Pemicu | Bagian dari total | Jatuh tempo |
++|---|---|---|---|
++| 1 | Penandatanganan SOW | [KEPUTUSAN] | |
++| 2 | [deliverable tertentu diterima, KL-07] | [KEPUTUSAN] | |
++| 3 | Serah terima akhir | [KEPUTUSAN] | |
++
++Pemicu pembayaran terkait **deliverable yang dapat diperiksa**, bukan terbitnya keputusan instansi.
++
++## 2. Pembagian internal (tidak diberikan kepada klien)
++
++| Item | Isi |
++|---|---|
++| Pihak yang menerima pembayaran klien | Sesuai model KL-01 |
++| Dasar pembagian untuk pihak lain | [KEPUTUSAN: persentase, tarif per komponen, atau biaya pekerjaan] |
++| Waktu pembayaran kepada pihak lain | Setelah penerimaan pembayaran klien dalam [KEPUTUSAN] hari kerja |
++| Biaya yang ditanggung masing-masing | Survei, perjalanan, tenaga ahli, operasional [KEPUTUSAN] |
++| Penyetuju | [DIISI PEMILIK: pejabat] |
++
++## 3. Mekanisme pembayaran
++
++- Pembayaran ke rekening atas nama pihak berkontrak; tidak ke rekening pribadi tanpa persetujuan tertulis.
++- Faktur diterbitkan sesuai ketentuan perpajakan [tinjau pajak].
++- Keterlambatan bayar: [KEPUTUSAN: bunga atau penghentian pekerjaan, tinjau hukum].
++- Uang muka tidak dikembalikan atau dikembalikan sebagian bila batal: [KEPUTUSAN, tinjau hukum].
++
++## 4. Larangan
++
++- Mencantumkan biaya "percepatan", "pelicin", atau "biaya administrasi tidak resmi".
++- Memberi penawaran lisan yang berbeda dari tertulis.
++- Menjanjikan hasil atau tanggal keputusan instansi.
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 0c4c870..16fc4e9 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -77,3 +77,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-01 | Kerangka PKS mitra kolaboratif | `docs/kemitraan/KL-01-perjanjian-kerja-sama-mitra-kolaboratif.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik proyek/legal | Tiga model kontrak dengan klien; 18 pasal |
+ | KL-02 | Templat SOW/KAK per proyek | `docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) manajer proyek/teknis | Kriteria penerimaan tidak boleh berupa terbitnya SLF/PBG |
+ | KL-03 | Matriks tanggung jawab (RACI) | `docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) manajer proyek/teknis | Usulan baku untuk model A; satu A per baris |
++| KL-04 | Templat penawaran, anggaran, termin | `docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penjualan/keuangan | Nilai kosong; biaya resmi instansi dipisah; bagian internal terpisah |
+-- 
+2.43.0
+
+
+From 21b40c696a4a21ca185e7de5d63528231015051f Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:32:02 +0000
+Subject: [PATCH 06/13] KL-05 Checklist kompetensi dan kewenangan personel
+ (draf)
+
+---
+ ...list-kompetensi-dan-kewenangan-personel.md | 70 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 71 insertions(+)
+ create mode 100644 docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md
+
+diff --git a/docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md b/docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md
+new file mode 100644
+index 0000000..4b1cee6
+--- /dev/null
++++ b/docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md
+@@ -0,0 +1,70 @@
++# KL-05 Checklist Kompetensi dan Kewenangan Personel dan Pihak Pelaksana
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-05 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: penanggung jawab teknis) |
++| Status | Perlu tinjauan hukum |
++
++> Draf kerja. Dokumen ini **tidak** menyebut sertifikasi, kualifikasi, atau regulasi tertentu karena persyaratan untuk setiap jenis pekerjaan harus dikonfirmasi penanggung jawab teknis dan konsultan hukum terhadap ketentuan yang berlaku saat ini (risiko R-03). Kolom "Persyaratan" diisi setelah konfirmasi tersebut.
++
++## 1. Prinsip
++
++1. Tidak ada pekerjaan atau tanda tangan teknis sebelum checklist personel yang bersangkutan **lengkap dan terverifikasi**.
++2. Status kemitraan tidak menggantikan kompetensi dan kewenangan.
++3. Persyaratan mengikuti jenis pekerjaan dan ketentuan yang berlaku; bukan daftar tetap di dokumen ini.
++4. Bukti harus asli atau dapat diverifikasi pada sumber penerbit, dan masa berlakunya dicatat.
++
++## 2. Peta pekerjaan dan persyaratan
++
++| Pekerjaan teknis | Persyaratan yang berlaku | Dikonfirmasi oleh | Tanggal konfirmasi |
++|---|---|---|---|
++| Survei lapangan | [DIISI setelah konfirmasi] | [penanggung jawab teknis] | |
++| Kajian teknis bangunan | [DIISI] | | |
++| Penyusunan dokumen teknis | [DIISI] | | |
++| Penandatanganan dokumen teknis | [DIISI] | | |
++| Pekerjaan non-teknis (administrasi, koordinasi) | Tidak memerlukan kualifikasi teknis; tetap tunduk UM-07 | | |
++
++## 3. Checklist per personel
++
++| Item | Isi |
++|---|---|
++| Nama dan peran dalam proyek | |
++| Pihak yang mempekerjakan atau menugaskan | Perusahaan / Mitra / Pihak lain |
++| Pekerjaan yang akan dilakukan | Dari peta bagian 2 |
++| Bukti kompetensi dan kewenangan (jenis, nomor, penerbit) | |
++| Masa berlaku | |
++| Diverifikasi pada sumber penerbit | Ya / Tidak, tanggal, oleh |
++| Konflik kepentingan diungkapkan | Ya / Tidak |
++| Pengalaman relevan (referensi) | |
++| Status | Memenuhi / Perlu klarifikasi / Tidak memenuhi |
++| Persetujuan penanggung jawab teknis | Nama, tanggal |
++
++## 4. Alur keputusan
++
++```mermaid
++flowchart TD
++    A[Personel diusulkan untuk pekerjaan teknis] --> B{Persyaratan pekerjaan sudah dikonfirmasi?}
++    B -->|Belum| C[Minta konfirmasi penanggung jawab teknis dan hukum]
++    C --> B
++    B -->|Sudah| D{Bukti lengkap dan masih berlaku?}
++    D -->|Tidak| E[Lengkapi atau ganti personel]
++    E --> D
++    D -->|Ya| F{Terverifikasi pada sumber penerbit?}
++    F -->|Tidak| G[Verifikasi dahulu]
++    G --> F
++    F -->|Ya| H[Setujui dan catat pada SOW]
++```
++
++## 5. Pemantauan
++
++- Daftar personel kunci dan masa berlaku bukti disimpan pada UM-14 atau daftar terpisah milik penanggung jawab teknis: [DIISI PEMILIK].
++- Tinjau [KEPUTUSAN: periode] dan sebelum setiap proyek baru.
++- Bukti yang kedaluwarsa menghentikan penugasan personel pada pekerjaan teknis sampai diperbarui.
++- Pergantian personel mengikuti PKS (KL-01 pasal 9).
++
++## 6. Tanda bahaya
++
++Bukti tidak dapat diverifikasi, nama pada dokumen berbeda tanpa penjelasan, personel menolak menyerahkan bukti, satu orang disebut mengerjakan terlalu banyak proyek bersamaan tanpa kapasitas, atau meminta "tanda tangan dipinjamkan".
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 16fc4e9..49321ef 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -78,3 +78,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-02 | Templat SOW/KAK per proyek | `docs/kemitraan/KL-02-templat-sow-kak-per-proyek.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) manajer proyek/teknis | Kriteria penerimaan tidak boleh berupa terbitnya SLF/PBG |
+ | KL-03 | Matriks tanggung jawab (RACI) | `docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) manajer proyek/teknis | Usulan baku untuk model A; satu A per baris |
+ | KL-04 | Templat penawaran, anggaran, termin | `docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penjualan/keuangan | Nilai kosong; biaya resmi instansi dipisah; bagian internal terpisah |
++| KL-05 | Checklist kompetensi dan kewenangan personel | `docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penanggung jawab teknis | Persyaratan sengaja tidak disebut; menunggu konfirmasi teknis dan hukum |
+-- 
+2.43.0
+
+
+From ad3ea40435a2b9407661e0effc85ec559f91a942 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Sun, 25 Oct 2026 19:32:02 +0000
+Subject: [PATCH 07/13] KL-06 SOP pengendalian mutu dan pemeriksaan deliverable
+ (draf)
+
+---
+ ...KL-06-sop-pengendalian-mutu-deliverable.md | 77 +++++++++++++++++++
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ 2 files changed, 78 insertions(+)
+ create mode 100644 docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md
+
+diff --git a/docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md b/docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md
+new file mode 100644
+index 0000000..0e9690c
+--- /dev/null
++++ b/docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md
+@@ -0,0 +1,77 @@
++# KL-06 SOP Pengendalian Mutu dan Pemeriksaan Deliverable
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | KL-06 (KOL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: penanggung jawab teknis dan mutu) |
++| Status | Perlu persetujuan internal |
++
++> Draf kerja. Pemeriksaan teknis dilakukan oleh personel yang memenuhi syarat (KL-05). Kriteria isi tiap deliverable ditetapkan penanggung jawab teknis per jenis layanan; dokumen ini menyediakan kerangka proses.
++
++## 1. Tujuan dan cakupan
++
++Memastikan setiap deliverable proyek kolaboratif diperiksa sebelum diserahkan kepada klien atau diajukan ke instansi, terlepas dari siapa yang menyusunnya.
++
++## 2. Prinsip
++
++1. **Pembuat bukan pemeriksa**: deliverable diperiksa orang lain.
++2. **Pemeriksa teknis memenuhi syarat** (KL-05).
++3. **Tidak ada penyerahan tanpa catatan pemeriksaan.**
++4. **Pihak yang memeriksa berhak menolak** deliverable yang tidak memenuhi kriteria.
++
++## 3. Titik pemeriksaan
++
++| Titik | Waktu | Yang diperiksa | Pemeriksa |
++|---|---|---|---|
++| P1 Kickoff | Sebelum pekerjaan | SOW, personel terverifikasi, data awal | Pemilik proyek |
++| P2 Kelengkapan data | Setelah data diterima | Dokumen lengkap, konsisten, terbaru | Penyusun dan pemeriksa |
++| P3 Draf | Sebelum kajian final | Metode, asumsi, sumber data | Tenaga ahli |
++| P4 Final internal | Sebelum diserahkan atau diajukan | Seluruh kriteria penerimaan SOW | Pemeriksa independen |
++| P5 Setelah umpan balik | Setelah catatan klien atau instansi | Perbaikan menjawab catatan | Pemeriksa yang sama jika memungkinkan |
++
++## 4. Checklist deliverable (kerangka)
++
++| Pemeriksaan | Ya | Tidak | Catatan |
++|---|---|---|---|
++| Sesuai SOW dan kriteria penerimaan | | | |
++| Identitas bangunan dan pemilik benar di seluruh dokumen | | | |
++| Angka, referensi, dan lampiran konsisten | | | |
++| Sumber data dicantumkan dan dapat ditelusuri | | | |
++| Kesimpulan teknis ditandatangani pihak yang memenuhi syarat | | | |
++| Tidak ada klaim hasil atau keputusan instansi | | | |
++| Versi dan tanggal jelas | | | |
++| Data pribadi dibatasi sesuai UM-09 | | | |
++
++Daftar rinci per jenis layanan (SLF, PBG, pengkajian, as-built) ditambahkan oleh penanggung jawab teknis: [DIISI].
++
++## 5. Ketidaksesuaian
++
++```mermaid
++flowchart TD
++    A[Pemeriksaan] --> B{Memenuhi kriteria?}
++    B -->|Ya| C[Setujui dan catat]
++    B -->|Tidak| D[Catat ketidaksesuaian dan penyebab]
++    D --> E[Perbaiki oleh penyusun]
++    E --> F[Periksa ulang]
++    F --> B
++    D --> G{Berulang atau berat?}
++    G -->|Ya| H[Eskalasi ke penanggung jawab teknis]
++```
++
++Ketidaksesuaian berat (kesimpulan tidak berdasar, tanda tangan di luar kewenangan, data keliru material) menghentikan penyerahan dan ditangani sesuai UM-07.
++
++## 6. Pencatatan
++
++- Catatan pemeriksaan: tanggal, titik, pemeriksa, hasil, tindakan.
++- Disimpan bersama berkas proyek sesuai UM-09; versi disusun berurutan.
++- Rekap bulanan jumlah ketidaksesuaian per mitra dan penyebab; hasil dipakai pada evaluasi mitra.
++
++## 7. Wewenang menghentikan pekerjaan
++
++Pemilik proyek atau penanggung jawab teknis dapat menghentikan penyerahan bila mutu atau kepatuhan tidak terpenuhi. Pihak lain tidak boleh mengabaikan penghentian itu.
++
++## 8. Indikator
++
++Persentase deliverable lolos pada pemeriksaan pertama, jumlah putaran perbaikan, keterlambatan akibat mutu, dan keluhan klien. Target ditetapkan setelah data awal tersedia: [KEPUTUSAN].
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 49321ef..34afe6d 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -79,3 +79,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-03 | Matriks tanggung jawab (RACI) | `docs/kemitraan/KL-03-matriks-pembagian-tanggung-jawab-raci.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) manajer proyek/teknis | Usulan baku untuk model A; satu A per baris |
+ | KL-04 | Templat penawaran, anggaran, termin | `docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penjualan/keuangan | Nilai kosong; biaya resmi instansi dipisah; bagian internal terpisah |
+ | KL-05 | Checklist kompetensi dan kewenangan personel | `docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penanggung jawab teknis | Persyaratan sengaja tidak disebut; menunggu konfirmasi teknis dan hukum |
++| KL-06 | SOP pengendalian mutu deliverable | `docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penanggung jawab teknis/mutu | Lima titik pemeriksaan; pembuat bukan pemeriksa |
+-- 
+2.43.0
+
+
+From e9d5ddc9912679f4cfffcee97c901a3d68c6bac9 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:00:46 +0000
+Subject: [PATCH 08/13] WD-01 Kerangka perjanjian perwakilan daerah (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ .../WD-01-perjanjian-perwakilan-daerah.md     | 53 +++++++++++++++++++
+ 2 files changed, 54 insertions(+)
+ create mode 100644 docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 34afe6d..9d54557 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -80,3 +80,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-04 | Templat penawaran, anggaran, termin | `docs/kemitraan/KL-04-templat-penawaran-anggaran-termin.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penjualan/keuangan | Nilai kosong; biaya resmi instansi dipisah; bagian internal terpisah |
+ | KL-05 | Checklist kompetensi dan kewenangan personel | `docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penanggung jawab teknis | Persyaratan sengaja tidak disebut; menunggu konfirmasi teknis dan hukum |
+ | KL-06 | SOP pengendalian mutu deliverable | `docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penanggung jawab teknis/mutu | Lima titik pemeriksaan; pembuat bukan pemeriksa |
++| WD-01 | Kerangka perjanjian perwakilan daerah | `docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik program/legal | Posisi baku: tidak berwenang kecuali tertulis di WD-05 |
+diff --git a/docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md b/docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md
+new file mode 100644
+index 0000000..2d75843
+--- /dev/null
++++ b/docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md
+@@ -0,0 +1,53 @@
++# WD-01 Kerangka Perjanjian Perwakilan Daerah
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-01 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: pemilik program dan legal) |
++| Status | Perlu tinjauan hukum |
++
++> Kerangka isi, bukan perjanjian siap tanda tangan, dan bukan nasihat hukum. Kualifikasi hubungan hukum (perwakilan, keagenan, kuasa, hubungan kerja), non-persaingan, dan pajak wajib dirumuskan advokat. Jangan menandatangani sebelum UM-05, UM-07, UM-08, UM-09, UM-11, WD-02, dan WD-05 disetujui.
++
++## 1. Prinsip dari catatan persiapan
++
++Perjanjian harus menyatakan jelas apakah perwakilan boleh bernegosiasi atau menandatangani dokumen. **Penunjukan perwakilan tidak otomatis memberi kewenangan membuka cabang, mengikat perusahaan, atau mengerjakan layanan teknis.** Rancangan ini mengambil posisi baku: tidak berwenang, kecuali diberikan tertulis pada WD-05.
++
++## 2. Pasal-pasal
++
++| Pasal | Isi pokok |
++|---|---|
++| 1 Definisi | Wilayah, Perwakilan, Prospek, Materi, Kewenangan Tertulis, Surat Penunjukan |
++| 2 Penunjukan | Perusahaan menunjuk Perwakilan untuk wilayah dan masa pada Surat Penunjukan (WD-02). Penunjukan tidak menciptakan cabang. |
++| 3 Ruang lingkup | Edukasi awal, penjaringan calon klien, koordinasi lokal (UM-03). Tidak termasuk pekerjaan teknis, penandatanganan dokumen teknis, atau komitmen komersial. |
++| 4 Kewenangan | Hanya yang tertulis pada WD-05. Selebihnya perwakilan tidak berwenang bernegosiasi, menandatangani, atau menerima pembayaran. [Tinjau hukum: kualifikasi dan akibat bagi pihak ketiga] |
++| 5 Hubungan para pihak | Mandiri; bukan hubungan kerja; tidak ada hak mengikat perusahaan di luar pasal 4. |
++| 6 Wilayah dan eksklusivitas | Wilayah sesuai WD-02. Eksklusivitas tidak otomatis; bila diberikan harus tertulis, dengan syarat kinerja dan masa. |
++| 7 Rencana dan aktivitas | Rencana pengembangan pasar (WD-03). Target aktivitas bukan jaminan hasil dan tidak menjadi dasar klaim apa pun kecuali ditulis. |
++| 8 Prosedur kerja | SOP pemasaran lokal dan penyerahan prospek (WD-04, RF-02). |
++| 9 Prospek dan atribusi | Mengikuti RF-03; sumber prospek tercatat. |
++| 10 Imbalan dan biaya | Mengikuti UM-11 dan WD-06. Tidak ada imbalan atas keputusan instansi. |
++| 11 Merek dan materi | Mengikuti UM-08; sebutan resmi "Perwakilan Daerah [wilayah]"; materi disetujui sebelum terbit. |
++| 12 Standar perilaku dan antisuap | Mengikuti UM-07. |
++| 13 Kerahasiaan dan data | UM-10 dan UM-09. |
++| 14 Pelaporan dan evaluasi | Format WD-07; evaluasi berkala sesuai kriteria tertulis. |
++| 15 Non-persaingan dan konflik kepentingan | Pengungkapan wajib; pembatasan hanya bila ditulis dan ditinjau hukum. |
++| 16 Jangka waktu dan pengakhiran | [KEPUTUSAN]; akibat pada prospek berjalan, materi, dan akun yang dipakai (penurunan materi, penyerahan data). |
++| 17 Tanggung jawab | [Dirumuskan advokat] |
++| 18 Sengketa dan hukum | [Dirumuskan advokat] |
++
++## 3. Lampiran
++
++Surat Penunjukan (WD-02), rencana pasar (WD-03), SOP (WD-04), matriks otorisasi (WD-05), kebijakan biaya (WD-06), format laporan (WD-07), standar perilaku (UM-07), pedoman merek (UM-08), NDA (UM-10), atribusi (RF-03).
++
++## 4. Daftar periksa sebelum penandatanganan
++
++| Pemeriksaan | Hasil |
++|---|---|
++| Lolos seleksi (UM-05) dan keputusan tercatat | [DIPERIKSA] |
++| Wilayah ditulis spesifik (kota atau kabupaten) | [DIPERIKSA] |
++| Matriks otorisasi disetujui direksi | [DIPERIKSA] |
++| Pernyataan konflik kepentingan diterima | [DIPERIKSA] |
++| Tidak ada janji lisan di luar perjanjian | [DIPERIKSA] |
++| Salinan dicatat pada UM-14 | [DIPERIKSA] |
+-- 
+2.43.0
+
+
+From d7f44c7c032855959e5e3cf3a44190c5283d2727 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:00:46 +0000
+Subject: [PATCH 09/13] WD-02 Templat surat penunjukan perwakilan daerah (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ .../WD-02-templat-surat-penunjukan.md         | 60 +++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+ create mode 100644 docs/kemitraan/WD-02-templat-surat-penunjukan.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 9d54557..ef19c26 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -81,3 +81,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-05 | Checklist kompetensi dan kewenangan personel | `docs/kemitraan/KL-05-checklist-kompetensi-dan-kewenangan-personel.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) penanggung jawab teknis | Persyaratan sengaja tidak disebut; menunggu konfirmasi teknis dan hukum |
+ | KL-06 | SOP pengendalian mutu deliverable | `docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penanggung jawab teknis/mutu | Lima titik pemeriksaan; pembuat bukan pemeriksa |
+ | WD-01 | Kerangka perjanjian perwakilan daerah | `docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik program/legal | Posisi baku: tidak berwenang kecuali tertulis di WD-05 |
++| WD-02 | Templat surat penunjukan | `docs/kemitraan/WD-02-templat-surat-penunjukan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/pejabat berwenang | Bukan surat kuasa; daftar tegas kewenangan yang tidak diberikan |
+diff --git a/docs/kemitraan/WD-02-templat-surat-penunjukan.md b/docs/kemitraan/WD-02-templat-surat-penunjukan.md
+new file mode 100644
+index 0000000..5f64b27
+--- /dev/null
++++ b/docs/kemitraan/WD-02-templat-surat-penunjukan.md
+@@ -0,0 +1,60 @@
++# WD-02 Templat Surat Penunjukan Perwakilan Daerah
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-02 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: direksi atau pejabat berwenang) |
++| Status | Perlu tinjauan hukum |
++
++> Templat. Surat ini bukan surat kuasa. Bila diperlukan kuasa untuk tindakan tertentu, buat dokumen terpisah dan tinjau hukum. Ditandatangani pejabat yang berwenang mewakili perusahaan.
++
++## 1. Isi surat
++
++**SURAT PENUNJUKAN PERWAKILAN DAERAH**
++Nomor: [DIISI] Tanggal: [DIISI]
++
++Yang bertanda tangan di bawah ini, [nama], [jabatan], bertindak untuk dan atas nama PT Zof Engineering Indonesia, dengan ini menunjuk:
++
++| Item | Isi |
++|---|---|
++| Nama perwakilan | [DIISI] |
++| Identitas | [nomor identitas disimpan terpisah sesuai UM-09; jangan dicantumkan di surat bila tidak perlu] |
++| Wilayah | [kota atau kabupaten tertentu; hindari wilayah yang tidak jelas batasnya] |
++| Masa berlaku | Dari [tanggal] sampai [tanggal] [KEPUTUSAN: lama dan perpanjangan] |
++| Status eksklusivitas | Tidak eksklusif / Eksklusif dengan syarat: [uraian] |
++| Sebutan resmi | "Perwakilan Daerah [wilayah] Konsultan SLF & PBG" (UM-08) |
++| Perjanjian yang mendasari | Nomor [WD-01] |
++
++untuk melakukan kegiatan sebagaimana diatur dalam perjanjian dan lampirannya.
++
++## 2. Kewenangan
++
++Penunjukan ini **hanya** memberi kewenangan yang tercantum pada Matriks Otorisasi (WD-05). Selain itu perwakilan **tidak berwenang**:
++
++- mengikat perusahaan atau menandatangani dokumen atas nama perusahaan,
++- menyepakati harga, diskon, atau jadwal,
++- menerima pembayaran,
++- melakukan atau menandatangani pekerjaan teknis,
++- membuka kantor atau menyebut diri cabang,
++- menunjuk pihak lain sebagai sub-perwakilan.
++
++## 3. Pencabutan dan pembatasan
++
++Perusahaan dapat menghentikan atau membatasi penunjukan sesuai perjanjian, termasuk bila ada pelanggaran UM-07. Setelah berakhir, perwakilan menghentikan penggunaan sebutan, materi, dan akun, serta menyerahkan data prospek sesuai perjanjian.
++
++## 4. Verifikasi oleh pihak ketiga
++
++Pihak ketiga dapat memastikan keaslian penunjukan melalui [DIISI PEMILIK: kontak resmi dan cara verifikasi]. Surat ini tidak berlaku bila tidak bernomor dan tercatat pada UM-14.
++
++## 5. Penandatangan
++
++| | |
++|---|---|
++| Pejabat perusahaan | [nama, jabatan, tanda tangan] |
++| Penerima penunjukan | [nama, tanda tangan, tanggal] |
++
++## 6. Catatan penggunaan
++
++Salinan surat tidak boleh dibagikan sebagai "bukti kewenangan" kepada klien tanpa menyertakan batas kewenangan pada bagian 2.
+-- 
+2.43.0
+
+
+From 2f0f2bd73d8a6480933e4c263fa7237f13ad57ca Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:01:08 +0000
+Subject: [PATCH 10/13] WD-03 Rencana pengembangan pasar dan target aktivitas
+ (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ ...D-03-rencana-pengembangan-pasar-wilayah.md | 68 +++++++++++++++++++
+ 2 files changed, 69 insertions(+)
+ create mode 100644 docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index ef19c26..1ddb4b0 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -82,3 +82,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | KL-06 | SOP pengendalian mutu deliverable | `docs/kemitraan/KL-06-sop-pengendalian-mutu-deliverable.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) penanggung jawab teknis/mutu | Lima titik pemeriksaan; pembuat bukan pemeriksa |
+ | WD-01 | Kerangka perjanjian perwakilan daerah | `docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik program/legal | Posisi baku: tidak berwenang kecuali tertulis di WD-05 |
+ | WD-02 | Templat surat penunjukan | `docs/kemitraan/WD-02-templat-surat-penunjukan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/pejabat berwenang | Bukan surat kuasa; daftar tegas kewenangan yang tidak diberikan |
++| WD-03 | Rencana pengembangan pasar wilayah | `docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) perwakilan/pemilik program | Target aktivitas, bukan target penjualan |
+diff --git a/docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md b/docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md
+new file mode 100644
+index 0000000..b134ebb
+--- /dev/null
++++ b/docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md
+@@ -0,0 +1,68 @@
++# WD-03 Rencana Pengembangan Pasar dan Target Aktivitas Wilayah
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-03 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: perwakilan dan pemilik program) |
++| Status | Perlu persetujuan internal |
++
++> Templat. Matriks induk meminta pemeriksaan agar target tidak menjadi jaminan yang keliru. Karena itu **target di sini adalah target aktivitas**, bukan target penjualan, dan tidak menjamin pendapatan bagi pihak mana pun.
++
++## 1. Identitas
++
++| Item | Isi |
++|---|---|
++| Wilayah | Sesuai WD-02 |
++| Perwakilan | [DIISI] |
++| Periode rencana | [mis. 90 hari pertama, lalu per kuartal] |
++| Tanggal dan versi | [DIISI] |
++
++## 2. Gambaran wilayah (diisi perwakilan, dengan sumber)
++
++| Hal | Isi dan sumber |
++|---|---|
++| Jenis bangunan yang dominan | |
++| Kelompok sasaran (pengelola gedung, pemilik usaha, kontraktor, asosiasi) | |
++| Saluran yang dikenal perwakilan | |
++| Pesaing atau layanan serupa yang diketahui | |
++| Hal yang perlu diwaspadai (pola klaim menyesatkan, praktik jalur cepat) | |
++
++Tulis hanya yang diketahui dan dapat disebutkan sumbernya; tandai asumsi.
++
++## 3. Target aktivitas
++
++| Aktivitas | Satuan | Target periode | Cara bukti |
++|---|---|---|---|
++| Sesi edukasi atau pertemuan | Jumlah | [KEPUTUSAN] | Catatan kegiatan |
++| Pengenalan calon klien yang sah | Jumlah | [KEPUTUSAN] | Bukti penerimaan RF-02 |
++| Koordinasi dengan kantor pusat | Per bulan | [KEPUTUSAN] | Catatan rapat |
++| Materi disetujui dan terbit | Jumlah | [KEPUTUSAN] | Persetujuan UM-08 |
++
++Aturan: tidak ada target "jumlah proyek", "pendapatan", atau "penerbitan SLF/PBG" dalam dokumen ini.
++
++## 4. Anggaran
++
++Rujuk WD-06. Tulis rencana biaya dan pihak yang menanggung; klaim penggantian harus memenuhi syarat WD-06.
++
++## 5. Jadwal 90 hari (contoh kerangka)
++
++| Periode | Kegiatan | Penanggung jawab |
++|---|---|---|
++| Minggu 1 sampai 2 | Onboarding, pemahaman UM-07 dan UM-08, pemetaan wilayah | Perwakilan dan pusat |
++| Minggu 3 sampai 6 | Edukasi awal, pengenalan pertama, materi pertama disetujui | Perwakilan |
++| Minggu 7 sampai 12 | Peninjauan hasil, perbaikan, laporan evaluasi (WD-07) | Perwakilan dan pusat |
++
++## 6. Risiko dan mitigasi
++
++| Risiko | Mitigasi |
++|---|---|
++| Pengenalan tanpa persetujuan calon klien | RF-02 |
++| Klaim hasil berlebihan | UM-07, RF-05 |
++| Penggunaan merek tanpa izin | UM-08 |
++| Wilayah tumpang tindih dengan mitra lain | WD-02, cek sebelum penunjukan |
++
++## 7. Peninjauan
++
++Peninjauan di akhir periode oleh pusat dan perwakilan: aktivitas tercapai atau tidak, hambatan, keputusan lanjut, ubah, atau akhiri. Hasil tercatat. Tidak tercapainya target aktivitas tidak otomatis menjadi pelanggaran kecuali ditentukan tertulis pada perjanjian.
+-- 
+2.43.0
+
+
+From 0cb1a70415c59288932e16d0f1b1da348faf5639 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:01:08 +0000
+Subject: [PATCH 11/13] WD-04 SOP pemasaran lokal dan koordinasi pusat (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ ...op-pemasaran-lokal-dan-koordinasi-pusat.md | 62 +++++++++++++++++++
+ 2 files changed, 63 insertions(+)
+ create mode 100644 docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 1ddb4b0..0f670dd 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -83,3 +83,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | WD-01 | Kerangka perjanjian perwakilan daerah | `docs/kemitraan/WD-01-perjanjian-perwakilan-daerah.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) pemilik program/legal | Posisi baku: tidak berwenang kecuali tertulis di WD-05 |
+ | WD-02 | Templat surat penunjukan | `docs/kemitraan/WD-02-templat-surat-penunjukan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/pejabat berwenang | Bukan surat kuasa; daftar tegas kewenangan yang tidak diberikan |
+ | WD-03 | Rencana pengembangan pasar wilayah | `docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) perwakilan/pemilik program | Target aktivitas, bukan target penjualan |
++| WD-04 | SOP pemasaran lokal dan koordinasi pusat | `docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) operasional/pemasaran | Alur prospek lewat RF-02; larangan merujuk UM-07 |
+diff --git a/docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md b/docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md
+new file mode 100644
+index 0000000..131d038
+--- /dev/null
++++ b/docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md
+@@ -0,0 +1,62 @@
++# WD-04 SOP Pemasaran Lokal, Penyerahan Prospek, dan Koordinasi Kantor Pusat
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-04 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: operasional dan pemasaran) |
++| Status | Perlu persetujuan internal |
++
++> Draf kerja. Tinjauan hukum diperlukan bila SOP dipakai untuk memberi kuasa kepada perwakilan (matriks induk).
++
++## 1. Cakupan
++
++Aktivitas perwakilan di wilayahnya: edukasi, promosi, penjaringan, penyerahan prospek, dan komunikasi dengan pusat.
++
++## 2. Aktivitas yang diizinkan
++
++| Aktivitas | Syarat |
++|---|---|
++| Edukasi awal tentang SLF/PBG kepada pemilik atau pengelola bangunan | Memakai materi yang disetujui; tidak memberi kesimpulan teknis |
++| Presentasi atau acara komunitas | Persetujuan pusat untuk materi dan sebutan (UM-08) |
++| Konten media sosial dan profil lokal | Persetujuan sebelum terbit (UM-08) |
++| Mengumpulkan informasi dasar bangunan | Hanya data minimal (UM-09) |
++| Membantu calon klien menyiapkan dokumen awal | Hanya daftar kebutuhan dokumen baku; tanpa menilai kelayakan |
++| Menyerahkan prospek ke pusat | RF-02; hanya yang sudah setuju dihubungi |
++| Mendampingi pertemuan atau survei awal | Atas undangan pusat; tidak menyampaikan kesimpulan teknis |
++
++## 3. Aktivitas yang dilarang
++
++Mengacu UM-07: janji hasil, durasi, atau harga; kesimpulan teknis; jalur cepat; memakai merek tanpa izin; menandatangani atau menerima pembayaran tanpa kewenangan tertulis; membuat entitas atau situs atas nama perusahaan.
++
++## 4. Alur prospek
++
++1. Perwakilan mendapat minat calon klien dan meminta persetujuan dihubungi.
++2. Kirim RF-02 ke pusat.
++3. Pusat mencatat, cek duplikasi, mengirim bukti penerimaan, dan menghubungi calon klien.
++4. Pusat memberi tahu status kepada perwakilan sesuai RF-03.
++5. Pertanyaan teknis dari calon klien ke pusat, bukan dijawab sendiri.
++
++## 5. Koordinasi dengan kantor pusat
++
++| Kegiatan | Frekuensi | Saluran |
++|---|---|---|
++| Pertemuan sinkronisasi singkat | [KEPUTUSAN] | [DIISI] |
++| Laporan aktivitas (WD-07) | [KEPUTUSAN] | |
++| Persetujuan materi | Sebelum terbit; target respons pusat [KEPUTUSAN] | |
++| Eskalasi pertanyaan teknis | Segera | [DIISI: kontak penanggung jawab teknis] |
++
++## 6. Penanganan situasi khusus
++
++| Situasi | Tindakan |
++|---|---|
++| Calon klien meminta jaminan hasil | Tolak sopan, jelaskan batasan, catat |
++| Pihak mengaku punya akses ke instansi menawarkan kerja sama | Jangan menanggapi; laporkan segera |
++| Keluhan calon klien atau klien | Catat dan teruskan ke pusat dalam [KEPUTUSAN] hari kerja |
++| Pesan kritik di media sosial | Jangan membalas atas nama perusahaan; laporkan |
++| Permintaan media | Arahkan ke pusat |
++
++## 7. Pencatatan
++
++Seluruh aktivitas dan prospek dicatat sesuai WD-07. Data pribadi mengikuti UM-09; jangan menyimpan data klien di grup percakapan atau perangkat pribadi tanpa ketentuan.
+-- 
+2.43.0
+
+
+From d09ad7cbcd6b7900f5903c1787989f776bf3e645 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:01:33 +0000
+Subject: [PATCH 12/13] WD-05 Matriks otorisasi harga, penawaran, tanda tangan,
+ dan merek (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ .../WD-05-matriks-otorisasi-perwakilan.md     | 61 +++++++++++++++++++
+ 2 files changed, 62 insertions(+)
+ create mode 100644 docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index 0f670dd..d98acf8 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -84,3 +84,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | WD-02 | Templat surat penunjukan | `docs/kemitraan/WD-02-templat-surat-penunjukan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/pejabat berwenang | Bukan surat kuasa; daftar tegas kewenangan yang tidak diberikan |
+ | WD-03 | Rencana pengembangan pasar wilayah | `docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) perwakilan/pemilik program | Target aktivitas, bukan target penjualan |
+ | WD-04 | SOP pemasaran lokal dan koordinasi pusat | `docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) operasional/pemasaran | Alur prospek lewat RF-02; larangan merujuk UM-07 |
++| WD-05 | Matriks otorisasi perwakilan | `docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/keuangan/operasional | Bawaan paling ketat; selaras dengan halaman publik |
+diff --git a/docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md b/docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md
+new file mode 100644
+index 0000000..9596f21
+--- /dev/null
++++ b/docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md
+@@ -0,0 +1,61 @@
++# WD-05 Matriks Otorisasi Harga, Penawaran, Negosiasi, Tanda Tangan, dan Merek
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-05 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: direksi, keuangan, operasional) |
++| Status | Perlu tinjauan hukum |
++
++> Draf kerja. Nilai bawaan sengaja paling ketat: semua "Tidak berwenang" kecuali memberi informasi baku dan mengusulkan. Perubahan menjadi lebih longgar harus ditulis pada bagian 4 dan disetujui direksi. Ini menyelesaikan ketidakselarasan yang tercatat pada UM-07 dan halaman publik: perwakilan tidak menandatangani atau berkomitmen atas nama perusahaan kecuali tertulis.
++
++## 1. Tingkat kewenangan
++
++| Kode | Arti |
++|---|---|
++| 0 | Tidak berwenang |
++| 1 | Menyampaikan informasi baku yang sudah disetujui |
++| 2 | Mengusulkan kepada pusat |
++| 3 | Berwenang dengan persetujuan pusat per kasus |
++| 4 | Berwenang penuh dalam batas yang ditulis (jarang; perlu tinjauan hukum) |
++
++## 2. Matriks bawaan
++
++| Tindakan | Perwakilan | Penyetuju pusat |
++|---|---|---|
++| Menyampaikan informasi umum layanan (materi baku) | 1 | Pemasaran |
++| Menyampaikan harga | 0 (arahkan ke tim penawaran) | Penjualan |
++| Mengusulkan penawaran untuk calon klien | 2 | Penjualan |
++| Memberi diskon atau potongan | 0 | Direksi |
++| Bernegosiasi harga, lingkup, atau jadwal | 0 | Penjualan atau direksi |
++| Menandatangani penawaran atau kontrak dengan klien | 0 | Pejabat berwenang |
++| Menerima pembayaran dari klien | 0 | Keuangan |
++| Menyatakan perkiraan waktu proses | 0 | Teknis |
++| Menyampaikan kesimpulan teknis | 0 | Penanggung jawab teknis |
++| Mengajukan atau berkomunikasi dengan instansi atas nama perusahaan | 0 | Operasional |
++| Membuat atau menerbitkan materi pemasaran | 2 | Pemasaran (UM-08) |
++| Membuat profil platform atau domain | 2 | Pemasaran (UM-08) |
++| Menggunakan logo dan sebutan resmi | 1 (sesuai UM-08) | Pemasaran |
++| Berkomunikasi dengan media | 0 | Pimpinan |
++| Menunjuk sub-perwakilan atau perantara | 0 | Direksi |
++| Membuka kantor, menyebut cabang | 0 | Direksi, hanya melalui skema Cabang Resmi |
++| Memberi kuasa kepada pihak lain | 0 | Direksi |
++| Menyetujui pengeluaran atas nama perusahaan | 0 | Keuangan (WD-06) |
++
++## 3. Aturan
++
++1. Kewenangan di luar tabel dianggap **0**.
++2. Kewenangan tidak dapat diberikan lisan; harus tertulis dan bernomor.
++3. Pihak ketiga yang meminta bukti kewenangan diarahkan ke kontak verifikasi pada WD-02.
++4. Pelanggaran batas kewenangan ditangani sesuai UM-07.
++
++## 4. Pengecualian yang disetujui
++
++| Perwakilan | Tindakan | Tingkat baru | Batas (nilai, masa, jenis) | Alasan | Penyetuju dan tanggal | Ditinjau hukum |
++|---|---|---|---|---|---|---|
++| [DIISI] | | | | | | Ya / Tidak |
++
++## 5. Peninjauan
++
++Matriks ditinjau [KEPUTUSAN: periode] dan setiap kali ada perwakilan baru atau perubahan skema. Perubahan dicatat pada UM-14.
+-- 
+2.43.0
+
+
+From 79f3b1d6e402420e60564f5b8baa2363cb9768d7 Mon Sep 17 00:00:00 2001
+From: ArisCiwek <arisciwek@gmail.com>
+Date: Mon, 26 Oct 2026 01:01:33 +0000
+Subject: [PATCH 13/13] WD-06 Kebijakan biaya operasional, reimburse, dan
+ insentif wilayah (draf)
+
+---
+ docs/kemitraan/UM-14-register-dokumen.md      |  1 +
+ ...-biaya-operasional-dan-insentif-wilayah.md | 65 +++++++++++++++++++
+ 2 files changed, 66 insertions(+)
+ create mode 100644 docs/kemitraan/WD-06-kebijakan-biaya-operasional-dan-insentif-wilayah.md
+
+diff --git a/docs/kemitraan/UM-14-register-dokumen.md b/docs/kemitraan/UM-14-register-dokumen.md
+index d98acf8..97f503f 100644
+--- a/docs/kemitraan/UM-14-register-dokumen.md
++++ b/docs/kemitraan/UM-14-register-dokumen.md
+@@ -85,3 +85,4 @@ Kesimpulan inventarisasi: belum ada satu pun dokumen matriks yang berstatus sele
+ | WD-03 | Rencana pengembangan pasar wilayah | `docs/kemitraan/WD-03-rencana-pengembangan-pasar-wilayah.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) perwakilan/pemilik program | Target aktivitas, bukan target penjualan |
+ | WD-04 | SOP pemasaran lokal dan koordinasi pusat | `docs/kemitraan/WD-04-sop-pemasaran-lokal-dan-koordinasi-pusat.md` | 0.1 (draf) | 2026-10-26 | Perlu persetujuan internal | (usulan) operasional/pemasaran | Alur prospek lewat RF-02; larangan merujuk UM-07 |
+ | WD-05 | Matriks otorisasi perwakilan | `docs/kemitraan/WD-05-matriks-otorisasi-perwakilan.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) direksi/keuangan/operasional | Bawaan paling ketat; selaras dengan halaman publik |
++| WD-06 | Kebijakan biaya operasional dan insentif wilayah | `docs/kemitraan/WD-06-kebijakan-biaya-operasional-dan-insentif-wilayah.md` | 0.1 (draf) | 2026-10-26 | Perlu tinjauan hukum | (usulan) keuangan/pemilik program | Persetujuan sebelum pengeluaran; larangan biaya untuk pihak instansi |
+diff --git a/docs/kemitraan/WD-06-kebijakan-biaya-operasional-dan-insentif-wilayah.md b/docs/kemitraan/WD-06-kebijakan-biaya-operasional-dan-insentif-wilayah.md
+new file mode 100644
+index 0000000..a615bf7
+--- /dev/null
++++ b/docs/kemitraan/WD-06-kebijakan-biaya-operasional-dan-insentif-wilayah.md
+@@ -0,0 +1,65 @@
++# WD-06 Kebijakan Biaya Operasional, Reimburse, dan Insentif Wilayah
++
++| Atribut | Isi |
++|---|---|
++| ID matriks | WD-06 (WIL, P1) |
++| Versi | 0.1 (draf) |
++| Tanggal draf | 2026-10-26 |
++| Pemilik | Belum ditetapkan (usulan: keuangan dan pemilik program) |
++| Status | Perlu tinjauan hukum |
++
++> Draf kerja. Nilai, batas, dan pajak belum diputuskan (bertanda [KEPUTUSAN]); pajak ditinjau konsultan pajak. Mengikuti UM-11. Penerapan hanya setelah pejabat penyetuju ditetapkan.
++
++## 1. Prinsip
++
++1. **Tidak ada penggantian tanpa persetujuan tertulis sebelum pengeluaran.**
++2. Tidak ada pembayaran, hadiah, atau fasilitas kepada pejabat atau petugas instansi, dibiayai dengan cara apa pun.
++3. Tidak ada pembayaran di muka kepada perwakilan kecuali diputuskan khusus dan tertulis.
++4. Penggantian hanya untuk biaya yang bukti dan manfaatnya jelas bagi program.
++5. Insentif bukan imbalan atas keputusan instansi.
++
++## 2. Klasifikasi biaya
++
++| Jenis biaya | Perlakuan baku |
++|---|---|
++| Biaya usaha perwakilan (kantor, internet, kendaraan pribadi, gaji sendiri) | Ditanggung perwakilan |
++| Biaya kegiatan yang disetujui di muka (acara, cetak materi, sewa tempat) | Dapat diganti sesuai persetujuan [KEPUTUSAN: batas] |
++| Biaya perjalanan untuk undangan pusat atau survei bersama | Diganti sesuai batas [KEPUTUSAN] |
++| Biaya survei, tenaga ahli, atau biaya proyek | Mengikuti pembagian proyek (KL-04, SOW) |
++| Hiburan, hadiah, atau jamuan untuk pihak instansi | Tidak ditanggung dan dilarang |
++
++## 3. Prosedur penggantian
++
++1. Ajukan permohonan persetujuan di muka: tujuan, perkiraan biaya, manfaat, tanggal.
++2. Persetujuan tertulis dari penyetuju [DIISI PEMILIK] sebelum biaya timbul.
++3. Kirim klaim dalam [KEPUTUSAN] hari kerja setelah kegiatan, dengan bukti asli atau salinan jelas (tagihan, kuitansi, foto kegiatan).
++4. Pusat memeriksa dan membayar dalam [KEPUTUSAN] hari kerja setelah klaim lengkap.
++5. Klaim tanpa bukti atau tanpa persetujuan ditolak; alasan ditulis.
++
++## 4. Insentif wilayah
++
++| Unsur | Ketentuan |
++|---|---|
++| Bentuk | [KEPUTUSAN: komisi, bonus aktivitas, atau tidak ada] (UM-11) |
++| Dasar | Pembayaran klien yang diterima atau aktivitas yang tercatat dan dapat diperiksa |
++| Waktu | [KEPUTUSAN] |
++| Pengurangan atau penghentian | Bila ada pelanggaran UM-07, atau pembayaran klien dikembalikan (UM-11) |
++| Larangan | Insentif atas "kelulusan", "kecepatan", atau tindakan instansi |
++
++## 5. Pelaporan dan audit
++
++- Rekap biaya dan klaim per bulan pada laporan WD-07.
++- Pusat dapat memeriksa bukti hingga [KEPUTUSAN: periode] setelah pembayaran.
++- Temuan penyalahgunaan ditangani menurut UM-07.
++
++## 6. Pajak dan dokumen
++
++Bukti potong, status penerima, dan penerbitan faktur [DITINJAU KONSULTAN PAJAK]. Data rekening dan NPWP diminta saat pembayaran pertama saja (UM-09).
++
++## 7. Persetujuan dan ambang
++
++| Keputusan | Penyetuju |
++|---|---|
++| Persetujuan kegiatan sampai [KEPUTUSAN: ambang] | [DIISI] |
++| Di atas ambang | Direksi |
++| Perubahan kebijakan | Direksi |
+-- 
+2.43.0
+
