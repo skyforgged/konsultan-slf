@@ -66,6 +66,8 @@ Peran di bawah ini adalah usulan fungsi, bukan penunjukan orang tertentu. Tetapk
 | WD-06 | Kebijakan biaya operasional, reimburse, dan insentif wilayah | WIL | P1 | Keuangan / pemilik program | Ya | Belum disusun |
 | WD-07 | Format laporan aktivitas, pipeline, dan evaluasi wilayah | WIL | P2 | Perwakilan / admin kemitraan | Tidak rutin; batasi data yang dikumpulkan | Belum disusun |
 | CB-01 | Kajian struktur hukum, administrasi, perizinan, dan pajak untuk model cabang yang dipilih | CAB | P3 | Direksi / legal / pajak | Ya, wajib sebelum implementasi | Belum disusun |
+
+> **Catatan keputusan untuk CB-01:** Kirim dokumen/ruang lingkup kajian ini kepada konsultan hukum dan konsultan pajak sebelum menyusun CB-02 sampai CB-09. Minta penilaian tertulis mengenai struktur yang paling tepat, termasuk apakah model yang direncanakan memenuhi atau berpotensi masuk kriteria waralaba berdasarkan peraturan yang berlaku. **Hasil kajian menjadi gerbang keputusan**: jika dikategorikan atau direkomendasikan sebagai waralaba, susun CB-02–CB-09 sebagai paket dokumen waralaba yang sesuai; jika tidak, susun berdasarkan model cabang yang telah dikonfirmasi. Jangan menganggap model ini waralaba atau bukan waralaba sebelum memperoleh kajian profesional.
 | CB-02 | Dokumen pendirian/pembukaan atau penetapan cabang sesuai struktur yang disetujui | CAB | P3 | Direksi / legal / admin | Ya, wajib | Belum disusun |
 | CB-03 | Keputusan penunjukan kepala cabang dan uraian kewenangan | CAB | P3 | Direksi / HR | Ya | Belum disusun |
 | CB-04 | Struktur organisasi, uraian jabatan, kebutuhan personel, dan rencana kompetensi | CAB | P3 | HR / operasional teknis | Tinjauan hukum sesuai status personel dan persyaratan profesi | Belum disusun |
@@ -89,7 +91,7 @@ Peran di bawah ini adalah usulan fungsi, bukan penunjukan orang tertentu. Tetapk
 | 3 | Paket Referral (RF-01 s.d. RF-06) | Perjanjian, aturan atribusi, komisi, dan proses lead disetujui sebelum menerima mitra |
 | 4 | Paket Mitra Kolaboratif (KL-01 s.d. KL-08) | Tanggung jawab dan ruang lingkup bisa ditetapkan untuk tiap proyek |
 | 5 | Paket Perwakilan Daerah (WD-01 s.d. WD-07) | Wilayah, target, otorisasi, dan biaya disepakati tertulis |
-| 6 | Paket Cabang Resmi (CB-01 s.d. CB-09) | Kajian hukum/administrasi dan kesiapan operasional dinyatakan memadai sebelum pembukaan |
+| 6 | Kajian awal CB-01 oleh konsultan hukum dan pajak; setelah hasilnya, tetapkan jalur penyusunan CB-02–CB-09 (paket waralaba atau paket cabang sesuai hasil kajian) | Struktur dan kewajiban hukum/pajak telah dikonfirmasi tertulis sebelum dokumen lanjutan disusun atau pembukaan dilakukan |
 | 7 | Operasi berkelanjutan (UM-13, UM-15, OP-01 s.d. OP-05) | Ada mekanisme evaluasi, pembaruan, pengaduan, dan penghentian yang terdokumentasi |
 
 Urutan tersebut tidak berarti seluruh dokumen harus berbentuk file terpisah. Dokumen dapat digabung sebagai lampiran perjanjian induk jika tetap mudah dirujuk, memiliki versi yang jelas, dan tidak menimbulkan pertentangan antar-ketentuan.
