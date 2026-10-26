@@ -3,7 +3,7 @@ id: 110
 ulid: "01M5773Q4B1C2D3E4F5G6H7J8J"
 slug: "as-built-drawing-pengantar"
 title: "Pendampingan As‑Built Drawing"
-description: "Pendampingan As-Built Drawing adalah pembahasan tentang gambar kondisi terbangun, kegunaannya dalam dokumentasi bangunan, serta perannya dalam persiapan dan penyesuaian dokumen SLF maupun PBG."
+description: "Pendampingan As‑Built Drawing adalah pembahasan tentang gambar kondisi terbangun, kegunaannya dalam dokumentasi bangunan, serta perannya dalam persiapan dan penyesuaian dokumen SLF maupun PBG."
 pubDate: "2026-10-20T08:30:00Z"
 updatedDate: "2026-10-24T11:40:26Z"
 image: "/images/illustrations/as-built-drawing.svg"
