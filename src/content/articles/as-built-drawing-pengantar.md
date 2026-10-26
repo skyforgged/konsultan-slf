@@ -7,7 +7,7 @@ description: "Pendampingan As‑Built Drawing adalah pembahasan tentang gambar k
 pubDate: "2026-10-20T08:30:00Z"
 updatedDate: "2026-10-24T11:40:26Z"
 image: "/images/illustrations/as-built-drawing.svg"
-imageAlt: "Pendampingan As-Built Drawing adalah penyusunan dan verifikasi gambar kondisi aktual bangunan untuk mendukung dokumentasi teknis serta persiapan pengurusan SLF dan PBG."
+imageAlt: "Pendampingan As‑Built Drawing adalah penyusunan dan verifikasi gambar kondisi aktual bangunan untuk mendukung dokumentasi teknis serta persiapan pengurusan SLF dan PBG."
 socialImage: "/images/social/as-built-drawing.webp"
 type: "article"
 category: "As‑Built Drawing"
