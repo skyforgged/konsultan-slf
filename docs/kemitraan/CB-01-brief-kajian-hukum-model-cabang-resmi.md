@@ -3,10 +3,10 @@
 | Atribut | Isi |
 |---|---|
 | ID matriks | CB-01 (CAB, P3) |
-| Versi | 0.2 (draf) |
+| Versi | 0.3 (draf evaluasi internal) |
 | Tanggal draf | 2026-10-26 |
 | Pemilik | Belum ditetapkan (usulan: direksi dan legal) |
-| Status | Perlu tinjauan hukum |
+| Status | Perlu tinjauan hukum dan pajak |
 
 > Dokumen ini adalah **brief untuk konsultan hukum dan pajak**, bukan hasil kajian dan bukan nasihat hukum. Tujuannya merumuskan fakta model, pertanyaan yang harus dijawab, dan keputusan bisnis yang menahan penyusunan CB-02 sampai CB-09. Tidak ada perjanjian cabang yang boleh ditandatangani sebelum hasil kajian tertulis diterima dan disetujui direksi.
 
@@ -28,7 +28,7 @@
 4. **Kewajiban dukungan.** Bila pusat memberi SOP, pelatihan, pengawasan mutu, dan materi secara berkelanjutan (seperti yang dijanjikan dalam rancangan skema), unsur "dukungan yang berkesinambungan" patut dinilai terpenuhi.
 5. **Risiko kompetensi (R-03) beralih ke pihak lokal, tetapi nama pusat tetap terpapar.** Tenaga ahli milik cabang memerlukan verifikasi KL-05 dan hak pusat menghentikan pemakaian merek bila mutu atau kepatuhan gagal.
 
-Kesimpulan sementara: struktur yang dimaksud adalah **pihak lokal mandiri berlisensi**. Setelah jawaban pada bagian 10 (imbalan 10 persen, biaya setup, merek terdaftar, SOP, pelatihan, materi, dan pengawasan mutu dari pusat), hampir seluruh unsur waralaba tampak terpenuhi; klasifikasi akhir tetap harus ditetapkan konsultan hukum.
+Kesimpulan sementara: struktur yang dimaksud adalah **badan usaha lokal mandiri yang menggunakan merek dan sistem bisnis pusat dengan imbalan serta dukungan berkelanjutan**. Fakta ini menimbulkan indikasi kuat bahwa model perlu diuji sebagai waralaba, bukan diasumsikan aman sebagai lisensi biasa. Namun, brief ini belum cukup untuk menyatakan seluruh kriteria hukum telah terpenuhi: bukti bahwa usaha telah terbukti berhasil, bentuk sistem bisnis, status dan pemegang HKI yang tepat, serta unsur kriteria lain menurut peraturan yang berlaku masih harus diverifikasi. Klasifikasi final adalah pendapat hukum konsultan, bukan kesimpulan otomatis dari dokumen ini.
 
 ## 3. Opsi struktur untuk dinilai konsultan
 
@@ -102,7 +102,7 @@ Dokumen ini, UM-01, UM-03, UM-08, UM-11, `00-penilaian-risiko-hukum-program-kemi
 
 ### Opsi kerja
 
-**Opsi A (waralaba formal)** menjadi asumsi kerja untuk penyusunan CB-02 sampai CB-09, sampai konsultan menyatakan lain. Konsekuensi yang perlu dipersiapkan: prospektus penawaran yang diberikan paling lambat dua minggu sebelum perjanjian, perjanjian tertulis berdasarkan hukum Indonesia, pendaftaran STPW, dan HKI terdaftar. Kriteria lain dalam peraturan (misalnya standar yang mudah diajarkan dan diaplikasikan) perlu dikonfirmasi konsultan terhadap kondisi usaha.
+**Opsi A (paket waralaba formal)** menjadi skenario kesiapan internal, bukan keputusan hukum final. Jangan menyusun CB-02 sampai CB-09 seolah-olah klasifikasi sudah diputuskan. Konsultan harus menilai aturan yang berlaku pada tanggal kajian, terutama PP 35/2024 tentang Waralaba dan ketentuan pelaksana yang masih berlaku. Jika model diklasifikasikan sebagai waralaba, paket dokumen harus mengikuti kewajiban yang berlaku—termasuk prospektus penawaran, perjanjian waralaba, STPW, dan persyaratan HKI—serta tenggat dan proses yang dikonfirmasi konsultan. Jika tidak, konsultan harus menjelaskan dasar hukum dan struktur alternatif yang sah, bukan sekadar menyebutnya lisensi.
 
 ### Pertanyaan tambahan untuk konsultan
 
@@ -127,3 +127,67 @@ Dokumen ini, UM-01, UM-03, UM-08, UM-11, `00-penilaian-risiko-hukum-program-kemi
 ### Larangan publikasi angka
 
 Angka 10 persen dan Rp50 juta bersifat internal sampai konsultan hukum dan pajak menyetujui pengungkapan; jangan dicantumkan pada halaman publik, materi pemasaran, atau percakapan dengan calon sebelum prospektus tersedia.
+
+
+## 11. Evaluasi internal: apakah hasil CB-01 menentukan bentuk CB-02 sampai CB-09?
+
+**Jawaban: ya. Hasil CB-01 harus menjadi gerbang keputusan sebelum CB-02 sampai CB-09 disusun sebagai paket final.** Delapan dokumen lanjutan itu tidak boleh ditulis dengan asumsi bahwa model pasti merupakan cabang internal perusahaan atau pasti merupakan waralaba. Bentuk dan isi dokumen mengikuti klasifikasi hukum serta struktur usaha yang disetujui setelah kajian tertulis.
+
+### 11.1 Penilaian awal berdasarkan fakta yang tersedia
+
+| Fakta model | Implikasi awal | Yang harus dibuktikan/diperiksa |
+|---|---|---|
+| Pihak lokal berbentuk PT atau CV yang terpisah dari PT Zof Engineering Indonesia | Ini bukan cabang internal satu badan hukum; hubungan para pihak perlu dirancang sebagai hubungan antarbadan usaha | Identitas, pemilik, kewenangan, perizinan, dan hubungan afiliasi para pihak |
+| Pihak lokal membayar imbalan lisensi 10% dan biaya setup mulai Rp50 juta | Imbalan merupakan indikator hubungan komersial, tetapi tidak sendirian menentukan waralaba | Dasar penghitungan 10%, penerima pembayaran, ruang lingkup biaya setup, pajak, dan ketentuan pengembalian |
+| Pusat memberi SOP, pelatihan, materi, dan pengawasan mutu | Indikasi kuat adanya sistem bisnis dan bantuan berkelanjutan; memperbesar risiko model masuk rezim waralaba | Isi SOP, bentuk dan frekuensi dukungan, standar operasional, pelatihan, dan kontrol mutu nyata |
+| Pihak lokal memiliki karyawan, tenaga ahli, aset, membayar pajak sendiri, serta berkontrak dan bertanggung jawab kepada klien | Mendukung bahwa penerima adalah badan usaha mandiri; **tidak otomatis** mengeluarkan model dari rezim waralaba | Pembagian tanggung jawab kontraktual, perizinan layanan, kompetensi tenaga ahli, dan pengungkapan kepada klien |
+| Merek disebut terdaftar atas nama “Zof Engineering” | Status ini belum membuktikan bahwa badan usaha yang akan memberi hak pakai memiliki hak yang memadai | Sertifikat, nomor dan kelas merek, masa perlindungan, pemegang hak yang tepat, serta rantai lisensi/pemberian hak |
+| Model ditujukan untuk direplikasi di wilayah lain | Dapat menunjukkan sistem yang dapat diterapkan oleh pihak lain, tetapi perlu fakta operasional untuk menilainya | Bukti usaha telah berjalan/berhasil, keterulangan sistem, kelayakan penerapan, dan seluruh kriteria hukum terkini |
+
+Penilaian awal saya: **risiko klasifikasi sebagai waralaba tinggi dan paket waralaba perlu dijadikan skenario persiapan utama**. Alasannya bukan sekadar nama “Cabang Resmi”, melainkan gabungan penggunaan merek, sistem/SOP, pelatihan, pengawasan mutu, biaya awal, dan imbalan berkala. Meski demikian, bukti yang tersedia belum cukup untuk menetapkan bahwa semua kriteria waralaba pasti terpenuhi. Jangan mengakali klasifikasi dengan mengganti nama menjadi “lisensi” atau “kemitraan” apabila substansi model tetap memenuhi kriteria waralaba.
+
+### 11.2 Keputusan yang harus diminta dari konsultan
+
+Minta konsultan hukum memberikan kesimpulan tertulis dan tegas untuk salah satu hasil berikut:
+
+| Hasil kajian | Keputusan atas CB-02 sampai CB-09 |
+|---|---|
+| **A. Memenuhi kriteria waralaba** | Susun ulang CB-02 sampai CB-09 sebagai paket kepatuhan dan operasional waralaba. Petakan persyaratan pemberi/penerima waralaba, prospektus, perjanjian, STPW, HKI, pelaporan, dan kewajiban lain menurut peraturan yang berlaku. |
+| **B. Belum memenuhi kriteria, tetapi berpotensi menjadi waralaba jika unsur tertentu dijalankan** | Jangan langsung memakai paket lisensi biasa. Konsultan harus menunjukkan unsur pemicu dan batas desain yang sah. Direksi memilih secara sadar antara mengubah substansi model atau mempersiapkan jalur waralaba; perubahan nama saja tidak cukup. |
+| **C. Tidak termasuk waralaba berdasarkan fakta dan struktur yang diajukan** | Susun CB-02 sampai CB-09 sesuai struktur alternatif yang dijelaskan konsultan (misalnya lisensi terbatas atau bentuk kerja sama lain), beserta dasar hukum, batasan, perizinan, dan mitigasi risiko re-klasifikasi. |
+| **D. Data belum cukup untuk menyimpulkan** | Tunda finalisasi CB-02 sampai CB-09. Lengkapi data yang diminta konsultan dan minta pendapat tertulis lanjutan. Jangan menganggap tidak ada kewajiban hanya karena klasifikasi belum dapat diputuskan. |
+
+**Peran konsultan pajak berbeda dari peran konsultan hukum:** konsultan hukum menilai klasifikasi, struktur, dan kewajiban regulasi; konsultan pajak menilai konsekuensi pajak atas struktur yang diusulkan dan alternatifnya. Pendapat pajak penting untuk keputusan bisnis, tetapi tidak menggantikan kesimpulan hukum mengenai klasifikasi waralaba.
+
+### 11.3 Bentuk hasil kajian minimum
+
+CB-01 baru dianggap selesai jika tersedia memo tertulis yang memuat:
+
+1. Fakta yang diperiksa, asumsi, dokumen yang belum tersedia, dan batasan kajian.
+2. Analisis per kriteria waralaba berdasarkan peraturan yang berlaku pada tanggal opini, dengan pasal/rujukan yang tepat; jangan hanya memberi kesimpulan tanpa penalaran.
+3. Kesimpulan klasifikasi: A, B, C, atau D pada tabel di atas, beserta tingkat keyakinan dan fakta yang dapat mengubah kesimpulan.
+4. Struktur hukum yang direkomendasikan, identitas pihak pemberi dan penerima hak, status HKI, kebutuhan perizinan, serta tanggung jawab terhadap klien.
+5. Daftar kewajiban sebelum pemasaran/penawaran, sebelum perjanjian, sebelum mulai beroperasi, dan selama operasi.
+6. Analisis pajak terpisah untuk biaya setup, imbalan 10%, royalti/lisensi, PPN, pemotongan/pemungutan, bukti potong, pencatatan, dan transaksi afiliasi jika relevan.
+7. Daftar perubahan yang harus dilakukan pada model bisnis, halaman publik, materi penawaran, dan dokumen matriks.
+8. Daftar pekerjaan lanjutan CB-02 sampai CB-09 yang disesuaikan dengan hasil kajian.
+
+### 11.4 Rujukan dan batas verifikasi
+
+Sebagai titik awal, periksa **PP Nomor 35 Tahun 2024 tentang Waralaba** (berlaku sejak 2 September 2024 dan mencabut PP Nomor 42 Tahun 2007) serta ketentuan pelaksana yang berlaku, termasuk status dan keterkaitan Permendag Nomor 71 Tahun 2019. Konsultan wajib memeriksa naskah resmi, perubahan, ketentuan peralihan, serta aturan perizinan yang berlaku pada tanggal opini. Rujukan resmi untuk memulai pemeriksaan:
+
+- [PP Nomor 35 Tahun 2024 — JDIH BPK](https://peraturan.bpk.go.id/Details/297489/pp-no-35-tahun-2024)
+- [PP Nomor 35 Tahun 2024 — JDIH Kemendag](https://jdih.kemendag.go.id/peraturan/peraturan-pemerintah-nomor-35-tahun-2024-tentang-waralaba-1)
+- [Permendag Nomor 71 Tahun 2019 — JDIH Kemendag](https://jdih.kemendag.go.id/peraturan/peraturan-menteri-perdagangan-nomor-71-tahun-2019-penyelenggaraan-waralaba)
+
+### 11.5 Gerbang keputusan dan larangan sementara
+
+Sampai memo hukum dan pajak diterima serta direksi menyetujui jalur yang dipilih:
+
+- CB-02 sampai CB-09 berstatus **menunggu keputusan CB-01**; boleh dibuat daftar kebutuhan atau kerangka internal, tetapi jangan ditetapkan sebagai paket final.
+- Jangan menandatangani perjanjian, menerima biaya setup atau imbalan lisensi, memberi hak penggunaan merek, atau membuat penawaran yang dapat dipahami sebagai penawaran waralaba.
+- Jangan menerbitkan angka 10% atau Rp50 juta dalam materi publik.
+- Jika hasil kajian mengarah pada waralaba, susun paket waralaba dan penuhi prasyaratnya sebelum penawaran/operasi sesuai urutan hukum yang berlaku.
+- Catat keputusan direksi, tanggal opini, nama konsultan, versi model yang diperiksa, dan alasan memilih jalur akhir dalam register dokumen.
+
+**Kesimpulan operasional:** siapkan kapasitas untuk jalur waralaba karena indikasi risikonya tinggi, tetapi keputusan apakah CB-02 sampai CB-09 menjadi paket waralaba harus ditetapkan melalui opini hukum tertulis berbasis fakta dan aturan terkini. Jangan menjadikan asumsi kerja internal sebagai pengganti keputusan tersebut.
