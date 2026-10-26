@@ -3,7 +3,7 @@ id: 5
 ulid: "01M5773Q4G6K598C7PEMPKWBN9"
 slug: "proses-tahapan-pengajuan-slf"
 title: "Proses dan Tahapan Pengajuan SLF: Dari Persiapan hingga Terbit"
-description: "Pahami alur lengkap pengajuan SLF, tahapan pemeriksaan, dan apa yang terjadi di setiap langkah proses."
+description: "Proses dan Tahapan Pengajuan SLF: Dari Persiapan hingga Terbit adalah panduan memahami urutan persiapan dokumen, pengajuan, pemeriksaan, dan penilaian sesuai ketentuan serta kondisi bangunan."
 pubDate: "2026-10-15T15:00:00Z"
 updatedDate: "2026-10-24T11:40:40Z"
 type: "article"
@@ -17,6 +17,7 @@ tags:
 author: "Tim Konsultan SLF"
 draft: false
 image: "/images/illustrations/proses-tahapan-pengajuan-slf.svg"
+imageAlt: "Proses dan Tahapan Pengajuan SLF: Dari Persiapan hingga Terbit adalah gambaran alur persiapan dokumen, verifikasi administrasi, pemeriksaan teknis, dan penilaian kelaikan fungsi bangunan."
 socialImage: "/images/social/proses-tahapan-pengajuan-slf.webp"
 relatedType: "service"
 relatedId: 101
